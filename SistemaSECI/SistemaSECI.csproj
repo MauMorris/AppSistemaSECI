@@ -55,14 +55,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DatosUsuario.cs" />
+    <Compile Include="VentanaEstadisticas.xaml.cs">
+      <DependentUpon>VentanaEstadisticas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaHome.xaml.cs">
       <DependentUpon>VentanaHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaJuego.xaml.cs">
+      <DependentUpon>VentanaJuego.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaLogros.xaml.cs">
+      <DependentUpon>VentanaLogros.xaml</DependentUpon>
     </Compile>
     <Compile Include="VentanaModificar.xaml.cs">
       <DependentUpon>VentanaModificar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VentanaModificarSimple.xaml.cs">
+      <DependentUpon>VentanaModificarSimple.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaNuevoUsuario.xaml.cs">
       <DependentUpon>VentanaNuevoUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaSeci.xaml.cs">
+      <DependentUpon>VentanaSeci.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaSeciPrueba.xaml.cs">
+      <DependentUpon>VentanaSeciPrueba.xaml</DependentUpon>
     </Compile>
     <Compile Include="VentanaUsuarioReciente.xaml.cs">
       <DependentUpon>VentanaUsuarioReciente.xaml</DependentUpon>
@@ -82,7 +101,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VentanaEstadisticas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VentanaHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaJuego.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaLogros.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -90,7 +121,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="VentanaModificarSimple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VentanaNuevoUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaSeci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaSeciPrueba.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,104 @@
+﻿<Window x:Class="SistemaSECI.VentanaJuego"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaSECI"
+        mc:Ignorable="d"
+        Title="Inicio Juego" 
+        Height="768" 
+        Width="1024"
+        ResizeMode="CanMinimize"
+        WindowState="Maximized"
+        Icon="logoUNAM.jpg"
+        Background="White">
+    <Grid 
+        RenderTransformOrigin="0.504,0.486" 
+        IsHitTestVisible="True" 
+        Margin="0,0,2,22">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="231*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="71"/>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="232*"/>
+        </Grid.ColumnDefinitions>
+        <Image 
+            x:Name="usuarioImageNuevoUsuario" 
+            HorizontalAlignment="Left" 
+            Height="199"
+            VerticalAlignment="Top"
+            Width="174" 
+            
+            Margin="240,68,0,0" 
+            OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Source="logoUNAM.jpg"/>
+        <Button 
+            x:Name="botonRegresar_VInicioJuego" 
+            Content="REGRESAR" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Background="White"
+            Width="84" 
+            Margin="44,63,0,0" 
+            ClickMode="Press" 
+            Height="42" Click="botonRegresar_VInicioJuego_Click"/>
+        <Button 
+            x:Name="documentosBoton_VInicioJuego" 
+            Content="DOCUMENTOS"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Width="148" 
+            Grid.Column="4" 
+            Margin="161,636,0,0" 
+            Background="White"
+            ClickMode="Press" 
+            Height="52" 
+            Click="documentosBoton_VInicioJuego_Click"/>
+        <Button 
+            x:Name="botonEstadisticasUsuario_VInicioJuego"
+            Content="ESTADISTICAS USUARIO" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            Background="White"
+            Width="178" 
+            Margin="226,314,0,0" 
+            Height="68" Click="botonEstadisticasUsuario_VInicioJuego_Click" />
+        <Button 
+        	x:Name="botonLogros_VInicioJuego"
+        	Content="LOGROS" 
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top"
+        	Background="White"
+        	Width="178" 
+        	Margin="226,418,0,0" 
+        	Height="67" Click="botonLogros_VInicioJuego_Click"/>
+        <Button 
+        	x:Name="botonAjustesPrograma_VInicioJuego"
+        	Content="AJUSTES DE PROGRAMA" 
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top"
+        	Background="White"
+        	Width="178" 
+        	Margin="226,532,0,0" 
+        	Height="68" Click="botonAjustesPrograma_VInicioJuego_Click" />
+        <Button 
+        	x:Name="botonJugar_VInicioJuego"
+        	Content="JUGAR" 
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top"
+        	Background="White"
+        	Width="224" 
+        	Margin="50,394,0,0" 
+        	Height="91" 
+            Grid.Column="4" Click="botonJugar_VInicioJuego_Click"/>
+        <Rectangle 
+            Fill="#FFF4F4F5" 
+            HorizontalAlignment="Left" 
+            Height="246" 
+            Stroke="Black" 
+            VerticalAlignment="Top" 
+            Width="299" 
+            Grid.Column="4" 
+            Margin="10,68,0,0"/>
+    </Grid>
+</Window>

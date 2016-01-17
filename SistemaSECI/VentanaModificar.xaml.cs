@@ -51,5 +51,15 @@ namespace SistemaSECI
             this.Close();
 
         }
+
+        private void nombreTextBox_VModificar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            nombreTextBox_VModificar.Text = "";
+        }
+
+        private void edadTextBox_VModificar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

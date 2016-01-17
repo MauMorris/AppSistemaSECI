@@ -15,25 +15,18 @@ using System.Windows.Shapes;
 namespace SistemaSECI
 {
     /// <summary>
-    /// Lógica de interacción para VentanaUsuarios.xaml
+    /// Lógica de interacción para VentanaSeci.xaml
     /// </summary>
-    public partial class VentanaUsuarios : Window
+    public partial class VentanaSeci : Window
     {
-        public VentanaUsuarios()
+        public VentanaSeci()
         {
             InitializeComponent();
         }
 
-        private void botonUNuevo_VUsuarios_Click(object sender, RoutedEventArgs e)
+        private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
-            VentanaNuevoUsuario v = new VentanaNuevoUsuario();
-            v.Show();
-            this.Close();
-        }
-
-        private void botonUExistente_VUsuarios_Click(object sender, RoutedEventArgs e)
-        {
-            VentanaUsuarioReciente v = new VentanaUsuarioReciente();
+            VentanaSeciPrueba v = new VentanaSeciPrueba();
             v.Show();
             this.Close();
         }

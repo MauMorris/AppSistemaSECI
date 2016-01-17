@@ -57,6 +57,7 @@
             Grid.Column="1" 
             Margin="23,251,0,0" 
             Height="30" 
-            Click="botonHome_VInicio_Click" TabIndex="0"/>
+            Click="botonHome_VInicio_Click" 
+            TabIndex="0"/>
     </Grid>
 </Window>

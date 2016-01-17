@@ -8,6 +8,7 @@
         Title="Nuevo Usuario"
         Height="680" 
         Width="600"
+        Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid
@@ -43,7 +44,9 @@
             Width="120" 
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2" TabIndex="0"/>
+            Grid.Column="2" 
+            TabIndex="1" 
+            GotFocus="OcultarTexto"/>
         <TextBox 
             x:Name="apellidosTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -55,7 +58,10 @@
             Width="120" 
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2" TabIndex="1"/>
+            Grid.Column="2" 
+            TabIndex="1" 
+            GotFocus="OcultarTexto"
+            TextChanged="apellidosTextBox_VNuevoUsuario_TextChanged"/>
         <TextBox 
             x:Name="edadTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -67,7 +73,9 @@
             Width="120"
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2" TabIndex="2"/>
+            Grid.Column="2" 
+            TabIndex="2"            
+            PreviewTextInput="ValidacionNumerosTextBox"/>
         <ComboBox 
             x:Name="escolaridadComboBox_VNuevoUsuario" 
             Background="White"
@@ -77,7 +85,7 @@
             Height="23"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            Margin="12,346,0,0" TabIndex="3"/>
+            Margin="12,346,0,0" TabIndex="3" SelectionChanged="escolaridadComboBox_VNuevoUsuario_SelectionChanged"/>
         <ComboBox 
         	x:Name="sexoComboBox_VNuevoUsuario" 
         	Background="White"
@@ -99,7 +107,9 @@
             Width="120"
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2" TabIndex="5"/>
+            Grid.Column="2" 
+            TabIndex="5" 
+            PreviewTextInput="ValidacionNumerosTextBox"/>
         <TextBox 
             x:Name="pesoTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -111,7 +121,9 @@
             Width="120" 
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2" TabIndex="6"/>
+            Grid.Column="2" 
+            TabIndex="6" 
+            PreviewTextInput="ValidacionNumerosTextBox"/>
         <TextBox 
             x:Name="tutorTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -123,7 +135,9 @@
             Width="120" 
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2" TabIndex="7"/>
+            Grid.Column="2" 
+            TabIndex="7" 
+            TextChanged="tutorTextBox_VNuevoUsuario_TextChanged"/>
         <TextBox 
             x:Name="edadTutorTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -135,10 +149,12 @@
             Width="120"
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2" TabIndex="8"/>
+            Grid.Column="2" 
+            TabIndex="8"            
+            PreviewTextInput="ValidacionNumerosTextBox"/>
         <TextBox 
         	x:Name="telefonoTutorTextBox_VNuevoUsuario" 
-        	HorizontalAlignment="Left" 
+        	HorizontalAlignment="Left"
         	Height="23" 
         	Margin="12,536,0,0" 
         	TextWrapping="Wrap" 
@@ -147,7 +163,9 @@
         	Width="120"
         	HorizontalContentAlignment="Center"
         	Grid.ColumnSpan="2" 
-        	Grid.Column="2" TabIndex="9"/>
+        	Grid.Column="2" 
+            TabIndex="9"
+            PreviewTextInput="ValidacionNumerosTextBox"/>
         <Button 
             x:Name="regresarBoton_VNuevoUsuario" 
             Content="REGRESAR" 
@@ -158,7 +176,8 @@
             Height="45"
             Margin="30,44,0,0" 
             ClickMode="Press" 
-            Click="regresarBoton_VNuevoUsuario_Click" TabIndex="11" 
+            Click="regresarBoton_VNuevoUsuario_Click" 
+            TabIndex="0" 
             />
         <Button 
             x:Name="okBoton_VNuevoUsuario" 
@@ -172,7 +191,8 @@
             Background="White"
             ClickMode="Press" 
             Height="35" 
-            Click="okBoton_VNuevoUsuario_Click" TabIndex="10" 
+            Click="okBoton_VNuevoUsuario_Click" 
+            TabIndex="10" 
             />
         <Label 
             x:Name="nombreLabel_VNuevoUsuario" 

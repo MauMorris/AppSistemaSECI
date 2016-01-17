@@ -8,20 +8,21 @@
         Title="VentanaModificar"
         Height="680" 
         Width="600"
+        Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
-<Grid
+    <Grid
         RenderTransformOrigin="0.504,0.486" 
         IsHitTestVisible="True" 
         Margin="0,0,2,22">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="231*"/>
-        <ColumnDefinition Width="0*"/>
-        <ColumnDefinition Width="71"/>
-        <ColumnDefinition Width="64*"/>
-        <ColumnDefinition Width="232*"/>
-    </Grid.ColumnDefinitions>
-    <Image
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="231*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="71"/>
+            <ColumnDefinition Width="64*"/>
+            <ColumnDefinition Width="232*"/>
+        </Grid.ColumnDefinitions>
+        <Image
             x:Name="usuarioModificarImage_VModificar" 
             HorizontalAlignment="Left" 
             Height="175"
@@ -32,7 +33,7 @@
             Grid.ColumnSpan="3" 
             Source="logoUNAM.jpg" 
             Grid.Column="2"/>
-    <TextBox 
+        <TextBox 
             x:Name="nombreTextBox_VModificar" 
             HorizontalAlignment="Left" 
             Height="23" 
@@ -43,20 +44,19 @@
             Width="120" 
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2"/>
-    <TextBox 
+            Grid.Column="2" 
+            TextChanged="nombreTextBox_VModificar_TextChanged"/>
+        <TextBox 
             x:Name="apellidosTextBox_VModificar" 
-            HorizontalAlignment="Left" 
             Height="23" 
-            Margin="12,290,0,0" 
+            Margin="12,290,2,0" 
             TextWrapping="Wrap" 
             Text="Apellidos" 
             VerticalAlignment="Top" 
-            Width="120" 
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"/>
-    <TextBox 
+        <TextBox 
             x:Name="edadTextBox_VModificar"
             HorizontalAlignment="Left" 
             Height="23" 
@@ -67,8 +67,8 @@
             Width="120"
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2"/>
-    <ComboBox 
+            Grid.Column="2" TextChanged="edadTextBox_VModificar_TextChanged"/>
+        <ComboBox 
             x:Name="escolaridadComboBox_VModificar" 
             Background="White"
             HorizontalAlignment="Left" 
@@ -78,7 +78,7 @@
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             Margin="12,346,0,0"/>
-    <ComboBox 
+        <ComboBox 
         	x:Name="sexoComboBox_VModificar" 
         	Background="White"
         	HorizontalAlignment="Left" 
@@ -88,7 +88,7 @@
         	Grid.ColumnSpan="2" 
         	Grid.Column="2" 
         	Margin="12,377,0,0"/>
-    <TextBox 
+        <TextBox 
             x:Name="estaturaTextBox_VModificar"
             HorizontalAlignment="Left" 
             Height="22" 
@@ -100,7 +100,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"/>
-    <TextBox 
+        <TextBox 
             x:Name="pesoTextBox_VModificar"
             HorizontalAlignment="Left" 
             Height="22" 
@@ -112,7 +112,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"/>
-    <TextBox 
+        <TextBox 
             x:Name="tutorTextBox_VModificar" 
             HorizontalAlignment="Left" 
             Height="24" 
@@ -124,7 +124,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"/>
-    <TextBox 
+        <TextBox 
             x:Name="edadTutorTextBox_VModificar" 
             HorizontalAlignment="Left" 
             Height="23" 
@@ -136,7 +136,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"/>
-    <TextBox 
+        <TextBox 
         	x:Name="telefonoTutorTextBox_VModificar"
         	HorizontalAlignment="Left" 
         	Height="23" 
@@ -148,7 +148,7 @@
         	HorizontalContentAlignment="Center"
         	Grid.ColumnSpan="2" 
         	Grid.Column="2"/>
-    <Button 
+        <Button 
             x:Name="regresarBoton_VModificar"
             Content="REGRESAR" 
             HorizontalAlignment="Left" 
@@ -160,7 +160,7 @@
             ClickMode="Press" 
             Click="regresarBoton_VModificar_Click" 
             />
-    <Button 
+        <Button 
             x:Name="okBoton_VModificar"
             Content="OK" 
             HorizontalAlignment="Left" 
@@ -172,9 +172,9 @@
             Background="White"
             ClickMode="Press" 
             Height="35" 
-            Click="okBoton_VModificar_Click" 
+            Click="okBoton_VModificar_Click" TabIndex="0" 
             />
-    <Label 
+        <Label 
             x:Name="nombreLabel_VModificar" 
             Content="Nombre" 
             HorizontalContentAlignment="Right"
@@ -183,7 +183,7 @@
             Margin="159,258,0,0" 
             VerticalAlignment="Top" 
             Width="70"/>
-    <Label 
+        <Label 
             x:Name="apellidosLabel_VModificar"
             Content="Apellidos"
             HorizontalContentAlignment="Right"
@@ -192,7 +192,7 @@
             Margin="159,286,0,0" 
             VerticalAlignment="Top" 
             Width="70"/>
-    <Label 
+        <Label 
             x:Name="edadLabel_VModificar" 
             Content="Edad" 
             HorizontalContentAlignment="Right"
@@ -201,7 +201,7 @@
             Margin="159,314,0,0" 
             VerticalAlignment="Top" 
             Width="70"/>
-    <Label 
+        <Label 
             x:Name="escolaridadLabel_VModificar" 
             Content="Escolaridad" 
             HorizontalContentAlignment="Right"
@@ -210,7 +210,7 @@
             Margin="145,343,0,0" 
             VerticalAlignment="Top" 
             Width="84"/>
-    <Label 
+        <Label 
         	x:Name="sexoLabel_VModificar"
         	Content="Sexo" 
         	HorizontalContentAlignment="Right"
@@ -219,7 +219,7 @@
         	Margin="145,372,0,0" 
         	VerticalAlignment="Top" 
         	Width="84"/>
-    <Label 
+        <Label 
             x:Name="estaturaLabel_VModificar" 
             Content="Estatura" 
             HorizontalContentAlignment="Right"
@@ -228,7 +228,7 @@
             Margin="159,408,0,0" 
             VerticalAlignment="Top" 
             Width="70"/>
-    <Label 
+        <Label 
             x:Name="pesoLabel_VModificar" 
             Content="Peso" 
             HorizontalContentAlignment="Right"
@@ -237,7 +237,7 @@
             Margin="159,436,0,0" 
             VerticalAlignment="Top" 
             Width="70"/>
-    <Label 
+        <Label 
             x:Name="tutorLabel_VModificar" 
             Content="Tutor" 
             HorizontalContentAlignment="Right"
@@ -246,7 +246,7 @@
             Margin="159,474,0,0" 
             VerticalAlignment="Top" 
             Width="70"/>
-    <Label
+        <Label
             x:Name="edadTutorLabel_VModificar"
             Content="Edad"
             HorizontalContentAlignment="Right"
@@ -255,7 +255,7 @@
             Margin="159,503,0,0"
             VerticalAlignment="Top"
             Width="70"/>
-    <Label
+        <Label
         	x:Name="telefonoTutorLabel_VModificar"
         	Content="Teléfono"
         	HorizontalContentAlignment="Right"
@@ -264,5 +264,5 @@
         	Margin="159,532,0,0"
         	VerticalAlignment="Top"
         	Width="70"/>
-</Grid>
+    </Grid>
 </Window>

@@ -26,32 +26,37 @@ namespace SistemaSECI
 
         private void botonKinect_VHome_Click(object sender, RoutedEventArgs e)
         {
-
+            VentanaJuego v = new VentanaJuego();
+            v.Show();
+            this.Close();
         }
-
         private void botonSeci_VHome_Click(object sender, RoutedEventArgs e)
         {
-
+            VentanaSeci v = new VentanaSeci();
+            v.Show();
+            this.Close();
         }
-
         private void botonPlanAlimentacion_VHome_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void regresarBoton_VHome_Click(object sender, RoutedEventArgs e)
         {
             VentanaUsuarios v = new VentanaUsuarios();
             v.Show();
             this.Hide();
         }
-
         private void botonSalir_VHome_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("¿Estás seguro?");
             this.Close();
         }
 
+        private void botonActualizar_VHome_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaModificarSimple v = new VentanaModificarSimple();
+            v.Show();
+        }
         private void botonModificar_VHome_Click(object sender, RoutedEventArgs e)
         {
             VentanaModificar v = new VentanaModificar();

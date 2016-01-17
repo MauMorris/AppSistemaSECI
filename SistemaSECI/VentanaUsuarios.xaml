@@ -8,11 +8,12 @@
         Title="Usuarios" 
         Height="228" 
         Width="340"
+        Icon="logoUNAM.jpg"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" >
     <Grid>
         <Button 
-            x:Name="botonUsuarioNuevo_VUsuarios" 
+            x:Name="botonUNuevo_VUsuarios" 
             Content="Nuevo" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
@@ -20,10 +21,11 @@
             Background="White" 
             Margin="40,75,0,0" 
             Height="60" 
-            Click="botonUsuarioNuevo_VUsuarios_Click" TabIndex="0" 
+            Click="botonUNuevo_VUsuarios_Click" 
+            TabIndex="0" 
             />
         <Button 
-        	x:Name="botonUsuarioExistente_VUsuarios" 
+        	x:Name="botonUExistente_VUsuarios" 
         	Content="Reciente" 
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
@@ -31,7 +33,8 @@
         	Background="White" 
         	Margin="190,75,0,0" 
         	Height="60" 
-            Click="botonUsuarioExistente_VUsuarios_Click" TabIndex="1" 
+            Click="botonUExistente_VUsuarios_Click" 
+            TabIndex="1" 
         	/>
     </Grid>
 </Window>

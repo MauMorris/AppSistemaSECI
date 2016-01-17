@@ -13,7 +13,7 @@
         ResizeMode="CanMinimize"
         SnapsToDevicePixels="True">
     <Grid 
-        Margin="0,0,0,14">
+        Margin="0,0,0,6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="380*"/>
             <ColumnDefinition Width="255*"/>
@@ -27,8 +27,9 @@
             Background="White"
             Width="80"
             Height="45"
-            Margin="30,44,0,0" 
-            ClickMode="Press" Click="regresarBoton_VHome_Click" 
+            Margin="58,60,0,0" 
+            ClickMode="Press" 
+            Click="regresarBoton_VHome_Click" 
             />
         <Button 
             x:Name="botonKinect_VHome" 
@@ -78,17 +79,17 @@
         	Height="58" 
         	Grid.Column="2" 
             Click="botonSalir_VHome_Click" />
-        <Label 
-        	x:Name="nombreTextLabel_VUsuarioReciente" 
-        	Content="Nombre" 
-        	HorizontalContentAlignment="Center"
-        	TextElement.FontSize="14"
+        <Button 
+        	x:Name="botonActualizar_VHome" 
+        	Content="ACTUALIZAR"
+        	TextBlock.FontSize="16"
         	HorizontalAlignment="Left" 
-        	Margin="50,87,0,0" 
         	VerticalAlignment="Top" 
-        	Width="175" 
-        	Height="29" 
-            Grid.Column="1"/>
+        	Width="162" 
+        	Background="White" 
+        	Margin="108,393,0,0" 
+        	Height="81" 
+            Click="botonActualizar_VHome_Click"/>
         <Button 
         	x:Name="botonModificar_VHome" 
         	Content="MODIFICAR"
@@ -97,7 +98,54 @@
         	VerticalAlignment="Top" 
         	Width="106" 
         	Background="White" 
-        	Margin="206,510,0,0" 
-        	Height="58" Grid.Column="2" Click="botonModificar_VHome_Click"/>
+        	Margin="58,621,0,0" 
+        	Height="58" 
+        	Click="botonModificar_VHome_Click"/>
+        <Label 
+        	x:Name="nombreTextLabel_VHome" 
+        	Content="Nombre" 
+        	HorizontalContentAlignment="Left"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="108,171,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="175" 
+        	Height="29"/>
+        <Label 
+        	x:Name="edadTextLabel_VHome"
+        	Content="Edad" 
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="108,205,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="175" 
+        	Height="29"/>
+        <Label 
+        	x:Name="estaturaTextLabel_VHome"
+        	Content="Estatura" 
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="108,268,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="175" 
+        	Height="29"/>
+        <Label 
+        	x:Name="pesoTextLabel_VHome"
+        	Content="Peso" 
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="108,292,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="175" 
+        	Height="29"/>
+        <Label 
+        	x:Name="imcTextLabel_VHome"
+        	Content="IMC" 
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="108,320,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="175" 
+        	Height="29"/>
     </Grid>
 </Window>

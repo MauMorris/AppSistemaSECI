@@ -8,12 +8,13 @@
         Title="Usuarios Reciententes" 
         Height="700" 
         Width="600"
+        Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid
         RenderTransformOrigin="0.504,0.486" 
         IsHitTestVisible="True" 
-        Margin="0,0,2,7">
+        Margin="0,0,2,-1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="229*"/>
             <ColumnDefinition Width="0*"/>
