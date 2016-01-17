@@ -1,0 +1,62 @@
+﻿<Window x:Class="SistemaSECI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaSECI"
+        mc:Ignorable="d"
+        Title="Sistema SECI"
+        ResizeMode="NoResize"
+        Height="400" 
+        Width="400" 
+        WindowStartupLocation="CenterScreen" 
+        Icon="logoUNAM.jpg">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="101*"/>
+            <ColumnDefinition Width="92*"/>
+            <ColumnDefinition Width="99*"/>
+        </Grid.ColumnDefinitions>
+        <Image 
+            x:Name="logoPrograma_VInicio" 
+            HorizontalAlignment="Left" 
+            Height="99" 
+            Margin="23,47,0,0" 
+            VerticalAlignment="Top" 
+            Width="91" 
+            Grid.Column="1" 
+            Source="logoUNAM.jpg" />
+        <Label 
+            x:Name="nombreProgramaLabel_VInicio" 
+            Content="SECI" 
+            HorizontalAlignment="Left" 
+            Margin="0,165,0,0"
+            HorizontalContentAlignment="Center"
+            VerticalAlignment="Top" 
+            Width="135" 
+            Grid.ColumnSpan="2"
+            Height="26" 
+            Grid.Column="1"/>
+        <ProgressBar 
+            Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Height="10" 
+            Margin="23,207,0,0" 
+            VerticalAlignment="Top" 
+            Width="91" 
+            TabIndex="1"
+            Minimum="1"
+            Maximum="100"/>
+        <Button 
+            x:Name="botonHome_VInicio" 
+            Content="Inicio" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Width="91" 
+            Background="White"
+            Grid.Column="1" 
+            Margin="23,251,0,0" 
+            Height="30" 
+            Click="botonHome_VInicio_Click" TabIndex="0"/>
+    </Grid>
+</Window>
