@@ -8,6 +8,7 @@
         Title="Modificar Datos" 
         Height="274.046" 
         Width="285.496"
+        Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid>

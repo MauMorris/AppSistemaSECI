@@ -23,5 +23,17 @@ namespace SistemaSECI
         {
             InitializeComponent();
         }
+
+        private void regresarBoton_VLogros_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaHome v = new VentanaHome();
+            v.Show();
+            this.Close();
+        }
+
+        private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

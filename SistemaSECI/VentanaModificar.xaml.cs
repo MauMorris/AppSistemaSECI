@@ -43,23 +43,19 @@ namespace SistemaSECI
         private void okBoton_VModificar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
 
         private void regresarBoton_VModificar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
 
         private void nombreTextBox_VModificar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            nombreTextBox_VModificar.Text = "";
         }
 
         private void edadTextBox_VModificar_TextChanged(object sender, TextChangedEventArgs e)
         {
-
         }
     }
 }

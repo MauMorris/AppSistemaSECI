@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
-        Title="Inicio Juego" 
+        Title="Juego" 
         Height="768" 
         Width="1024"
         ResizeMode="CanMinimize"

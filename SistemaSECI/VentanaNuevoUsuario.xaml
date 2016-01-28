@@ -14,7 +14,7 @@
     <Grid
         RenderTransformOrigin="0.504,0.486" 
         IsHitTestVisible="True" 
-        Margin="0,0,2,22">
+        Margin="0,0,2,1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="231*"/>
             <ColumnDefinition Width="0*"/>
@@ -45,8 +45,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            TabIndex="1" 
-            GotFocus="OcultarTexto"/>
+            TabIndex="1" />
         <TextBox 
             x:Name="apellidosTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -59,12 +58,12 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            TabIndex="1" 
-            GotFocus="OcultarTexto"
+            TabIndex="1"
             TextChanged="apellidosTextBox_VNuevoUsuario_TextChanged"/>
         <TextBox 
             x:Name="edadTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
+            DataObject.Pasting="PegarTexto"
             Height="23" 
             Margin="12,318,0,0" 
             TextWrapping="Wrap" 
@@ -85,7 +84,9 @@
             Height="23"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            Margin="12,346,0,0" TabIndex="3" SelectionChanged="escolaridadComboBox_VNuevoUsuario_SelectionChanged"/>
+            Margin="12,346,0,0" 
+            TabIndex="3" 
+            SelectionChanged="escolaridadComboBox_VNuevoUsuario_SelectionChanged"/>
         <ComboBox 
         	x:Name="sexoComboBox_VNuevoUsuario" 
         	Background="White"
@@ -95,7 +96,8 @@
         	Height="23"
         	Grid.ColumnSpan="2" 
         	Grid.Column="2" 
-        	Margin="12,377,0,0" TabIndex="4"/>
+        	Margin="12,377,0,0" 
+            TabIndex="4" SelectionChanged="sexoComboBox_VNuevoUsuario_SelectionChanged"/>
         <TextBox 
             x:Name="estaturaTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -109,7 +111,7 @@
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="5" 
-            PreviewTextInput="ValidacionNumerosTextBox"/>
+            PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
         <TextBox 
             x:Name="pesoTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -123,7 +125,7 @@
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="6" 
-            PreviewTextInput="ValidacionNumerosTextBox"/>
+            PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
         <TextBox 
             x:Name="tutorTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 

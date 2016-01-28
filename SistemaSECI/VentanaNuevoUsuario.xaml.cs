@@ -19,7 +19,7 @@ namespace SistemaSECI
     /// Lógica de interacción para VentanaNuevoUsuario.xaml
     /// </summary>
     public partial class VentanaNuevoUsuario : Window
-    {     
+    {
         String sexoM = "Masculino";
         String sexoF = "Femenino";
 
@@ -27,13 +27,12 @@ namespace SistemaSECI
         String escS = "Secundaria";
         String escPr = "Preparatoria";
         String escL = "Licenciatura";
-        int i=0;
         public VentanaNuevoUsuario()
         {
             InitializeComponent();
-
-            nombreTextBox_VNuevoUsuario.Focus();
+            InicializaTextBoxes();
             InicializaComboBox();
+            nombreTextBox_VNuevoUsuario.Focus();
         }
         private void regresarBoton_VNuevoUsuario_Click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +49,6 @@ namespace SistemaSECI
         }
         private void nombreTextBox_VNuevoUsuario_TextChanged(object sender, TextChangedEventArgs e)
         {
-                
         }
         private void apellidosTextBox_VNuevoUsuario_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -73,29 +71,79 @@ namespace SistemaSECI
         private void telefonoTutorTextBox_VNuevoUsuario_TextChanged(object sender, TextChangedEventArgs e)
         {
         }
+        private void escolaridadComboBox_VNuevoUsuario_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+        private void sexoComboBox_VNuevoUsuario_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
         private Double Imc_Calculo(double estatura, double peso)
         {
-            return peso/(Math.Pow(estatura, 2.0D));
+            return peso / (Math.Pow(estatura, 2.0D));
+        }
+        private static bool TextoPermitido(string text)
+        {
+            Regex r = new Regex("[^0-9]+");
+            return !r.IsMatch(text);
         }
         private void ValidacionNumerosTextBox(object sender, TextCompositionEventArgs e)
         {
-            Regex r = new Regex("[^0-9]+-");
-            e.Handled = r.IsMatch(e.Text);
+            e.Handled = !TextoPermitido(e.Text);
         }
+        private static bool TextoPermitidoConPunto(string text)
+        {
+            Regex r = new Regex("[^0-9.]+");
+            return !r.IsMatch(text);
+        }
+        private void ValidacionNumerosPuntoTextBox(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextoPermitidoConPunto(e.Text);
+        }
+        private void PegarTexto(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!TextoPermitido(text))
+                    e.CancelCommand();
+            }
+            else
+                e.CancelCommand();
+        }
+
         private void PasoParametros()
         {
             DatosUsuario d = new DatosUsuario();
-
+            int apoyo=0;
+            Decimal apoyo2 = 0;
             d.Nombre = nombreTextBox_VNuevoUsuario.Text;
             d.Apellido = apellidosTextBox_VNuevoUsuario.Text;
-            d.Edad = Int32.Parse(edadTextBox_VNuevoUsuario.Text);
+
+            if (!Int32.TryParse(edadTextBox_VNuevoUsuario.Text, out apoyo))
+            {
+                String x = "no se puede";
+                // Whatever
+            }
+            else
+                d.Edad = apoyo;
+
+            //            d.Edad = Int32.Parse(edadTextBox_VNuevoUsuario.Text);
             d.Escolaridad = escolaridadComboBox_VNuevoUsuario.Text;
             d.Sexo = sexoComboBox_VNuevoUsuario.Text;
-            d.Estatura = Decimal.Parse(estaturaTextBox_VNuevoUsuario.Text);
-            d.Peso = Decimal.Parse(pesoTextBox_VNuevoUsuario.Text);
+
+            if(!Decimal.TryParse(estaturaTextBox_VNuevoUsuario.Text, out apoyo2))
+            {
+                String x = "no se puede";
+                // Whatever
+            }
+            else
+                d.Estatura = apoyo2;
+            //            d.Estatura = Decimal.Parse(estaturaTextBox_VNuevoUsuario.Text);
+//            d.Peso = Decimal.Parse(pesoTextBox_VNuevoUsuario.Text);
             d.NombreTutor = tutorTextBox_VNuevoUsuario.Text;
-            d.EdadTutor = Int32.Parse(edadTutorTextBox_VNuevoUsuario.Text);
-            d.TelefonoTutor = Int64.Parse(telefonoTutorTextBox_VNuevoUsuario.Text);
+
+//            d.EdadTutor = Int32.Parse(edadTutorTextBox_VNuevoUsuario.Text);
+//            d.TelefonoTutor = Int64.Parse(telefonoTutorTextBox_VNuevoUsuario.Text);
         }
         private void InicializaComboBox()
         {
@@ -107,17 +155,22 @@ namespace SistemaSECI
             sexoComboBox_VNuevoUsuario.Items.Add(sexoM);
             sexoComboBox_VNuevoUsuario.Items.Add(sexoF);
         }
-
-        private void OcultarTexto(object sender, RoutedEventArgs e)
+        private void InicializaTextBoxes()
         {
-           if( e.Equals(nombreTextBox_VNuevoUsuario))
+            nombreTextBox_VNuevoUsuario.Text = string.Empty;
+            apellidosTextBox_VNuevoUsuario.Text = string.Empty;
+            edadTextBox_VNuevoUsuario.Text = string.Empty;
+            estaturaTextBox_VNuevoUsuario.Text = string.Empty;
+            pesoTextBox_VNuevoUsuario.Text = string.Empty;
+            tutorTextBox_VNuevoUsuario.Text = string.Empty;
+            edadTutorTextBox_VNuevoUsuario.Text = string.Empty;
+            telefonoTutorTextBox_VNuevoUsuario.Text = string.Empty;
+/*            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
             {
-                nombreTextBox_VNuevoUsuario.Clear();
-            }
-        }
-
-        private void escolaridadComboBox_VNuevoUsuario_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+                if (obj is TextBox)
+                    ((TextBox)obj).Text = null;
+                InicializaTextBoxes(VisualTreeHelper.GetChild(obj, i));
+            }*/
         }
     }
 }

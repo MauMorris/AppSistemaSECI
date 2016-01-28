@@ -8,6 +8,7 @@
         Title="Logros" 
         Height="530" 
         Width="600"
+        Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid HorizontalAlignment="Left" Width="598">

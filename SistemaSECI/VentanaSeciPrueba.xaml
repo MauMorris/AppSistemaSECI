@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
-        Title="VentanaSeciPrueba" Height="300" Width="300">
+        Icon="logoUNAM.jpg"
+        WindowStartupLocation="CenterScreen"
+        Title="SECI" 
+        Height="300" 
+        Width="300">
     <Grid>
-        
+        <Button 
+            x:Name="regresarBoton_VLogros"
+            Content="REGRESAR"
+            Margin="40,44,0,0" 
+        	VerticalAlignment="Top" 
+            Background="White"
+        	Width="80" 
+        	Height="45"
+            HorizontalAlignment="Left" Click="regresarBoton_VLogros_Click" 
+            />
+        <Button 
+        	x:Name="okBoton_VSeci"
+        	Content="Ok"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+        	Width="186" 
+        	Margin="56,169,0,0"
+        	Background="White"
+        	ClickMode="Press" 
+        	Height="50" 
+        	TabIndex="8" 
+            Click="okBoton_VSeci_Click" 
+            />
+
     </Grid>
 </Window>

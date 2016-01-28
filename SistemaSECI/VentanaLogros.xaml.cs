@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 namespace SistemaSECI
 {
     /// <summary>
-    /// Lógica de interacción para VentanaEstadisticas.xaml
+    /// Lógica de interacción para VentanaLogros.xaml
     /// </summary>
-    public partial class VentanaEstadisticas : Window
+    public partial class VentanaLogros : Window
     {
-        public VentanaEstadisticas()
+        public VentanaLogros()
         {
             InitializeComponent();
         }
 
-        private void botonRegresar_VEstadisticasUsuario_Click(object sender, RoutedEventArgs e)
+        private void regresarBoton_VLogros_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

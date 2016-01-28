@@ -15,16 +15,24 @@ using System.Windows.Shapes;
 namespace SistemaSECI
 {
     /// <summary>
-    /// Lógica de interacción para VentanaEstadisticas.xaml
+    /// Interaction logic for AgregarImagenes.xaml
     /// </summary>
-    public partial class VentanaEstadisticas : Window
+    public partial class AgregarImagenes : Window
     {
-        public VentanaEstadisticas()
+        public AgregarImagenes()
         {
             InitializeComponent();
         }
 
-        private void botonRegresar_VEstadisticasUsuario_Click(object sender, RoutedEventArgs e)
+        private void okBoton_VAgregarImagenes_Click(object sender, RoutedEventArgs e)
+        {
+            VarGlobal.GlobalEnd = "1";
+            string nuevo = "Nuevo Reforzador";
+//            reforzadorTipoCB_VSeci.Items.Add(nuevo);
+            this.Close();
+        }
+
+        private void regresarBoton_VAgregarImagenes_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

@@ -55,7 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AgregarImagenes.xaml.cs">
+      <DependentUpon>AgregarImagenes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatosUsuario.cs" />
+    <Compile Include="VarGlobal.cs" />
     <Compile Include="VentanaEstadisticas.xaml.cs">
       <DependentUpon>VentanaEstadisticas.xaml</DependentUpon>
     </Compile>
@@ -89,6 +93,10 @@
     <Compile Include="VentanaUsuarios.xaml.cs">
       <DependentUpon>VentanaUsuarios.xaml</DependentUpon>
     </Compile>
+    <Page Include="AgregarImagenes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
