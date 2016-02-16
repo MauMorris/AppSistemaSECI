@@ -38,7 +38,9 @@ namespace SistemaSECI
         }
         private void botonPlanAlimentacion_VHome_Click(object sender, RoutedEventArgs e)
         {
-
+            VentanaDieta v = new VentanaDieta();
+            v.Show();
+            this.Close();
         }
         private void regresarBoton_VHome_Click(object sender, RoutedEventArgs e)
         {

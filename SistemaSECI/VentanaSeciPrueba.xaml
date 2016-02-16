@@ -6,34 +6,228 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Icon="logoUNAM.jpg"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Title="SECI" 
-        Height="300" 
-        Width="300">
-    <Grid>
+        Height="404" 
+        Width="540">
+    <Grid Margin="0,0,0,1">
         <Button 
-            x:Name="regresarBoton_VLogros"
-            Content="REGRESAR"
-            Margin="40,44,0,0" 
+            x:Name="okBoton_VSeciPrueba"
+            Content="OK"
+            Margin="295,305,0,0" 
         	VerticalAlignment="Top" 
             Background="White"
-        	Width="80" 
+        	Width="184" 
         	Height="45"
-            HorizontalAlignment="Left" Click="regresarBoton_VLogros_Click" 
+            HorizontalAlignment="Left" 
+        	TabIndex="0"
+            Click="okBoton_VSeci_Click" 
             />
         <Button 
-        	x:Name="okBoton_VSeci"
-        	Content="Ok"
+        	x:Name="regresarBoton_VSeci"
+        	Content="REGRESAR"
         	HorizontalAlignment="Left" 
-        	VerticalAlignment="Top" 
+        	VerticalAlignment="Top"
         	Width="186" 
-        	Margin="56,169,0,0"
+        	Margin="50,302,0,0"
         	Background="White"
         	ClickMode="Press" 
         	Height="50" 
-        	TabIndex="8" 
-            Click="okBoton_VSeci_Click" 
+        	TabIndex="1"
+            Click="regresarBoton_VLogros_Click" 
             />
-
+        <Label
+        	x:Name="reforzadorTipoLabel_VSeci"
+        	Content="Tipo"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+        	Width="120" 
+        	Height="30" 
+        	Margin="116,61,0,0" 
+            />
+        <Label
+        	x:Name="reforzadorClaseLabel_VSeci" 
+        	Content="Clase"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+        	Width="120" 
+        	Height="26" 
+        	Margin="116,102,0,0" 
+            />
+        <Label
+        	x:Name="inmediatezInmeLabel_VSeci" 
+        	Content="Inmediato"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+        	Width="120" 
+        	Height="30" 
+        	Margin="116,197,0,0"/>
+        <Label
+        	x:Name="inmediatezDemoLabel_VSeci" 
+        	Content="Demorado"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+        	Width="120" 
+        	Height="32" 
+        	Margin="116,238,0,0" />
+        <Label
+        	x:Name="esfuerzoAltoLabel_VSeci" 
+        	Content="Alto"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+        	Width="120" 
+        	Height="29" 
+        	Margin="359,61,0,0" 
+            />
+        <Label
+        	x:Name="esfuerzoBajoLabel_VSeci" 
+        	Content="Bajo"
+        	HorizontalAlignment="Left" 
+        	TextElement.FontSize="14"
+        	VerticalAlignment="Top" 
+        	Width="120" 
+        	Height="32" 
+        	Margin="359,102,0,0" 
+            />
+        <Label
+        	x:Name="reforzamientoAltoLabel_VSeciPrueba"
+        	Content="Alto"
+        	HorizontalAlignment="Left" 
+        	TextElement.FontSize="14"
+        	VerticalAlignment="Top" 
+        	Width="120" 
+        	Height="30" 
+        	Margin="359,197,0,0" />
+        <Label
+        	x:Name="reforzamientoBajoLabel_VSeciPrueba"
+        	Content="Bajo"
+        	HorizontalAlignment="Left" 
+        	TextElement.FontSize="14"
+        	VerticalAlignment="Top" 
+        	Width="120" 
+        	Height="29" 
+        	Margin="359,238,0,0"/>
+        <Label
+        	x:Name="reforzadorLabel_VSeciPrueba" 
+        	Content="Reforzador"
+        	HorizontalContentAlignment="Right"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="23,27,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="84"/>
+        <Label
+        	x:Name="reforzadorTipoLabel_VSeciPrueba" 
+        	Content="Tipo"
+        	HorizontalContentAlignment="Right"
+        	TextElement.FontSize="14"
+            TextElement.FontWeight="Bold"
+        	HorizontalAlignment="Left" 
+        	Margin="23,61,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="84"/>
+        <Label
+        	x:Name="reforzadorClaseLabel_VSeciPrueba"
+        	Content="Clase"
+        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="Bold"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="23,102,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="84"/>
+        <Label 
+        	x:Name="inmediatezLabel_VSeciPrueba"
+        	Content="Inmediatez" 
+        	HorizontalContentAlignment="Right"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="23,163,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="84"/>
+        <Label 
+        	x:Name="inmediatezInmediatoLabel_VSeciPrueba"
+        	Content="Inmediato" 
+        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="Bold"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="23,197,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="84"/>
+        <Label 
+        	x:Name="inmediatezDemoradoLabel_VSeciPrueba"
+        	Content="Demorado" 
+        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="Bold"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="23,238,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="84"/>
+        <Label 
+        	x:Name="esfuerzoLabel_VSeciPrueba"
+        	Content="Esfuerzo" 
+        	HorizontalContentAlignment="Right"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="283,27,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="62"/>
+        <Label 
+        	x:Name="esfuerzoAltoLabel_VSeciPrueba"
+        	Content="Alto" 
+        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="Bold"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="283,61,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="62"/>
+        <Label 
+        	x:Name="esfuerzoBajoLabel_VSeciPrueba"
+        	Content="Bajo"
+        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="Bold"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="283,102,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="62"/>
+        <Label 
+        	x:Name="programaReforzamientoLabel_VSeciPrueba"
+        	Content="Programa de reforzamiento" 
+        	HorizontalContentAlignment="Right"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="283,163,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="187"/>
+        <Label 
+        	x:Name="programaReforzamientoAltoLabel_VSeciPrueba"
+        	Content="Alto"
+        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="Bold"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="283,197,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="62"/>
+        <Label 
+        	x:Name="programaReforzamientoBajoLabel_VSeciPrueba"
+        	Content="Bajo"
+        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="Bold"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="283,238,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="62"/>
     </Grid>
 </Window>

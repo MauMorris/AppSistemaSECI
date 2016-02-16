@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -122,14 +123,38 @@ namespace SistemaSECI
         private void reforzadorTipoCB_VSeci_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (reforzadorTipoCB_VSeci.SelectedItem.ToString() == tipoReforzadorAdd)
+            {
                 agregarNuevoReforzador();
+            }
         }
         private void agregarNuevoReforzador()
         {
             MessageBox.Show("Seleccione las imagenes desde un folder especifico");
-            AgregarImagenes v = new AgregarImagenes();
-            v.Show();
-            
+            OpenFileDialog v = new OpenFileDialog();
+            v.Multiselect = true;
+            v.Filter = "JPG files (*.jpg)|*.jpg| TIFF files (*.tiff)|*.tiff| PNG files(*.png)|*.png";
+            v.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            if (v.ShowDialog() == true)
+                reforzadorTipoCB_VSeci.Items.Add("NuevoComidas");
+                           
         }
+        private void agregarSeci()
+        {
+            String A = reforzadorTipoCB_VSeci.SelectedItem.ToString();
+            String B = reforzadorClaseCB_VSeci.SelectedItem.ToString();
+
+            String C = inmediatezInmeCB_VSeci.SelectedItem.ToString();
+            String D = inmediatezDemoCB_VSeci.SelectedItem.ToString();
+
+            String E = esfuerzoAltoCB_VSeci.SelectedItem.ToString();
+            String F = esfuerzoBajoCB_VSeci.SelectedItem.ToString();
+
+            String G = reforzamientoAltoCB_VSeci.SelectedItem.ToString();
+            String H = reforzamientoBajoCB_VSeci.SelectedItem.ToString();
+
+//            Seci nuevo = Instance.GetInstance(A, B, C, D, E, F, G, H);
+
+        }        
     }
 }
+

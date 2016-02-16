@@ -212,5 +212,6 @@
         	TabIndex="8" 
             Click="okBoton_VSeci_Click" 
             />
+        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="283,-200,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

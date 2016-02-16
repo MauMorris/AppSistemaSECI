@@ -55,16 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AgregarImagenes.xaml.cs">
-      <DependentUpon>AgregarImagenes.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DatosUsuario.cs" />
+    <Compile Include="Seci.cs" />
     <Compile Include="VarGlobal.cs" />
+    <Compile Include="VentanaDieta.xaml.cs">
+      <DependentUpon>VentanaDieta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaDocumentos.xaml.cs">
+      <DependentUpon>VentanaDocumentos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaEstadisticas.xaml.cs">
       <DependentUpon>VentanaEstadisticas.xaml</DependentUpon>
     </Compile>
     <Compile Include="VentanaHome.xaml.cs">
       <DependentUpon>VentanaHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaImagenes.xaml.cs">
+      <DependentUpon>VentanaImagenes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaImagenesSaludables.xaml.cs">
+      <DependentUpon>VentanaImagenesSaludables.xaml</DependentUpon>
     </Compile>
     <Compile Include="VentanaJuego.xaml.cs">
       <DependentUpon>VentanaJuego.xaml</DependentUpon>
@@ -93,10 +103,6 @@
     <Compile Include="VentanaUsuarios.xaml.cs">
       <DependentUpon>VentanaUsuarios.xaml</DependentUpon>
     </Compile>
-    <Page Include="AgregarImagenes.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,11 +115,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VentanaDieta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaDocumentos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VentanaEstadisticas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VentanaHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaImagenes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaImagenesSaludables.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +205,78 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logoUNAM.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagen11.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="s_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="s_10.jpg" />
+    <Resource Include="s_11.jpg" />
+    <Resource Include="s_12.jpg" />
+    <Resource Include="s_13.jpg" />
+    <Resource Include="s_14.jpg" />
+    <Resource Include="s_15.jpg" />
+    <Resource Include="s_16.jpg" />
+    <Resource Include="s_17.jpg" />
+    <Resource Include="s_18.jpg" />
+    <Resource Include="s_19.jpg" />
+    <Resource Include="s_2.jpg" />
+    <Resource Include="s_20.jpg" />
+    <Resource Include="s_21.jpg" />
+    <Resource Include="s_22.jpg" />
+    <Resource Include="s_23.jpg" />
+    <Resource Include="s_24.jpg" />
+    <Resource Include="s_25.jpg" />
+    <Resource Include="s_26.jpg" />
+    <Resource Include="s_27.jpg" />
+    <Resource Include="s_28.jpg" />
+    <Resource Include="s_29.jpg" />
+    <Resource Include="s_3.jpg" />
+    <Resource Include="s_30.jpg" />
+    <Resource Include="s_31.jpg" />
+    <Resource Include="s_4.jpg" />
+    <Resource Include="s_5.jpg" />
+    <Resource Include="s_6.jpg" />
+    <Resource Include="s_7.jpg" />
+    <Resource Include="s_8.jpg" />
+    <Resource Include="s_9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="c_1.jpg" />
+    <Resource Include="c_10.jpg" />
+    <Resource Include="c_11.jpg" />
+    <Resource Include="c_12.jpg" />
+    <Resource Include="c_13.jpg" />
+    <Resource Include="c_14.jpg" />
+    <Resource Include="c_15.jpg" />
+    <Resource Include="c_16.jpg" />
+    <Resource Include="c_17.jpg" />
+    <Resource Include="c_18.jpg" />
+    <Resource Include="c_19.jpg" />
+    <Resource Include="c_2.jpg" />
+    <Resource Include="c_20.jpg" />
+    <Resource Include="c_21.jpg" />
+    <Resource Include="c_22.jpg" />
+    <Resource Include="c_23.jpg" />
+    <Resource Include="c_24.jpg" />
+    <Resource Include="c_25.jpg" />
+    <Resource Include="c_26.jpg" />
+    <Resource Include="c_27.jpg" />
+    <Resource Include="c_28.jpg" />
+    <Resource Include="c_29.jpg" />
+    <Resource Include="c_3.jpg" />
+    <Resource Include="c_30.jpg" />
+    <Resource Include="c_31.jpg" />
+    <Resource Include="c_32.jpg" />
+    <Resource Include="c_4.jpg" />
+    <Resource Include="c_5.jpg" />
+    <Resource Include="c_6.jpg" />
+    <Resource Include="c_7.jpg" />
+    <Resource Include="c_8.jpg" />
+    <Resource Include="c_9.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace SistemaSECI
 {
@@ -33,7 +36,13 @@ namespace SistemaSECI
 
         private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
+            VentanaImagenes v = new VentanaImagenes();
+            v.Show();
             this.Close();
+        }
+        private void muestraDatosSeci()
+        {
+//            reforzadorTipoLabel_VSeci.SetValue 
         }
     }
 }
