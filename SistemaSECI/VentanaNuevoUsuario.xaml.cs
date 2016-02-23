@@ -77,6 +77,7 @@ namespace SistemaSECI
         private void sexoComboBox_VNuevoUsuario_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
+
         private Double Imc_Calculo(double estatura, double peso)
         {
             return peso / (Math.Pow(estatura, 2.0D));
@@ -86,19 +87,23 @@ namespace SistemaSECI
             Regex r = new Regex("[^0-9]+");
             return !r.IsMatch(text);
         }
+
         private void ValidacionNumerosTextBox(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !TextoPermitido(e.Text);
         }
+
         private static bool TextoPermitidoConPunto(string text)
         {
             Regex r = new Regex("[^0-9.]+");
             return !r.IsMatch(text);
         }
+
         private void ValidacionNumerosPuntoTextBox(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !TextoPermitidoConPunto(e.Text);
         }
+
         private void PegarTexto(object sender, DataObjectPastingEventArgs e)
         {
             if (e.DataObject.GetDataPresent(typeof(String)))
@@ -114,14 +119,13 @@ namespace SistemaSECI
         private void PasoParametros()
         {
             DatosUsuario d = new DatosUsuario();
-            int apoyo=0;
+            int apoyo = 0;
             Decimal apoyo2 = 0;
             d.Nombre = nombreTextBox_VNuevoUsuario.Text;
             d.Apellido = apellidosTextBox_VNuevoUsuario.Text;
 
             if (!Int32.TryParse(edadTextBox_VNuevoUsuario.Text, out apoyo))
             {
-                String x = "no se puede";
                 // Whatever
             }
             else
@@ -133,7 +137,6 @@ namespace SistemaSECI
 
             if(!Decimal.TryParse(estaturaTextBox_VNuevoUsuario.Text, out apoyo2))
             {
-                String x = "no se puede";
                 // Whatever
             }
             else
@@ -145,6 +148,7 @@ namespace SistemaSECI
 //            d.EdadTutor = Int32.Parse(edadTutorTextBox_VNuevoUsuario.Text);
 //            d.TelefonoTutor = Int64.Parse(telefonoTutorTextBox_VNuevoUsuario.Text);
         }
+
         private void InicializaComboBox()
         {
             escolaridadComboBox_VNuevoUsuario.Items.Add(escP);
@@ -155,6 +159,7 @@ namespace SistemaSECI
             sexoComboBox_VNuevoUsuario.Items.Add(sexoM);
             sexoComboBox_VNuevoUsuario.Items.Add(sexoF);
         }
+
         private void InicializaTextBoxes()
         {
             nombreTextBox_VNuevoUsuario.Text = string.Empty;
