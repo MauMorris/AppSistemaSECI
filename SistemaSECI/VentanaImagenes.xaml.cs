@@ -23,5 +23,12 @@ namespace SistemaSECI
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaHome v = new VentanaHome();
+            v.Show();
+            this.Close();
+        }
     }
 }

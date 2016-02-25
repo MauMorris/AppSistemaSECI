@@ -36,7 +36,7 @@ namespace SistemaSECI
 
         private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
-            VentanaImagenes v = new VentanaImagenes();
+            VentanaImagenesSaludables v = new VentanaImagenesSaludables();
             v.Show();
             this.Close();
         }

@@ -14,7 +14,7 @@
     <Grid>
         <Button 
             x:Name="botonUNuevo_VUsuarios" 
-            Content="Nuevo" 
+            Content="NUEVO" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
             Width="110" 
@@ -26,7 +26,7 @@
             />
         <Button 
         	x:Name="botonUExistente_VUsuarios" 
-        	Content="Reciente" 
+        	Content="RECIENTE" 
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
         	Width="110" 

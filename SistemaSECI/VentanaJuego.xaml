@@ -62,7 +62,8 @@
             Background="White"
             Width="178" 
             Margin="226,314,0,0" 
-            Height="68" Click="botonEstadisticasUsuario_VInicioJuego_Click" />
+            Height="68" 
+            Click="botonEstadisticasUsuario_VInicioJuego_Click" />
         <Button 
         	x:Name="botonLogros_VInicioJuego"
         	Content="LOGROS" 
