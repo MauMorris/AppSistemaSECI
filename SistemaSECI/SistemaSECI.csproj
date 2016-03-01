@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Kinect, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,11 +60,20 @@
     <Compile Include="ManejadorTablas.cs" />
     <Compile Include="Seci.cs" />
     <Compile Include="VarGlobal.cs" />
+    <Compile Include="VentanaAudioBasics.xaml.cs">
+      <DependentUpon>VentanaAudioBasics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaBodyBasics.xaml.cs">
+      <DependentUpon>VentanaBodyBasics.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaDieta.xaml.cs">
       <DependentUpon>VentanaDieta.xaml</DependentUpon>
     </Compile>
     <Compile Include="VentanaDocumentos.xaml.cs">
       <DependentUpon>VentanaDocumentos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaEjemplosKinect.xaml.cs">
+      <DependentUpon>VentanaEjemplosKinect.xaml</DependentUpon>
     </Compile>
     <Compile Include="VentanaEstadisticas.xaml.cs">
       <DependentUpon>VentanaEstadisticas.xaml</DependentUpon>
@@ -116,11 +126,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VentanaAudioBasics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaBodyBasics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VentanaDieta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VentanaDocumentos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaEjemplosKinect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +300,13 @@
     <Resource Include="c_7.jpg" />
     <Resource Include="c_8.jpg" />
     <Resource Include="c_9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="kinect.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.png" />
+    <Resource Include="status.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
