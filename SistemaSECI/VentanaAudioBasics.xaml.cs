@@ -9,13 +9,11 @@ namespace SistemaSECI
     using System.ComponentModel;
     using System.Globalization;
     using Microsoft.Kinect;
-
     /// <summary>
     /// Interaction logic for VentanaAudioBasics.xaml
     /// </summary>
     public partial class VentanaAudioBasics : Window
     {
-
         /// Number of samples captured from Kinect audio stream each millisecond.
         private const int SamplesPerMillisecond = 16;
         /// Number of bytes in each Kinect audio stream sample (32-bit IEEE float).
@@ -117,7 +115,6 @@ namespace SistemaSECI
                                                         96, 96, PixelFormats.Indexed1,
                                                             new BitmapPalette(new List<Color> { Colors.White, (Color)this.Resources["KinectPurpleColor"] }));
         }
-
         /// Execute start up tasks
         /// <param name="sender">object sending the event</param>
         /// <param name="e">event arguments</param>
@@ -136,8 +133,7 @@ namespace SistemaSECI
                 // Subscribe to new audio frame arrived events
                 this.reader.FrameArrived += this.Reader_FrameArrived;
             }
-        }
-        
+        }      
         /// Execute shutdown tasks
         /// <param name="sender">object sending the event</param>
         /// <param name="e">event arguments</param>
@@ -159,7 +155,6 @@ namespace SistemaSECI
             }
 */
         }
-
         /// Handles the audio frame data arriving from the sensor
         /// <param name="sender">object sending the event</param>
         /// <param name="e">event arguments</param>
@@ -232,8 +227,7 @@ namespace SistemaSECI
                     }
                 }
             }
-        }
-        
+        }    
         /// Method called when audio beam angle and/or confidence have changed.
         private void AudioBeamChanged()
         {
@@ -259,7 +253,6 @@ namespace SistemaSECI
                                                     Properties.Resources.BeamAngleConfidence,
                                                         this.beamAngleConfidence.ToString("0.00", CultureInfo.CurrentCulture));
         }
-
         /// Handles rendering energy visualization into a bitmap.
         /// <param name="sender">object sending the event.</param>
         /// <param name="e">event arguments.</param>
@@ -303,8 +296,7 @@ namespace SistemaSECI
                     this.energyBitmap.WritePixels(barRect, this.foregroundPixels, 1, 0);
                 }
             }
-        }
-        
+        }      
         /// Handles the event which the sensor becomes unavailable (E.g. paused, closed, unplugged).
         /// <param name="sender">object sending the event</param>
         /// <param name="e">event arguments</param>

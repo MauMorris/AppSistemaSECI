@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Title="VentanaImagenesSaludables" 
-        Height="768" 
+        Height="743" 
         Width="1024"
         Background="Black"
         ResizeMode="CanMinimize"
@@ -14,57 +14,63 @@
         Icon="logoUNAM.jpg">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="54*"/>
-            <ColumnDefinition Width="102*"/>
-            <ColumnDefinition Width="89*"/>
-            <ColumnDefinition Width="100*"/>
-            <ColumnDefinition Width="115*"/>
-            <ColumnDefinition Width="101*"/>
-            <ColumnDefinition Width="98*"/>
-            <ColumnDefinition Width="99*"/>
-            <ColumnDefinition Width="99*"/>
-            <ColumnDefinition Width="102*"/>
-            <ColumnDefinition Width="59*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
         <Image 
             x:Name="image11_VImagenesSaludables" 
             HorizontalAlignment="Left" 
             Height="100" 
-            Width="100" 
+            Width="104"
             Margin="1,62,0,0" 
             VerticalAlignment="Top" 
             Source="s_1.jpg"
-            Stretch="Fill" Grid.Column="1"
+            Stretch="Fill" 
+            Grid.Column="1"
             />
         <Image 
         	x:Name="image12_VImagenesSaludables" 
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Width="100" 
+        	Width="104"
         	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
             Source="s_2.jpg"
-            Stretch="Fill" Grid.Column="3" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image13_VImagenesSaludables"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="0,62,0,0" 
+        	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_3.jpg"
-            Stretch="Fill" Grid.Column="5"
+            Stretch="Fill" 
+            Grid.Column="5"
             />
         <Image 
         	x:Name="image14_VImagenesSaludables"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="97,62,0,0" 
+        	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_4.jpg"
-            Stretch="Fill" Grid.Column="6" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image15_VImagenesSaludables"
@@ -72,9 +78,10 @@
         	Height="100" 
         	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="s_5.jpg"
-            Stretch="Fill" Grid.Column="9"
+            Stretch="Fill" 
+            Grid.Column="9"
             />
         <Image 
         	x:Name="image21_VImagenesSaludables"
@@ -82,9 +89,10 @@
         	Height="100" 
         	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_6.jpg"
-            Stretch="Fill" Grid.Column="1"
+            Stretch="Fill" 
+            Grid.Column="1"
             />
         <Image 
         	x:Name="image22_VImagenesSaludables"
@@ -92,29 +100,34 @@
         	Height="100" 
         	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_7.jpg"
-            Stretch="Fill" Grid.Column="3" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image23_VImagenesSaludables"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="0,194,0,0" 
+        	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="s_8.jpg"
-            Stretch="Fill" Grid.Column="5"
+            Stretch="Fill" 
+            Grid.Column="5"
             />
         <Image 
         	x:Name="image24_VImagenesSaludables"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="97,194,0,0" 
+        	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="s_9.jpg"
-            Stretch="Fill" Grid.Column="6" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image25_VImagenesSaludables"
@@ -122,9 +135,10 @@
         	Height="100" 
         	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_10.jpg"
-            Stretch="Fill" Grid.Column="9"
+            Stretch="Fill" 
+            Grid.Column="9"
             />
         <Image 
         	x:Name="image31_VImagenesSaludables"
@@ -132,9 +146,10 @@
         	Height="100" 
         	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_11.jpg"
-            Stretch="Fill" Grid.Column="1"
+            Stretch="Fill" 
+            Grid.Column="1"
             />
         <Image 
         	x:Name="image32_VImagenesSaludables"
@@ -142,29 +157,34 @@
         	Height="100" 
         	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_12.jpg"
-            Stretch="Fill" Grid.Column="3" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image33_VImagenesSaludables"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="0,330,0,0" 
+        	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_13.jpg"
-            Stretch="Fill" Grid.Column="5"
+            Stretch="Fill" 
+            Grid.Column="5"
             />
         <Image 
         	x:Name="image34_VImagenesSaludables"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="97,330,0,0" 
+        	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_14.jpg"
-            Stretch="Fill" Grid.Column="6" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image35_VImagenesSaludables"
@@ -172,69 +192,78 @@
         	Height="100" 
         	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_15.jpg"
-            Stretch="Fill" Grid.Column="9"
+            Stretch="Fill" 
+            Grid.Column="9"
             />
         <Image 
         	x:Name="image41_VImagenesSaludables"
         	HorizontalAlignment="Left" 
-        	Height="104" 
+        	Height="100" 
         	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_16.jpg"
-            Stretch="Fill" Grid.Column="1"
+            Stretch="Fill" 
+            Grid.Column="1"
             />
         <Image 
         	x:Name="image42_VImagenesSaludables"
         	HorizontalAlignment="Left" 
-        	Height="104" 
+        	Height="100" 
         	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_17.jpg"
-            Stretch="Fill" Grid.Column="3" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image43_VImagenesSaludables"
         	HorizontalAlignment="Left" 
-        	Height="104" 
-        	Margin="0,467,0,0" 
+        	Height="100" 
+        	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_18.jpg"
             Stretch="Fill" Grid.Column="5"
             />
         <Image 
         	x:Name="image44_VImagenesSaludables"
         	HorizontalAlignment="Left" 
-        	Height="104" 
-        	Margin="97,467,0,0" 
+        	Height="100" 
+        	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_19.jpg"
-            Stretch="Fill" Grid.Column="6" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image45_VImagenesSaludables"
         	HorizontalAlignment="Left" 
-        	Height="104" 
+        	Height="100" 
         	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="s_20.jpg"
-            Stretch="Fill" Grid.Column="9"
+            Stretch="Fill" 
+            Grid.Column="9"
             />
         <Button 
             x:Name="botonSiguiente"    
             Content="SIGUIENTE" 
             HorizontalAlignment="Left" 
-            Margin="50,640,0,0"
+            Margin="62,640,0,0"
             Background="White"
             VerticalAlignment="Top" 
-            Width="150" 
-            Height="42" Click="botonSiguiente_Click" Grid.Column="8" Grid.ColumnSpan="2"/>
-
+            Width="135" 
+            Height="42" 
+            Click="botonSiguiente_Click" 
+            Grid.Column="8"
+            Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -64,5 +64,15 @@ namespace SistemaSECI
             VentanaModificar v = new VentanaModificar();
             v.Show();
         }
+
+        private void botonDocumentos_VHome_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaDocumentos v = new VentanaDocumentos();
+            v.Show();
+        }
+        private void botonBorrar_VHome_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("¡Se borrará de forma permanente a este usuario!");
+        }
     }
 }

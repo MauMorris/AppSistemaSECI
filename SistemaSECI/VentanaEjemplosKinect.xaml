@@ -5,119 +5,155 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
-        Title="VentanaEjemplosKinect" 
-        Height="600" 
-        Width="800"
+        Title="NIVELES"
+        Height="600"
+        Width="900"
+        Icon="logoUNAM.jpg"
         WindowState="Maximized"
         ResizeMode="CanMinimize">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="117*"/>
+            <RowDefinition Height="151*"/>
+            <RowDefinition Height="134*"/>
+            <RowDefinition Height="169*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="65*"/>
-            <ColumnDefinition Width="166*"/>
-            <ColumnDefinition Width="58*"/>
-            <ColumnDefinition Width="167*"/>
-            <ColumnDefinition Width="68*"/>
-            <ColumnDefinition Width="165*"/>
-            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="180*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="180*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="180*"/>
+            <ColumnDefinition Width="70*"/>
         </Grid.ColumnDefinitions>
         <Button 
-            x:Name="botonAudio_VEjemplos" 
-            Content="AUDIO"
-            TextBlock.FontSize="16"
+            x:Name="botonN1_VNiveles" 
+            Content="1"
+            TextBlock.FontSize="26"
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Width="166" 
+            Width="185"
+            Margin="1,1,0,0" 
+            Height="100"
             Background="White" 
-            Margin="0,118,0,0" 
-            Height="88" Click="botonAudio_VEjemplos_Click" Grid.Column="1"/>
+            Click="botonN1_VNiveles_Click" 
+            Grid.Column="1" 
+            Grid.Row="1"/>
         <Button 
-        	x:Name="botonBody_VEjemplos_Copy" 
-        	Content="BODY"
-        	TextBlock.FontSize="16"
+        	x:Name="botonN2_VNiveles" 
+        	Content="2"
+        	TextBlock.FontSize="26"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="166" 
         	Background="White" 
-        	Margin="1,118,0,0" 
-        	Height="88" 
-            Grid.Column="3" Click="botonBody_VEjemplos_Copy_Click"/>
+            Width="185"
+            Margin="1,1,0,0" 
+            Height="100"
+            Grid.Column="3" 
+            Click="botonN2_VNiveles_Click" 
+            Grid.ColumnSpan="2" 
+            Grid.Row="1"/>
         <Button 
-        	x:Name="boton_VEjemplos_Copy1" 
-        	Content="BODY INDEX"
-        	TextBlock.FontSize="16"
+        	x:Name="botonN3_VNiveles" 
+        	Content="3"
+        	TextBlock.FontSize="26"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="166" 
         	Background="White" 
-        	Margin="67,118,0,0" 
-        	Height="88" 
-            Grid.Column="4" Grid.ColumnSpan="3"/>
+            Width="185"
+            Margin="1,1,0,0" 
+            Height="100"
+            Grid.Column="5"
+            Grid.ColumnSpan="2" 
+            Click="botonN3_VNiveles_Click" 
+            Grid.Row="1"/>
         <Button 
-        	x:Name="boton_VEjemplos_Copy2" 
-        	Content="Kinect"
-        	TextBlock.FontSize="16"
+        	x:Name="botonN4_VNiveles" 
+        	Content="4"
+        	TextBlock.FontSize="26"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="166" 
         	Background="White" 
-        	Margin="0,270,0,0" 
-        	Height="88" Grid.Column="1"/>
+            Width="185"
+            Height="100"
+        	Margin="1,2,0,0" 
+            Grid.Column="1" 
+            Click="botonN4_VNiveles_Click" 
+            Grid.ColumnSpan="2" 
+            Grid.Row="2"/>
         <Button 
-        	x:Name="boton_VEjemplos_Copy3" 
-        	Content="Kinect"
-        	TextBlock.FontSize="16"
+        	x:Name="botonN5_VNiveles" 
+        	Content="5"
+        	TextBlock.FontSize="26"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="166" 
         	Background="White" 
-        	Margin="1,270,0,0" 
-        	Height="88" 
-            Grid.Column="3"/>
-        <Button 
-        	x:Name="boton_VEjemplos_Copy4" 
-        	Content="Kinect"
-        	TextBlock.FontSize="16"
+            Width="185"
+            Height="100"
+        	Margin="1,2,0,0" 
+            Grid.Column="3" 
+            Click="botonN5_VNiveles_Click" 
+            Grid.ColumnSpan="2" 
+            Grid.Row="2"/>
+        <Button
+        	x:Name="botonN6_VNiveles" 
+        	Content="6"
+        	TextBlock.FontSize="26"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="166" 
         	Background="White" 
-        	Margin="67,270,0,0" 
-        	Height="88" 
-            Grid.Column="4" Grid.ColumnSpan="3"/>
+            Width="185"
+            Height="100"
+        	Margin="1,2,0,0" 
+            Grid.Column="5"
+            Grid.ColumnSpan="2" 
+            Click="botonN6_VNiveles_Click" 
+            Grid.Row="2"/>
         <Button 
-        	x:Name="boton_VEjemplos_Copy5" 
-        	Content="Kinect"
-        	TextBlock.FontSize="16"
+        	x:Name="botonN7_VNiveles" 
+        	Content="7"
+        	TextBlock.FontSize="26"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="166" 
         	Background="White" 
-        	Margin="0,403,0,0" 
-        	Height="88" Grid.Column="1"/>
+            Width="185"
+            Height="100"
+        	Margin="1,1,0,0" 
+            Grid.Column="1" 
+            Click="botonN7_VNiveles_Click" 
+            Grid.ColumnSpan="2" 
+            Grid.Row="3"/>
         <Button 
-        	x:Name="boton_VEjemplos_Copy6" 
-        	Content="Kinect"
-        	TextBlock.FontSize="16"
+        	x:Name="botonN8_VNiveles" 
+        	Content="8"
+        	TextBlock.FontSize="26"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="166" 
         	Background="White" 
-        	Margin="1,403,0,0" 
-        	Height="88" 
-            Grid.Column="3"/>
-        <Button 
-        	x:Name="boton_VEjemplos_Copy7" 
-        	Content="Kinect"
-        	TextBlock.FontSize="16"
+            Width="185"
+            Height="100"
+        	Margin="1,1,0,0" 
+            Grid.Column="3" 
+            Click="botonN8_VNiveles_Click" 
+            Grid.ColumnSpan="2" 
+            Grid.Row="3"/>
+        <Button
+        	x:Name="botonN9_VNiveles"
+        	Content="9"
+        	TextBlock.FontSize="26"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="166" 
-        	Background="White" 
-        	Margin="67,403,0,0" 
-        	Height="88" 
-            Grid.Column="4" Grid.ColumnSpan="3"/>
+        	Background="White"
+            Width="185"
+            Height="100"
+        	Margin="1,1,0,0" 
+            Grid.Column="5"
+            Grid.ColumnSpan="2" 
+            Click="botonN9_VNiveles_Click" 
+            Grid.Row="3"/>
         <Button 
-        	x:Name="botonAudio_VEjemplos_Copy" 
+        	x:Name="botonRegresar_VNiveles"
         	Content="Regresar"
         	TextBlock.FontSize="16"
         	HorizontalAlignment="Left" 
@@ -125,7 +161,9 @@
         	Width="106" 
         	Background="White" 
         	Margin="36,25,0,0" 
-        	Height="53" Click="botonAudio_VEjemplos_Copy_Click" Grid.ColumnSpan="2" 
+        	Height="53" 
+            Click="botonRegresar_VNiveles_Click" 
+            Grid.ColumnSpan="2" 
         	/>
     </Grid>
 </Window>

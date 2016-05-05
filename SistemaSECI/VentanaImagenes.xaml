@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Title="Sistema SECI"
-        Height="760" 
+        Height="727" 
         Width="1024"
         Background="Black"
         WindowState="Maximized"
@@ -14,226 +14,260 @@
         Icon="logoUNAM.jpg">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="53*"/>
+            <ColumnDefinition Width="60*"/>
             <ColumnDefinition Width="104*"/>
             <ColumnDefinition Width="90*"/>
-            <ColumnDefinition Width="99*"/>
-            <ColumnDefinition Width="113*"/>
-            <ColumnDefinition Width="101*"/>
-            <ColumnDefinition Width="97*"/>
-            <ColumnDefinition Width="101*"/>
-            <ColumnDefinition Width="99*"/>
-            <ColumnDefinition Width="102*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="104*"/>
             <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
         <Image 
             x:Name="image11_VImagenes" 
             HorizontalAlignment="Left" 
             Height="100"
-            Margin="2.5,62,0,0" 
+            Margin="1,62,0,0" 
             VerticalAlignment="Top" 
-            Width="100" 
+            Width="104" 
             Source="c_1.jpg"
-            Stretch="Fill" Grid.Column="1"
+            Stretch="Fill" 
+            Grid.Column="1"
             />
         <Image 
         	x:Name="image12_VImagenes" 
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="89,62,0,0" 
+        	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_2.jpg"
-            Stretch="Fill" Grid.Column="2" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image13_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100"
-        	Margin="2,62,0,0" 
+        	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="c_3.jpg"
-            Stretch="Fill" Grid.Column="5" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="5" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image14_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="2,62,0,0" 
+        	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_4.jpg"
-            Stretch="Fill" Grid.Column="7" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image15_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="2,62,0,0" 
+        	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_5.jpg"
-            Stretch="Fill" Grid.Column="9"
+            Stretch="Fill" 
+            Grid.Column="9"
             />
         <Image 
         	x:Name="image21_VImagenes" 
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="2.5,194,0,0" 
+        	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_6.jpg"
-            Stretch="Fill" Grid.Column="1"
+            Stretch="Fill" 
+            Grid.Column="1"
             />
         <Image 
         	x:Name="image22_VImagenes" 
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="89,194,0,0" 
+        	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_7.jpg"
-            Stretch="Fill" Grid.Column="2" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image23_VImagenes"
         	HorizontalAlignment="Left" 
-        	Height="100" 
-        	Margin="2,194,0,0" 
+        	Height="100"
+        	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_8.jpg"
-            Stretch="Fill" Grid.Column="5" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="5" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image24_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="2,194,0,0" 
+        	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_9.jpg"
-            Stretch="Fill" Grid.Column="7" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image25_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="2,194,0,0" 
+        	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_10.jpg"
-            Stretch="Fill" Grid.Column="9"
+            Stretch="Fill" 
+            Grid.Column="9"
             />
         <Image 
         	x:Name="image31_VImagenes" 
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="2.5,330,0,0" 
+        	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_11.jpg"
-            Stretch="Fill" Grid.Column="1"
+            Stretch="Fill" 
+            Grid.Column="1"
             />
         <Image 
         	x:Name="image32_VImagenes" 
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="89,330,0,0" 
+        	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
-            Source="c_12.jpg" Grid.Column="2" Grid.ColumnSpan="2"
+        	Width="104" 
+            Source="c_12.jpg" 
+            Stretch="Fill" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image33_VImagenes"
         	HorizontalAlignment="Left" 
-        	Height="100" 
-        	Margin="2,330,0,0" 
+        	Height="100"
+        	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104" 
             Source="c_13.jpg"
-            Stretch="Fill" Grid.Column="5" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="5" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image34_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="2,330,0,0" 
+        	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="c_14.jpg"
-            Stretch="Fill" Grid.Column="7" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2"
             />
-        <Image 
+        <Image
         	x:Name="image35_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="2,330,0,0" 
+        	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="c_15.jpg"
-            Stretch="Fill" Grid.Column="9"
+            Stretch="Fill" 
+            Grid.Column="9"
             />
         <Image 
         	x:Name="image41_VImagenes" 
         	HorizontalAlignment="Left" 
-        	Height="104" 
-        	Margin="2.5,467,0,0" 
+        	Height="100"
+        	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="c_16.jpg"
-            Stretch="Fill" Grid.Column="1"
+            Stretch="Fill" 
+            Grid.Column="1"
             />
         <Image 
         	x:Name="image42_VImagenes" 
         	HorizontalAlignment="Left" 
-        	Height="104" 
-        	Margin="89,467,0,0" 
+        	Height="100"
+        	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="c_17.jpg"
-            Stretch="Fill" Grid.Column="2" Grid.ColumnSpan="2"
+            Stretch="Fill"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image43_VImagenes"
         	HorizontalAlignment="Left" 
-        	Height="104" 
-        	Margin="2,467,0,0" 
+        	Height="100" 
+        	Margin="1,467,0,0"
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="c_18.jpg"
-            Stretch="Fill" Grid.Column="5" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="5" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image44_VImagenes"
         	HorizontalAlignment="Left" 
-        	Height="104" 
-        	Margin="2,467,0,0" 
+        	Height="100"
+        	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
+        	Width="104"
             Source="c_19.jpg"
-            Stretch="Fill" Grid.Column="7" Grid.ColumnSpan="2"
+            Stretch="Fill" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2"
             />
         <Image 
         	x:Name="image45_VImagenes"
         	HorizontalAlignment="Left" 
-        	Height="104" 
-        	Margin="2,467,0,0" 
+        	Height="100"
+        	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
-        	Width="100" 
             Source="c_20.jpg"
-            Stretch="Fill" Grid.Column="9"
+            Stretch="Fill" 
+            Grid.Column="9"
             />
         <Button 
             x:Name="button" 
             Content="SIGUIENTE"
             Background="White"
             HorizontalAlignment="Left"
-            Margin="9,671,0,0"
+            Margin="61,620,0,0"
             VerticalAlignment="Top"
-            Width="192"
+            Width="135"
             Height="50" 
-            Click="button_Click" Grid.Column="8" Grid.ColumnSpan="2"/>
+            Click="button_Click" 
+            Grid.Column="8" 
+            Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

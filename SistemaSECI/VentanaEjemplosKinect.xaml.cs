@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace SistemaSECI
 {
-    /// <summary>
     /// Interaction logic for VentanaEjemplosKinect.xaml
-    /// </summary>
     public partial class VentanaEjemplosKinect : Window
     {
         public VentanaEjemplosKinect()
@@ -24,25 +22,75 @@ namespace SistemaSECI
             InitializeComponent();
         }
 
-        private void botonAudio_VEjemplos_Click(object sender, RoutedEventArgs e)
+        private void botonN1_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaAudioBasics v = new VentanaAudioBasics();
+            VentanaBodyBasics v = new VentanaBodyBasics(1);
             v.Show();
             this.Close();
         }
 
-        private void botonBody_VEjemplos_Copy_Click(object sender, RoutedEventArgs e)
+        private void botonN2_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics();
+            VentanaBodyBasics v = new VentanaBodyBasics(2);
             v.Show();
             this.Close();
         }
 
-        private void botonAudio_VEjemplos_Copy_Click(object sender, RoutedEventArgs e)
+        private void botonN3_VNiveles_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaBodyBasics v = new VentanaBodyBasics(3);
+            v.Show();
+            this.Close();
+        }
+
+        private void botonN4_VNiveles_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaBodyBasics v = new VentanaBodyBasics(4);
+            v.Show();
+            this.Close();
+        }
+
+        private void botonN5_VNiveles_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaBodyBasics v = new VentanaBodyBasics(5);
+            v.Show();
+            this.Close();
+        }
+
+        private void botonN6_VNiveles_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaBodyBasics v = new VentanaBodyBasics(6);
+            v.Show();
+            this.Close();
+        }
+
+        private void botonN7_VNiveles_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaBodyBasics v = new VentanaBodyBasics(7);
+            v.Show();
+            this.Close();
+        }
+
+        private void botonN8_VNiveles_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaBodyBasics v = new VentanaBodyBasics(8);
+            v.Show();
+            this.Close();
+        }
+
+        private void botonN9_VNiveles_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaBodyBasics v = new VentanaBodyBasics(9);
+            v.Show();
+            this.Close();
+        }
+
+        private void botonRegresar_VNiveles_Click(object sender, RoutedEventArgs e)
         {
             VentanaJuego v = new VentanaJuego();
             v.Show();
             this.Close();
         }
+
     }
 }

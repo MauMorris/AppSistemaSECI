@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
-        Title="DIETA Sistema SECI"
+        Title="DIETA"
         WindowState="Maximized"
         Icon="logoUNAM.jpg"
         ResizeMode="CanMinimize"

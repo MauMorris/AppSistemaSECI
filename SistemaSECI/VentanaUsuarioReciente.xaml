@@ -76,9 +76,9 @@
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,310,0,0" 
+            Margin="134,310,0,0" 
             VerticalAlignment="Top" 
-            Width="70" 
+            Width="95" 
             Height="29"/>
         <Label 
             x:Name="edadLabel_VUsuarioReciente"

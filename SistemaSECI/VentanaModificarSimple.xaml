@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
-        Title="Modificar Datos" 
+        Title="Modificar IMC"
         Height="274.046" 
         Width="285.496"
         Icon="logoUNAM.jpg"

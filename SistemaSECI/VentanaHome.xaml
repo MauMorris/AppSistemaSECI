@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
-        Title="Sistema SECI" 
+        Title="SECI" 
         Height="768"
         Width="1024"
         WindowState="Maximized"
@@ -15,9 +15,10 @@
     <Grid 
         Margin="0,0,0,6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="380*"/>
-            <ColumnDefinition Width="255*"/>
             <ColumnDefinition Width="381*"/>
+            <ColumnDefinition Width="255*"/>
+            <ColumnDefinition Width="162*"/>
+            <ColumnDefinition Width="220*"/>
         </Grid.ColumnDefinitions>
         <Button 
             x:Name="regresarBoton_VHome"
@@ -68,6 +69,18 @@
             Grid.Column="1" 
             Click="botonPlanAlimentacion_VHome_Click" />
         <Button 
+        	x:Name="botonDocumentos_VHome" 
+        	Content="DOCUMENTOS"
+        	TextBlock.FontSize="16"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+        	Width="162" 
+        	Background="White" 
+        	Margin="0,393,0,0" 
+        	Height="81" 
+        	Click="botonDocumentos_VHome_Click" 
+            Grid.Column="3"/>
+        <Button 
         	x:Name="botonSalir_VHome" 
         	Content="SALIR"
         	TextBlock.FontSize="16"
@@ -75,13 +88,13 @@
         	VerticalAlignment="Top" 
         	Width="150" 
         	Background="White" 
-        	Margin="182,621,0,0" 
+        	Margin="19.527,621,0,0" 
         	Height="58" 
-        	Grid.Column="2" 
+        	Grid.Column="3" 
             Click="botonSalir_VHome_Click" />
         <Button 
         	x:Name="botonActualizar_VHome" 
-        	Content="ACTUALIZAR"
+        	Content="IMC"
         	TextBlock.FontSize="16"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
@@ -90,17 +103,28 @@
         	Margin="108,393,0,0" 
         	Height="81" 
             Click="botonActualizar_VHome_Click"/>
-        <Button 
+        <Button
         	x:Name="botonModificar_VHome" 
         	Content="MODIFICAR"
         	TextBlock.FontSize="16"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="106" 
+        	Width="162" 
         	Background="White" 
-        	Margin="58,621,0,0" 
-        	Height="58" 
+        	Margin="108,510,0,0" 
+        	Height="81" 
         	Click="botonModificar_VHome_Click"/>
+        <Button
+        	x:Name="botonBorrar_VHome" 
+        	Content="BORRAR"
+        	TextBlock.FontSize="16"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+        	Width="162" 
+        	Background="White" 
+        	Margin="108,621,0,0" 
+        	Height="58"
+        	Click="botonBorrar_VHome_Click"/>
         <Label 
         	x:Name="nombreTextLabel_VHome" 
         	Content="Nombre" 

@@ -59,7 +59,6 @@
     <Compile Include="DatosUsuario.cs" />
     <Compile Include="ManejadorTablas.cs" />
     <Compile Include="Seci.cs" />
-    <Compile Include="VarGlobal.cs" />
     <Compile Include="VentanaAudioBasics.xaml.cs">
       <DependentUpon>VentanaAudioBasics.xaml</DependentUpon>
     </Compile>

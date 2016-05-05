@@ -5,43 +5,159 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
-        Title="VentanaBodyBasics" 
-        Height="600" Width="700" 
+        Title="JUEGO"
+        Height="700" 
+        Width="900"
+        Icon="logoUNAM.jpg"
         Loaded="MainWindow_Loaded"
-        Closing="MainWindow_Closing">
+        Closing="MainWindow_Closing"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
     <Window.Resources>
-        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e" />
-        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f" />
-        <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2" />
+        <SolidColorBrush 
+            x:Key="MediumGreyBrush" 
+            Color="#ff6e6e6e" />
+        <SolidColorBrush 
+            x:Key="KinectPurpleBrush" 
+            Color="#ff52318f" />
+        <SolidColorBrush 
+            x:Key="KinectBlueBrush" 
+            Color="#ff00BCF2" />
     </Window.Resources>
-    <Grid Margin="10 0 10 0">
+    <Grid Margin="10,0,10,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="120*"/>
+            <ColumnDefinition Width="59*"/>
+            <ColumnDefinition Width="109*"/>
+            <ColumnDefinition Width="176*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="120*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition 
+                Height="Auto" 
+                MinHeight="87" />
+            <RowDefinition Height="0*" />
+            <RowDefinition
+                Height="Auto"
+                MinHeight="584"
+                />
+            <RowDefinition Height="0*" />
         </Grid.RowDefinitions>
-
-        <Image Grid.Row="0" Source="Logo.png" HorizontalAlignment="Left" Stretch="Fill" Height="32" Width="81" Margin="0 10 0 5" />
-        <TextBlock Grid.Row="0" Margin="0 0 -1 0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontFamily="Segoe UI" FontSize="18">Body Basics</TextBlock>
-        <Image Grid.Row="0" Source="Status.png" Stretch="None" HorizontalAlignment="Center" Margin="0 0 0 5" />
-
-        <Viewbox Grid.Row="1" HorizontalAlignment="Center">
-            <Image Source="{Binding ImageSource}" Stretch="UniformToFill" />
-        </Viewbox>
-
-        <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
-            <StatusBarItem Content="{Binding StatusText}" />
-        </StatusBar>
-        <Button 
-            x:Name="botonAudio_VEjemplos" 
-            Content="SALIR"
+        <Image
+            Grid.Row="0" 
+            Source="Logo.png" 
+            HorizontalAlignment="Left" 
+            Stretch="Fill" 
+            Grid.Column="0" 
+            Width="89" 
+            Margin="1,13,0,41" />
+        <TextBlock
+            Grid.Row="0" 
+        	x:Name="textRunnable"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
+            TextAlignment="Center"
+        	Margin="10,13,0,0"
+        	FontSize="12"
+        	TextWrapping="Wrap" 
+        	Text="{Binding StatusText}"
+            Width="86"
+            Grid.Column="1" 
+            Height="38"/>
+        <TextBlock
+            Grid.Row="0" 
+            Margin="10,0,10,36" 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            TextAlignment="Center"
+            Foreground="{StaticResource MediumGreyBrush}" 
+            FontFamily="Segoe UI"
+            FontSize="24" 
+            Grid.Column="2"
+            Height="36"
+            Text="{Binding NivelText}"
+            Width="100"/>
+        <TextBlock
+            Grid.Row="0" 
+            x:Name="textSesionNivel"
+            HorizontalAlignment="Center"
+            TextAlignment="Center"
+            Margin="8,13,7,0"
+            FontSize="22"
+            TextWrapping="Wrap" 
+            Text="0"
+            VerticalAlignment="Top" 
+            Grid.Column="3"
+            Height="37" 
+            Width="44"/>
+        <Image
+            Grid.Row="0" 
+            Source="Status.png" 
+            Stretch="None" 
+            HorizontalAlignment="Center" 
+            Margin="29,0,30,36" 
+            Grid.Column="4" 
+            Width="50" />
+        <TextBlock
+            Grid.Row="0" 
+        	x:Name="textCoin" 
+        	HorizontalAlignment="Left"
+            TextAlignment="Center"
+        	Margin="10,14,0,0"
+        	FontSize="22"
+        	TextWrapping="Wrap" 
+        	VerticalAlignment="Top" 
+            Grid.Column="5" 
+            Height="32" 
+            Width="145"><Run Text="0"/><Run Text="00000"/><Run Text="00"/><Run Text="000"/></TextBlock>
+        <TextBlock
+            Grid.Row="0" 
+        	x:Name="textTime" 
+        	HorizontalAlignment="Center" 
+            TextAlignment="Center"
+        	Margin="10,14,10,0"
+        	FontSize="22"
+        	TextWrapping="Wrap" 
+        	Text="00:00" 
+        	VerticalAlignment="Top" 
+            Grid.Column="7" 
+            Height="32" 
+            Width="60"/>
+        <Button
+            Grid.Row="0" 
+            x:Name="botonSalir_VN"
+            Content="REGRESAR"
             TextBlock.FontSize="16"
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
             Width="92" 
             Background="White" 
-            Margin="580,453,0,0" 
-            Height="55" 
-            Grid.Row="1" Click="botonAudio_VEjemplos_Click"/>
+            Margin="19,9,0,0" 
+            Height="42" 
+            Click="botonSalir_VN_click"
+            Grid.Column="8"/>
+        <Viewbox
+                HorizontalAlignment="Stretch"
+                Margin="1,0,0,1"
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="9">
+            <Viewbox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Viewbox.RenderTransform>
+            <Image
+                Source="{Binding ImageSource}" 
+                Stretch="UniformToFill" />
+        </Viewbox>
     </Grid>
 </Window>

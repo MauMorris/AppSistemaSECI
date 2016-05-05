@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SistemaSECI
-{ 
+{
     class ManejadorTablas
     {
         private string DATA_BASE_NAME = "SECI";
 
-        private string VS_TABLA_DATOS_USUARIO = "TABLA DE DATOS DE USUARIO";
+        private string VS_TABLA_DATOS_USUARIO = "TABLA DE DATOS DE USUARI O";
 
         private string VS_T_DU_ID ="ID";
         private string VS_T_DU_NOMBRE ="NOMBRE";
@@ -169,6 +169,5 @@ namespace SistemaSECI
         private string VA_T_DAD_ALMUERZO = "ALMUERZO";
         private string VA_T_DAD_COMIDA = "COMIDA";
         private string VA_T_DAD_CENA = "CENA";
-
     }
 }
