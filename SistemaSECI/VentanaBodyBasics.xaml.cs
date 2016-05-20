@@ -8,11 +8,8 @@ namespace SistemaSECI
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
     using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Data;
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
@@ -20,7 +17,7 @@ namespace SistemaSECI
     using System.ComponentModel;
     using System.IO;
     using Microsoft.Kinect;
-    
+    using System.Globalization;
     /// Interaction logic for VentanaBodyBasics.xaml
     public partial class VentanaBodyBasics : Window, INotifyPropertyChanged
     {
@@ -29,6 +26,7 @@ namespace SistemaSECI
         private const double ClipBoundsThickness = 10;      /// Grosor del marco dibujado en el limite de reconocimiento de cuerpos
 
         private const float InferredZPositionClamp = 0.1f;                                                  /// Constante para los vertices inferidos en el eje -Z
+
         private readonly Brush handClosedBrush = new SolidColorBrush(Color.FromArgb(128, 255, 0, 0));       /// Peine para dibujar las manos (cerradas)
         private readonly Brush handOpenBrush = new SolidColorBrush(Color.FromArgb(128, 0, 255, 0));         /// Pincel para dibujar las manos (abiertas)
         private readonly Brush handLassoBrush = new SolidColorBrush(Color.FromArgb(128, 0, 0, 255));        /// Pincel para dibujar las manos (Lasso, apuntando)
@@ -38,13 +36,9 @@ namespace SistemaSECI
 
         private DrawingGroup drawingGroup;                  /// DrawingGroup para la salida del render para el cuerpo
         private DrawingImage imageSource;                   /// DrawingImage para mostrar
-
         public ImageSource ImageSource                      /// Gets bitmap a mostrar
         {
-            get
-            {
-                return this.imageSource;
-            }
+            get { return this.imageSource; }
         }
 
         private KinectSensor kinectSensor = null;           /// SensorKinect actual
@@ -59,13 +53,9 @@ namespace SistemaSECI
         private int displayHeight;                          /// Alto del display (depth space)
 
         private string statusText = String.Empty;           /// Estatus actual del texto a mostrar en la pantalla
-
         public string StatusText                            /// Gets / Sets el estado actual en un texto en pantalla
         {
-            get
-            {
-                return this.statusText;
-            }
+            get { return this.statusText; }
             set
             {
                 if (this.statusText != value)
@@ -79,13 +69,9 @@ namespace SistemaSECI
         }
 
         private string nivelText = String.Empty;           /// Estatus actual del nivel jugado
-
         public string NivelText                            /// Gets / Sets del nivel actual de juego en pantalla
         {
-            get
-            {
-                return this.nivelText;
-            }
+            get { return this.nivelText; }
             set
             {
                 if (this.nivelText != value)
@@ -98,26 +84,169 @@ namespace SistemaSECI
             }
         }
 
-        /// Inicializa una nueva instancia de MainWindow class
-        public VentanaBodyBasics(int nivel)
+        private string jointsText = String.Empty;           /// Estatus actual del nivel jugado
+        public string JointsText                            /// Gets / Sets del nivel actual de juego en pantalla
         {
+            get { return this.jointsText; }
+            set
+            {
+                if (this.jointsText != value)
+                {
+                    this.jointsText = value;
+                    // notificacion debida al cambio de texto de status 
+                    if (this.PropertyChanged != null)
+                        this.PropertyChanged(this, new PropertyChangedEventArgs("JointsText"));
+                }
+            }
+        }
+
+        private string timeText = String.Empty;           /// Estatus actual del texto a mostrar en la pantalla
+        public string TimeText                            /// Gets / Sets el estado actual en un texto en pantalla
+        {
+            get { return this.timeText; }
+            set
+            {
+                if (this.timeText != value)
+                {
+                    this.timeText = value;
+                    // notificacion debida al cambio de texto de status 
+                    if (this.PropertyChanged != null)
+                        this.PropertyChanged(this, new PropertyChangedEventArgs("TimeText"));
+                }
+            }
+        }
+
+        private float posicionZ = 0;                        /// Posicion de profundidad del vertice
+        public float PosicionZ
+        {
+            get { return this.posicionZ; }
+            set { this.posicionZ = value; }
+        }
+
+        private float  posicionZ2 = 0;                      /// Posicion del vertice 2
+        public float PosicionZ2
+        {
+            get { return this.posicionZ2; }
+            set { this.posicionZ2 = value; }
+        }
+
+        private int monedas = 0;                            /// Monedas acumuladas en la sesion
+        public int Monedas
+        {
+            get { return this.monedas; }
+            set { this.monedas = value; }
+        }
+
+        private int banderaTiempo = 0;                      // Bandera de tiempo utilizado en la sesion
+        public int BanderaTiempo
+        {
+            get { return this.banderaTiempo; }
+            set { this.banderaTiempo = value; }
+        }
+
+        private int timeMinute0 = 0;                        // Minutos utilizados en la sesion
+        public int TimeMinute0
+        {
+            get { return this.timeMinute0; }
+            set { this.timeMinute0 = value; }
+        }
+
+        private int timeSeconds0 = 0;                       // Segundos utilizados en la sesion
+        public int TimeSeconds0
+        {
+            get { return this.timeSeconds0; }
+            set { this.timeSeconds0 = value; }
+        }
+
+        private int timeMinuteX = 0;                        // Minutos actualizados utilizados en la sesion
+        public int TimeMinuteX
+        {
+            get { return this.timeMinuteX; }
+            set { this.timeMinuteX = value; }
+        }
+
+        private int timeSecondsX = 0;                       // Segundos actualizados utilizados en la sesion
+        public int TimeSecondsX
+        {
+            get { return this.timeSecondsX; }
+            set { this.timeSecondsX = value; }
+        }
+
+        private int nivel;                                  // Nivel actual de la sesion
+        public int Nivel
+        {
+            get { return this.nivel; }
+            set { this.nivel = value; }
+        }
+
+        private int ejercicios;                             // Ejercicio actual en la sesion
+        public int Ejercicios
+        {
+            get { return this.ejercicios; }
+            set { this.ejercicios = value; }
+        }
+
+        private int tiempo;                                 // Tiempo utilizado en la sesion
+        public int Tiempo
+        {
+            get { return this.tiempo; }
+            set { this.tiempo = value; }
+        }
+
+        private string monedasText = String.Empty;           /// Estatus actual del texto a mostrar en la pantalla
+        public string MonedasText                            /// Gets / Sets el estado actual en un texto en pantalla
+        {
+            get { return this.monedasText; }
+            set
+            {
+                if (this.monedasText != value)
+                {
+                    this.monedasText = value;
+                    // notificacion debida al cambio de texto de status 
+                    if (this.PropertyChanged != null)
+                        this.PropertyChanged(this, new PropertyChangedEventArgs("MonedasText"));
+                }
+            }
+        }
+
+        string pX, pY, pZ;
+
+        /// Inicializa una nueva instancia de MainWindow class
+        public VentanaBodyBasics(int nivel, int ejercicios, int tiempo)
+        {
+            this.Nivel = nivel;
+            this.Ejercicios = ejercicios;
+            this.Tiempo = tiempo;
+
             inicializaComunicacionKinect();
             inicializaFiguraHumana();
 
             this.kinectSensor.IsAvailableChanged += this.Sensor_IsAvailableChanged;             // set IsAvailableChanged event notifier
             this.kinectSensor.Open();                                                           // open sensor
-            this.NivelText = "NIVEL " + nivel;                                                  // muestra en pantalla que nivel estas
-                                                                                                // set the status text
+            this.NivelText = "NIVEL " + this.Nivel;                                                  // muestra en pantalla en que nivel estas
+            this.TimeText = TimeMinuteX + ":" + TimeSecondsX;
+
+            // set the status text
             this.StatusText = this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText
                                                                 : Properties.Resources.NoSensorStatusText;
             this.drawingGroup = new DrawingGroup();                                             // Crea drawing group para dibujar
             this.imageSource = new DrawingImage(this.drawingGroup);                             // Crea una image source para el image control
             this.DataContext = this;                                                            // usa window object como view model
             this.InitializeComponent();                                                         // inicializa (controls) de la ventana
+            this.Monedas = 0;
         }
 
-        /// INotifyPropertyChangedPropertyChanged evento para el control de ventana bind to changeable data
+        /// INotifyPropertyChangedPropertyChanged evento para el control de ventana y cambiar los datos con un binding
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// Handles el evento en el que el sensor no esta disponible (E.g. paused, closed, unplugged).
+        /// <param name="sender">object sending the event</param>
+        /// <param name="e">event arguments</param>
+        private void Sensor_IsAvailableChanged(object sender, IsAvailableChangedEventArgs e)
+        { // en caso de falla, set the status text
+            this.StatusText = this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText
+                                                            : Properties.Resources.SensorNotAvailableStatusText;
+        }
 
         /// Ejecuta tareas iniciales
         /// <param name="sender">object sending the event</param>
@@ -125,9 +254,7 @@ namespace SistemaSECI
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             if (this.bodyFrameReader != null)
-            {
                 this.bodyFrameReader.FrameArrived += this.Reader_FrameArrived;
-            }
         }
 
         /// Ejecuta tareas terminales
@@ -147,15 +274,33 @@ namespace SistemaSECI
         /// <param name="e">event arguments</param>
         private void Reader_FrameArrived(object sender, BodyFrameArrivedEventArgs e)
         {
+
+            //string para saber la hora actual
+            BanderaTiempo++;
+            if(BanderaTiempo <= 1)
+            {
+                TimeMinute0 = System.DateTime.UtcNow.Minute;
+                TimeSeconds0 = System.DateTime.UtcNow.Second;
+            }
+            TimeMinuteX = System.DateTime.UtcNow.Minute - TimeMinute0;
+            TimeSecondsX = System.DateTime.UtcNow.Minute - TimeSeconds0;
+
+            TimeText = TimeMinuteX + ":" + TimeSecondsX;
+            if (TimeMinuteX >= 3)
+            {
+                var pruebaTerminada = MessageBox.Show("Prueba terminada", "Nivel" + nivel, MessageBoxButton.OK, MessageBoxImage.Hand);
+                this.Close();
+            }
+
+            
+            //string para 
             bool dataReceived = false;
             using (BodyFrame bodyFrame = e.FrameReference.AcquireFrame())
             {
                 if (bodyFrame != null)
                 {
                     if (this.bodies == null)
-                    {
                         this.bodies = new Body[bodyFrame.BodyCount];
-                    }
                     // The first time GetAndRefreshBodyData is called, Kinect will allocate each Body in the array.
                     // As long as those body objects are not disposed and not set to null in the array,
                     // those body objects will be re-used.
@@ -176,20 +321,61 @@ namespace SistemaSECI
                         if (body.IsTracked)
                         {
                             this.DrawClippedEdges(body, dc);
+                            //coleccion para almacenar los tipos de vertices y la posicion 3D detecta por kinect
                             IReadOnlyDictionary<JointType, Joint> joints = body.Joints;
-
-                            // convierte las intersecciones en una profundidad de espacio a dibujar
+                            //coleccion para almacenar el tipo de vertice y la orientacion detectada por kinect
+                            IReadOnlyDictionary<JointType, JointOrientation> jointsOrientations = body.JointOrientations;
+                            // representa la proyeccion de la imagen 3D en un espacio 2D con una profundidad de espacio de referencia.
                             Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
-
+                            JointsText = "vertice y posicion\n";
                             foreach (JointType jointType in joints.Keys)
                             {
+                                //obtiene la posicion 3D de los vertices detectados por kinect
+                                CameraSpacePoint position = joints[jointType].Position;
                                 // a veces -Z de un vertice inferido puede mostrarse como negativa
                                 // clamp down to 0.1f previene que el coordinatemapper regrese valores (-Infinity, -Infinity)
-                                CameraSpacePoint position = joints[jointType].Position;
                                 if (position.Z < 0)
                                 {
                                     position.Z = InferredZPositionClamp;
                                 }
+
+
+                                //programado para conocer la posicion de los vertices en el espacio y mostrarlos en pantalla con orden de hombro
+                                if (jointType == JointType.Head || jointType == JointType.Neck || jointType == JointType.SpineShoulder
+                                        || jointType == JointType.ShoulderLeft || jointType == JointType.ShoulderRight
+                                        || jointType == JointType.SpineMid || jointType == JointType.SpineBase
+                                        || jointType == JointType.HipLeft || jointType == JointType.HipRight
+                                        || jointType == JointType.KneeLeft || jointType == JointType.KneeRight)
+                                {
+                                    if (joints[jointType].Equals(joints[JointType.ShoulderRight]))
+                                        PosicionZ = position.Z;
+                                    if (joints[jointType].Equals(joints[JointType.ShoulderLeft]))
+                                        PosicionZ2 = position.Z;
+
+                                    pX = String.Format("{0:#,0.##}", joints[jointType].Position.X);
+                                    pY = String.Format("{0:#,0.##}", joints[jointType].Position.Y);
+                                    pZ = String.Format("{0:#,0.##}", joints[jointType].Position.Z);
+                                    
+                                    JointsText += jointType + "\n" +
+                                                    "X: " + pX + "\n" +
+                                                    "Y: " + pY + "\n" +
+                                                    "Z: " + pZ + "\n";
+
+                                    if (position.Z < 1)
+                                        dc.DrawRectangle(Brushes.Yellow, null, new Rect(0.0, 0.0, this.displayWidth, this.displayHeight));
+                                    else
+                                    {
+                                        if (PosicionZ + 0.15 < PosicionZ2)
+                                        {
+                                            dc.DrawRectangle(Brushes.Blue, null, new Rect(0.0, 0.0, this.displayWidth, this.displayHeight));
+                                            Monedas++;
+                                            MonedasText = Monedas.ToString();
+                                        }
+                                        else
+                                            dc.DrawRectangle(Brushes.Black, null, new Rect(0.0, 0.0, this.displayWidth, this.displayHeight));
+                                    }
+                                }
+
                                 DepthSpacePoint depthSpacePoint = this.coordinateMapper.MapCameraPointToDepthSpace(position);
                                 jointPoints[jointType] = new Point(depthSpacePoint.X, depthSpacePoint.Y);
                             }
@@ -211,26 +397,18 @@ namespace SistemaSECI
         /// <param name="drawingPen">especifica el color para dibujar un cuerpo en especifico</param>
         private void DrawBody(IReadOnlyDictionary<JointType, Joint> joints, IDictionary<JointType, Point> jointPoints, DrawingContext drawingContext, Pen drawingPen)
         {
-            foreach (var bone in this.bones)            // Dibuja los huesos
-            {
+            foreach (var bone in this.bones)                        // Dibuja los huesos
                 this.DrawBone(joints, jointPoints, bone.Item1, bone.Item2, drawingContext, drawingPen);
-            }
             foreach (JointType jointType in joints.Keys)            // Dibuja los vertices
             {
                 Brush drawBrush = null;
                 TrackingState trackingState = joints[jointType].TrackingState;
                 if (trackingState == TrackingState.Tracked)
-                {
                     drawBrush = this.trackedJointBrush;
-                }
                 else if (trackingState == TrackingState.Inferred)
-                {
                     drawBrush = this.inferredJointBrush;
-                }
                 if (drawBrush != null)
-                {
                     drawingContext.DrawEllipse(drawBrush, null, jointPoints[jointType], JointThickness, JointThickness);
-                }
             }
         }
 
@@ -248,15 +426,11 @@ namespace SistemaSECI
             Joint joint1 = joints[jointType1];
             // Si no podemos encontrar alguno de los vertices, exit
             if (joint0.TrackingState == TrackingState.NotTracked || joint1.TrackingState == TrackingState.NotTracked)
-            {
                 return;
-            }
             // Asumimos que todos los huesos dibujados son inferidos a menos que ambos sean leidos (tracked)
             Pen drawPen = this.inferredBonePen;
             if ((joint0.TrackingState == TrackingState.Tracked) && (joint1.TrackingState == TrackingState.Tracked))
-            {
                 drawPen = drawingPen;
-            }
             drawingContext.DrawLine(drawPen, jointPoints[jointType0], jointPoints[jointType1]);
         }
 
@@ -287,30 +461,13 @@ namespace SistemaSECI
             FrameEdges clippedEdges = body.ClippedEdges;
 
             if (clippedEdges.HasFlag(FrameEdges.Bottom))
-            {
                 drawingContext.DrawRectangle(Brushes.Red, null, new Rect(0, this.displayHeight - ClipBoundsThickness, this.displayWidth, ClipBoundsThickness));
-            }
             if (clippedEdges.HasFlag(FrameEdges.Top))
-            {
                 drawingContext.DrawRectangle(Brushes.Red, null, new Rect(0, 0, this.displayWidth, ClipBoundsThickness));
-            }
             if (clippedEdges.HasFlag(FrameEdges.Left))
-            {
                 drawingContext.DrawRectangle(Brushes.Red, null, new Rect(0, 0, ClipBoundsThickness, this.displayHeight));
-            }
             if (clippedEdges.HasFlag(FrameEdges.Right))
-            {
                 drawingContext.DrawRectangle( Brushes.Red, null, new Rect(this.displayWidth - ClipBoundsThickness, 0, ClipBoundsThickness, this.displayHeight));
-            }
-        }
-
-        /// Handles el evento en el que el sensor no esta disponible (E.g. paused, closed, unplugged).
-        /// <param name="sender">object sending the event</param>
-        /// <param name="e">event arguments</param>
-        private void Sensor_IsAvailableChanged(object sender, IsAvailableChangedEventArgs e)
-        { // en caso de falla, set the status text
-            this.StatusText = this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText
-                                                            : Properties.Resources.SensorNotAvailableStatusText;
         }
 
         private void botonSalir_VN_click(object sender, RoutedEventArgs e)

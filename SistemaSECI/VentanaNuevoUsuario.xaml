@@ -33,19 +33,21 @@
             Grid.ColumnSpan="3" 
             Source="logoUNAM.jpg" 
             Grid.Column="2"/>
-        <TextBox 
+        <TextBox
             x:Name="nombreTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
-            Height="23" 
-            Margin="12,262,0,0" 
-            TextWrapping="Wrap" 
+            Height="23"
+            Margin="12,262,0,0"
+            TextWrapping="Wrap"
             Text="Nombre"
-            VerticalAlignment="Top" 
-            Width="120" 
+            VerticalAlignment="Top"
+            Width="120"
             HorizontalContentAlignment="Center"
-            Grid.ColumnSpan="2" 
-            Grid.Column="2" 
-            TabIndex="1" />
+            Grid.ColumnSpan="2"
+            Grid.Column="2"
+            TabIndex="1"
+            DataObject.Pasting="PegarTexto"
+            PreviewTextInput="ValidacionTextoTextBox"/>
         <TextBox 
             x:Name="apellidosTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -59,11 +61,11 @@
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="1"
-            TextChanged="apellidosTextBox_VNuevoUsuario_TextChanged"/>
+            DataObject.Pasting="PegarTexto"
+            PreviewTextInput="ValidacionTextoTextBox" />
         <TextBox 
             x:Name="edadTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
-            DataObject.Pasting="PegarTexto"
             Height="23" 
             Margin="12,318,0,0" 
             TextWrapping="Wrap" 
@@ -74,8 +76,9 @@
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="2"            
+            DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosTextBox"/>
-        <ComboBox 
+        <ComboBox
             x:Name="escolaridadComboBox_VNuevoUsuario" 
             Background="White"
             HorizontalAlignment="Left" 
@@ -86,18 +89,19 @@
             Grid.Column="2" 
             Margin="12,346,0,0" 
             TabIndex="3" 
-            SelectionChanged="escolaridadComboBox_VNuevoUsuario_SelectionChanged"/>
+            SelectionChanged="EscolaridadComboBox_VNuevoUsuario_SelectionChanged"/>
         <ComboBox 
         	x:Name="sexoComboBox_VNuevoUsuario" 
         	Background="White"
-        	HorizontalAlignment="Left" 
-        	VerticalAlignment="Top" 
+        	HorizontalAlignment="Left"
+            VerticalAlignment="Top" 
         	Width="120" 
         	Height="23"
         	Grid.ColumnSpan="2" 
         	Grid.Column="2" 
         	Margin="12,377,0,0" 
-            TabIndex="4" SelectionChanged="sexoComboBox_VNuevoUsuario_SelectionChanged"/>
+            TabIndex="4" 
+            SelectionChanged="SexoComboBox_VNuevoUsuario_SelectionChanged"/>
         <TextBox 
             x:Name="estaturaTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -111,6 +115,7 @@
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="5" 
+            DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
         <TextBox 
             x:Name="pesoTextBox_VNuevoUsuario" 
@@ -124,7 +129,8 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            TabIndex="6" 
+            TabIndex="6"
+            DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
         <TextBox 
             x:Name="tutorTextBox_VNuevoUsuario" 
@@ -139,7 +145,8 @@
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="7" 
-            TextChanged="tutorTextBox_VNuevoUsuario_TextChanged"/>
+            DataObject.Pasting="PegarTexto"
+            PreviewTextInput="ValidacionTextoTextBox"/>
         <TextBox 
             x:Name="edadTutorTextBox_VNuevoUsuario" 
             HorizontalAlignment="Left" 
@@ -152,7 +159,8 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            TabIndex="8"            
+            TabIndex="8"
+            DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosTextBox"/>
         <TextBox 
         	x:Name="telefonoTutorTextBox_VNuevoUsuario" 
@@ -167,7 +175,8 @@
         	Grid.ColumnSpan="2" 
         	Grid.Column="2" 
             TabIndex="9"
-            PreviewTextInput="ValidacionNumerosTextBox"/>
+            DataObject.Pasting="PegarTexto"
+            PreviewTextInput="ValidacionNumeroTelefonicoTextBox"/>
         <Button 
             x:Name="regresarBoton_VNuevoUsuario" 
             Content="REGRESAR" 
@@ -178,7 +187,7 @@
             Height="45"
             Margin="30,44,0,0" 
             ClickMode="Press" 
-            Click="regresarBoton_VNuevoUsuario_Click" 
+            Click="RegresarBoton_VNuevoUsuario_Click" 
             TabIndex="0" 
             />
         <Button 
@@ -193,7 +202,7 @@
             Background="White"
             ClickMode="Press" 
             Height="35" 
-            Click="okBoton_VNuevoUsuario_Click" 
+            Click="OkBoton_VNuevoUsuario_Click" 
             TabIndex="10" 
             />
         <Label 

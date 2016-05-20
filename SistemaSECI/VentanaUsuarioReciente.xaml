@@ -8,6 +8,7 @@
         Title="Usuarios Reciententes" 
         Height="700" 
         Width="600"
+        Loaded="MainWindow_Loaded"
         Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -192,7 +193,7 @@
             Grid.Column="2" 
             Height="29"/>
         <Label 
-        	x:Name="apellidoTextLabel_VUsuarioReciente" 
+        	x:Name="apellidosTextLabel_VUsuarioReciente" 
         	Content="Apellidos"
         	HorizontalContentAlignment="Left"
         	TextElement.FontSize="14"
@@ -310,6 +311,8 @@
             Width="229" 
             Grid.ColumnSpan="5" 
             Margin="185,238,0,0" 
-            Height="25" TabIndex="0"/>
+            Height="25" 
+            TabIndex="0" 
+            SelectionChanged="usuarioRecienteComboBox_VUsuarioReciente_SelectionChanged"/>
     </Grid>
 </Window>

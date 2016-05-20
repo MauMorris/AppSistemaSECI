@@ -110,20 +110,21 @@
             TextAlignment="Center"
         	Margin="10,14,0,0"
         	FontSize="22"
+            Text="{Binding MonedasText}"
         	TextWrapping="Wrap" 
         	VerticalAlignment="Top" 
             Grid.Column="5" 
             Height="32" 
-            Width="145"><Run Text="0"/><Run Text="00000"/><Run Text="00"/><Run Text="000"/></TextBlock>
+            Width="145"></TextBlock>
         <TextBlock
             Grid.Row="0" 
         	x:Name="textTime" 
         	HorizontalAlignment="Center" 
             TextAlignment="Center"
         	Margin="10,14,10,0"
-        	FontSize="22"
+        	FontSize="12"
         	TextWrapping="Wrap" 
-        	Text="00:00" 
+        	Text="{Binding TimeText}"
         	VerticalAlignment="Top" 
             Grid.Column="7" 
             Height="32" 
@@ -150,14 +151,22 @@
             <Viewbox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
                 </TransformGroup>
             </Viewbox.RenderTransform>
             <Image
                 Source="{Binding ImageSource}" 
                 Stretch="UniformToFill" />
         </Viewbox>
+        <TextBlock 
+        	x:Name="textBlock" 
+        	Grid.Column="8"
+        	HorizontalAlignment="Left" 
+        	Grid.Row="2"
+            FontSize="9"
+        	TextWrapping="Wrap" 
+        	VerticalAlignment="Top" 
+        	Height="574"
+            Text="{Binding JointsText}"
+        	Width="110"/>
     </Grid>
 </Window>

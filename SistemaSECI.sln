@@ -8,12 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{014E949F-5A4A-4C0A-B348-FBE28478B79B}"
 	ProjectSection(SolutionItems) = preProject
 		datos_semana_alimentacion.sql = datos_semana_alimentacion.sql
-		datos_usuario.sql = datos_usuario.sql
-		logros_sesion_kinect.sql = logros_sesion_kinect.sql
-		logros_total_kinect.sql = logros_total_kinect.sql
-		parametros_sesion_seci.sql = parametros_sesion_seci.sql
-		pruebas_sesion_seci.sql = pruebas_sesion_seci.sql
-		resultados_pruebas_sesion_seci.sql = resultados_pruebas_sesion_seci.sql
 	EndProjectSection
 EndProject
 Global

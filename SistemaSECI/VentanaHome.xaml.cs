@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SistemaSECI
 {
@@ -50,8 +41,9 @@ namespace SistemaSECI
         }
         private void botonSalir_VHome_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("¿Estás seguro?");
-            this.Close();
+            var salida = MessageBox.Show("¿Quieres cerrar la sesión?","Cerrar sesión", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
+            if(salida.Equals(MessageBoxResult.OK))
+                this.Close();
         }
 
         private void botonActualizar_VHome_Click(object sender, RoutedEventArgs e)
@@ -72,7 +64,14 @@ namespace SistemaSECI
         }
         private void botonBorrar_VHome_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("¡Se borrará de forma permanente a este usuario!");
+            var borrar = MessageBox.Show("¡Borrarás de forma permanente a este usuario!","Borrar usuario",MessageBoxButton.OKCancel,MessageBoxImage.Warning);
+            if (borrar.Equals(MessageBoxResult.OK))
+            {
+                MessageBox.Show("Paciente borrado");
+                VentanaUsuarios v = new VentanaUsuarios();
+                v.Show();
+                this.Close();
+            }
         }
     }
 }

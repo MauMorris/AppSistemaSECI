@@ -32,22 +32,26 @@ namespace SistemaSECI
             InitializeComponent();
             inicializaComboBoxes();
         }
+
         private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
             VentanaSeciPrueba v = new VentanaSeciPrueba();
             v.Show();
             this.Close();
         }
+
         private void IniReforzadorTipoCB()
         {
             reforzadorTipoCB_VSeci.Items.Add(tipoReforzador);
             reforzadorTipoCB_VSeci.Items.Add(tipoReforzadorAdd);
         }
+
         private void IniReforzadorClaseCB()
         {
             for(int i = 0; i < claseReforzador.Length; i++)
                 reforzadorClaseCB_VSeci.Items.Add(claseReforzador[i]);
         }
+
         private void IniInmediatezInmeCB()
         {
             inmediatezInmeCB_VSeci.Items.Add("1 minuto");
@@ -58,6 +62,7 @@ namespace SistemaSECI
                 inmediatezInmeCB_VSeci.Items.Add(apoyo);
             }
         }
+
         private void IniInmediatezDemoCB()
         {
             string apoyo = "";
@@ -75,25 +80,30 @@ namespace SistemaSECI
             inmediatezDemoCB_VSeci.Items.Add("12 horas");
             inmediatezDemoCB_VSeci.Items.Add("Mañana");
         }
+
         private void IniEsfuerzoAltoCB()
         {
             for (int i = 2; i < 10; i++)
                 esfuerzoAltoCB_VSeci.Items.Add(i);
         }
+
         private void IniEsfuerzoBajoCB()
         {
             esfuerzoBajoCB_VSeci.Items.Add(1);
         }
+
         private void IniReforzamientoAltoCB()
         {
             for(int i = 0; i < pAltoReforzamiento.Length; i++)
                 reforzamientoAltoCB_VSeci.Items.Add(pAltoReforzamiento[i]);
         }
+
         private void IniReforzamientoBajoCB()
         {
             for(int i = 0; i < pBajoReforzamiento.Length; i++)
                 reforzamientoBajoCB_VSeci.Items.Add(pBajoReforzamiento[i]);
         }
+
         private void inicializaComboBoxes()
         {
             IniReforzadorTipoCB();
@@ -108,6 +118,7 @@ namespace SistemaSECI
             IniReforzamientoAltoCB();
             IniReforzamientoBajoCB();
         }
+
         private void esfuerzoAltoCB_VSeci_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             esfuerzoBajoCB_VSeci.Items.Clear();
@@ -117,9 +128,11 @@ namespace SistemaSECI
             else
                 esfuerzoBajoCB_VSeci.Items.Add(1);
         }
+
         private void reforzadorClaseCB_VSeci_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
+
         private void reforzadorTipoCB_VSeci_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (reforzadorTipoCB_VSeci.SelectedItem.ToString() == tipoReforzadorAdd)
@@ -127,17 +140,19 @@ namespace SistemaSECI
                 agregarNuevoReforzador();
             }
         }
+
         private void agregarNuevoReforzador()
         {
-            MessageBox.Show("Seleccione las imagenes desde un folder especifico");
+            MessageBox.Show("Seleccione las imagenes desde un folder especifico","Agregar nuevo reforzador", MessageBoxButton.YesNo, MessageBoxImage.Information);
+//            if(MessageBoxResult.Yes)
             OpenFileDialog v = new OpenFileDialog();
             v.Multiselect = true;
             v.Filter = "JPG files (*.jpg)|*.jpg| TIFF files (*.tiff)|*.tiff| PNG files(*.png)|*.png";
             v.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             if (v.ShowDialog() == true)
-                reforzadorTipoCB_VSeci.Items.Add("NuevoComidas");
-                           
+                reforzadorTipoCB_VSeci.Items.Add("NuevoComidas");                           
         }
+
         private void agregarSeci()
         {
             String A = reforzadorTipoCB_VSeci.SelectedItem.ToString();

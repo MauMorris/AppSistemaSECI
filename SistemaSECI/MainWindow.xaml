@@ -38,6 +38,7 @@
             Height="26" 
             Grid.Column="1"/>
         <ProgressBar 
+            x:Name="pBar"
             Grid.Column="1" 
             HorizontalAlignment="Left" 
             Height="10" 

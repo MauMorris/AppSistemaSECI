@@ -1,16 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SistemaSECI
 {
@@ -24,63 +14,63 @@ namespace SistemaSECI
 
         private void botonN1_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(1);
+            VentanaBodyBasics v = new VentanaBodyBasics(1, 4, 3);
             v.Show();
             this.Close();
         }
 
         private void botonN2_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(2);
+            VentanaBodyBasics v = new VentanaBodyBasics(2, 4, 3);
             v.Show();
             this.Close();
         }
 
         private void botonN3_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(3);
+            VentanaBodyBasics v = new VentanaBodyBasics(3, 6, 4);
             v.Show();
             this.Close();
         }
 
         private void botonN4_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(4);
+            VentanaBodyBasics v = new VentanaBodyBasics(4, 6, 4);
             v.Show();
             this.Close();
         }
 
         private void botonN5_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(5);
+            VentanaBodyBasics v = new VentanaBodyBasics(5, 7, 5);
             v.Show();
             this.Close();
         }
 
         private void botonN6_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(6);
+            VentanaBodyBasics v = new VentanaBodyBasics(6, 7, 5);
             v.Show();
             this.Close();
         }
 
         private void botonN7_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(7);
+            VentanaBodyBasics v = new VentanaBodyBasics(7, 7, 5);
             v.Show();
             this.Close();
         }
 
         private void botonN8_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(8);
+            VentanaBodyBasics v = new VentanaBodyBasics(8, 8, 5);
             v.Show();
             this.Close();
         }
 
         private void botonN9_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaBodyBasics v = new VentanaBodyBasics(9);
+            VentanaBodyBasics v = new VentanaBodyBasics(9, 8, 5);
             v.Show();
             this.Close();
         }
@@ -91,6 +81,5 @@ namespace SistemaSECI
             v.Show();
             this.Close();
         }
-
     }
 }

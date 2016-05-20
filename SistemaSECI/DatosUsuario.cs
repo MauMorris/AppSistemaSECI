@@ -1,158 +1,209 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace SistemaSECI
 {
-    class DatosUsuario
+    class DatosUsuario: INotifyPropertyChanged
     {
-        private String _Nombre;
-        private String _Apellido;
-        private int _Edad;
-        private String _Escolaridad;
-        private String _Sexo;
-        private decimal _Estatura;
-        private decimal _Peso;
-
-        private String _NombreTutor;
-        private int _EdadTutor;
-        private Int64 _TelefonoTutor;
-        public string Nombre
+        private string nombre;
+        public String Nombre
         {
             get
-            {
-                return _Nombre;
-            }
-
+            { return nombre; }
             set
             {
-                _Nombre = value;
+                if (this.nombre != value)
+                {
+                    this.nombre = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NombreText"));
+                }
             }
         }
-        public string Apellido
+
+        private string apellidos;
+        public String Apellidos
         {
             get
-            {
-                return _Apellido;
-            }
-
+            { return apellidos; }
             set
             {
-                _Apellido = value;
+                if (this.apellidos != value)
+                {
+                    this.apellidos = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ApellidosText"));
+                }
             }
         }
+
+        private int edad;
         public int Edad
         {
             get
-            {
-                return _Edad;
-            }
-
+            { return edad; }
             set
             {
-                _Edad = value;
+                if (this.edad != value)
+                {
+                    this.edad = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EdadText"));
+                }
             }
         }
-        public string Escolaridad
+
+        private string escolaridad;
+        public String Escolaridad
         {
             get
-            {
-                return _Escolaridad;
-            }
+            { return escolaridad; }
 
             set
             {
-                _Escolaridad = value;
+                if (this.escolaridad != value)
+                {
+                    this.escolaridad = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EscolaridadText"));
+                }
             }
         }
-        public string Sexo
+
+        private string sexo;
+        public String Sexo
         {
             get
-            {
-                return _Sexo;
-            }
-
+            { return sexo; }
             set
             {
-                _Sexo = value;
+                if (this.sexo != value)
+                {
+                    this.sexo = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SexoText"));
+                }
             }
         }
-        public decimal Estatura
+
+        private double estatura;
+        public double Estatura
         {
             get
-            {
-                return _Estatura;
-            }
-
+            { return estatura; }
             set
             {
-                _Estatura = value;
+                if (this.estatura != value)
+                {
+                    this.estatura = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EstaturaText"));
+                }
             }
         }
-        public decimal Peso
+
+        private double peso;
+        public double Peso
         {
             get
-            {
-                return _Peso;
-            }
-
+            { return peso; }
             set
             {
-                _Peso = value;
+                if (this.peso != value)
+                {
+                    this.peso = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PesoText"));
+                }
             }
         }
-        public string NombreTutor
+
+        private double imc;
+        public double Imc
         {
             get
-            {
-                return _NombreTutor;
-            }
-
+            { return imc; }
             set
             {
-                _NombreTutor = value;
+                if (this.imc != value)
+                {
+                    this.imc = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IMCText"));
+                }
             }
         }
+
+        private string nombreTutor;
+        public String NombreTutor
+        {
+            get
+            { return nombreTutor; }
+            set
+            {
+                if (this.nombreTutor != value)
+                {
+                    this.nombreTutor = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NombreTutorText"));
+                }
+            }
+        }
+
+        private int edadTutor;
         public int EdadTutor
         {
             get
-            {
-                return _EdadTutor;
-            }
-
+            { return edadTutor; }
             set
             {
-                _EdadTutor = value;
+                if (this.edadTutor != value)
+                {
+                    this.edadTutor = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EdadTutorText"));
+                }
             }
         }
-        public long TelefonoTutor
+
+        private string telefonoTutor;
+        public String TelefonoTutor
         {
             get
-            {
-                return _TelefonoTutor;
-            }
-
+            { return telefonoTutor; }
             set
             {
-                _TelefonoTutor = value;
+                if (this.telefonoTutor != value)
+                {
+                    this.telefonoTutor = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TelefonoTutorText"));
+                }
             }
         }
+
         public DatosUsuario()
         {
-            Nombre = "Vacio";
-            Apellido = "Vacio";
+            Nombre = String.Empty;
+            Apellidos = String.Empty;
             Edad = 0;
-            Escolaridad = "Vacio";
-            Sexo = "Vacio";
-            Estatura = 0.0m;
-            Peso = 0.0m;
+            Escolaridad = String.Empty;
+            Sexo = String.Empty;
+            Estatura = 0.0;
+            Peso = 0.0;
+            Imc = 0.0;
 
-            NombreTutor = "Vacio";
+            NombreTutor = String.Empty;
             EdadTutor = 0;
-            TelefonoTutor = 0;
+            TelefonoTutor = String.Empty;
         }
 
+        public Double Imc_Calculo(double estatura, double peso)
+        {
+            return peso / (Math.Pow(estatura, 2.0D));
+        }
+
+        /// INotifyPropertyChangedPropertyChanged evento para el control de ventana y cambiar los datos con un binding
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
