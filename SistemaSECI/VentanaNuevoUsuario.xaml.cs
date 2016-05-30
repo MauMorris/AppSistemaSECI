@@ -20,6 +20,7 @@ namespace SistemaSECI
         private String escL = "Licenciatura";
 
         DatosUsuario paciente = new DatosUsuario();
+ //       ManejadorTablas nuevoU;
 
         public VentanaNuevoUsuario()
         {
@@ -162,6 +163,7 @@ namespace SistemaSECI
 
         private void QueryParametros()
         {
+
         }
 
         private void PegarTexto(object sender, DataObjectPastingEventArgs e)

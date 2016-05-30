@@ -140,7 +140,7 @@
             Background="White" 
             Margin="19,9,0,0" 
             Height="42" 
-            Click="botonSalir_VN_click"
+            Click="BotonSalir_VN_click"
             Grid.Column="8"/>
         <Viewbox
                 HorizontalAlignment="Stretch"

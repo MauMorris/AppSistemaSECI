@@ -62,8 +62,7 @@ namespace SistemaSECI
                 {
                     this.statusText = value;
                     // notificacion debida al cambio de texto de status 
-                    if (this.PropertyChanged != null)
-                        this.PropertyChanged(this, new PropertyChangedEventArgs("StatusText"));
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("StatusText"));
                 }
             }
         }
@@ -78,8 +77,7 @@ namespace SistemaSECI
                 {
                     this.nivelText = value;
                     // notificacion debida al cambio de texto de status 
-                    if (this.PropertyChanged != null)
-                        this.PropertyChanged(this, new PropertyChangedEventArgs("NivelText"));
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("NivelText"));
                 }
             }
         }
@@ -94,8 +92,7 @@ namespace SistemaSECI
                 {
                     this.jointsText = value;
                     // notificacion debida al cambio de texto de status 
-                    if (this.PropertyChanged != null)
-                        this.PropertyChanged(this, new PropertyChangedEventArgs("JointsText"));
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("JointsText"));
                 }
             }
         }
@@ -110,8 +107,7 @@ namespace SistemaSECI
                 {
                     this.timeText = value;
                     // notificacion debida al cambio de texto de status 
-                    if (this.PropertyChanged != null)
-                        this.PropertyChanged(this, new PropertyChangedEventArgs("TimeText"));
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TimeText"));
                 }
             }
         }
@@ -165,6 +161,8 @@ namespace SistemaSECI
             set { this.timeMinuteX = value; }
         }
 
+//        private DateTime v;
+
         private int timeSecondsX = 0;                       // Segundos actualizados utilizados en la sesion
         public int TimeSecondsX
         {
@@ -203,8 +201,7 @@ namespace SistemaSECI
                 {
                     this.monedasText = value;
                     // notificacion debida al cambio de texto de status 
-                    if (this.PropertyChanged != null)
-                        this.PropertyChanged(this, new PropertyChangedEventArgs("MonedasText"));
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MonedasText"));
                 }
             }
         }
@@ -218,8 +215,8 @@ namespace SistemaSECI
             this.Ejercicios = ejercicios;
             this.Tiempo = tiempo;
 
-            inicializaComunicacionKinect();
-            inicializaFiguraHumana();
+            InicializaComunicacionKinect();
+            InicializaFiguraHumana();
 
             this.kinectSensor.IsAvailableChanged += this.Sensor_IsAvailableChanged;             // set IsAvailableChanged event notifier
             this.kinectSensor.Open();                                                           // open sensor
@@ -232,8 +229,8 @@ namespace SistemaSECI
             this.drawingGroup = new DrawingGroup();                                             // Crea drawing group para dibujar
             this.imageSource = new DrawingImage(this.drawingGroup);                             // Crea una image source para el image control
             this.DataContext = this;                                                            // usa window object como view model
-            this.InitializeComponent();                                                         // inicializa (controls) de la ventana
             this.Monedas = 0;
+            this.InitializeComponent();                                                         // inicializa (controls) de la ventana
         }
 
         /// INotifyPropertyChangedPropertyChanged evento para el control de ventana y cambiar los datos con un binding
@@ -274,26 +271,9 @@ namespace SistemaSECI
         /// <param name="e">event arguments</param>
         private void Reader_FrameArrived(object sender, BodyFrameArrivedEventArgs e)
         {
-
+            Cronometro();
             //string para saber la hora actual
-            BanderaTiempo++;
-            if(BanderaTiempo <= 1)
-            {
-                TimeMinute0 = System.DateTime.UtcNow.Minute;
-                TimeSeconds0 = System.DateTime.UtcNow.Second;
-            }
-            TimeMinuteX = System.DateTime.UtcNow.Minute - TimeMinute0;
-            TimeSecondsX = System.DateTime.UtcNow.Minute - TimeSeconds0;
-
-            TimeText = TimeMinuteX + ":" + TimeSecondsX;
-            if (TimeMinuteX >= 3)
-            {
-                var pruebaTerminada = MessageBox.Show("Prueba terminada", "Nivel" + nivel, MessageBoxButton.OK, MessageBoxImage.Hand);
-                this.Close();
-            }
-
             
-            //string para 
             bool dataReceived = false;
             using (BodyFrame bodyFrame = e.FrameReference.AcquireFrame())
             {
@@ -327,7 +307,9 @@ namespace SistemaSECI
                             IReadOnlyDictionary<JointType, JointOrientation> jointsOrientations = body.JointOrientations;
                             // representa la proyeccion de la imagen 3D en un espacio 2D con una profundidad de espacio de referencia.
                             Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
+
                             JointsText = "vertice y posicion\n";
+
                             foreach (JointType jointType in joints.Keys)
                             {
                                 //obtiene la posicion 3D de los vertices detectados por kinect
@@ -338,7 +320,8 @@ namespace SistemaSECI
                                 {
                                     position.Z = InferredZPositionClamp;
                                 }
-
+                                //metodo para la descripcion de ejercicios
+                                SubEjercicios();
 
                                 //programado para conocer la posicion de los vertices en el espacio y mostrarlos en pantalla con orden de hombro
                                 if (jointType == JointType.Head || jointType == JointType.Neck || jointType == JointType.SpineShoulder
@@ -355,7 +338,7 @@ namespace SistemaSECI
                                     pX = String.Format("{0:#,0.##}", joints[jointType].Position.X);
                                     pY = String.Format("{0:#,0.##}", joints[jointType].Position.Y);
                                     pZ = String.Format("{0:#,0.##}", joints[jointType].Position.Z);
-                                    
+
                                     JointsText += jointType + "\n" +
                                                     "X: " + pX + "\n" +
                                                     "Y: " + pY + "\n" +
@@ -376,6 +359,7 @@ namespace SistemaSECI
                                     }
                                 }
 
+                                //Conversion de coordenadas 3D a 2D
                                 DepthSpacePoint depthSpacePoint = this.coordinateMapper.MapCameraPointToDepthSpace(position);
                                 jointPoints[jointType] = new Point(depthSpacePoint.X, depthSpacePoint.Y);
                             }
@@ -453,6 +437,7 @@ namespace SistemaSECI
                     break;
             }
         }
+
         /// Dibuja los indicadores para mostrar que edges se acercan al limite de los datos de cuerpo
         /// <param name="body">body para dibujar la informacion de los limites</param>
         /// <param name="drawingContext">drawing context para dibujar</param>
@@ -470,7 +455,7 @@ namespace SistemaSECI
                 drawingContext.DrawRectangle( Brushes.Red, null, new Rect(this.displayWidth - ClipBoundsThickness, 0, ClipBoundsThickness, this.displayHeight));
         }
 
-        private void botonSalir_VN_click(object sender, RoutedEventArgs e)
+        private void BotonSalir_VN_click(object sender, RoutedEventArgs e)
         {
             if (this.bodyFrameReader != null)
             {
@@ -483,18 +468,18 @@ namespace SistemaSECI
             this.Close();
         }
 
-        private void inicializaComunicacionKinect()
+        private void InicializaComunicacionKinect()
         {
-            this.kinectSensor = KinectSensor.GetDefault();                                              // detecta un sensor maximo
-            this.coordinateMapper = this.kinectSensor.CoordinateMapper;                                 // detecta coordinate mapper
+            this.kinectSensor = KinectSensor.GetDefault();                                              // detecta un sensor
+            this.coordinateMapper = this.kinectSensor.CoordinateMapper;                                 // detecta su coordinate mapper
             FrameDescription frameDescription = this.kinectSensor.DepthFrameSource.FrameDescription;    // get depth (display) extents
 
-            this.displayWidth = frameDescription.Width;                                                 // get tamaño del marco
+            this.displayWidth = frameDescription.Width;                                                 // get tamaño de marco deteccion
             this.displayHeight = frameDescription.Height;
             this.bodyFrameReader = this.kinectSensor.BodyFrameSource.OpenReader();                      // open lector de marcos/cuerpo
         }
 
-        private void inicializaFiguraHumana()
+        private void InicializaFiguraHumana()
         {
             this.bones = new List<Tuple<JointType, JointType>>();            // definicion de huesos como lineas entre dos vertices
             // Torso
@@ -536,5 +521,30 @@ namespace SistemaSECI
             this.bodyColors.Add(new Pen(Brushes.Indigo, 6));
             this.bodyColors.Add(new Pen(Brushes.Violet, 6));
         }
+
+        private void Cronometro()
+        {
+            BanderaTiempo++;
+            if (BanderaTiempo <= 1)
+            {
+                TimeMinute0 = System.DateTime.UtcNow.Minute;
+                TimeSeconds0 = System.DateTime.UtcNow.Second;
+            }
+            TimeMinuteX = System.DateTime.UtcNow.Minute - TimeMinute0;
+            TimeSecondsX = System.DateTime.UtcNow.Minute - TimeSeconds0;
+
+            TimeText = TimeMinuteX + ":" + TimeSecondsX;
+            if (TimeMinuteX >= Tiempo)
+            {
+                var pruebaTerminada = MessageBox.Show("Prueba terminada", "Nivel" + nivel, MessageBoxButton.OK, MessageBoxImage.Hand);
+                this.Close();
+            }
+        }
+
+        private void SubEjercicios()
+        {
+        }
+
+ 
     }
 }
