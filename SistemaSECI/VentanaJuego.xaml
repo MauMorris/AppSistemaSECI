@@ -28,8 +28,7 @@
             HorizontalAlignment="Left" 
             Height="199"
             VerticalAlignment="Top"
-            Width="174" 
-            
+            Width="174"
             Margin="240,68,0,0" 
             OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Source="logoUNAM.jpg"/>
         <Button 
@@ -41,7 +40,8 @@
             Width="84" 
             Margin="44,63,0,0" 
             ClickMode="Press" 
-            Height="42" Click="botonRegresar_VInicioJuego_Click"/>
+            Height="42" 
+            Click="botonRegresar_VInicioJuego_Click"/>
         <Button 
             x:Name="botonEstadisticasUsuario_VInicioJuego"
             Content="ESTADISTICAS USUARIO" 
@@ -60,7 +60,8 @@
         	Background="White"
         	Width="178" 
         	Margin="226,418,0,0" 
-        	Height="67" Click="botonLogros_VInicioJuego_Click"/>
+        	Height="67" 
+            Click="botonLogros_VInicioJuego_Click"/>
         <Button 
         	x:Name="botonAjustesPrograma_VInicioJuego"
         	Content="AJUSTES DE PROGRAMA" 
@@ -69,7 +70,8 @@
         	Background="White"
         	Width="178" 
         	Margin="226,532,0,0" 
-        	Height="68" Click="botonAjustesPrograma_VInicioJuego_Click" />
+        	Height="68" 
+            Click="botonAjustesPrograma_VInicioJuego_Click" />
         <Button 
         	x:Name="botonJugar_VInicioJuego"
         	Content="JUGAR" 
@@ -79,7 +81,8 @@
         	Width="224" 
         	Margin="50,394,0,0" 
         	Height="91" 
-            Grid.Column="4" Click="botonJugar_VInicioJuego_Click"/>
+            Grid.Column="4" 
+            Click="botonJugar_VInicioJuego_Click"/>
         <Rectangle 
             Fill="#FFF4F4F5" 
             HorizontalAlignment="Left" 

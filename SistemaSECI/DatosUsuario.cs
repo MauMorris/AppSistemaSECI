@@ -8,8 +8,7 @@ namespace SistemaSECI
         private string nombre;
         public String Nombre
         {
-            get
-            { return nombre; }
+            get { return nombre; }
             set
             {
                 if (this.nombre != value)
@@ -24,8 +23,7 @@ namespace SistemaSECI
         private string apellidos;
         public String Apellidos
         {
-            get
-            { return apellidos; }
+            get { return apellidos; }
             set
             {
                 if (this.apellidos != value)
@@ -40,8 +38,7 @@ namespace SistemaSECI
         private int edad;
         public int Edad
         {
-            get
-            { return edad; }
+            get { return edad; }
             set
             {
                 if (this.edad != value)
@@ -56,9 +53,7 @@ namespace SistemaSECI
         private string escolaridad;
         public String Escolaridad
         {
-            get
-            { return escolaridad; }
-
+            get { return escolaridad; }
             set
             {
                 if (this.escolaridad != value)
@@ -73,8 +68,7 @@ namespace SistemaSECI
         private string sexo;
         public String Sexo
         {
-            get
-            { return sexo; }
+            get { return sexo; }
             set
             {
                 if (this.sexo != value)
@@ -89,8 +83,7 @@ namespace SistemaSECI
         private double estatura;
         public double Estatura
         {
-            get
-            { return estatura; }
+            get { return estatura; }
             set
             {
                 if (this.estatura != value)
@@ -105,8 +98,7 @@ namespace SistemaSECI
         private double peso;
         public double Peso
         {
-            get
-            { return peso; }
+            get { return peso; }
             set
             {
                 if (this.peso != value)
@@ -121,8 +113,7 @@ namespace SistemaSECI
         private double imc;
         public double Imc
         {
-            get
-            { return imc; }
+            get { return imc; }
             set
             {
                 if (this.imc != value)
@@ -137,8 +128,7 @@ namespace SistemaSECI
         private string nombreTutor;
         public String NombreTutor
         {
-            get
-            { return nombreTutor; }
+            get { return nombreTutor; }
             set
             {
                 if (this.nombreTutor != value)
@@ -153,8 +143,7 @@ namespace SistemaSECI
         private int edadTutor;
         public int EdadTutor
         {
-            get
-            { return edadTutor; }
+            get { return edadTutor; }
             set
             {
                 if (this.edadTutor != value)
@@ -169,8 +158,7 @@ namespace SistemaSECI
         private string telefonoTutor;
         public String TelefonoTutor
         {
-            get
-            { return telefonoTutor; }
+            get { return telefonoTutor; }
             set
             {
                 if (this.telefonoTutor != value)

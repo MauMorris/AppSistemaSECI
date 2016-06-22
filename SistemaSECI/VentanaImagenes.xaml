@@ -8,7 +8,7 @@
         Title="Sistema SECI"
         Height="727" 
         Width="1024"
-        Background="Black"
+        Background="GhostWhite"
         WindowState="Maximized"
         ResizeMode="CanMinimize"
         Icon="logoUNAM.jpg">
@@ -34,7 +34,7 @@
             VerticalAlignment="Top" 
             Width="104" 
             Source="c_1.jpg"
-            Stretch="Fill" 
+            Stretch="Fill"
             Grid.Column="1"
             />
         <Image 
@@ -69,7 +69,7 @@
         	VerticalAlignment="Top" 
         	Width="104" 
             Source="c_4.jpg"
-            Stretch="Fill" 
+            Stretch="Fill"
             Grid.Column="7" 
             Grid.ColumnSpan="2"
             />
@@ -254,6 +254,7 @@
         	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
             Source="c_20.jpg"
+            Width="104"
             Stretch="Fill" 
             Grid.Column="9"
             />

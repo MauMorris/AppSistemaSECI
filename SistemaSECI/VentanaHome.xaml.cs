@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -37,11 +38,11 @@ namespace SistemaSECI
         {
             VentanaUsuarios v = new VentanaUsuarios();
             v.Show();
-            this.Hide();
+            this.Close();
         }
         private void botonSalir_VHome_Click(object sender, RoutedEventArgs e)
         {
-            var salida = MessageBox.Show("¿Quieres cerrar la sesión?","Cerrar sesión", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
+            var salida = MessageBox.Show("¿Quieres cerrar tu sesión?","Cerrar sesión", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
             if(salida.Equals(MessageBoxResult.OK))
                 this.Close();
         }
@@ -49,18 +50,25 @@ namespace SistemaSECI
         private void botonActualizar_VHome_Click(object sender, RoutedEventArgs e)
         {
             VentanaModificarSimple v = new VentanaModificarSimple();
-            v.Show();
+            v.Owner = this;
+            v.ShowDialog();
         }
         private void botonModificar_VHome_Click(object sender, RoutedEventArgs e)
         {
             VentanaModificar v = new VentanaModificar();
-            v.Show();
+            v.Owner = this;
+            v.ShowDialog();
         }
 
         private void botonDocumentos_VHome_Click(object sender, RoutedEventArgs e)
         {
-            VentanaDocumentos v = new VentanaDocumentos();
-            v.Show();
+            OpenFileDialog v = new OpenFileDialog();
+            v.Multiselect = false;
+            v.Filter = "Todos los Archivos (*.*)|*.*| Presentaciones de Power Point (*.ppt, *.pptx)|*.ppt;*.pptx| PDF files (*.pdf)|*.pdf| Documentos de Word (*.doc, *.docx)|*.doc;*.docx| Archivos de Excel (*.xls, *.xlsx)|*.xls;*.xlsx";
+            v.Title = "Documentos del paciente";
+            v.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (v.ShowDialog().Equals(true))
+                System.Diagnostics.Process.Start(v.FileName);
         }
         private void botonBorrar_VHome_Click(object sender, RoutedEventArgs e)
         {

@@ -94,10 +94,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Alimentacion.cs" />
     <Compile Include="DatosUsuario.cs" />
+    <Compile Include="diasSemana.cs" />
+    <Compile Include="KinectBodyTest.cs" />
     <Compile Include="ManejadorTablas.cs" />
-    <Compile Include="PeticionDBUserExistente.cs" />
     <Compile Include="Seci.cs" />
+    <Compile Include="VentanaAjustesPrograma.xaml.cs">
+      <DependentUpon>VentanaAjustesPrograma.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaAudioBasics.xaml.cs">
       <DependentUpon>VentanaAudioBasics.xaml</DependentUpon>
     </Compile>
@@ -165,6 +170,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VentanaAjustesPrograma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VentanaAudioBasics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

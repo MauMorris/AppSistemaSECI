@@ -225,6 +225,8 @@
             Background="White" 
             Margin="672,429,0,0" 
             Height="55" 
-            Grid.Row="1" Grid.RowSpan="3" Click="botonAudio_VEjemplos_Click" />
+            Grid.Row="1" 
+            Grid.RowSpan="3" 
+            Click="botonAudio_VEjemplos_Click" />
     </Grid>
 </Window>

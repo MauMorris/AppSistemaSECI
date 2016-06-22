@@ -12,6 +12,7 @@ namespace SistemaSECI
     public partial class VentanaModificarSimple : Window
     {
         DatosUsuario paciente = new DatosUsuario();
+        ManejadorTablas nuevoU;
 
         public VentanaModificarSimple()
         {
@@ -58,7 +59,7 @@ namespace SistemaSECI
             catch (Exception e)
             {
                 String errorText = e.Message;
-                MessageBox.Show("Error de formato /n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error de formato \n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -79,7 +80,7 @@ namespace SistemaSECI
                 catch (Exception e)
                 {
                     String errorText = e.Message;
-                    MessageBox.Show("Error de formato /n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error de formato \n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
                     return true;
                 }
             }
@@ -87,6 +88,9 @@ namespace SistemaSECI
 
         private void QueryParametros()
         {
+            nuevoU = new ManejadorTablas();
+            nuevoU.InsertIMC(paciente.Estatura, paciente.Peso, paciente.Imc);
+            nuevoU.UpdateIMC(1, paciente.Estatura, paciente.Peso, paciente.Imc);
         }
 
         private void PegarTexto(object sender, DataObjectPastingEventArgs e)

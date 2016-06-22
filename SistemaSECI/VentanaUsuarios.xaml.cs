@@ -16,7 +16,6 @@ namespace SistemaSECI
 
         private void botonUNuevo_VUsuarios_Click(object sender, RoutedEventArgs e)
         {
-            ManejadorTablas nuevaBD = new ManejadorTablas(1, "Hola");
             VentanaNuevoUsuario v = new VentanaNuevoUsuario();
             v.Show();
             this.Close();

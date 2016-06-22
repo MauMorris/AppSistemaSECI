@@ -22,6 +22,7 @@
     		VerticalAlignment="Top" 
     		Width="120"
     		HorizontalContentAlignment="Center"
+            MaxLength="4"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosPuntoTextBox"
             TabIndex="0"/>
@@ -35,6 +36,7 @@
     		VerticalAlignment="Top" 
     		Width="120" 
     		HorizontalContentAlignment="Center"
+            MaxLength="5"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosPuntoTextBox"
 		    TabIndex="1"/>

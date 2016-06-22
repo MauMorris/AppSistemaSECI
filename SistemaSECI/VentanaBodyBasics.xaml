@@ -9,8 +9,8 @@
         Height="700" 
         Width="900"
         Icon="logoUNAM.jpg"
-        Loaded="MainWindow_Loaded"
-        Closing="MainWindow_Closing"
+        Loaded="BodyBasics_Loaded"
+        Closing="BodyBasics_Closing"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize">
@@ -65,7 +65,7 @@
         	Margin="10,13,0,0"
         	FontSize="12"
         	TextWrapping="Wrap" 
-        	Text="{Binding StatusText}"
+        	Text="{Binding Path=StatusText}"
             Width="86"
             Grid.Column="1" 
             Height="38"/>
@@ -80,7 +80,7 @@
             FontSize="24" 
             Grid.Column="2"
             Height="36"
-            Text="{Binding NivelText}"
+            Text="{Binding Path=NivelText}"
             Width="100"/>
         <TextBlock
             Grid.Row="0" 
@@ -110,7 +110,7 @@
             TextAlignment="Center"
         	Margin="10,14,0,0"
         	FontSize="22"
-            Text="{Binding MonedasText}"
+            Text="{Binding Path=MonedasText}"
         	TextWrapping="Wrap" 
         	VerticalAlignment="Top" 
             Grid.Column="5" 
@@ -122,9 +122,9 @@
         	HorizontalAlignment="Center" 
             TextAlignment="Center"
         	Margin="10,14,10,0"
-        	FontSize="12"
+        	FontSize="22"
         	TextWrapping="Wrap" 
-        	Text="{Binding TimeText}"
+        	Text="{Binding Path=TimeText, StringFormat=t }"
         	VerticalAlignment="Top" 
             Grid.Column="7" 
             Height="32" 
@@ -166,7 +166,17 @@
         	TextWrapping="Wrap" 
         	VerticalAlignment="Top" 
         	Height="574"
-            Text="{Binding JointsText}"
+            Text="{Binding Path=JointTextRight}"
         	Width="110"/>
+        <TextBlock 
+        	x:Name="textBlock_Copy"
+        	HorizontalAlignment="Left" 
+        	Grid.Row="2"
+        	FontSize="10"
+        	TextWrapping="Wrap" 
+        	VerticalAlignment="Top" 
+        	Height="574"
+        	Text="{Binding Path=JointTextLeft}"
+        	Width="89" Grid.Column="1"/>
     </Grid>
 </Window>

@@ -7,58 +7,47 @@
         mc:Ignorable="d"
         Title="SECI"
         ResizeMode="NoResize"
-        Height="400" 
-        Width="400" 
+        Height="300" 
+        Width="300"
+        Loaded="MainWindow_Loaded"
         WindowStartupLocation="CenterScreen" 
         Icon="logoUNAM.jpg">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="101*"/>
-            <ColumnDefinition Width="92*"/>
-            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="40*"/>
         </Grid.ColumnDefinitions>
         <Image 
             x:Name="logoPrograma_VInicio" 
             HorizontalAlignment="Left" 
             Height="99" 
-            Margin="23,47,0,0" 
+            Margin="23,26,0,0" 
             VerticalAlignment="Top" 
-            Width="91" 
+            Width="91"
             Grid.Column="1" 
             Source="logoUNAM.jpg" />
         <Label 
             x:Name="nombreProgramaLabel_VInicio" 
             Content="SECI" 
             HorizontalAlignment="Left" 
-            Margin="0,165,0,0"
+            Margin="79,153,0,0"
             HorizontalContentAlignment="Center"
             VerticalAlignment="Top" 
             Width="135" 
             Grid.ColumnSpan="2"
-            Height="26" 
-            Grid.Column="1"/>
+            Height="26"/>
         <ProgressBar 
             x:Name="pBar"
             Grid.Column="1" 
             HorizontalAlignment="Left" 
-            Height="10" 
-            Margin="23,207,0,0" 
+            Height="8" 
+            Margin="23,197,0,0" 
             VerticalAlignment="Top" 
             Width="91" 
             TabIndex="1"
             Minimum="1"
-            Maximum="100"/>
-        <Button 
-            x:Name="botonHome_VInicio" 
-            Content="Inicio" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Width="91" 
-            Background="White"
-            Grid.Column="1" 
-            Margin="23,251,0,0" 
-            Height="30" 
-            Click="botonHome_VInicio_Click" 
-            TabIndex="0"/>
+            Maximum="100"
+            Value="0"/>
     </Grid>
 </Window>

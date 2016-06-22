@@ -11,6 +11,7 @@
         Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
+    
     <Grid HorizontalAlignment="Left" Width="598">
         <Button 
             x:Name="regresarBoton_VLogros"

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 
 namespace SistemaSECI
 {
@@ -86,6 +81,7 @@ namespace SistemaSECI
         private readonly string T_A_MERIENDA = "MERIENDA";
         private readonly string T_A_CENA = "CENA";
         private readonly string T_A_RUBRICA = "RUBRICA";
+        private readonly string T_A_COMENTARIOS = "COMENTARIOS";
         private readonly string T_A_DU_ID = "DATOS_USUARIO_ID_USUARIO";
 
 
@@ -167,15 +163,16 @@ namespace SistemaSECI
         private readonly string T_C_Y = "POSICION_Y";
         private readonly string T_C_Z = "POSICION_Z";
 
-        public ManejadorTablas(int I, string S)
+        SQLiteConnection conexionSeci;
+        SQLiteCommand command;
+
+        public ManejadorTablas()
         {
             //crear la conexion a la base de datos
-            SQLiteConnection conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
-
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
             conexionSeci.Open();
-
-            SQLiteCommand command = conexionSeci.CreateCommand();
-            //Crear las tablas
+            command = conexionSeci.CreateCommand();
+            //Crear la tabla para los datos del usuario
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_DATOS_USUARIO + "(" + 
                                     T_DU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -193,7 +190,7 @@ namespace SistemaSECI
                                     T_DU_TELEFONO_TUTOR + " VARCHAR(50))";
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla para los parametros de sesion del SECI
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_PARAMETROS_SESION_SECI + "(" +
                                     T_PSS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -212,7 +209,7 @@ namespace SistemaSECI
                                     "FOREIGN KEY(" + T_PSS_RSS_ID + ")" + " REFERENCES " + TABLA_RESULTADOS_SESION_SECI + "(" + T_RSS_ID + "))";
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla de los resultados de la sesion del SECI
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_RESULTADOS_SESION_SECI + "(" +
                                     T_RSS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -227,7 +224,7 @@ namespace SistemaSECI
                                     "FOREIGN KEY(" + T_RSS_PIS_ID + ")" + " REFERENCES " + TABLA_PRUEBA_IMAGENES_SECI + "(" + T_PIS_ID + "))";
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla para los resultados de la prueba de eleccion de imagenes de calidad alta y baja
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_PRUEBA_IMAGENES_SECI + "(" +
                                     T_PIS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -235,7 +232,7 @@ namespace SistemaSECI
                                     T_PIS_CALIDAD_BAJA + " INTEGER)";
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla de resultados de la prueba completa del SECI
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_PRUEBA_COMPLETA_SECI + "(" +
                                     T_PCS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -251,23 +248,24 @@ namespace SistemaSECI
 
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla de alimentacion
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_ALIMENTACION + "(" +
                                     T_A_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                     T_A_NUMERO_SESION + " INTEGER, " +
-                                    T_A_DIA_SEMANA + " VARCHAR(50), " +
-                                    T_A_DESAYUNO + " VARCHAR(50), " +
-                                    T_A_ALMUERZO + " VARCHAR(50), " +
-                                    T_A_COMIDA + " VARCHAR(50), " +
-                                    T_A_MERIENDA + " VARCHAR(50), " +
-                                    T_A_CENA + " VARCHAR(50), " +
-                                    T_A_RUBRICA + " VARCHAR(50), " +
+                                    T_A_DIA_SEMANA + " VARCHAR(20), " +
+                                    T_A_DESAYUNO + " VARCHAR(80), " +
+                                    T_A_ALMUERZO + " VARCHAR(80), " +
+                                    T_A_COMIDA + " VARCHAR(80), " +
+                                    T_A_MERIENDA + " VARCHAR(80), " +
+                                    T_A_CENA + " VARCHAR(80), " +
+                                    T_A_RUBRICA + " INTEGER, " +
+                                    T_A_COMENTARIOS + " VARCHAR(100), " +
                                     T_A_DU_ID + " INTEGER, " +
                                     "FOREIGN KEY(" + T_A_DU_ID + ")" + " REFERENCES " + TABLA_DATOS_USUARIO + "(" + T_DU_ID + "))";
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla de logros de sesion del juego
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_LOGROS_SESION_JUEGO + "(" +
                                     T_LSJ_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -287,7 +285,7 @@ namespace SistemaSECI
 
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla de actualizacion del IMC
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_ACTUAL_IMC + "(" +
                                     T_AI_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -296,7 +294,7 @@ namespace SistemaSECI
                                     T_AI_IMC_ACTUAL + " DOUBLE)";
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla de los logros totales en las sesiones del JUEGO
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_LOGROS_TOTAL_JUEGO + "(" +
                                     T_LTJ_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -306,7 +304,7 @@ namespace SistemaSECI
                                     T_LTJ_TOTAL_NIVELES + " INTEGER)";
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla de los nieles del JUEGO
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_NIVELES_JUEGO + "(" +
                                     T_NJ_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -329,7 +327,7 @@ namespace SistemaSECI
 
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla para almacenar los movimientos de cada sub-nivel de JUEGO
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                     TABLA_MOVIMIENTOS_JUEGO + "(" +
                                     T_MJ_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -380,7 +378,7 @@ namespace SistemaSECI
                                                        T_C_ID + "))";
             //execute SQL query
             command.ExecuteNonQuery();
-            //Crear las tablas
+            //Crear la tabla de coordenadas de cada vertice de JUEGO
             command.CommandText = "CREATE TABLE IF NOT EXISTS " +
                                         TABLA_COORDENADAS + "(" +
                                         T_C_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -390,26 +388,132 @@ namespace SistemaSECI
                                         T_C_Z + " DOUBLE)";
             //execute SQL query
             command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
 
+        public void InsertDatosUsuario(string codigoUsuario, string nombre, string apellido, int edad, 
+                                        string escolaridad, string sexo, double estatura, double peso, double imc,
+                                        string tutor, int edadTutor, string telefonoTutor)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
             //Inserting data
-            command.CommandText = "INSERT INTO " + TABLA_DATOS_USUARIO + "( " + 
-                                    T_DU_ID + ", " + T_DU_NOMBRE + ", " + T_DU_APELLIDO + ", " + T_DU_CODIGO_USUARIO +
-                                    " ) VALUES (NULL, '" + S + "', '" + S + "', '" + S + "')";
+            command.CommandText = "INSERT INTO " + TABLA_DATOS_USUARIO + "( " + T_DU_ID + ", " + 
+                                    T_DU_CODIGO_USUARIO + ", " + T_DU_NOMBRE + ", " + T_DU_APELLIDO + ", " + T_DU_EDAD + ", " + 
+                                    T_DU_ESCOLARIDAD + ", " + T_DU_SEXO + ", " + T_DU_ESTATURA + ", " + T_DU_PESO + ", " + 
+                                    T_DU_IMC + ", " + T_DU_TUTOR + ", " + T_DU_EDAD_TUTOR + ", " + T_DU_TELEFONO_TUTOR +
+                                    " ) VALUES (NULL, '" + codigoUsuario + "', '" + nombre + "', '" + apellido + "', " +
+                                                edad + ", '" + escolaridad + "', '" + sexo + "', " + estatura + ", " +
+                                                peso + ", " + imc + ", '" + tutor + "', " + edadTutor + ", '" + telefonoTutor + "')";
             //execute SQL query
             command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
 
+        public void InsertParametrosSesion(int numeroSesion, string reforzadorTipo, string reforzadorClase,
+                                        string inmeInmediato, string inmeDemorado, int esfuerzoAlto, int esfuerzoBajo,
+                                        int programaReforzamientoAlto, int programaReforzamientoBajo, int idDatosUsuario, int idResultadoSesion)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
             //Inserting data
-            command.CommandText = "INSERT INTO " + TABLA_DATOS_USUARIO + "( " +
-                                    T_DU_ID + ", " + T_DU_NOMBRE + ", " + T_DU_APELLIDO + ", " + T_DU_CODIGO_USUARIO +
-                                    " ) VALUES (NULL, '" + S + "', '" + S + "', '" + S + "')";
+            command.CommandText = "INSERT INTO " + TABLA_PARAMETROS_SESION_SECI + "( " + T_PSS_ID + ", " +
+                                    T_PSS_NUMERO_SESION + ", " + T_PSS_REFORZADOR_TIPO + ", " + T_PSS_REFORZADOR_CLASE + ", " + T_PSS_I_INMEDIATO + ", " +
+                                    T_PSS_I_DEMORADO + ", " + T_PSS_ESFUERZO_ALTO + ", " + T_PSS_ESFUERZO_BAJO + ", " + T_PSS_P_REF_ALTO + ", " +
+                                    T_PSS_P_REF_BAJO + ", " + T_PSS_DU_ID + ", " + T_PSS_RSS_ID +
+                                    " ) VALUES (NULL, " + numeroSesion + ", '" + reforzadorTipo + "', '" + reforzadorClase + "', '" +
+                                                inmeInmediato + "', '" + inmeDemorado + "', " + esfuerzoAlto + ", " + esfuerzoBajo + ", '" +
+                                                programaReforzamientoAlto + "', '" + programaReforzamientoBajo + "', " + idDatosUsuario + ", " + idResultadoSesion + ")";
             //execute SQL query
             command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
 
+        public void InsertIMC(double estatura, double peso, double imc)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
             //table Update
-            command.CommandText = "UPDATE "+ TABLA_DATOS_USUARIO + 
-                                    " SET " + T_DU_NOMBRE + "='Feliz' WHERE " + T_DU_ID + " = 2";
+            command.CommandText = "INSERT INTO " + TABLA_ACTUAL_IMC + "( " + T_AI_ID + ", " +
+                                    T_AI_ESTATURA + ", " + T_AI_PESO + ", " + T_AI_IMC_ACTUAL +
+                                    " ) VALUES (NULL, " + estatura + ", " + peso + ", " + imc + ")";
+            //execute SQL query
             command.ExecuteNonQuery();
- 
+            conexionSeci.Close();
+        }
+
+        public void UpdateIMC(int id, double estatura, double peso, double imc)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+
+            //Inserting data
+            command.CommandText = "UPDATE " + TABLA_DATOS_USUARIO +
+                                    " SET " + T_DU_ESTATURA + " = " + estatura + ", " + T_DU_PESO + " = " + peso + 
+                                    ", " + T_DU_IMC + " = " + imc + " WHERE " + T_DU_ID + " = " + id;
+            //execute SQL query
+            command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
+
+        public void UpdateDatosUsuario(int id, string codigoUsuario, string nombre, string apellido, int edad,
+                                        string escolaridad, string sexo, double estatura, double peso, 
+                                        double imc, string tutor, int edadTutor, string telefonoTutor)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+                                    
+            //Inserting data
+            command.CommandText = "UPDATE " + TABLA_DATOS_USUARIO +
+                                    " SET " + T_DU_CODIGO_USUARIO + " = '" + codigoUsuario + "', " + T_DU_NOMBRE + " = '" + nombre + "', " +
+                                    T_DU_APELLIDO + " = '" + apellido + "', " + T_DU_EDAD + " = " + edad + ", " + 
+                                    T_DU_ESCOLARIDAD + " = '" + escolaridad + "', " + T_DU_SEXO + " = '" + sexo + "', " + 
+                                    T_DU_ESTATURA + " = " + estatura + ", " + T_DU_PESO + " = " + peso + ", " + 
+                                    T_DU_IMC + " = " + imc + ", " + T_DU_TUTOR + " ='" + tutor + "', " + 
+                                    T_DU_EDAD_TUTOR + " = " + edadTutor + ", " + T_DU_TELEFONO_TUTOR + " = '" + telefonoTutor + "' " + 
+                                    "WHERE " + T_DU_ID + " = " + id;
+            //execute SQL query
+            command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
+
+        public void ReadDatosUsuario()
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
+            conexionSeci.Open();
+//            command = conexionSeci.CreateCommand();
+            //Read from table
+//            command.CommandText = "SELECT * FROM " + TABLA_DATOS_USUARIO;
+            //Data Reader Object
+//            SQLiteDataReader sdr = command.ExecuteReader();
+            // Read() returns true if there is still a result line to read
+/*            while (sdr.Read())
+            {
+                string myreader = sdr.GetString(2);
+                MessageBox.Show(myreader);
+            }
+            sdr.Close();
+*/
+            conexionSeci.Close();
+        }
+
+        public void ReadParametrosSesion()
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
+            conexionSeci.Open();
+/*            command = conexionSeci.CreateCommand();
             //Read from table
             command.CommandText = "SELECT * FROM " + TABLA_DATOS_USUARIO;
             //Data Reader Object
@@ -417,17 +521,25 @@ namespace SistemaSECI
             // Read() returns true if there is still a result line to read
             while (sdr.Read())
             {
-                string myreader = sdr.GetString(2);                
+                string myreader = sdr.GetString(2);
                 MessageBox.Show(myreader);
             }
-
             sdr.Close();
- 
-            //Delete Record
-            command.CommandText = "DELETE FROM "+ TABLA_DATOS_USUARIO +
-                                    " WHERE " + T_DU_ID + "=1";
-            command.ExecuteNonQuery();
+*/
+            conexionSeci.Close();
+        }
 
+        public void BorraDatosUsuario(int id)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME + ".db");
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            command.CommandText = "DELETE FROM " + TABLA_DATOS_USUARIO +
+                                    " WHERE " + T_DU_ID + " = " + id;
+            //execute SQL query
+            command.ExecuteNonQuery();
             conexionSeci.Close();
         }
     }

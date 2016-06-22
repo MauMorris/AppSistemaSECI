@@ -19,6 +19,7 @@ namespace SistemaSECI
         String escL = "Licenciatura";
 
         DatosUsuario paciente = new DatosUsuario();
+        ManejadorTablas nuevoU;
 
         public VentanaModificar()
         {
@@ -118,7 +119,7 @@ namespace SistemaSECI
             catch (Exception e)
             {
                 String errorText = e.Message;
-                MessageBox.Show("Error de formato /n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error de formato \n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -142,7 +143,7 @@ namespace SistemaSECI
                 catch (Exception e)
                 {
                     String errorText = e.Message;
-                    MessageBox.Show("Error de formato /n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error de formato \n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
                     return true;
                 }
             }
@@ -150,6 +151,13 @@ namespace SistemaSECI
 
         private void QueryParametros()
         {
+            nuevoU = new ManejadorTablas();
+            string codigoUsuario = paciente.Nombre.Substring(1, 1) + paciente.Apellidos.Substring(1, 2) +
+                                    paciente.Edad.ToString().Substring(0, 1);
+
+            nuevoU.UpdateDatosUsuario(2, codigoUsuario, paciente.Nombre, paciente.Apellidos, paciente.Edad, paciente.Escolaridad,
+                                        paciente.Sexo, paciente.Estatura, paciente.Peso, paciente.Imc,
+                                        paciente.NombreTutor, paciente.EdadTutor, paciente.TelefonoTutor);
         }
 
         private void PegarTexto(object sender, DataObjectPastingEventArgs e)

@@ -44,7 +44,8 @@
             Width="120" 
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
-            Grid.Column="2" 
+            Grid.Column="2"
+            MaxLength="40"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionTextoTextBox"/>
         <TextBox 
@@ -57,6 +58,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"
+            MaxLength="40"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionTextoTextBox"/>
         <TextBox 
@@ -71,6 +73,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"
+            MaxLength="2"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosTextBox"/>
         <ComboBox 
@@ -106,6 +109,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"
+            MaxLength="4"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
         <TextBox 
@@ -120,6 +124,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"
+            MaxLength="5"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
         <TextBox 
@@ -134,6 +139,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"
+            MaxLength="40"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionTextoTextBox"/>
         <TextBox 
@@ -148,6 +154,7 @@
             HorizontalContentAlignment="Center"
             Grid.ColumnSpan="2" 
             Grid.Column="2"
+            MaxLength="3"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumerosTextBox"/>
         <TextBox 
@@ -156,12 +163,13 @@
         	Height="23" 
         	Margin="12,536,0,0" 
         	TextWrapping="Wrap" 
-        	Text="55-1020-3040" 
+        	Text="044-55-1020-3040" 
         	VerticalAlignment="Top" 
         	Width="120"
         	HorizontalContentAlignment="Center"
         	Grid.ColumnSpan="2" 
         	Grid.Column="2"
+            MaxLength="16"
             DataObject.Pasting="PegarTexto"
             PreviewTextInput="ValidacionNumeroTelefonicoTextBox"/>
         <Button 

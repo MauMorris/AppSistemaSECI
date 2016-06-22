@@ -26,15 +26,20 @@ namespace SistemaSECI
         private void botonEstadisticasUsuario_VInicioJuego_Click(object sender, RoutedEventArgs e)
         {
             VentanaEstadisticas v = new VentanaEstadisticas();
-            v.Show();
+            v.Owner = this;
+            v.ShowDialog();
         }
         private void botonLogros_VInicioJuego_Click(object sender, RoutedEventArgs e)
         {
             VentanaLogros v = new VentanaLogros();
-            v.Show();
+            v.Owner = this;
+            v.ShowDialog();
         }
         private void botonAjustesPrograma_VInicioJuego_Click(object sender, RoutedEventArgs e)
         {
+            VentanaAjustesPrograma v = new VentanaAjustesPrograma();
+            v.Owner = this;
+            v.ShowDialog();
         }
         private void botonJugar_VInicioJuego_Click(object sender, RoutedEventArgs e)
         {

@@ -1,163 +1,147 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace SistemaSECI
 {
-    class Seci
+    class Seci: INotifyPropertyChanged
     {
-        private String _ReforzadorTipo;
-        private String _ReforzadorClase;
-        private String _InmediatezInme;
-        private String _InmediatezDemo;
-        private String _EsfuerzoAlto;
-        private String _EsfuerzoBajo;
-        private String _ReforzamientoAlto;
-        private String _ReforzamientoBajo;
+        /// INotifyPropertyChangedPropertyChanged evento para el control de ventana y cambiar los datos con un binding
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        //variable statica para la instancia, se usa funcion lambda patron Singleton
-        private static Seci Instance = null;
-
-        //evitar instanciacion directa
-        private Seci()
+        private int sesion;
+        public int Sesion
         {
-        }
-        public static Seci GetInstance(string A, string B, string C, string D, string E, string F, string G, string H)
-        {
-            if (Instance == null)
-            {
-                Instance = new Seci();
-                Instance.inicializaDatos(A, B, C, D, E, F, G, H);
-            }
-            return Instance;
-        }
-
-        private void inicializaDatos(string A, string B, string C, string D, string E, string F, string G, string H)
-        {
-            try
-            {
-                ReforzadorTipo = A;
-                ReforzadorClase = B;
-
-                InmediatezInme = C;
-                InmediatezDemo = D;
-
-                EsfuerzoAlto = E;
-                EsfuerzoBajo = F;
-
-                ReforzamientoAlto = G;
-                ReforzamientoBajo = H;
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public string ReforzadorTipo
-        {
-            get
-            {
-                return _ReforzadorTipo;
-            }
-
+            get { return sesion; }
             set
             {
-                _ReforzadorTipo = value;
+                if (this.sesion != value)
+                {
+                    this.sesion = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SesionText"));
+                }
             }
         }
 
-        public string ReforzadorClase
+        private string reforzadorTipo;
+        public String ReforzadorTipo
         {
-            get
-            {
-                return _ReforzadorClase;
-            }
-
+            get { return reforzadorTipo; }
             set
             {
-                _ReforzadorClase = value;
+                if (this.reforzadorTipo != value)
+                {
+                    this.reforzadorTipo = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ReforzadorTipoText"));
+                }
             }
         }
 
-        public string InmediatezInme
+        private string reforzadorClase;
+        public String ReforzadorClase
         {
-            get
-            {
-                return _InmediatezInme;
-            }
-
+            get { return reforzadorClase; }
             set
             {
-                _InmediatezInme = value;
+                if (this.reforzadorClase != value)
+                {
+                    this.reforzadorClase = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ReforzadorClaseText"));
+                }
             }
         }
 
-        public string InmediatezDemo
+        private string inmediatezI;
+        public String InmediatezI
         {
-            get
-            {
-                return _InmediatezDemo;
-            }
-
+            get { return inmediatezI; }
             set
             {
-                _InmediatezDemo = value;
+                if (this.inmediatezI != value)
+                {
+                    this.inmediatezI = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InmediatezInmediatoText"));
+                }
             }
         }
 
-        public string EsfuerzoAlto
+        private string inmediatezD;
+        public String InmediatezD
         {
-            get
-            {
-                return _EsfuerzoAlto;
-            }
-
+            get { return inmediatezD; }
             set
             {
-                _EsfuerzoAlto = value;
+                if (this.inmediatezD != value)
+                {
+                    this.inmediatezD = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("InmediatezDemoradoText"));
+                }
             }
         }
 
-        public string EsfuerzoBajo
+        private int esfuerzoAlto;
+        public int EsfuerzoAlto
         {
-            get
-            {
-                return _EsfuerzoBajo;
-            }
-
+            get { return esfuerzoAlto; }
             set
             {
-                _EsfuerzoBajo = value;
+                if (this.esfuerzoAlto != value)
+                {
+                    this.esfuerzoAlto = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EsfuerzoAltoText"));
+                }
             }
         }
 
-        public string ReforzamientoAlto
+        private int esfuerzoBajo;
+        public int EsfuerzoBajo
         {
-            get
-            {
-                return _ReforzamientoAlto;
-            }
-
+            get { return esfuerzoBajo; }
             set
             {
-                _ReforzamientoAlto = value;
+                if (this.esfuerzoBajo != value)
+                {
+                    this.esfuerzoBajo = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EsfuerzoBajoText"));
+                }
             }
         }
 
-        public string ReforzamientoBajo
+        private int reforzamientoAlto;
+        public int ReforzamientoAlto
         {
-            get
-            {
-                return _ReforzamientoBajo;
-            }
-
+            get { return reforzamientoAlto; }
             set
             {
-                _ReforzamientoBajo = value;
+                if (this.reforzamientoAlto != value)
+                {
+                    this.reforzamientoAlto = value;
+                    // notificacion debida al cambio de texto de status
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ReforzamientoAltoText"));
+                }
             }
         }
+
+        private int reforzamientoBajo;
+        public int ReforzamientoBajo
+        {
+            get { return reforzamientoBajo; }
+            set
+            {
+                if (this.reforzamientoBajo != value)
+                {
+                    this.reforzamientoBajo = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ReforzamientoBajoText"));
+                }
+            }
+        }
+
     }
 }

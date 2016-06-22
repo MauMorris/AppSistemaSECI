@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-
+﻿using System.Windows;
 
 namespace SistemaSECI
 {
@@ -22,14 +7,17 @@ namespace SistemaSECI
     /// </summary>
     public partial class VentanaSeciPrueba : Window
     {
+        ManejadorTablas nuevoU;
+
         public VentanaSeciPrueba()
         {
             InitializeComponent();
+            QueryParametros();
         }
 
         private void regresarBoton_VLogros_Click(object sender, RoutedEventArgs e)
         {
-            VentanaHome v = new VentanaHome();
+            VentanaSeci v = new VentanaSeci();
             v.Show();
             this.Close();
         }
@@ -40,9 +28,12 @@ namespace SistemaSECI
             v.Show();
             this.Close();
         }
-        private void muestraDatosSeci()
+
+        private void QueryParametros()
         {
-//            reforzadorTipoLabel_VSeci.SetValue 
+            nuevoU = new ManejadorTablas();
+            nuevoU.ReadParametrosSesion();
         }
+
     }
 }

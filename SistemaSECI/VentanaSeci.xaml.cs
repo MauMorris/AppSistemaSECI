@@ -1,17 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SistemaSECI
 {
@@ -27,6 +20,9 @@ namespace SistemaSECI
         int[] pAltoReforzamiento = {5, 10};
         int[] pBajoReforzamiento = {20, 60};
 
+        Seci paciente = new Seci();
+        ManejadorTablas nuevoU;
+
         public VentanaSeci()
         {
             InitializeComponent();
@@ -35,24 +31,17 @@ namespace SistemaSECI
 
         private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
-            VentanaSeciPrueba v = new VentanaSeciPrueba();
-            v.Show();
-            this.Close();
+            PasoParametros();
+            if (EverythingOK())
+            {
+                QueryParametros();
+                VentanaSeciPrueba v = new VentanaSeciPrueba();
+                v.Show();
+                this.Close();
+            }
         }
 
-        private void IniReforzadorTipoCB()
-        {
-            reforzadorTipoCB_VSeci.Items.Add(tipoReforzador);
-            reforzadorTipoCB_VSeci.Items.Add(tipoReforzadorAdd);
-        }
-
-        private void IniReforzadorClaseCB()
-        {
-            for(int i = 0; i < claseReforzador.Length; i++)
-                reforzadorClaseCB_VSeci.Items.Add(claseReforzador[i]);
-        }
-
-        private void IniInmediatezInmeCB()
+        private void IniInmediatezI()
         {
             inmediatezInmeCB_VSeci.Items.Add("1 minuto");
             string apoyo = "";
@@ -63,7 +52,7 @@ namespace SistemaSECI
             }
         }
 
-        private void IniInmediatezDemoCB()
+        private void IniInmediatezD()
         {
             string apoyo = "";
             for (int i = 10; i < 60; i+=10)
@@ -81,47 +70,33 @@ namespace SistemaSECI
             inmediatezDemoCB_VSeci.Items.Add("Mañana");
         }
 
-        private void IniEsfuerzoAltoCB()
-        {
-            for (int i = 2; i < 10; i++)
-                esfuerzoAltoCB_VSeci.Items.Add(i);
-        }
-
-        private void IniEsfuerzoBajoCB()
-        {
-            esfuerzoBajoCB_VSeci.Items.Add(1);
-        }
-
-        private void IniReforzamientoAltoCB()
-        {
-            for(int i = 0; i < pAltoReforzamiento.Length; i++)
-                reforzamientoAltoCB_VSeci.Items.Add(pAltoReforzamiento[i]);
-        }
-
-        private void IniReforzamientoBajoCB()
-        {
-            for(int i = 0; i < pBajoReforzamiento.Length; i++)
-                reforzamientoBajoCB_VSeci.Items.Add(pBajoReforzamiento[i]);
-        }
-
         private void inicializaComboBoxes()
         {
-            IniReforzadorTipoCB();
-            IniReforzadorClaseCB();
+            reforzadorTipoCB_VSeci.Items.Add(tipoReforzador);
+            reforzadorTipoCB_VSeci.Items.Add(tipoReforzadorAdd);
 
-            IniInmediatezInmeCB();
-            IniInmediatezDemoCB();
+            foreach (String reforzador in claseReforzador)
+                reforzadorClaseCB_VSeci.Items.Add(reforzador);
 
-            IniEsfuerzoAltoCB();
-            IniEsfuerzoBajoCB();
+            IniInmediatezI();
+            IniInmediatezD();
 
-            IniReforzamientoAltoCB();
-            IniReforzamientoBajoCB();
+            for (int i = 2; i < 10; i++)
+                esfuerzoAltoCB_VSeci.Items.Add(i);
+
+            esfuerzoBajoCB_VSeci.Items.Add(1);
+
+            foreach (int altoReforzamiento in pAltoReforzamiento)
+                reforzamientoAltoCB_VSeci.Items.Add(altoReforzamiento);
+
+            foreach (int bajoReforzamiento in pBajoReforzamiento)
+                reforzamientoBajoCB_VSeci.Items.Add(bajoReforzamiento);
         }
 
         private void esfuerzoAltoCB_VSeci_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             esfuerzoBajoCB_VSeci.Items.Clear();
+
             if (int.Parse(esfuerzoAltoCB_VSeci.SelectedItem.ToString()) > 4)
                 for (int i = 1; i < int.Parse(esfuerzoAltoCB_VSeci.SelectedItem.ToString()) - 2; i++)
                     esfuerzoBajoCB_VSeci.Items.Add(i);
@@ -131,45 +106,93 @@ namespace SistemaSECI
 
         private void reforzadorClaseCB_VSeci_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            string colores = String.Empty;
+            if (reforzadorClaseCB_VSeci.SelectedItem.ToString().Equals("niño"))
+                colores = "green";
+            else
+                colores = "blue";
         }
 
         private void reforzadorTipoCB_VSeci_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (reforzadorTipoCB_VSeci.SelectedItem.ToString() == tipoReforzadorAdd)
+            if (reforzadorTipoCB_VSeci.SelectedItem.ToString().Equals(tipoReforzadorAdd))
             {
-                agregarNuevoReforzador();
+                var seleccion = MessageBox.Show("Seleccione las imagenes desde un folder especifico", "Agregar nuevo reforzador", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (seleccion.Equals(MessageBoxResult.Yes))
+                {
+                    OpenFileDialog v = new OpenFileDialog();
+                    v.Multiselect = true;
+                    v.Filter = "JPG files (*.jpg)|*.jpg| TIFF files (*.tiff)|*.tiff| PNG files(*.png)|*.png";
+                    v.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                    if (v.ShowDialog().Equals(true))
+                    {
+                        reforzadorTipoCB_VSeci.Items.Add("NuevoComidas");
+                    }
+                }
             }
         }
 
-        private void agregarNuevoReforzador()
+        private void PasoParametros()
         {
-            MessageBox.Show("Seleccione las imagenes desde un folder especifico","Agregar nuevo reforzador", MessageBoxButton.YesNo, MessageBoxImage.Information);
-//            if(MessageBoxResult.Yes)
-            OpenFileDialog v = new OpenFileDialog();
-            v.Multiselect = true;
-            v.Filter = "JPG files (*.jpg)|*.jpg| TIFF files (*.tiff)|*.tiff| PNG files(*.png)|*.png";
-            v.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            if (v.ShowDialog() == true)
-                reforzadorTipoCB_VSeci.Items.Add("NuevoComidas");                           
+            int apoyo = 0;
+
+            try
+            {
+                paciente.ReforzadorTipo = reforzadorTipoCB_VSeci.SelectedItem.ToString();
+                paciente.ReforzadorClase = reforzadorClaseCB_VSeci.SelectedItem.ToString();
+
+                paciente.InmediatezI = inmediatezInmeCB_VSeci.SelectedItem.ToString();
+                paciente.InmediatezD = inmediatezDemoCB_VSeci.SelectedItem.ToString();
+
+                if (Int32.TryParse(esfuerzoBajoCB_VSeci.SelectedItem.ToString(), out apoyo))
+                    paciente.EsfuerzoBajo = apoyo;
+                else
+                    paciente.EsfuerzoBajo = 0;
+
+                if (Int32.TryParse(esfuerzoAltoCB_VSeci.SelectedItem.ToString(), out apoyo))
+                    paciente.EsfuerzoAlto = apoyo;
+                else
+                    paciente.EsfuerzoAlto = 0;
+
+                if (Int32.TryParse(reforzamientoAltoCB_VSeci.SelectedItem.ToString(), out apoyo))
+                    paciente.ReforzamientoAlto = apoyo;
+                else
+                    paciente.ReforzamientoAlto = 0;
+
+                if (Int32.TryParse(reforzamientoBajoCB_VSeci.SelectedItem.ToString(), out apoyo))
+                    paciente.ReforzamientoBajo = apoyo;
+                else
+                    paciente.ReforzamientoBajo = 0;
+            }
+            catch (Exception e)
+            {
+                String errorText = e.Message;
+                MessageBox.Show("Error de formato \n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void agregarSeci()
+        private bool EverythingOK()
         {
-            String A = reforzadorTipoCB_VSeci.SelectedItem.ToString();
-            String B = reforzadorClaseCB_VSeci.SelectedItem.ToString();
+            if (paciente.ReforzadorTipo == String.Empty | paciente.ReforzadorClase == String.Empty |
+                paciente.InmediatezI == String.Empty | paciente.InmediatezD == String.Empty |
+                paciente.EsfuerzoAlto == 0 | paciente.EsfuerzoBajo == 0 |
+                paciente.ReforzamientoAlto == 0 | paciente.ReforzamientoBajo == 0)
+            {
+                MessageBox.Show("Necesitas llenar uno o mas parámetros", "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else
+                return true;
+        }
 
-            String C = inmediatezInmeCB_VSeci.SelectedItem.ToString();
-            String D = inmediatezDemoCB_VSeci.SelectedItem.ToString();
+        private void QueryParametros()
+        {
+            nuevoU = new ManejadorTablas();
 
-            String E = esfuerzoAltoCB_VSeci.SelectedItem.ToString();
-            String F = esfuerzoBajoCB_VSeci.SelectedItem.ToString();
-
-            String G = reforzamientoAltoCB_VSeci.SelectedItem.ToString();
-            String H = reforzamientoBajoCB_VSeci.SelectedItem.ToString();
-
-//            Seci nuevo = Instance.GetInstance(A, B, C, D, E, F, G, H);
-
-        }        
+            nuevoU.InsertParametrosSesion(1, paciente.ReforzadorTipo, paciente.ReforzadorClase, paciente.InmediatezI, 
+                                        paciente.InmediatezD, paciente.EsfuerzoAlto, paciente.EsfuerzoBajo, 
+                                        paciente.ReforzamientoAlto, paciente.ReforzamientoBajo, 1, 1);
+        }
     }
 }
 

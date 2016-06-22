@@ -8,6 +8,7 @@
         Title="SECI" 
         Height="768"
         Width="1024"
+        
         WindowState="Maximized"
         Icon="logoUNAM.jpg"
         ResizeMode="CanMinimize"

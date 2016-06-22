@@ -49,6 +49,5 @@ namespace SistemaSECI
             PosicionY = pY;
             PosicionZ = pZ;
         }
-
     }
 }
