@@ -57,8 +57,7 @@
             Width="89" 
             Margin="1,13,0,41" />
         <TextBlock
-            Grid.Row="0" 
-        	x:Name="textRunnable"
+        	x:Name="textRunnable_VN"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
             TextAlignment="Center"
@@ -67,10 +66,12 @@
         	TextWrapping="Wrap" 
         	Text="{Binding Path=StatusText}"
             Width="86"
+            Grid.Row="0" 
             Grid.Column="1" 
             Height="38"/>
         <TextBlock
-            Grid.Row="0" 
+            x:Name="Nivel_textBlock"
+            Grid.Row="0"
             Margin="10,0,10,36" 
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
@@ -84,13 +85,13 @@
             Width="100"/>
         <TextBlock
             Grid.Row="0" 
-            x:Name="textSesionNivel"
+            x:Name="SesionNivel_textBlock"
             HorizontalAlignment="Center"
             TextAlignment="Center"
             Margin="8,13,7,0"
             FontSize="22"
-            TextWrapping="Wrap" 
-            Text="0"
+            TextWrapping="Wrap"
+            Text="{Binding Path=SesionNivel}"
             VerticalAlignment="Top" 
             Grid.Column="3"
             Height="37" 
@@ -104,8 +105,7 @@
             Grid.Column="4" 
             Width="50" />
         <TextBlock
-            Grid.Row="0" 
-        	x:Name="textCoin" 
+        	x:Name="textCoin_textBlock"
         	HorizontalAlignment="Left"
             TextAlignment="Center"
         	Margin="10,14,0,0"
@@ -114,10 +114,10 @@
         	TextWrapping="Wrap" 
         	VerticalAlignment="Top" 
             Grid.Column="5" 
+            Grid.Row="0" 
             Height="32" 
             Width="145"></TextBlock>
         <TextBlock
-            Grid.Row="0" 
         	x:Name="textTime" 
         	HorizontalAlignment="Center" 
             TextAlignment="Center"
@@ -126,11 +126,11 @@
         	TextWrapping="Wrap" 
         	Text="{Binding Path=TimeText, StringFormat=t }"
         	VerticalAlignment="Top" 
+            Grid.Row="0" 
             Grid.Column="7" 
             Height="32" 
             Width="60"/>
         <Button
-            Grid.Row="0" 
             x:Name="botonSalir_VN"
             Content="REGRESAR"
             TextBlock.FontSize="16"
@@ -141,6 +141,7 @@
             Margin="19,9,0,0" 
             Height="42" 
             Click="BotonSalir_VN_click"
+            Grid.Row="0" 
             Grid.Column="8"/>
         <Viewbox
                 HorizontalAlignment="Stretch"
@@ -158,7 +159,7 @@
                 Stretch="UniformToFill" />
         </Viewbox>
         <TextBlock 
-        	x:Name="textBlock" 
+        	x:Name="dataRight_textBlock" 
         	Grid.Column="8"
         	HorizontalAlignment="Left" 
         	Grid.Row="2"
@@ -169,7 +170,7 @@
             Text="{Binding Path=JointTextRight}"
         	Width="110"/>
         <TextBlock 
-        	x:Name="textBlock_Copy"
+        	x:Name="dataLeft_textBlock"
         	HorizontalAlignment="Left" 
         	Grid.Row="2"
         	FontSize="10"

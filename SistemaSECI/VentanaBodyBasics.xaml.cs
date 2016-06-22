@@ -59,6 +59,21 @@ namespace SistemaSECI
             }
         }
 
+        private int sesionNivel = 0;           /// Estatus actual del nivel jugado
+        public int SesionNivel                            /// Gets / Sets del nivel actual de juego en pantalla
+        {
+            get { return this.sesionNivel; }
+            set
+            {
+                if (this.sesionNivel != value)
+                {
+                    this.sesionNivel = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SesionNivel"));
+                }
+            }
+        }
+
         private string monedasText = String.Empty;           /// Estatus actual del texto a mostrar en la pantalla
         public string MonedasText                            /// Gets / Sets el estado actual en un texto en pantalla
         {
@@ -223,6 +238,7 @@ namespace SistemaSECI
         
             Cronometro.RunWorkerAsync(Tiempo);
             Ejercicios--;
+            SesionNivel++;
             this.InitializeComponent();                                                         // inicializa (controls) de la ventana
         }
 
@@ -263,7 +279,7 @@ namespace SistemaSECI
         {
             int max = (int) e.Argument;
 
-            for (int i = 0; i <= max; i++)
+            for (int i = 0; i < max+1; i++)
             {
                 Time1 = DateTime.Now; //Segundo evento
 
@@ -277,18 +293,18 @@ namespace SistemaSECI
 
         void cronometro_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            this.TimeText = t1.TotalMinutes.ToString();
+            TimeText = t1.TotalSeconds.ToString();
         }
 
         void cronometro_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            var pruebaTerminada = MessageBox.Show("Ejercicio terminado", "Nivel " + nivel, MessageBoxButton.OK, MessageBoxImage.Hand);
-            if (pruebaTerminada.Equals(MessageBoxButton.OK))
+            var pruebaTerminada = MessageBox.Show("Ejercicio terminado", "Nivel " + nivel, MessageBoxButton.OKCancel, MessageBoxImage.Hand);
+            if (pruebaTerminada.Equals(MessageBoxResult.OK))
             {
                 if (Ejercicios != 0)
                 {
                     Ejercicios--;
-
+                    SesionNivel++;
                     Time0 = DateTime.Now;
                     Time1 = DateTime.Now;
 
