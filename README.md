@@ -19,7 +19,7 @@ Esta aplicación esta basada en la investigacion de control conductual e impulsi
 del area de posgrado de la facultad de psicologia de la UNAM, 
 asi como el modulo de captura de datos de alimentacion de niños con obesidad. 
 El diseño así como los esquemáticos y soluciones de bugs son contribuciones propias.
-* Mauricio Godinez @VibrasDeMorris contributors
+* Mauricio Godinez [@VibrasDeMorris](https://twitter.com/vibrasdemorris) [contributors](https://github.com/MauMorris)
 
 ## License
 This repository it's under Apache License. Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
