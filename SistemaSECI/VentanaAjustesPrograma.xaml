@@ -8,6 +8,7 @@
         Title="Ajustes de Programa" 
         Height="620" 
         Width="600"
+        Background="#F5F5F5"
         Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -31,7 +32,7 @@
             Margin="0,35,0,0" 
             OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" 
             Grid.ColumnSpan="2" 
-            Source="logoUNAM.jpg" 
+            Source="Escudo-UNAM-1024x1151.png"
             Grid.Column="2"/>
         <Button 
             x:Name="botonMusica_VAjustesPrograma" 
@@ -41,7 +42,8 @@
             Width="148" 
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            Background="White"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
             Margin="0,226,0,0" 
             Height="33" 
             Click="botonMusica_VAjustesPrograma_Click"/>
@@ -53,7 +55,8 @@
             Width="148" 
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            Background="White"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
             Margin="0,273,0,0" 
             Height="32" 
             Click="botonEfectos_VAjustesPrograma_Click"/>
@@ -65,7 +68,8 @@
             Width="148" 
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            Background="White"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
             Margin="0,319,0,0" 
             Height="34" 
             Click="botonAyuda_VAjustesPrograma_Click"/>
@@ -77,7 +81,8 @@
             Width="148" 
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            Background="White"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
             Margin="0,372,0,0" 
             Height="33" 
             Click="botonLicencia_VAjustesPrograma_Click"/>
@@ -89,7 +94,8 @@
             Width="148" 
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            Background="White"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
             Margin="0,420,0,0" 
             Height="33" 
             Click="botonPrivacidad_VAjustesPrograma_Click"/>
@@ -101,7 +107,8 @@
             Width="148" 
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
-            Background="White"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
             Margin="0,468,0,0" 
             Height="33" 
             Click="botonCreditos_VAjustesPrograma_Click"/>
@@ -110,10 +117,11 @@
             Content="SALIR" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Width="173" 
+            Width="176" 
             Grid.ColumnSpan="4" 
-            Background="White"
-            Margin="215,516,0,0"
+        	Background="#2196F3"
+            TextElement.Foreground="White"
+            Margin="212,516,0,0"
             Height="42"
             Click="botonSalir_VAjustesPrograma_Click"/>
     </Grid>

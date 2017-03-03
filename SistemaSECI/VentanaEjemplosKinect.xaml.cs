@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SistemaSECI
 {
     /// Interaction logic for VentanaEjemplosKinect.xaml
     public partial class VentanaEjemplosKinect : Window
     {
-        public VentanaEjemplosKinect()
+        int LlavesUsuarioImc = 0;
+        public VentanaEjemplosKinect(int idLlaves)
         {
             InitializeComponent();
+            LlavesUsuarioImc = idLlaves;
         }
 
         private void botonN1_VNiveles_Click(object sender, RoutedEventArgs e)
@@ -77,7 +77,7 @@ namespace SistemaSECI
 
         private void botonRegresar_VNiveles_Click(object sender, RoutedEventArgs e)
         {
-            VentanaJuego v = new VentanaJuego();
+            VentanaJuego v = new VentanaJuego(LlavesUsuarioImc);
             v.Show();
             this.Close();
         }

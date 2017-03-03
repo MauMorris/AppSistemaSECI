@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace SistemaSECI
 {
@@ -19,16 +7,17 @@ namespace SistemaSECI
     /// </summary>
     public partial class VentanaJuego : Window
     {
-        public VentanaJuego()
+        int idUsuario = 0;
+        int idLlaves = 0;
+        TablasDBHelper DBUsuario;
+
+        public VentanaJuego(int id)
         {
             InitializeComponent();
+            DBUsuario = new TablasDBHelper();
+            idLlaves = id;
         }
-        private void botonEstadisticasUsuario_VInicioJuego_Click(object sender, RoutedEventArgs e)
-        {
-            VentanaEstadisticas v = new VentanaEstadisticas();
-            v.Owner = this;
-            v.ShowDialog();
-        }
+
         private void botonLogros_VInicioJuego_Click(object sender, RoutedEventArgs e)
         {
             VentanaLogros v = new VentanaLogros();
@@ -43,13 +32,13 @@ namespace SistemaSECI
         }
         private void botonJugar_VInicioJuego_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEjemplosKinect v = new VentanaEjemplosKinect();
+            VentanaEjemplosKinect v = new VentanaEjemplosKinect(idLlaves);
             v.Show();
             this.Close();
         }
         private void botonRegresar_VInicioJuego_Click(object sender, RoutedEventArgs e)
         {
-            VentanaHome v = new VentanaHome();
+            VentanaHome v = new VentanaHome(idLlaves);
             v.Show();
             this.Close();
         }

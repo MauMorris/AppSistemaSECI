@@ -8,6 +8,7 @@
         Title="DIETA"
         WindowState="Normal"
         Icon="logoUNAM.jpg"
+        Background="#F5F5F5"        
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
         Height="600"
@@ -15,8 +16,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="36*"/>
-            <ColumnDefinition Width="137*"/>
-            <ColumnDefinition Width="327*"/>
+            <ColumnDefinition Width="104*"/>
+            <ColumnDefinition Width="360*"/>
             <ColumnDefinition Width="55*"/>
             <ColumnDefinition Width="190*"/>
             <ColumnDefinition Width="43*"/>
@@ -25,80 +26,48 @@
         <ListBox
             x:Name="lBox_VDieta"
             HorizontalAlignment="Left" 
-            Height="214" 
-            Margin="0,182,0,0" 
+            Height="126" 
+            Margin="0,231,0,0" 
             VerticalAlignment="Top" 
-            Width="104" 
+            Width="85" 
             SelectionChanged="lBox_VDieta_SelectionChanged" 
             Grid.Column="1">
-            <TextBlock
-                x:Name="LunesTBlock_VDieta"
-                TextWrapping="Wrap"
-                Text="LUNES"
-                TextBlock.FontSize="12"
-                TextAlignment="Center"
-                Height="25"
-                Width="88"/>
-            <TextBlock 
-                x:Name="MartesTBlock_VDieta" 
-                TextWrapping="Wrap" 
-                Text="MARTES"
-                TextBlock.FontSize="12"
-                TextAlignment="Center"
-                Height="25" 
-                Width="89"/>
-            <TextBlock 
-                x:Name="MiercolesTBlock_VDieta" 
-                TextWrapping="Wrap" 
-                Text="MIERCOLES" 
-                TextBlock.FontSize="12"
-                TextAlignment="Center"
-                Height="25" 
-                Width="90"/>
-            <TextBlock 
-                x:Name="JuevesTBlock_VDieta" 
-                TextWrapping="Wrap" 
-                Text="JUEVES"
-                TextBlock.FontSize="12"
-                TextAlignment="Center"
-                Height="25" 
-                Width="89"/>
-            <TextBlock 
-                x:Name="ViernesTBlock_VDieta" 
-                TextWrapping="Wrap" 
-                Text="VIERNES" 
-                TextBlock.FontSize="12"
-                TextAlignment="Center"
-                Height="25"
-                Width="87"/>
-            <TextBlock 
-                x:Name="SabadoTBlock_VDieta" 
-                TextWrapping="Wrap" 
-                Text="SABADO"
-                TextBlock.FontSize="12"
-                TextAlignment="Center"
-                Height="25" 
-                Width="89"/>
-            <TextBlock 
-                x:Name="DomingoTBlock_VDieta" 
-                TextWrapping="Wrap" 
-                Text="DOMINGO" 
-                TextBlock.FontSize="12"
-                TextAlignment="Center"
-                Height="26"
-                Width="84"/>
+            <ListBoxItem 
+                Name="lunesLBI_VDieta"
+                FontSize="12"
+                HorizontalContentAlignment="Center">
+                LUNES
+                </ListBoxItem>
+            <ListBoxItem 
+                FontSize="12"
+                HorizontalContentAlignment="Center">
+                MARTES
+            </ListBoxItem>
+            <ListBoxItem 
+                FontSize="12"
+                HorizontalContentAlignment="Center">
+                MIERCOLES
+            </ListBoxItem>
+            <ListBoxItem 
+                FontSize="12"
+                HorizontalContentAlignment="Center">
+                JUEVES
+            </ListBoxItem>
+            <ListBoxItem 
+                FontSize="12"
+                HorizontalContentAlignment="Center">
+                VIERNES
+            </ListBoxItem>
+            <ListBoxItem 
+                FontSize="12"
+                HorizontalContentAlignment="Center">
+                SABADO
+            </ListBoxItem>
+            <ListBoxItem 
+                FontSize="12"
+                HorizontalContentAlignment="Center" Content="DOMINGO"/>
+
         </ListBox>
-        <Button 
-            x:Name="regresarBoton_VDieta"
-            Content="REGRESAR" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Background="White"
-            Width="80"
-            Height="36"
-            Margin="2,43,0,0" 
-            Click="regresarBoton_VDieta_Click" 
-            Grid.Column="1"/>
         <Calendar 
             HorizontalAlignment="Left" 
             Margin="3,10,0,0" 
@@ -107,11 +76,11 @@
             Height="168" 
             Width="177"/>
         <TextBox 
-        	x:Name="desayunoTextBox_VDieta"
+        	x:Name="desayunoTB_VDieta"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
         	Height="26" 
-        	Width="465"
+        	Width="498"
         	Margin="97,226,0,0" 
         	TextWrapping="Wrap" 
         	Text=""
@@ -119,12 +88,12 @@
         	HorizontalContentAlignment="Left"
         	TabIndex="1"
         	MaxLength="70"
-        	DataObject.Pasting="PegarTexto"
-        	PreviewTextInput="ValidacionTextoNumeroSignoTextBox" 
+        	DataObject.Pasting="PegarTextoNumero"
+        	PreviewTextInput="ValidarTextoNumero"
             Grid.Column="2" 
             Grid.ColumnSpan="3"/>
         <TextBox 
-        	x:Name="almuerzoTextBox_VDieta"
+        	x:Name="almuerzoTB_VDieta"
         	HorizontalAlignment="Left" 
         	Height="26"
         	Margin="97,256,0,0" 
@@ -132,16 +101,16 @@
         	Text=""
             TextElement.FontSize="12"
         	VerticalAlignment="Top" 
-        	Width="465"
+        	Width="498"
         	HorizontalContentAlignment="Left" 
         	TabIndex="2"
         	MaxLength="70"
-        	DataObject.Pasting="PegarTexto"
-        	PreviewTextInput="ValidacionTextoNumeroSignoTextBox" 
+        	DataObject.Pasting="PegarTextoNumero"
+        	PreviewTextInput="ValidarTextoNumero" 
             Grid.Column="2" 
             Grid.ColumnSpan="3"/>
         <TextBox 
-        	x:Name="comidaTextBox_VDieta" 
+        	x:Name="comidaTB_VDieta" 
         	HorizontalAlignment="Left" 
         	Height="26"
         	Margin="97,288,0,0" 
@@ -149,33 +118,33 @@
         	Text=""
             TextElement.FontSize="12"
         	VerticalAlignment="Top" 
-        	Width="465"
+        	Width="498"
         	HorizontalContentAlignment="Left" 
         	TabIndex="3"
         	MaxLength="70"
-        	DataObject.Pasting="PegarTexto"
-        	PreviewTextInput="ValidacionTextoNumeroSignoTextBox" 
-            Grid.Column="2" 
+        	DataObject.Pasting="PegarTextoNumero"
+        	PreviewTextInput="ValidarTextoNumero" 
+            Grid.Column="2"
             Grid.ColumnSpan="3"/>
         <TextBox 
-        	x:Name="meriendaTextBox_VDieta" 
-        	HorizontalAlignment="Left" 
+        	x:Name="meriendaTB_VDieta"
+        	HorizontalAlignment="Left"
         	Height="26" 
         	Margin="97,319,0,0" 
         	TextWrapping="Wrap" 
         	Text=""
             TextElement.FontSize="12"
         	VerticalAlignment="Top" 
-        	Width="465"
+        	Width="498"
         	HorizontalContentAlignment="Left" 
         	TabIndex="4"
         	MaxLength="70"
-        	DataObject.Pasting="PegarTexto"
-        	PreviewTextInput="ValidacionTextoNumeroSignoTextBox" 
+        	DataObject.Pasting="PegarTextoNumero"
+        	PreviewTextInput="ValidarTextoNumero"
             Grid.Column="2" 
             Grid.ColumnSpan="3"/>
         <TextBox 
-        	x:Name="cenaTextBox_VDieta" 
+        	x:Name="cenaTB_VDieta" 
         	HorizontalAlignment="Left"
         	Height="26" 
         	Margin="97,348,0,0" 
@@ -183,16 +152,49 @@
         	Text=""
             TextElement.FontSize="12"
         	VerticalAlignment="Top" 
-        	Width="465"
+        	Width="498"
         	HorizontalContentAlignment="Left"
         	TabIndex="5"
         	MaxLength="70"
-        	DataObject.Pasting="PegarTexto"
-        	PreviewTextInput="ValidacionTextoNumeroSignoTextBox" 
+        	DataObject.Pasting="PegarTextoNumero"
+        	PreviewTextInput="ValidarTextoNumero"
             Grid.Column="2" 
             Grid.ColumnSpan="3"/>
+        <TextBox 
+        	x:Name="comentarioTB_VDieta" 
+        	HorizontalAlignment="Left"
+        	Height="58"
+        	Margin="167,408,0,0" 
+        	TextWrapping="Wrap" 
+        	Text=""
+            TextElement.FontSize="12"
+        	VerticalAlignment="Top" 
+        	Width="395"
+        	HorizontalContentAlignment="Left" 
+        	TabIndex="6"
+        	MaxLength="100"
+        	DataObject.Pasting="PegarTextoNumero"
+        	PreviewTextInput="ValidarTextoNumero" 
+            Grid.Column="2" 
+            Grid.ColumnSpan="3"/>
+        <TextBox
+        	x:Name="rubricaTB_VDieta" 
+        	HorizontalAlignment="Left"
+        	Height="26"
+        	Margin="106,408,0,0" 
+        	TextWrapping="Wrap" 
+        	Text=""
+        	TextElement.FontSize="12"
+        	VerticalAlignment="Top" 
+        	Width="30"
+        	HorizontalContentAlignment="Left" 
+        	TabIndex="6"
+        	MaxLength="1"
+        	DataObject.Pasting="PegarNumero"
+        	PreviewTextInput="ValidarNumero"
+        	Grid.Column="2"/>
         <Label 
-        	x:Name="desayunoLabel_VDieta" 
+        	x:Name="desayunoL_VDieta" 
         	Content="Desayuno"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -201,7 +203,7 @@
         	VerticalAlignment="Top" 
         	Width="81" Height="38" Grid.Column="2"/>
         <Label 
-        	x:Name="almuerzoLabel_VDieta" 
+        	x:Name="almuerzoL_VDieta" 
         	Content="Almuerzo" 
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -210,7 +212,7 @@
         	VerticalAlignment="Top" 
         	Width="81" Height="38" Grid.Column="2"/>
         <Label 
-        	x:Name="comidaLabel_VDieta" 
+        	x:Name="comidaL_VDieta" 
         	Content="Comida"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -219,7 +221,7 @@
         	VerticalAlignment="Top" 
         	Width="81" Height="38" Grid.Column="2"/>
         <Label
-        	x:Name="meriendaLabel_VDieta"
+        	x:Name="meriendaL_VDieta"
         	Content="Merienda"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -230,7 +232,7 @@
             Height="38" 
             Grid.Column="2"/>
         <Label
-        	x:Name="cenaLabel_VDieta"
+        	x:Name="cenaL_VDieta"
         	Content="Cena"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -241,36 +243,20 @@
             Height="38" 
             Grid.Column="2"/>
         <Label 
-            x:Name="alimentacionLabel_VDieta"
-            Content="Registro de alimentacion por sesion"
-            TextElement.FontSize="15"
+            x:Name="alimentacionL_VDieta"
+            Content="Registro de alimentación por sesión"
+            TextElement.FontSize="18"
             HorizontalAlignment="Left"
-            BorderBrush="Gray"
-            Margin="4,178,0,0" 
+            HorizontalContentAlignment="Center"
             VerticalAlignment="Top" 
-            Height="33" 
-            Width="495" 
-            Grid.Column="2" 
-            Grid.ColumnSpan="3"/>
-        <TextBox 
-        	x:Name="comentarioTextBox_VDieta" 
-        	HorizontalAlignment="Left"
-        	Height="50"
-        	Margin="167,408,0,0" 
-        	TextWrapping="Wrap" 
-        	Text=""
-            TextElement.FontSize="12"
-        	VerticalAlignment="Top" 
-        	Width="395"
-        	HorizontalContentAlignment="Left" 
-        	TabIndex="6"
-        	MaxLength="90"
-        	DataObject.Pasting="PegarTexto"
-        	PreviewTextInput="ValidacionTextoNumeroSignoTextBox" 
-            Grid.Column="2" 
-            Grid.ColumnSpan="3"/>
+            VerticalContentAlignment="Center"
+            BorderBrush="Gray"
+            Margin="49,37,0,0" 
+            Height="51" 
+            Width="306" 
+            Grid.Column="2"/>
         <Label
-        	x:Name="cenaLabel_VDieta_Copy"
+        	x:Name="rubricaL_VDieta"
         	Content="rubrica"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="16"
@@ -281,13 +267,26 @@
             Height="37" 
             Grid.Column="2"/>
         <Button 
+            x:Name="regresarBoton_VDieta"
+            Content="REGRESAR" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            TextElement.Foreground="White"
+            Background="#607D8B"
+            Width="80"
+            Height="36"
+            Margin="10,47,0,0" 
+            Click="regresarBoton_VDieta_Click" 
+            Grid.Column="1"/>
+        <Button 
         	x:Name="okBoton_VDieta" 
         	Content="OK"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
         	Width="100" 
         	Margin="80,484,0,0"
-        	Background="White"
+        	Background="#2196F3"
+            TextElement.Foreground="White"
         	ClickMode="Press" 
         	Height="36" 
         	Click="OkBoton_VDieta_Click" 
@@ -299,41 +298,36 @@
         	Content="presentacion" 
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="141" 
-        	Margin="167,43,0,0"
-        	Background="White"
+        	Width="121" 
+        	Margin="49,142,0,0"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
         	ClickMode="Press" 
         	Height="36" 
         	Click="guiaBoton_VDieta_Click" 
         	Grid.Column="2" 
             />
-        <Button 
+        <Button
         	x:Name="videoBoton_VDieta" 
         	Content="video"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="141" 
-        	Margin="167,108,0,0"
-        	Background="White"
+        	Width="121" 
+        	Margin="234,142,0,0"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
         	ClickMode="Press" 
         	Height="36" 
         	Click="videoBoton_VDieta_Click" 
         	Grid.Column="2" />
-        <TextBox 
-        	x:Name="rubricaTextBox_VDieta" 
-        	HorizontalAlignment="Left"
-        	Height="26"
-        	Margin="106,408,0,0" 
-        	TextWrapping="Wrap" 
-        	Text=""
-        	TextElement.FontSize="12"
-        	VerticalAlignment="Top" 
-        	Width="30"
-        	HorizontalContentAlignment="Left" 
-        	TabIndex="6"
-        	MaxLength="2"
-        	DataObject.Pasting="PegarTexto"
-        	PreviewTextInput="ValidacionNumeroTextBox"
-        	Grid.Column="2"/>
+        <GridSplitter 
+            x:Name="gridSplitter" 
+            Grid.Column="2" 
+            HorizontalAlignment="Left" 
+            Height="3"
+            Margin="10,93,0,0" 
+            VerticalAlignment="Top" 
+            Width="362" 
+            Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

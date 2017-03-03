@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 
@@ -19,13 +18,14 @@ namespace SistemaSECI
         String escL = "Licenciatura";
 
         DatosUsuario paciente = new DatosUsuario();
-        ManejadorTablas nuevoU;
+        TablasDBHelper nuevoU;
+        ExpresionesReg match = new ExpresionesReg();
 
-        public VentanaModificar()
+        public VentanaModificar(int idUsuario)
         {
             InitializeComponent();
             InicializaComboBox();
-            nombreTextBox_VModificar.Focus();
+            nombreTB_VModificar.Focus();
         }
 
         private void okBoton_VModificar_Click(object sender, RoutedEventArgs e)
@@ -42,76 +42,94 @@ namespace SistemaSECI
             this.Close();
         }
 
-        private static bool NumeroPermitido(string text)
+        private void ValidarNumero(object sender, TextCompositionEventArgs e)
         {
-            Regex numPermitido = new Regex("[^0-9]+");
-            return !numPermitido.IsMatch(text);
-        }
-        private void ValidacionNumerosTextBox(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !NumeroPermitido(e.Text);
+            e.Handled = !match.Numero(e.Text);
         }
 
-        private static bool NumeroPermitidoConPunto(string text)
+        private void ValidarTexto(object sender, TextCompositionEventArgs e)
         {
-            Regex numPunto = new Regex("[^0-9.]+");
-            return !numPunto.IsMatch(text);
-        }
-        private void ValidacionNumerosPuntoTextBox(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !NumeroPermitidoConPunto(e.Text);
+            e.Handled = !match.Texto(e.Text);
         }
 
-        private static bool TextoPermitido(string text)
+        private void ValidarTelefono(object sender, TextCompositionEventArgs e)
         {
-            Regex textoPermitido = new Regex("[^a-zA-Z]+");
-            return !textoPermitido.IsMatch(text);
-        }
-        private void ValidacionTextoTextBox(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !TextoPermitido(e.Text);
+            e.Handled = !match.Telefono(e.Text);
         }
 
-        private static bool NumeroTelefonicoPermitido(string text)
+        private void ValidarMail(object sender, TextCompositionEventArgs e)
         {
-            Regex numTel = new Regex("[^0-9-]");
-            return !numTel.IsMatch(text);
+            e.Handled = !match.Mail(e.Text);
         }
-        private void ValidacionNumeroTelefonicoTextBox(object sender, TextCompositionEventArgs e)
+
+        private void PegarTexto(object sender, DataObjectPastingEventArgs e)
         {
-            e.Handled = !NumeroTelefonicoPermitido(e.Text);
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!match.Texto(text))
+                    e.CancelCommand();
+            }
+            else
+                e.CancelCommand();
+        }
+
+        private void PegarNumero(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!match.Numero(text))
+                    e.CancelCommand();
+            }
+            else
+                e.CancelCommand();
+        }
+
+        private void PegarMail(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!match.Mail(text))
+                    e.CancelCommand();
+            }
+            else
+                e.CancelCommand();
+        }
+
+        private void PegarTelefono(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!match.Telefono(text))
+                    e.CancelCommand();
+            }
+            else
+                e.CancelCommand();
         }
 
         private void PasoParametros()
         {
             int apoyo = 0;
-            Double apoyo2 = 0;
 
             try
             {
-                paciente.Nombre = nombreTextBox_VModificar.Text;
-                paciente.Apellidos = apellidosTextBox_VModificar.Text;
-                paciente.Escolaridad = escolaridadComboBox_VModificar.Text;
-                paciente.Sexo = sexoComboBox_VModificar.Text;
-                paciente.NombreTutor = tutorTextBox_VModificar.Text;
-                paciente.TelefonoTutor = telefonoTutorTextBox_VModificar.Text;
+                paciente.Nombre = nombreTB_VModificar.Text;
+                paciente.Apellidos = apellidosTB_VModificar.Text;
+                paciente.Escolaridad = escolaridadCB_VModificar.Text;
+                paciente.Sexo = sexoCB_VModificar.Text;
+                paciente.NombreTutor = tutorTB_VModificar.Text;
+                paciente.TelefonoTutor = telefonoTB_VModificar.Text;
 
-                if (Int32.TryParse(edadTextBox_VModificar.Text, out apoyo))
+                if (Int32.TryParse(edadTB_VModificar.Text, out apoyo))
                     paciente.Edad = apoyo;
                 else
                     paciente.Edad = 0;
 
-                if (Double.TryParse(estaturaTextBox_VModificar.Text, out apoyo2))
-                    paciente.Estatura = apoyo2;
-                else
-                    paciente.Estatura = 0;
 
-                if (Double.TryParse(pesoTextBox_VModificar.Text, out apoyo2))
-                    paciente.Peso = apoyo2;
-                else
-                    paciente.Peso = 0;
-
-                if (Int32.TryParse(edadTutorTextBox_VModificar.Text, out apoyo))
+                if (Int32.TryParse(edadTutorTB_VModificar.Text, out apoyo))
                     paciente.EdadTutor = apoyo;
                 else
                     paciente.EdadTutor = 0;
@@ -128,7 +146,7 @@ namespace SistemaSECI
             if (paciente.Nombre == String.Empty | paciente.Apellidos == String.Empty |
                 paciente.Escolaridad == String.Empty | paciente.Sexo == String.Empty |
                 paciente.NombreTutor == String.Empty | paciente.TelefonoTutor == String.Empty |
-                paciente.Edad == 0 | paciente.Estatura == 0 | paciente.Peso == 0 | paciente.EdadTutor == 0)
+                paciente.Edad == 0 | paciente.EdadTutor == 0)
             {
                 MessageBox.Show("Necesitas llenar uno o mas parámetros", "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -137,7 +155,8 @@ namespace SistemaSECI
             {
                 try
                 {
-                    paciente.Imc = paciente.Imc_Calculo(paciente.Estatura, paciente.Peso);
+//                    paciente.Estatura /= 100;
+//                    paciente.IMC = paciente.Imc_Calculo(paciente.Estatura, paciente.Peso);
                     return true;
                 }
                 catch (Exception e)
@@ -151,36 +170,23 @@ namespace SistemaSECI
 
         private void QueryParametros()
         {
-            nuevoU = new ManejadorTablas();
-            string codigoUsuario = paciente.Nombre.Substring(1, 1) + paciente.Apellidos.Substring(1, 2) +
+            nuevoU = new TablasDBHelper();
+            string codigoUsuario = paciente.Nombre.Substring(0, 1) + paciente.Apellidos.Substring(0, 1) +
                                     paciente.Edad.ToString().Substring(0, 1);
 
             nuevoU.UpdateDatosUsuario(2, codigoUsuario, paciente.Nombre, paciente.Apellidos, paciente.Edad, paciente.Escolaridad,
-                                        paciente.Sexo, paciente.Estatura, paciente.Peso, paciente.Imc,
-                                        paciente.NombreTutor, paciente.EdadTutor, paciente.TelefonoTutor);
-        }
-
-        private void PegarTexto(object sender, DataObjectPastingEventArgs e)
-        {
-            if (e.DataObject.GetDataPresent(typeof(String)))
-            {
-                String text = (String)e.DataObject.GetData(typeof(String));
-                if (!NumeroPermitido(text))
-                    e.CancelCommand();
-            }
-            else
-                e.CancelCommand();
+                                        paciente.Sexo, paciente.NombreTutor, paciente.EdadTutor, paciente.TelefonoTutor, paciente.Mail);
         }
 
         private void InicializaComboBox()
         {
-            escolaridadComboBox_VModificar.Items.Add(escP);
-            escolaridadComboBox_VModificar.Items.Add(escS);
-            escolaridadComboBox_VModificar.Items.Add(escPr);
-            escolaridadComboBox_VModificar.Items.Add(escL);
+            escolaridadCB_VModificar.Items.Add(escP);
+            escolaridadCB_VModificar.Items.Add(escS);
+            escolaridadCB_VModificar.Items.Add(escPr);
+            escolaridadCB_VModificar.Items.Add(escL);
 
-            sexoComboBox_VModificar.Items.Add(sexoM);
-            sexoComboBox_VModificar.Items.Add(sexoF);
+            sexoCB_VModificar.Items.Add(sexoM);
+            sexoCB_VModificar.Items.Add(sexoF);
         }
     }
 }

@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Title="Juego" 
-        Height="768" 
-        Width="1024"
+        Height="600" 
+        Width="800"
+        Background="#F5F5F5"
         ResizeMode="CanMinimize"
         WindowState="Maximized"
-        Icon="logoUNAM.jpg"
-        Background="White">
+        Icon="logoUNAM.jpg">
     <Grid 
         RenderTransformOrigin="0.504,0.486" 
         IsHitTestVisible="True" 
         Margin="0,0,2,22">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="231*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="71"/>
-            <ColumnDefinition Width="64*"/>
-            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="338*"/>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="27"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="375*"/>
         </Grid.ColumnDefinitions>
         <Image 
             x:Name="usuarioImageNuevoUsuario" 
@@ -29,37 +29,29 @@
             Height="199"
             VerticalAlignment="Top"
             Width="174"
-            Margin="240,68,0,0" 
+            Margin="152,68,0,0" 
             OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Source="logoUNAM.jpg"/>
         <Button 
             x:Name="botonRegresar_VInicioJuego" 
             Content="REGRESAR" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Background="White"
+            TextElement.Foreground="White"
+            Background="#607D8B"
             Width="84" 
             Margin="44,63,0,0" 
             ClickMode="Press" 
             Height="42" 
             Click="botonRegresar_VInicioJuego_Click"/>
         <Button 
-            x:Name="botonEstadisticasUsuario_VInicioJuego"
-            Content="ESTADISTICAS USUARIO" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top"
-            Background="White"
-            Width="178" 
-            Margin="226,314,0,0" 
-            Height="68" 
-            Click="botonEstadisticasUsuario_VInicioJuego_Click" />
-        <Button 
         	x:Name="botonLogros_VInicioJuego"
         	Content="LOGROS" 
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top"
-        	Background="White"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
         	Width="178" 
-        	Margin="226,418,0,0" 
+        	Margin="138,355,0,0" 
         	Height="67" 
             Click="botonLogros_VInicioJuego_Click"/>
         <Button 
@@ -67,9 +59,10 @@
         	Content="AJUSTES DE PROGRAMA" 
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top"
-        	Background="White"
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
         	Width="178" 
-        	Margin="226,532,0,0" 
+        	Margin="138,446,0,0" 
         	Height="68" 
             Click="botonAjustesPrograma_VInicioJuego_Click" />
         <Button 
@@ -77,20 +70,20 @@
         	Content="JUGAR" 
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top"
-        	Background="White"
+        	Background="#2196F3"
+            TextElement.Foreground="White"
         	Width="224" 
-        	Margin="50,394,0,0" 
+        	Margin="45,395,0,0" 
         	Height="91" 
             Grid.Column="4" 
             Click="botonJugar_VInicioJuego_Click"/>
         <Rectangle 
-            Fill="#FFF4F4F5" 
             HorizontalAlignment="Left" 
             Height="246" 
             Stroke="Black" 
             VerticalAlignment="Top" 
             Width="299" 
             Grid.Column="4" 
-            Margin="10,68,0,0"/>
+            Margin="5,68,0,0" RenderTransformOrigin="0.513,0.526"/>
     </Grid>
 </Window>

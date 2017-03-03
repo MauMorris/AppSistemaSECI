@@ -7,17 +7,23 @@ namespace SistemaSECI
     /// </summary>
     public partial class VentanaSeciPrueba : Window
     {
-        ManejadorTablas nuevoU;
-
-        public VentanaSeciPrueba()
+        TablasDBHelper nuevoU;
+        Seci nSeci;
+        int idLlavesUsuarioImc = 0;
+        int idParametrosSeci = 0;
+        public VentanaSeciPrueba(int idParametros, int idLlaves)
         {
             InitializeComponent();
+            idLlavesUsuarioImc = idLlaves;
+            idParametrosSeci = idParametros;
+            nSeci = new Seci();
             QueryParametros();
+            ActualizaTL(nSeci);
         }
 
         private void regresarBoton_VLogros_Click(object sender, RoutedEventArgs e)
         {
-            VentanaSeci v = new VentanaSeci();
+            VentanaSeci v = new VentanaSeci(idLlavesUsuarioImc);
             v.Show();
             this.Close();
         }
@@ -31,9 +37,19 @@ namespace SistemaSECI
 
         private void QueryParametros()
         {
-            nuevoU = new ManejadorTablas();
-            nuevoU.ReadParametrosSesion();
+            nuevoU = new TablasDBHelper();
+            nSeci = nuevoU.RegresaParametrosSesion(idParametrosSeci);
         }
-
+        private void ActualizaTL(Seci parametrosActual)
+        {
+            reforzadorTipoLabel_VSeciPrueba.Content = parametrosActual.ReforzadorTipo;
+            reforzadorClaseLabel_VSeciPrueba.Content = parametrosActual.ReforzadorClase;
+            inmediatezInmeLabel_VSeciPrueba.Content = parametrosActual.InmediatezI;
+            inmediatezDemoLabel_VSeciPrueba.Content = parametrosActual.InmediatezD;
+            esfuerzoAltoLabel_VSeciPrueba.Content = parametrosActual.EsfuerzoAlto;
+            esfuerzoBajoLabel_VSeciPrueba.Content = parametrosActual.EsfuerzoBajo;
+            reforzamientoAltoLabel_VSeciPrueba.Content = parametrosActual.ReforzamientoAlto;
+            reforzamientoBajoLabel_VSeciPrueba.Content = parametrosActual.ReforzamientoBajo;
+        }
     }
 }

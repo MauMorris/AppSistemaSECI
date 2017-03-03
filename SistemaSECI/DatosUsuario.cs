@@ -5,6 +5,21 @@ namespace SistemaSECI
 {
     class DatosUsuario: INotifyPropertyChanged
     {
+        private string codigo;
+        public String Codigo
+        {
+            get { return codigo; }
+            set
+            {
+                if (this.codigo != value)
+                {
+                    this.codigo = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CodigoText"));
+                }
+            }
+        }
+
         private string nombre;
         public String Nombre
         {
@@ -80,51 +95,6 @@ namespace SistemaSECI
             }
         }
 
-        private double estatura;
-        public double Estatura
-        {
-            get { return estatura; }
-            set
-            {
-                if (this.estatura != value)
-                {
-                    this.estatura = value;
-                    // notificacion debida al cambio de texto de status 
-                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EstaturaText"));
-                }
-            }
-        }
-
-        private double peso;
-        public double Peso
-        {
-            get { return peso; }
-            set
-            {
-                if (this.peso != value)
-                {
-                    this.peso = value;
-                    // notificacion debida al cambio de texto de status 
-                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PesoText"));
-                }
-            }
-        }
-
-        private double imc;
-        public double Imc
-        {
-            get { return imc; }
-            set
-            {
-                if (this.imc != value)
-                {
-                    this.imc = value;
-                    // notificacion debida al cambio de texto de status 
-                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IMCText"));
-                }
-            }
-        }
-
         private string nombreTutor;
         public String NombreTutor
         {
@@ -170,28 +140,42 @@ namespace SistemaSECI
             }
         }
 
+        private string mail;
+        public String Mail
+        {
+            get { return mail; }
+            set
+            {
+                if (this.mail != value)
+                {
+                    this.mail = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MailText"));
+                }
+            }
+        }
+
         public DatosUsuario()
         {
+            Codigo = String.Empty;
             Nombre = String.Empty;
             Apellidos = String.Empty;
             Edad = 0;
             Escolaridad = String.Empty;
             Sexo = String.Empty;
-            Estatura = 0.0;
-            Peso = 0.0;
-            Imc = 0.0;
 
             NombreTutor = String.Empty;
             EdadTutor = 0;
             TelefonoTutor = String.Empty;
+            Mail = String.Empty;
         }
-
-        public Double Imc_Calculo(double estatura, double peso)
-        {
-            return peso / (Math.Pow(estatura, 2.0D));
-        }
-
         /// INotifyPropertyChangedPropertyChanged evento para el control de ventana y cambiar los datos con un binding
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void codigoUsuario()
+        {
+            Codigo = Nombre.Substring(0, 1) + Apellidos.Substring(0, 1) +
+                        Edad.ToString().Substring(0, 1) + Escolaridad.Substring(0, 1);
+        }
     }
 }

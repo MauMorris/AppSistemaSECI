@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
-        Title="Nuevo Usuario"
-        Height="680" 
+        Title="Nuevo Paciente"
+        Height="650"
         Width="600"
+        Background="#F5F5F5"
+        Closing="Window_Closing"
         Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -16,292 +18,270 @@
         IsHitTestVisible="True" 
         Margin="0,0,2,1">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="231*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="71"/>
-            <ColumnDefinition Width="64*"/>
-            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="81"/>
+            <ColumnDefinition Width="84*"/>
+            <ColumnDefinition Width="208*"/>
         </Grid.ColumnDefinitions>
         <Image 
-            x:Name="usuarioNuevoImage_VNuevoUsuario" 
+            x:Name="imagen_VNuevoUsuario" 
             HorizontalAlignment="Left" 
             Height="175"
             VerticalAlignment="Top"
             Width="148"             
-            Margin="0,44,0,0" 
+            Margin="7,44,0,0" 
             OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" 
-            Grid.ColumnSpan="3" 
-            Source="logoUNAM.jpg" 
+            Grid.ColumnSpan="2" 
+            Source="Escudo-UNAM-1024x1151.png" 
             Grid.Column="2"/>
         <TextBox
-            x:Name="nombreTextBox_VNuevoUsuario" 
+            x:Name="nombreTB_VNuevoUsuario" 
             HorizontalAlignment="Left" 
             Height="23"
             Margin="12,262,0,0"
             TextWrapping="Wrap"
             Text="Nombre"
             VerticalAlignment="Top"
-            Width="120"
-            HorizontalContentAlignment="Center"
+            Width="150"
             Grid.ColumnSpan="2"
             Grid.Column="2"
-            TabIndex="1"
-            MaxLength="40"
+            TabIndex="0"
+            MaxLength="30"
             DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionTextoTextBox"/>
+            PreviewTextInput="ValidarTexto"/>
         <TextBox 
-            x:Name="apellidosTextBox_VNuevoUsuario" 
+            x:Name="apellidosTB_VNuevoUsuario" 
             HorizontalAlignment="Left" 
             Height="23" 
             Margin="12,290,0,0" 
             TextWrapping="Wrap" 
             Text="Apellidos" 
             VerticalAlignment="Top" 
-            Width="120" 
-            HorizontalContentAlignment="Center"
+            Width="150"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="1"
-            MaxLength="40"
+            MaxLength="50"
             DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionTextoTextBox" />
+            PreviewTextInput="ValidarTexto"/>
         <TextBox 
-            x:Name="edadTextBox_VNuevoUsuario" 
+            x:Name="edadTB_VNuevoUsuario" 
             HorizontalAlignment="Left" 
-            Height="23" 
+            Height="23"
             Margin="12,318,0,0" 
             TextWrapping="Wrap" 
             Text="Edad" 
             VerticalAlignment="Top" 
-            Width="120"
-            HorizontalContentAlignment="Center"
+            Width="150"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="2"
             MaxLength="2"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumerosTextBox"/>
+            DataObject.Pasting="PegarNumero"
+            PreviewTextInput="ValidarNumero"/>
         <ComboBox
-            x:Name="escolaridadComboBox_VNuevoUsuario" 
+            x:Name="escolaridadCB_VNuevoUsuario" 
             Background="White"
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Width="120" 
+            Width="150"
             Height="23"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             Margin="12,346,0,0" 
             TabIndex="3" 
-            SelectionChanged="EscolaridadComboBox_VNuevoUsuario_SelectionChanged"/>
-        <ComboBox 
-        	x:Name="sexoComboBox_VNuevoUsuario" 
+            SelectionChanged="EscolaridadCB_VNuevoUsuario_SelectionChanged"/>
+        <ComboBox
+        	x:Name="sexoCB_VNuevoUsuario" 
         	Background="White"
         	HorizontalAlignment="Left"
-            VerticalAlignment="Top" 
-        	Width="120" 
+            VerticalAlignment="Top"
+            Width="150"
         	Height="23"
         	Grid.ColumnSpan="2" 
         	Grid.Column="2" 
         	Margin="12,377,0,0" 
             TabIndex="4" 
-            SelectionChanged="SexoComboBox_VNuevoUsuario_SelectionChanged"/>
+            SelectionChanged="SexoCB_VNuevoUsuario_SelectionChanged"/>
         <TextBox 
-            x:Name="estaturaTextBox_VNuevoUsuario" 
+            x:Name="tutorTB_VNuevoUsuario" 
             HorizontalAlignment="Left" 
             Height="22" 
-            Margin="12,412,0,0" 
+            Margin="12,423,0,0" 
             TextWrapping="Wrap" 
-            Text="Estatura" 
+            Text="Tutor" 
             VerticalAlignment="Top" 
-            Width="120"
-            HorizontalContentAlignment="Center"
+            Width="150"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="5"
-            MaxLength="4"
+            MaxLength="100"
             DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
-        <TextBox 
-            x:Name="pesoTextBox_VNuevoUsuario" 
+            PreviewTextInput="ValidarTexto"/>
+        <TextBox
+            x:Name="edadTutorTB_VNuevoUsuario" 
             HorizontalAlignment="Left" 
             Height="22" 
-            Margin="12,440,0,0" 
+            Margin="12,451,0,0" 
             TextWrapping="Wrap" 
-            Text="Peso" 
+            Text="Edad Tutor"
             VerticalAlignment="Top" 
-            Width="120" 
-            HorizontalContentAlignment="Center"
+            Width="150"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="6"
-            MaxLength="5"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
+            MaxLength="2"
+            DataObject.Pasting="PegarNumero"
+            PreviewTextInput="ValidarNumero"/>
         <TextBox 
-            x:Name="tutorTextBox_VNuevoUsuario" 
+            x:Name="telefonoTB_VNuevoUsuario" 
             HorizontalAlignment="Left" 
             Height="24" 
             Margin="12,478,0,0" 
             TextWrapping="Wrap" 
-            Text="Tutor" 
+            Text="Teléfono"
             VerticalAlignment="Top" 
-            Width="120" 
-            HorizontalContentAlignment="Center"
+            Width="150"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="7"
-            MaxLength="40"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionTextoTextBox"/>
+            MaxLength="18"
+            DataObject.Pasting="PegarTelefono"
+            PreviewTextInput="ValidarTelefono"/>
         <TextBox 
-            x:Name="edadTutorTextBox_VNuevoUsuario" 
+            x:Name="mailTB_VNuevoUsuario" 
             HorizontalAlignment="Left" 
             Height="23" 
             Margin="12,507,0,0" 
             TextWrapping="Wrap" 
-            Text="Edad" 
+            Text="Mail"
             VerticalAlignment="Top" 
-            Width="120"
-            HorizontalContentAlignment="Center"
+            Width="150"
             Grid.ColumnSpan="2" 
             Grid.Column="2" 
             TabIndex="8"
-            MaxLength="3"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumerosTextBox"/>
-        <TextBox 
-        	x:Name="telefonoTutorTextBox_VNuevoUsuario" 
-        	HorizontalAlignment="Left"
-        	Height="23" 
-        	Margin="12,536,0,0" 
-        	TextWrapping="Wrap" 
-        	Text="Teléfono" 
-        	VerticalAlignment="Top" 
-        	Width="120"
-        	HorizontalContentAlignment="Center"
-        	Grid.ColumnSpan="2" 
-        	Grid.Column="2" 
-            TabIndex="9"
-            MaxLength="16"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumeroTelefonicoTextBox"/>
+            MaxLength="100"
+            DataObject.Pasting="PegarMail"
+            PreviewTextInput="ValidarMail"/>
         <Button 
             x:Name="regresarBoton_VNuevoUsuario" 
             Content="REGRESAR" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Background="White"
+            TextElement.Foreground="White"
+            Background="#607D8B"
             Width="80"
             Height="45"
-            Margin="30,44,0,0" 
+            Margin="40,44,0,0" 
             ClickMode="Press" 
             Click="RegresarBoton_VNuevoUsuario_Click" 
-            TabIndex="0" 
             />
         <Button 
             x:Name="okBoton_VNuevoUsuario" 
             Content="OK" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Width="100" 
+            Width="110" 
             Grid.Column="2" 
-            Margin="24,586,0,0" 
+            Margin="26,556,0,0" 
             Grid.ColumnSpan="2"
-            Background="White"
+        	Background="#2196F3"
+            TextElement.Foreground="White"
             ClickMode="Press" 
-            Height="35" 
+            Height="34" 
             Click="OkBoton_VNuevoUsuario_Click" 
             TabIndex="10" 
             />
         <Label 
-            x:Name="nombreLabel_VNuevoUsuario" 
+            x:Name="nombreL_VNuevoUsuario" 
             Content="Nombre" 
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,258,0,0" 
+            Margin="125,258,0,0" 
             VerticalAlignment="Top" 
-            Width="70"/>
+            Width="95" Height="29" Grid.ColumnSpan="3"/>
         <Label 
-            x:Name="apellidosLabel_VNuevoUsuario" 
+            x:Name="apellidosL_VNuevoUsuario" 
             Content="Apellidos"
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,286,0,0" 
+            Margin="125,286,0,0" 
             VerticalAlignment="Top" 
-            Width="70"/>
+            Width="95" Height="29" Grid.ColumnSpan="3"/>
         <Label 
             x:Name="edadLabel_VNuevoUsuario" 
             Content="Edad" 
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,314,0,0" 
+            Margin="125,314,0,0" 
             VerticalAlignment="Top" 
-            Width="70"/>
+            Width="95" Height="29" Grid.ColumnSpan="3"/>
         <Label 
-            x:Name="escolaridadLabel_VNuevoUsuario" 
+            x:Name="escolaridadL_VNuevoUsuario" 
             Content="Escolaridad" 
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="145,343,0,0" 
+            Margin="106,343,0,0" 
             VerticalAlignment="Top" 
-            Width="84"/>
+            Width="114" Height="29" Grid.ColumnSpan="3"/>
         <Label 
-        	x:Name="sexoLabel_VNuevoUsuario"
+        	x:Name="sexoL_VNuevoUsuario"
         	Content="Sexo" 
+            TextElement.FontWeight="ExtraBold"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
         	HorizontalAlignment="Left" 
-        	Margin="145,372,0,0" 
+        	Margin="106,372,0,0" 
         	VerticalAlignment="Top" 
-        	Width="84"/>
+        	Width="114" Height="29" Grid.ColumnSpan="3"/>
         <Label 
-            x:Name="estaturaLabel_VNuevoUsuario" 
-            Content="Estatura" 
-            HorizontalContentAlignment="Right"
-            TextElement.FontSize="14"
-            HorizontalAlignment="Left" 
-            Margin="159,408,0,0" 
-            VerticalAlignment="Top" 
-            Width="70"/>
-        <Label 
-            x:Name="pesoLabel_VNuevoUsuario" 
-            Content="Peso" 
-            HorizontalContentAlignment="Right"
-            TextElement.FontSize="14"
-            HorizontalAlignment="Left" 
-            Margin="159,436,0,0" 
-            VerticalAlignment="Top" 
-            Width="70"/>
-        <Label 
-            x:Name="tutorLabel_VNuevoUsuario" 
+            x:Name="tutorL_VNuevoUsuario" 
             Content="Tutor" 
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,474,0,0" 
+            Margin="125,416,0,0" 
             VerticalAlignment="Top" 
-            Width="70"/>
-        <Label
-            x:Name="edadTutorLabel_VNuevoUsuario"
+            Width="95" Height="29" Grid.ColumnSpan="3"/>
+        <Label 
+            x:Name="edadTutorL_VNuevoUsuario" 
             Content="Edad"
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,503,0,0"
-            VerticalAlignment="Top"
-            Width="70"/>
+            Margin="125,444,0,0" 
+            VerticalAlignment="Top" 
+            Width="95" Height="29" Grid.ColumnSpan="3"/>
+        <Label 
+            x:Name="telefonoL_VNuevoUsuario" 
+            Content="Teléfono"
+            TextElement.FontWeight="ExtraBold"
+            HorizontalContentAlignment="Right"
+            TextElement.FontSize="14"
+            HorizontalAlignment="Left" 
+            Margin="125,473,0,0" 
+            VerticalAlignment="Top" 
+            Width="95" Height="29" Grid.ColumnSpan="3"/>
         <Label
-        	x:Name="telefonoTutorLabel_VNuevoUsuario"
-        	Content="Teléfono"
-        	HorizontalContentAlignment="Right"
-        	TextElement.FontSize="14"
-        	HorizontalAlignment="Left" 
-        	Margin="159,532,0,0"
-        	VerticalAlignment="Top"
-        	Width="70"/>
+            x:Name="mailL_VNuevoUsuario"
+            Content="Mail"
+            TextElement.FontWeight="ExtraBold"
+            HorizontalContentAlignment="Right"
+            TextElement.FontSize="14"
+            HorizontalAlignment="Left" 
+            Margin="125,503,0,0"
+            VerticalAlignment="Top"
+            Width="95" Height="29" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

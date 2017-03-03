@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Title="Modificar datos del usuario"
-        Height="680" 
+        Height="663.5" 
         Width="600"
+        Background="#F5F5F5"        
         Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -16,168 +17,151 @@
         IsHitTestVisible="True" 
         Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="231*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="71"/>
-            <ColumnDefinition Width="64*"/>
-            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="128*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="81"/>
+            <ColumnDefinition Width="84*"/>
+            <ColumnDefinition Width="208*"/>
         </Grid.ColumnDefinitions>
         <Image
-            x:Name="usuarioModificarImage_VModificar" 
+            x:Name="Imagen_VModificar" 
             HorizontalAlignment="Left" 
             Height="175"
             VerticalAlignment="Top"
             Width="148"             
-            Margin="0,44,0,0" 
+            Margin="12,44,0,0" 
             OpacityMask="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" 
-            Grid.ColumnSpan="3" 
-            Source="logoUNAM.jpg" 
+            Grid.ColumnSpan="2" 
+            Source="Escudo-UNAM-1024x1151.png" 
             Grid.Column="2"/>
         <TextBox 
-            x:Name="nombreTextBox_VModificar" 
+            x:Name="nombreTB_VModificar" 
             HorizontalAlignment="Left" 
             Height="23" 
             Margin="12,262,0,0" 
             TextWrapping="Wrap" 
             Text="Nombre"
             VerticalAlignment="Top" 
-            Width="120" 
-            HorizontalContentAlignment="Center"
-            Grid.ColumnSpan="2" 
+            Width="161" 
+            Grid.ColumnSpan="3" 
             Grid.Column="2"
             MaxLength="40"
             DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionTextoTextBox"/>
+            PreviewTextInput="ValidarTexto"/>
         <TextBox 
-            x:Name="apellidosTextBox_VModificar" 
+            x:Name="apellidosTB_VModificar" 
             Height="23" 
-            Margin="12,290,2,0" 
+            Margin="12,290,200,0" 
             TextWrapping="Wrap" 
             Text="Apellidos" 
             VerticalAlignment="Top" 
-            HorizontalContentAlignment="Center"
-            Grid.ColumnSpan="2" 
+            Grid.ColumnSpan="3" 
             Grid.Column="2"
             MaxLength="40"
             DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionTextoTextBox"/>
+            PreviewTextInput="ValidarTexto"/>
         <TextBox 
-            x:Name="edadTextBox_VModificar"
+            x:Name="edadTB_VModificar"
             HorizontalAlignment="Left" 
             Height="23" 
             Margin="12,318,0,0" 
             TextWrapping="Wrap" 
             Text="10" 
             VerticalAlignment="Top" 
-            Width="120"
-            HorizontalContentAlignment="Center"
-            Grid.ColumnSpan="2" 
+            Width="161"
+            Grid.ColumnSpan="3" 
             Grid.Column="2"
             MaxLength="2"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumerosTextBox"/>
+            DataObject.Pasting="PegarNumero"
+            PreviewTextInput="ValidarNumero"/>
         <ComboBox 
-            x:Name="escolaridadComboBox_VModificar" 
+            x:Name="escolaridadCB_VModificar" 
             Background="White"
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Width="120" 
+            Width="161" 
             Height="23"
-            Grid.ColumnSpan="2" 
+            Grid.ColumnSpan="3" 
             Grid.Column="2" 
             Margin="12,346,0,0"
             />
         <ComboBox 
-        	x:Name="sexoComboBox_VModificar" 
+        	x:Name="sexoCB_VModificar" 
         	Background="White"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="120" 
+        	Width="161" 
         	Height="23"
-        	Grid.ColumnSpan="2" 
+        	Grid.ColumnSpan="3" 
         	Grid.Column="2" 
         	Margin="12,377,0,0"/>
         <TextBox 
-            x:Name="estaturaTextBox_VModificar"
+            x:Name="tutorTB_VModificar"
             HorizontalAlignment="Left" 
             Height="22" 
-            Margin="12,412,0,0" 
+            Margin="12,423,0,0" 
             TextWrapping="Wrap" 
-            Text="1.50" 
+            Text="Tutor" 
             VerticalAlignment="Top" 
-            Width="120"
-            HorizontalContentAlignment="Center"
-            Grid.ColumnSpan="2" 
-            Grid.Column="2"
-            MaxLength="4"
+            Width="161"
+            Grid.ColumnSpan="3" 
+            Grid.Column="2" 
+            TabIndex="5"
+            MaxLength="100"
             DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
-        <TextBox 
-            x:Name="pesoTextBox_VModificar"
+            PreviewTextInput="ValidarTexto"/>
+        <TextBox
+            x:Name="edadTutorTB_VModificar"
             HorizontalAlignment="Left" 
             Height="22" 
-            Margin="12,440,0,0" 
+            Margin="12,451,0,0" 
             TextWrapping="Wrap" 
-            Text="40" 
+            Text="Edad Tutor"
             VerticalAlignment="Top" 
-            Width="120" 
-            HorizontalContentAlignment="Center"
-            Grid.ColumnSpan="2" 
-            Grid.Column="2"
-            MaxLength="5"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumerosPuntoTextBox"/>
+            Width="161" 
+            Grid.ColumnSpan="3" 
+            Grid.Column="2" 
+            TabIndex="6"
+            MaxLength="2"
+            DataObject.Pasting="PegarNumero"
+            PreviewTextInput="ValidarNumero"/>
         <TextBox 
-            x:Name="tutorTextBox_VModificar" 
+            x:Name="telefonoTB_VModificar"
             HorizontalAlignment="Left" 
             Height="24" 
             Margin="12,478,0,0" 
             TextWrapping="Wrap" 
-            Text="Tutor" 
+            Text="Teléfono"
             VerticalAlignment="Top" 
-            Width="120" 
-            HorizontalContentAlignment="Center"
-            Grid.ColumnSpan="2" 
-            Grid.Column="2"
-            MaxLength="40"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionTextoTextBox"/>
+            Width="161" 
+            Grid.ColumnSpan="3" 
+            Grid.Column="2" 
+            TabIndex="7"
+            MaxLength="18"
+            DataObject.Pasting="PegarTelefono"
+            PreviewTextInput="ValidarTelefono"/>
         <TextBox 
-            x:Name="edadTutorTextBox_VModificar" 
+            x:Name="mailTB_VModificar"
             HorizontalAlignment="Left" 
             Height="23" 
             Margin="12,507,0,0" 
             TextWrapping="Wrap" 
-            Text="50" 
+            Text="Mail"
             VerticalAlignment="Top" 
-            Width="120"
-            HorizontalContentAlignment="Center"
-            Grid.ColumnSpan="2" 
-            Grid.Column="2"
-            MaxLength="3"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumerosTextBox"/>
-        <TextBox 
-        	x:Name="telefonoTutorTextBox_VModificar"
-        	HorizontalAlignment="Left" 
-        	Height="23" 
-        	Margin="12,536,0,0" 
-        	TextWrapping="Wrap" 
-        	Text="044-55-1020-3040" 
-        	VerticalAlignment="Top" 
-        	Width="120"
-        	HorizontalContentAlignment="Center"
-        	Grid.ColumnSpan="2" 
-        	Grid.Column="2"
-            MaxLength="16"
-            DataObject.Pasting="PegarTexto"
-            PreviewTextInput="ValidacionNumeroTelefonicoTextBox"/>
+            Width="165"
+            Grid.ColumnSpan="3" 
+            Grid.Column="2" 
+            TabIndex="8"
+            MaxLength="100"
+            DataObject.Pasting="PegarMail"
+            PreviewTextInput="ValidarMail"/>
         <Button 
             x:Name="regresarBoton_VModificar"
             Content="REGRESAR" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Background="White"
+            TextElement.Foreground="White"
+            Background="#607D8B"
             Width="80"
             Height="45"
             Margin="30,44,0,0" 
@@ -189,105 +173,106 @@
             Content="OK" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Width="100" 
+            Width="121" 
             Grid.Column="2" 
-            Margin="24,586,0,0" 
+            Margin="27,566,0,0" 
             Grid.ColumnSpan="2"
-            Background="White"
+        	Background="#2196F3"
+            TextElement.Foreground="White"
             ClickMode="Press" 
-            Height="35" 
+            Height="36" 
             Click="okBoton_VModificar_Click" 
             TabIndex="0" 
             />
         <Label 
-            x:Name="nombreLabel_VModificar" 
+            x:Name="nombreL_VModificar" 
             Content="Nombre" 
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,258,0,0" 
+            Margin="99,258,0,0" 
             VerticalAlignment="Top" 
-            Width="70"/>
+            Width="99" Height="29" Grid.ColumnSpan="2"/>
         <Label 
-            x:Name="apellidosLabel_VModificar"
+            x:Name="apellidosL_VModificar"
             Content="Apellidos"
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,286,0,0" 
+            Margin="99,286,0,0" 
             VerticalAlignment="Top" 
-            Width="70"/>
+            Width="99" Height="29" Grid.ColumnSpan="2"/>
         <Label 
-            x:Name="edadLabel_VModificar" 
+            x:Name="edadL_VModificar" 
             Content="Edad" 
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,314,0,0" 
+            Margin="99,314,0,0" 
             VerticalAlignment="Top" 
-            Width="70"/>
+            Width="99" Height="29" Grid.ColumnSpan="2"/>
         <Label 
-            x:Name="escolaridadLabel_VModificar" 
+            x:Name="escolaridadL_VModificar" 
             Content="Escolaridad" 
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="145,343,0,0" 
+            Margin="82,343,0,0" 
             VerticalAlignment="Top" 
-            Width="84"/>
+            Width="116" Height="29" Grid.ColumnSpan="2"/>
         <Label 
-        	x:Name="sexoLabel_VModificar"
+        	x:Name="sexoL_VModificar"
         	Content="Sexo" 
+            TextElement.FontWeight="ExtraBold"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
         	HorizontalAlignment="Left" 
-        	Margin="145,372,0,0" 
+        	Margin="101,372,0,0" 
         	VerticalAlignment="Top" 
-        	Width="84"/>
+        	Width="97" Height="29" Grid.ColumnSpan="2"/>
         <Label 
-            x:Name="estaturaLabel_VModificar" 
-            Content="Estatura" 
-            HorizontalContentAlignment="Right"
-            TextElement.FontSize="14"
-            HorizontalAlignment="Left" 
-            Margin="159,408,0,0" 
-            VerticalAlignment="Top" 
-            Width="70"/>
-        <Label 
-            x:Name="pesoLabel_VModificar" 
-            Content="Peso" 
-            HorizontalContentAlignment="Right"
-            TextElement.FontSize="14"
-            HorizontalAlignment="Left" 
-            Margin="159,436,0,0" 
-            VerticalAlignment="Top" 
-            Width="70"/>
-        <Label 
-            x:Name="tutorLabel_VModificar" 
+            x:Name="tutorL_VModificar" 
             Content="Tutor" 
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,474,0,0" 
+            Margin="99,416,0,0" 
             VerticalAlignment="Top" 
-            Width="70"/>
-        <Label
-            x:Name="edadTutorLabel_VModificar"
+            Width="99" Height="29" Grid.ColumnSpan="2"/>
+        <Label 
+            x:Name="edadTutorL_VModificar" 
             Content="Edad"
+            TextElement.FontWeight="ExtraBold"
             HorizontalContentAlignment="Right"
             TextElement.FontSize="14"
             HorizontalAlignment="Left" 
-            Margin="159,503,0,0"
-            VerticalAlignment="Top"
-            Width="70"/>
+            Margin="99,444,0,0" 
+            VerticalAlignment="Top" 
+            Width="99" Height="29" Grid.ColumnSpan="2"/>
+        <Label 
+            x:Name="telefonoL_VModificar"
+            Content="Teléfono"
+            TextElement.FontWeight="ExtraBold"
+            HorizontalContentAlignment="Right"
+            TextElement.FontSize="14"
+            HorizontalAlignment="Left" 
+            Margin="99,473,0,0" 
+            VerticalAlignment="Top" 
+            Width="99" Height="29" Grid.ColumnSpan="2"/>
         <Label
-        	x:Name="telefonoTutorLabel_VModificar"
-        	Content="Teléfono"
-        	HorizontalContentAlignment="Right"
-        	TextElement.FontSize="14"
-        	HorizontalAlignment="Left" 
-        	Margin="159,532,0,0"
-        	VerticalAlignment="Top"
-        	Width="70"/>
+            x:Name="mailL_VModificar"
+            Content="Mail"
+            TextElement.FontWeight="ExtraBold"
+            HorizontalContentAlignment="Right"
+            TextElement.FontSize="14"
+            HorizontalAlignment="Left" 
+            Margin="99,503,0,0"
+            VerticalAlignment="Top"
+            Width="99" Height="29" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -1,7 +1,7 @@
 ﻿
 namespace SistemaSECI
 {
-    public enum diasSemana
+    public enum DiaSemana
     {
         lunes,
         martes,

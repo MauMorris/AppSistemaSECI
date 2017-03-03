@@ -1,0 +1,54 @@
+﻿<Window x:Class="SistemaSECI.VentanaSeleccionSeci"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaSECI"
+        mc:Ignorable="d"
+        Background="#F5F5F5"        
+        Title="Seleccion Seci" 
+        Height="281.471" 
+        Width="358.76">
+    <Grid Margin="0,0,2,0">
+        <Button 
+            x:Name="lineaBaseBoton_VSeleccionSeci"
+            Content="LINEA BASE"
+            Margin="127,29,0,0" 
+            VerticalAlignment="Top" 
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
+            Width="117" 
+            Height="45"
+            HorizontalAlignment="Left" 
+            TabIndex="0"
+            Click="lineaBaseBoton_VSeci_Click" 
+            />
+        <Button 
+            x:Name="evaluacionBoton_VSeleccionSeci"
+            Content="EVALUACION"
+            Margin="127,105,0,0" 
+            VerticalAlignment="Top" 
+        	Background="#2196F3"
+            TextElement.Foreground="White"
+            Width="117" 
+            Height="45"
+            HorizontalAlignment="Left" 
+            TabIndex="0"
+            Click="evaluacionBoton_VSeleccionSeci_Click" 
+            />
+        <Button 
+            x:Name="tratamientoBoton_VSeleccionSeci"
+            Content="TRATAMIENTO"
+            Margin="127,181,0,0" 
+            VerticalAlignment="Top" 
+        	Background="#4CAF50" 
+            TextElement.Foreground="White"
+            Width="117" 
+            Height="45"
+            HorizontalAlignment="Left" 
+            TabIndex="0"
+            Click="tratamientoBoton_VSeleccionSeci_Click" 
+            />
+
+    </Grid>
+</Window>

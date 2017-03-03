@@ -72,7 +72,7 @@
         <TextBlock
             x:Name="Nivel_textBlock"
             Grid.Row="0"
-            Margin="10,0,10,36" 
+            Margin="10,0,10,41" 
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             TextAlignment="Center"
@@ -89,7 +89,7 @@
             HorizontalAlignment="Center"
             TextAlignment="Center"
             Margin="8,13,7,0"
-            FontSize="22"
+            FontSize="20"
             TextWrapping="Wrap"
             Text="{Binding Path=SesionNivel}"
             VerticalAlignment="Top" 
@@ -124,7 +124,7 @@
         	Margin="10,14,10,0"
         	FontSize="22"
         	TextWrapping="Wrap" 
-        	Text="{Binding Path=TimeText, StringFormat=t }"
+        	Text="{Binding Path=TimeText}"
         	VerticalAlignment="Top" 
             Grid.Row="0" 
             Grid.Column="7" 
@@ -158,26 +158,28 @@
                 Source="{Binding ImageSource}" 
                 Stretch="UniformToFill" />
         </Viewbox>
-        <TextBlock 
-        	x:Name="dataRight_textBlock" 
+        <TextBlock
+            x:Name="text_JointRight"
         	Grid.Column="8"
-        	HorizontalAlignment="Left" 
-        	Grid.Row="2"
+        	HorizontalAlignment="Left"
             FontSize="9"
-        	TextWrapping="Wrap" 
         	VerticalAlignment="Top" 
         	Height="574"
-            Text="{Binding Path=JointTextRight}"
-        	Width="110"/>
-        <TextBlock 
-        	x:Name="dataLeft_textBlock"
-        	HorizontalAlignment="Left" 
-        	Grid.Row="2"
-        	FontSize="10"
-        	TextWrapping="Wrap" 
+        	Text="{Binding Path=JointTextRight}"
+        	Width="110" 
+            Margin="0,87,0,0" 
+            Grid.RowSpan="3"/>
+        <TextBlock
+        	x:Name="text_JointLeft"
+            HorizontalAlignment="Left"
+        	FontSize="9"
         	VerticalAlignment="Top" 
         	Height="574"
         	Text="{Binding Path=JointTextLeft}"
-        	Width="89" Grid.Column="1"/>
+        	Width="104" 
+            Margin="0,87,0,0" 
+            Grid.RowSpan="3" 
+            Grid.Column="1"/>
     </Grid>
 </Window>
+

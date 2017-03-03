@@ -323,8 +323,8 @@ namespace SistemaSECI
                 this.kinectSensor = null;
             }
 */
-            VentanaEjemplosKinect v = new VentanaEjemplosKinect();
-            v.Show();
+//            VentanaEjemplosKinect v = new VentanaEjemplosKinect();
+//            v.Show();
             this.Close();
         }
     }

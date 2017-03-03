@@ -8,8 +8,8 @@ namespace SistemaSECI
         /// INotifyPropertyChangedPropertyChanged evento para el control de ventana y cambiar los datos con un binding
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private int sesion;
-        public int Sesion
+        private string sesion;
+        public String Sesion
         {
             get { return sesion; }
             set

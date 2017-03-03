@@ -1,33 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SistemaSECI.Alimentacion">
+  <Class Name="SistemaSECI.DietaDiaria">
     <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ggBAAJIAACQQAAAmAAAAAkAAgABACAAAAAgAAAAAQAA=</HashCode>
-      <FileName>Alimentacion.cs</FileName>
+      <HashCode>ggAAAJIAACQQAAAmAAAAAkAAgABACAAAAAgAAAAAAAA=</HashCode>
+      <FileName>DietaDiaria.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SistemaSECI.DatosUsuario">
     <Position X="5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAEQUBgTEEAaEgAAAgABAgAAAYgAAACIAAAAAAAA=</HashCode>
+      <HashCode>AAABAEQEBwTEEAaEgAAQgABAgAAAYgAAACIAAAAAAAA=</HashCode>
       <FileName>DatosUsuario.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SistemaSECI.KinectBodyTest">
     <Position X="8.5" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>CAAFAFACAQAAAAAAAkgAIiIABIIjAAEAIAIAEQMCCAE=</HashCode>
       <FileName>KinectBodyTest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="SistemaSECI.diasSemana">
+  <Enum Name="SistemaSECI.DiaSemana">
     <Position X="6.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAIAAAAEAAAgAEAAABAAAAACAAAAAA=</HashCode>
-      <FileName>diasSemana.cs</FileName>
+      <FileName>DiaSemana.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

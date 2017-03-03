@@ -6,171 +6,312 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Title="SECI" 
-        Height="768"
+        Height="700"
         Width="1024"
-        
+        Background="#F5F5F5"
         WindowState="Maximized"
         Icon="logoUNAM.jpg"
         ResizeMode="CanMinimize"
         SnapsToDevicePixels="True">
-    <Grid 
+    <Grid
         Margin="0,0,0,6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="381*"/>
-            <ColumnDefinition Width="255*"/>
-            <ColumnDefinition Width="162*"/>
-            <ColumnDefinition Width="220*"/>
+            <ColumnDefinition Width="272*"/>
+            <ColumnDefinition Width="189*"/>
+            <ColumnDefinition Width="157*"/>
+            <ColumnDefinition Width="165*"/>
+            <ColumnDefinition Width="235*"/>
         </Grid.ColumnDefinitions>
-        <Button 
-            x:Name="regresarBoton_VHome"
-            Content="REGRESAR" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Background="White"
-            Width="80"
-            Height="45"
-            Margin="58,60,0,0" 
-            ClickMode="Press" 
-            Click="regresarBoton_VHome_Click" 
-            />
         <Button 
             x:Name="botonKinect_VHome" 
             Content="Kinect"
-            TextBlock.FontSize="16"
+            TextBlock.FontSize="22"
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Width="250" 
-            Background="White" 
-            Margin="0,170,0,0" 
+            Width="200" 
+            Background="#FFC107"
+            TextElement.Foreground="White"
+            Margin="0,161,0,0" 
             Height="100" 
-            Grid.Column="1" 
-            Click="botonKinect_VHome_Click" />
+            Click="botonKinect_VHome_Click" Grid.Column="1" 
+            Grid.ColumnSpan="2" />
         <Button 
         	x:Name="botonSeci_VHome"
         	Content="SECI"
-            TextBlock.FontSize="16"
+            TextBlock.FontSize="22"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="250" 
-        	Background="White" 
-        	Margin="0,340,0,0" 
-        	Height="100" 
-            Grid.Column="1" 
-            Click="botonSeci_VHome_Click" />
+        	Width="200" 
+        	Background="#FFC107" 
+            TextElement.Foreground="White"
+        	Margin="51,163,0,0" 
+        	Height="97" 
+            Grid.Column="2" 
+            Click="botonSeci_VHome_Click" 
+            Grid.ColumnSpan="2" />
         <Button 
         	x:Name="botonPlanAlimentacion_VHome" 
         	Content="Plan de Alimentacion"
-            TextBlock.FontSize="16"
+            TextBlock.FontSize="18"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="250" 
-        	Background="White" 
-        	Margin="0,510,0,0" 
-        	Height="100" 
-            Grid.Column="1" 
-            Click="botonPlanAlimentacion_VHome_Click" />
+        	Width="200" 
+        	Background="#FFC107"
+            TextElement.Foreground="White"
+        	Margin="137,163,0,0" 
+        	Height="97" 
+            Grid.Column="3"
+            Click="botonPlanAlimentacion_VHome_Click" 
+            Grid.ColumnSpan="2" />
         <Button 
         	x:Name="botonDocumentos_VHome" 
         	Content="DOCUMENTOS"
         	TextBlock.FontSize="16"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="162" 
-        	Background="White" 
-        	Margin="0,393,0,0" 
-        	Height="81" 
-        	Click="botonDocumentos_VHome_Click" 
-            Grid.Column="3"/>
-        <Button 
-        	x:Name="botonSalir_VHome" 
-        	Content="SALIR"
-        	TextBlock.FontSize="16"
-        	HorizontalAlignment="Left" 
-        	VerticalAlignment="Top" 
-        	Width="150" 
-        	Background="White" 
-        	Margin="19.527,621,0,0" 
-        	Height="58" 
-        	Grid.Column="3" 
-            Click="botonSalir_VHome_Click" />
-        <Button 
-        	x:Name="botonActualizar_VHome" 
-        	Content="IMC"
-        	TextBlock.FontSize="16"
-        	HorizontalAlignment="Left" 
-        	VerticalAlignment="Top" 
-        	Width="162" 
-        	Background="White" 
-        	Margin="108,393,0,0" 
-        	Height="81" 
-            Click="botonActualizar_VHome_Click"/>
+        	Width="140" 
+        	Background="#4CAF50" 
+            TextElement.Foreground="White"
+        	Margin="0,335,0,0" 
+        	Height="62" 
+        	Click="botonDocumentos_VHome_Click" Grid.Column="2"/>
         <Button
         	x:Name="botonModificar_VHome" 
-        	Content="MODIFICAR"
+        	Content="ACTUALIZAR"
         	TextBlock.FontSize="16"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
-        	Width="162" 
-        	Background="White" 
-        	Margin="108,510,0,0" 
-        	Height="81" 
-        	Click="botonModificar_VHome_Click"/>
+        	Width="140" 
+        	Background="#4CAF50" 
+            TextElement.Foreground="White"
+        	Margin="0,458,0,0" 
+        	Height="60" 
+        	Click="botonModificar_VHome_Click" Grid.Column="2"/>
         <Button
         	x:Name="botonBorrar_VHome" 
         	Content="BORRAR"
         	TextBlock.FontSize="16"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
+        	Width="140"
+        	Background="#4CAF50"
+            TextElement.Foreground="White"
+        	Margin="32,335,0,0" 
+        	Height="62"
+        	Click="botonBorrar_VHome_Click" Grid.Column="4"/>
+        <Button 
+            x:Name="cerrarSesionBoton_VHome"
+            Content="CERRAR SESION"
+            TextBlock.FontSize="16"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Background="#4CAF50"
+            TextElement.Foreground="White"
+            Width="140"
+            Height="60"
+            Margin="32,458,0,0" 
+            ClickMode="Press" 
+            Click="cerrarSesionBoton_VHome_Click" Grid.Column="4" 
+            />
+        <Button 
+        	x:Name="botonSalir_VHome" 
+        	Content="SALIR"
+            Background="#F44336"
+            TextElement.Foreground="White"
+        	TextBlock.FontSize="18"
+        	HorizontalAlignment="Left" 
+        	VerticalAlignment="Top" 
         	Width="162" 
-        	Background="White" 
-        	Margin="108,621,0,0" 
-        	Height="58"
-        	Click="botonBorrar_VHome_Click"/>
+        	Margin="10,583,0,0" 
+        	Height="58" 
+        	Grid.Column="4" 
+            Click="botonSalir_VHome_Click" />
         <Label 
-        	x:Name="nombreTextLabel_VHome" 
-        	Content="Nombre" 
+        	x:Name="nombreL_VHome" 
+        	Content="Nombre"
         	HorizontalContentAlignment="Left"
-        	TextElement.FontSize="14"
+        	TextElement.FontSize="13"
         	HorizontalAlignment="Left" 
-        	Margin="108,171,0,0" 
+        	Margin="54,90,0,0" 
         	VerticalAlignment="Top" 
-        	Width="175" 
+        	Width="174" 
         	Height="29"/>
         <Label 
-        	x:Name="edadTextLabel_VHome"
-        	Content="Edad" 
-        	TextElement.FontSize="14"
+        	x:Name="apellidosL_VHome"
+        	Content="Apellidos"
+        	TextElement.FontSize="13"
         	HorizontalAlignment="Left" 
-        	Margin="108,205,0,0" 
+        	Margin="54,125,0,0" 
         	VerticalAlignment="Top" 
-        	Width="175" 
+        	Width="174" 
         	Height="29"/>
         <Label 
-        	x:Name="estaturaTextLabel_VHome"
-        	Content="Estatura" 
-        	TextElement.FontSize="14"
+            x:Name="edadL_VHome"
+            Content="Edad" 
+        	TextElement.FontSize="13"
+            HorizontalAlignment="Left" 
+            Margin="54,160,0,0" 
+            VerticalAlignment="Top" 
+            Width="174" 
+            Height="29"/>
+        <Label 
+        	x:Name="escolaridadL_VHome"
+        	Content="Escolaridad"
+        	TextElement.FontSize="13"
         	HorizontalAlignment="Left" 
-        	Margin="108,268,0,0" 
+        	Margin="54,195,0,0" 
         	VerticalAlignment="Top" 
-        	Width="175" 
+        	Width="174" 
         	Height="29"/>
         <Label 
-        	x:Name="pesoTextLabel_VHome"
+        	x:Name="sexoL_VHome"
+        	Content="Sexo" 
+        	TextElement.FontSize="13"
+        	HorizontalAlignment="Left" 
+        	Margin="54,230,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="174" 
+        	Height="29"/>
+        <Label 
+        	x:Name="pesoL_VHome"
         	Content="Peso" 
-        	TextElement.FontSize="14"
+        	TextElement.FontSize="13"
         	HorizontalAlignment="Left" 
-        	Margin="108,292,0,0" 
+        	Margin="54,265,0,0" 
         	VerticalAlignment="Top" 
-        	Width="175" 
+        	Width="174" 
         	Height="29"/>
         <Label 
-        	x:Name="imcTextLabel_VHome"
-        	Content="IMC" 
-        	TextElement.FontSize="14"
-        	HorizontalAlignment="Left" 
-        	Margin="108,320,0,0" 
-        	VerticalAlignment="Top" 
-        	Width="175" 
-        	Height="29"/>
+            x:Name="estaturaL_VHome"
+            Content="Estatura"
+        	TextElement.FontSize="13"
+            HorizontalAlignment="Left" 
+            Margin="54,300,0,0" 
+            VerticalAlignment="Top" 
+            Width="174" 
+            Height="29"/>
+        <Label 
+            x:Name="imcL_VHome"
+            Content="IMC" 
+        	TextElement.FontSize="13"
+            HorizontalAlignment="Left" 
+            Margin="54,335,0,0" 
+            VerticalAlignment="Top" 
+            Width="174" 
+            Height="29"/>
+        <Label 
+            x:Name="tutorL_VHome"
+            Content="Tutor"
+        	TextElement.FontSize="13"
+            HorizontalAlignment="Left" 
+            Margin="54,370,0,0" 
+            VerticalAlignment="Top" 
+            Width="174" 
+            Height="29"/>
+        <Label 
+            x:Name="edadTutorL_VHome"
+            Content="Edad Tutor"
+        	TextElement.FontSize="13"
+            HorizontalAlignment="Left" 
+            Margin="54,405,0,0" 
+            VerticalAlignment="Top" 
+            Width="174" 
+            Height="29"/>
+        <Label 
+            x:Name="telefonodL_VHome"
+            Content="Teléfono"
+        	TextElement.FontSize="13"
+            HorizontalAlignment="Left" 
+            Margin="54,440,0,0" 
+            VerticalAlignment="Top" 
+            Width="174" 
+            Height="29"/>
+        <Label 
+            x:Name="mailL_VHome"
+            Content="Mail"
+        	TextElement.FontSize="13"
+            HorizontalAlignment="Left" 
+            Margin="54,475,0,0" 
+            VerticalAlignment="Top" 
+            Width="174" 
+            Height="29"/>
+        <Label 
+            x:Name="codigoL_VHome"
+            Content="Codigo"
+        	TextElement.FontSize="13"
+            HorizontalAlignment="Left" 
+            Margin="54,510,0,0" 
+            VerticalAlignment="Top" 
+            Width="174" 
+            Height="29"/>
+        <Label 
+            x:Name="modulosL_VHome"
+            Content="MODULOS DE LA SESION"
+            TextElement.FontSize="23"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            Margin="10,59,0,0" 
+            Width="302" 
+            Height="81" 
+            Grid.ColumnSpan="2" Grid.Column="2"/>
+        <GridSplitter 
+            x:Name="gridSplitter" 
+            HorizontalAlignment="Left" 
+            Height="544" 
+            Margin="233,15,0,0" 
+            VerticalAlignment="Top" 
+            Width="3"/>
+        <TextBlock 
+            x:Name="documentosTB_VHome" 
+            HorizontalAlignment="Left" 
+            Margin="0,335,0,0" 
+            TextWrapping="Wrap"
+            TextBlock.FontSize="16"
+            VerticalAlignment="Top" 
+            Height="64" 
+            Width="182" Grid.Column="1"><Run Text="Abre la carpeta con los documentos guardados del paciente"/><Run Text="."/></TextBlock>
+        <TextBlock 
+            x:Name="actualizarTB_VHome"
+            HorizontalAlignment="Left" 
+            Margin="0,458,0,0" 
+            TextWrapping="Wrap" 
+            Text="Actualiza o corrige la información capturada del paciente ."
+            TextBlock.FontSize="16"
+            VerticalAlignment="Top" 
+            Height="64" 
+            Width="182" Grid.Column="1"/>
+        <TextBlock 
+            x:Name="borrarTB_VHome"
+            HorizontalAlignment="Left" 
+            Margin="10,335,0,0" 
+            TextWrapping="Wrap" 
+            Text="Borra todos los datos relacionados con el paciente."
+            TextBlock.FontSize="16"
+            VerticalAlignment="Top" 
+            Height="64" 
+            Width="182" Grid.Column="3" Grid.ColumnSpan="2"/>
+        <TextBlock 
+            x:Name="cerrarSesionTB_VHome"
+            HorizontalAlignment="Left" 
+            Margin="10,458,0,0" 
+            TextWrapping="Wrap" 
+            Text="Cierra la sesión actual y guarda los avances."
+            TextBlock.FontSize="16"
+            VerticalAlignment="Top" 
+            Height="64" 
+            Width="182" 
+            Grid.Column="3" 
+            Grid.ColumnSpan="2"/>
+        <GridSplitter 
+            x:Name="gridSplitter1" 
+            HorizontalAlignment="Left" 
+            Height="3" 
+            Margin="233,559,0,0" 
+            VerticalAlignment="Top" 
+            Width="785" 
+            Grid.ColumnSpan="5"/>
+
     </Grid>
 </Window>

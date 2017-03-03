@@ -2,9 +2,6 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 
 namespace SistemaSECI
 {
@@ -17,16 +14,19 @@ namespace SistemaSECI
         String tipoReforzadorAdd = "Personalizar";
         String[] claseReforzador = {"Niño","Niña"};
 
-        int[] pAltoReforzamiento = {5, 10};
-        int[] pBajoReforzamiento = {20, 60};
+        int[] pAltoReforzamiento = {5, 10, 20};
+        int[] pBajoReforzamiento = {20, 40, 60};
+        int idLlaves = 0;
+        int idSeciParametros = 0;
 
         Seci paciente = new Seci();
-        ManejadorTablas nuevoU;
+        TablasDBHelper nuevoU;
 
-        public VentanaSeci()
+        public VentanaSeci(int LlavesId)
         {
             InitializeComponent();
             inicializaComboBoxes();
+            idLlaves = LlavesId;
         }
 
         private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
@@ -35,20 +35,10 @@ namespace SistemaSECI
             if (EverythingOK())
             {
                 QueryParametros();
-                VentanaSeciPrueba v = new VentanaSeciPrueba();
+                idSeciParametros = nuevoU.ConsultaIdUltimoParametrosSeci();
+                VentanaSeciPrueba v = new VentanaSeciPrueba(idSeciParametros, idLlaves);
                 v.Show();
                 this.Close();
-            }
-        }
-
-        private void IniInmediatezI()
-        {
-            inmediatezInmeCB_VSeci.Items.Add("1 minuto");
-            string apoyo = "";
-            for (int i = 2; i <= 5; i++)
-            {
-                apoyo = i + " minutos";
-                inmediatezInmeCB_VSeci.Items.Add(apoyo);
             }
         }
 
@@ -78,7 +68,7 @@ namespace SistemaSECI
             foreach (String reforzador in claseReforzador)
                 reforzadorClaseCB_VSeci.Items.Add(reforzador);
 
-            IniInmediatezI();
+            inmediatezInmeCB_VSeci.Items.Add("Inmediato");
             IniInmediatezD();
 
             for (int i = 2; i < 10; i++)
@@ -187,11 +177,18 @@ namespace SistemaSECI
 
         private void QueryParametros()
         {
-            nuevoU = new ManejadorTablas();
+            nuevoU = new TablasDBHelper();
 
-            nuevoU.InsertParametrosSesion(1, paciente.ReforzadorTipo, paciente.ReforzadorClase, paciente.InmediatezI, 
+            nuevoU.InsertarParametrosSesion(paciente.ReforzadorTipo, paciente.ReforzadorClase, 5, paciente.InmediatezI, 
                                         paciente.InmediatezD, paciente.EsfuerzoAlto, paciente.EsfuerzoBajo, 
-                                        paciente.ReforzamientoAlto, paciente.ReforzamientoBajo, 1, 1);
+                                        paciente.ReforzamientoAlto, paciente.ReforzamientoBajo, Contrato.ParametrosSeci.EVALUACION);
+        }
+
+        private void regresarBoton_VLogros_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaHome v = new VentanaHome(idLlaves);
+            v.Show();
+            this.Close();
         }
     }
 }

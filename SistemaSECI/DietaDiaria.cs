@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace SistemaSECI
 {
-    class Alimentacion: INotifyPropertyChanged
+    class DietaDiaria: INotifyPropertyChanged
     {
         /// INotifyPropertyChangedPropertyChanged evento para el control de ventana y cambiar los datos con un binding
         public event PropertyChangedEventHandler PropertyChanged;
@@ -128,19 +128,28 @@ namespace SistemaSECI
             }
         }
 
-        private int sesion;
-        public int Sesion
+        public DietaDiaria()
         {
-            get { return sesion; }
-            set
-            {
-                if (this.sesion != value)
-                {
-                    this.sesion = value;
-                    // notificacion debida al cambio de texto de status 
-                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SesionText"));
-                }
-            }
+            this.dia = string.Empty;
+            this.desayuno = string.Empty;
+            this.almuerzo = string.Empty;
+            this.comida = string.Empty;
+            this.merienda = string.Empty;
+            this.cena = string.Empty;
+            this.rubrica = 0;
+            this.comentarios = string.Empty;
+        }
+
+        public DietaDiaria(string _dia, string _desayuno, string _almuerzo, string _merienda,
+                            string _cena, int _rubrica, string _comentarios)
+        {
+            this.dia = _dia;
+            this.desayuno = _desayuno;
+            this.almuerzo = _almuerzo;
+            this.merienda = _merienda;
+            this.cena = _cena;
+            this.rubrica = _rubrica;
+            this.comentarios = _comentarios;
         }
     }
 }

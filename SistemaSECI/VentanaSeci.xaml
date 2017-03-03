@@ -8,6 +8,7 @@
         Title="SECI" 
         Height="404" 
         Width="540"
+        Background="#F5F5F5"        
         Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -94,14 +95,15 @@
         <Label
     		x:Name="reforzadorLabel_VSeci" 
     		Content="Reforzador" 
-    		HorizontalContentAlignment="Right"
+    		HorizontalContentAlignment="Left"
     		TextElement.FontSize="14"
+            TextElement.FontWeight="ExtraBold"
     		HorizontalAlignment="Left" 
     		Margin="23,27,0,0" 
     		VerticalAlignment="Top" 
-    		Width="84"/>
+    		Width="104"/>
         <Label
-        	x:Name="reforzadorTipoLabel_VSeci" 
+        	x:Name="reforzadorTipoL_VSeci" 
         	Content="Tipo" 
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -110,7 +112,7 @@
         	VerticalAlignment="Top" 
         	Width="84"/>
         <Label
-        	x:Name="reforzadorClaseLabel_VSeci" 
+        	x:Name="reforzadorClaseL_VSeci" 
         	Content="Clase"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -119,16 +121,17 @@
         	VerticalAlignment="Top" 
         	Width="84"/>
         <Label 
-    		x:Name="inmediatezLabel_VSeci"
+    		x:Name="inmediatezL_VSeci"
     		Content="Inmediatez" 
-    		HorizontalContentAlignment="Right"
+    		HorizontalContentAlignment="Left"
+            TextElement.FontWeight="ExtraBold"
     		TextElement.FontSize="14"
     		HorizontalAlignment="Left" 
     		Margin="23,163,0,0" 
     		VerticalAlignment="Top" 
-    		Width="84"/>
+    		Width="104"/>
         <Label 
-        	x:Name="inmediatezInmediatoLabel_VSeci"
+        	x:Name="inmediatezInmediatoL_VSeci"
         	Content="Inmediato" 
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -137,7 +140,7 @@
         	VerticalAlignment="Top" 
         	Width="84"/>
         <Label 
-        	x:Name="inmediatezDemoradoLabel_VSeci"
+        	x:Name="inmediatezDemoradoL_VSeci"
         	Content="Demorado" 
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -146,16 +149,17 @@
         	VerticalAlignment="Top" 
         	Width="84"/>
         <Label 
-        	x:Name="esfuerzoLabel_VSeci" 
+        	x:Name="esfuerzoL_VSeci" 
         	Content="Esfuerzo" 
-        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="ExtraBold"
+    		HorizontalContentAlignment="Left"
         	TextElement.FontSize="14"
         	HorizontalAlignment="Left" 
         	Margin="283,27,0,0" 
         	VerticalAlignment="Top" 
-        	Width="62"/>
+        	Width="91"/>
         <Label 
-        	x:Name="esfuerzoAltoLabel_VSeci" 
+        	x:Name="esfuerzoAltoL_VSeci" 
         	Content="Alto" 
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -164,7 +168,7 @@
         	VerticalAlignment="Top" 
         	Width="62"/>
         <Label 
-        	x:Name="esfuerzoBajoLabel_VSeci" 
+        	x:Name="esfuerzoBajoL_VSeci" 
         	Content="Bajo" 
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -173,16 +177,17 @@
         	VerticalAlignment="Top" 
         	Width="62"/>
         <Label 
-        	x:Name="programaReforzamientoLabel_VSeci"
+        	x:Name="programaReforzamientoL_VSeci"
         	Content="Programa de reforzamiento" 
-        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="ExtraBold"
+    		HorizontalContentAlignment="Left"
         	TextElement.FontSize="14"
         	HorizontalAlignment="Left" 
         	Margin="283,163,0,0" 
         	VerticalAlignment="Top" 
-        	Width="187"/>
+        	Width="216"/>
         <Label 
-        	x:Name="programaReforzamientoAltoLabel_VSeci"
+        	x:Name="programaReforzamientoAltoL_VSeci"
         	Content="Alto"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -191,7 +196,7 @@
         	VerticalAlignment="Top" 
         	Width="62"/>
         <Label 
-        	x:Name="programaReforzamientoBajoLabel_VSeci"
+        	x:Name="programaReforzamientoBajoL_VSeci"
         	Content="Bajo"
         	HorizontalContentAlignment="Right"
         	TextElement.FontSize="14"
@@ -201,17 +206,31 @@
         	Width="62"/>
         <Button 
         	x:Name="okBoton_VSeci"
-        	Content="Ok"
+        	Content="OK"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
         	Width="186" 
-        	Margin="191,297,0,0"
-        	Background="White"
+        	Margin="293,302,0,0"
+        	Background="#2196F3"
+            TextElement.Foreground="White"
         	ClickMode="Press" 
         	Height="50" 
         	TabIndex="8" 
             Click="okBoton_VSeci_Click" 
             />
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="283,-200,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button 
+            x:Name="regresarBoton_VSeci"
+            Content="REGRESAR"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            Width="186" 
+            Margin="50,302,0,0"
+            Background="#607D8B"
+            TextElement.Foreground="White"
+            ClickMode="Press" 
+            Height="50" 
+            TabIndex="1"
+            Click="regresarBoton_VLogros_Click" 
+            />
     </Grid>
 </Window>

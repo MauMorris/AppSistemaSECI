@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 
@@ -10,15 +9,18 @@ namespace SistemaSECI
     /// </summary>
     public partial class MainWindow : Window
     {
-        ManejadorTablas nuevaBD;
-        BackgroundWorker worker;
+        private TablasDBHelper nuevaBD;
+        private BackgroundWorker worker;
+
+        private static int backgroundTime = 100;
+        private static int sleepTime = 50;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        /// Ejecuta tareas iniciales
+        /// Ejecuta el hilo para conexion con la base de datos
         /// <param name="sender">object sending the event</param>
         /// <param name="e">event arguments</param>
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -30,18 +32,19 @@ namespace SistemaSECI
             worker.ProgressChanged += worker_ProgressChanged;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
 
-            worker.RunWorkerAsync(100);
+            worker.RunWorkerAsync(backgroundTime);
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            int max = (int) e.Argument;
-            nuevaBD = new ManejadorTablas();
+            int tiempoMax = (int) e.Argument;
+            nuevaBD = new TablasDBHelper();
+//////            nuevaBD.BorrarTodo(); proposito de desarrollo
 
-            for (int i = 0; i < max; i++)
+            for (int i = 0; i < tiempoMax; i++)
             {
                 (sender as BackgroundWorker).ReportProgress(i);
-                Thread.Sleep(15);
+                Thread.Sleep(sleepTime);
                 e.Result = i;
             }
         }
@@ -53,7 +56,7 @@ namespace SistemaSECI
 
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            VentanaUsuarios v = new VentanaUsuarios();
+            VUsuarios v = new VUsuarios();
             v.Show();
             this.Close();
         }

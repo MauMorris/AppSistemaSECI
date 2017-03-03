@@ -15,18 +15,28 @@ using System.Windows.Shapes;
 namespace SistemaSECI
 {
     /// <summary>
-    /// Lógica de interacción para VentanaEstadisticas.xaml
+    /// Lógica de interacción para VentanaSeleccionSeci.xaml
     /// </summary>
-    public partial class VentanaEstadisticas : Window
+    public partial class VentanaSeleccionSeci : Window
     {
-        public VentanaEstadisticas()
+        public VentanaSeleccionSeci()
         {
             InitializeComponent();
         }
 
-        private void botonRegresar_VEstadisticasUsuario_Click(object sender, RoutedEventArgs e)
+        private void lineaBaseBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+
+        }
+
+        private void evaluacionBoton_VSeleccionSeci_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tratamientoBoton_VSeleccionSeci_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

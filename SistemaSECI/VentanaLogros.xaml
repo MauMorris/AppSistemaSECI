@@ -8,6 +8,7 @@
         Title="Logros" 
         Height="530" 
         Width="600"
+        Background="#F5F5F5"
         Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -18,7 +19,8 @@
             Content="REGRESAR"
             Margin="40,44,0,0" 
         	VerticalAlignment="Top" 
-            Background="White"
+            TextElement.Foreground="White"
+            Background="#607D8B"
         	Width="80" 
         	Height="45"
             HorizontalAlignment="Left" Click="regresarBoton_VLogros_Click" 
