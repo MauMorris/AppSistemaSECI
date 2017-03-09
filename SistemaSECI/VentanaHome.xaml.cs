@@ -26,6 +26,7 @@ namespace SistemaSECI
             idLlaves = idLlavesUsuarioImc;
 
             paciente = new TablasDBHelper();
+
             llaves = paciente.RegresaLlavesUsuarioImc(idLlaves);
 
             pacienteActual = paciente.RegresaDatosUsuarioConsulta(llaves[0]);
@@ -53,6 +54,12 @@ namespace SistemaSECI
                 case "Kinect":
                     e.Cancel = false;
                     break;
+                case "Seci":
+                    e.Cancel = false;
+                    break;
+                case "Alimentacion":
+                    e.Cancel = false;
+                    break;
                 case "CerrarVentana":
                     VUsuarios v = new VUsuarios();
                     v.Show();
@@ -76,7 +83,7 @@ namespace SistemaSECI
 
         private void botonSeci_VHome_Click(object sender, RoutedEventArgs e)
         {
-            VentanaSeci v = new VentanaSeci(idLlaves);
+            VentanaSeleccionSeci v = new VentanaSeleccionSeci(idLlaves);
             apoyoCerrar = "Seci";
             v.Show();
             this.Close();
@@ -135,8 +142,10 @@ namespace SistemaSECI
             var borrar = MessageBox.Show("¡Borrarás de forma permanente a este usuario!","Borrar usuario",MessageBoxButton.OKCancel,MessageBoxImage.Warning);
             if (borrar.Equals(MessageBoxResult.OK))
             {
+                paciente.BorraDatosUsuario(llaves[0]);
                 MessageBox.Show("Paciente borrado");
 
+                apoyoCerrar = "Borrar";
                 VUsuarios v = new VUsuarios();
                 v.Show();
                 this.Close();

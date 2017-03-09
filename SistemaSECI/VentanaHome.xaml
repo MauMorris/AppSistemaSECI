@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Title="SECI" 
+        Closing="Window_Closing"
         Height="700"
         Width="1024"
         Background="#F5F5F5"

@@ -11,6 +11,7 @@
         Background="#F5F5F5"        
         Icon="logoUNAM.jpg"
         WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing"
         ResizeMode="NoResize">
     <Grid>
         <ComboBox 
@@ -92,6 +93,16 @@
         	Height="23" 
         	Margin="359,244,0,0" 
         	TabIndex="7"/>
+        <Label
+            x:Name="tipoSesionLabel_VSeci" 
+            Content="sesion" 
+            HorizontalContentAlignment="Center"
+            TextElement.FontWeight="Bold"
+            TextElement.FontSize="14"
+            HorizontalAlignment="Left" 
+            Margin="217,1,0,0" 
+            VerticalAlignment="Top" 
+            Width="104"/>
         <Label
     		x:Name="reforzadorLabel_VSeci" 
     		Content="Reforzador" 

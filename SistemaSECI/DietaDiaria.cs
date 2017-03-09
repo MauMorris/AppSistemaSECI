@@ -136,7 +136,7 @@ namespace SistemaSECI
             this.comida = string.Empty;
             this.merienda = string.Empty;
             this.cena = string.Empty;
-            this.rubrica = 0;
+            this.rubrica = 1;
             this.comentarios = string.Empty;
         }
 

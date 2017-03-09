@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,30 +17,81 @@ namespace SistemaSECI
 
         int[] pAltoReforzamiento = {5, 10, 20};
         int[] pBajoReforzamiento = {20, 40, 60};
+
         int idLlaves = 0;
         int idSeciParametros = 0;
+
+        string tipoDeSesion = string.Empty;
+        string apoyoCerrar = "CerrarVentana";
 
         Seci paciente = new Seci();
         TablasDBHelper nuevoU;
 
-        public VentanaSeci(int LlavesId)
+        public VentanaSeci(int LlavesId, string tipoSesion)
         {
             InitializeComponent();
             inicializaComboBoxes();
+
             idLlaves = LlavesId;
+            tipoDeSesion = tipoSesion;
+
+            tipoSesionLabel_VSeci.Content = tipoDeSesion;
+        }
+
+        /// Ejecuta tareas iniciales
+        /// <param name="sender">object sending the event</param>
+        /// <param name="e">event arguments</param>
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            switch (apoyoCerrar)
+            {
+                case "Regresar":
+                    e.Cancel = false;
+                    break;
+                case "Siguiente":
+                    e.Cancel = false;
+                    break;
+                case "CerrarVentana":
+                    VentanaHome v = new VentanaHome(idLlaves);
+                    v.Show();
+                    e.Cancel = false;
+                    break;
+                default:
+                    VentanaHome f = new VentanaHome(idLlaves);
+                    f.Show();
+                    e.Cancel = false;
+                    break;
+            }
         }
 
         private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
+            nuevoU = new TablasDBHelper();
+
             PasoParametros();
             if (EverythingOK())
             {
-                QueryParametros();
+                nuevoU.InsertarParametrosSesion(paciente.ReforzadorTipo, paciente.ReforzadorClase, 5, paciente.InmediatezI,
+                                            paciente.InmediatezD, paciente.EsfuerzoAlto, paciente.EsfuerzoBajo,
+                                            paciente.ReforzamientoAlto, paciente.ReforzamientoBajo, tipoDeSesion);
+
                 idSeciParametros = nuevoU.ConsultaIdUltimoParametrosSeci();
+
+                apoyoCerrar = "Siguiente";
+
                 VentanaSeciPrueba v = new VentanaSeciPrueba(idSeciParametros, idLlaves);
                 v.Show();
                 this.Close();
             }
+        }
+
+        private void regresarBoton_VLogros_Click(object sender, RoutedEventArgs e)
+        {
+            apoyoCerrar = "Regresar";
+
+            VentanaSeleccionSeci v = new VentanaSeleccionSeci(idLlaves);
+            v.Show();
+            this.Close();
         }
 
         private void IniInmediatezD()
@@ -175,21 +227,6 @@ namespace SistemaSECI
                 return true;
         }
 
-        private void QueryParametros()
-        {
-            nuevoU = new TablasDBHelper();
-
-            nuevoU.InsertarParametrosSesion(paciente.ReforzadorTipo, paciente.ReforzadorClase, 5, paciente.InmediatezI, 
-                                        paciente.InmediatezD, paciente.EsfuerzoAlto, paciente.EsfuerzoBajo, 
-                                        paciente.ReforzamientoAlto, paciente.ReforzamientoBajo, Contrato.ParametrosSeci.EVALUACION);
-        }
-
-        private void regresarBoton_VLogros_Click(object sender, RoutedEventArgs e)
-        {
-            VentanaHome v = new VentanaHome(idLlaves);
-            v.Show();
-            this.Close();
-        }
     }
 }
 

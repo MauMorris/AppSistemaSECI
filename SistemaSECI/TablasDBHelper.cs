@@ -478,6 +478,8 @@ namespace SistemaSECI
             conexionSeci.Close();
         }
 */
+/// /////////////////////////////METODOS UPDATE
+/// 
         public void UpdateDatosUsuario(int id, string codigoUsuario, string nombre, string apellidos, int edad,
                                     string escolaridad, string sexo, string tutor, int edadTutor, 
                                     string telefonoTutor, string mail)
@@ -507,7 +509,9 @@ namespace SistemaSECI
             command.ExecuteNonQuery();
             conexionSeci.Close();
         }
-
+/// <summary>
+/// UPDATE IMC
+/// 
         public void UpdateImc(int id, double estatura, double peso, double imc)
         {
             //crear la conexion a la base de datos
@@ -528,26 +532,8 @@ namespace SistemaSECI
             command.ExecuteNonQuery();
             conexionSeci.Close();
         }
-
-        public void ReadDatosUsuario()
-        {
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Read from table
-            command.CommandText = "SELECT * FROM " + Contrato.DatosUsuario.TABLE_NAME;
-            //Data Reader Object
-            SQLiteDataReader sdr = command.ExecuteReader();
-            // Read() returns true if there is still a result line to read
-            while (sdr.Read())
-            {
-                string myreader = sdr.GetString(2);
-            }
-            sdr.Close();            
-            conexionSeci.Close();
-        }
-
+////////////METODOS READ
+/// 
         public Seci RegresaParametrosSesion(int id)
         {
             Seci parametrosConsulta = new Seci();
@@ -581,6 +567,278 @@ namespace SistemaSECI
             return parametrosConsulta;
         }
 
+        public int ConsultaIdUltimoUsuario()
+        {
+            int idUltimo = 0;
+            int idUsuario = 0;
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_ULTIMO_USUARIO = "SELECT * FROM " + Contrato.DatosUsuario.TABLE_NAME +
+                                                    " WHERE " + Contrato.DatosUsuario.ID + " = (SELECT MAX( " +
+                                                    Contrato.DatosUsuario.ID + ") FROM " +
+                                                    Contrato.DatosUsuario.TABLE_NAME + "); ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_ULTIMO_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
+                    idUsuario = idUltimo;
+                else
+                    idUsuario = 1;
+            }
+
+            conexionSeci.Close();
+            return idUsuario;
+        }
+
+        public int ConsultaIdUltimoImc()
+        {
+            int idUltimo = 0;
+            int idUsuario = 0;
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_ULTIMO_USUARIO = "SELECT * FROM " + Contrato.Imc.TABLE_NAME +
+                                                    " WHERE " + Contrato.Imc.ID + " = (SELECT MAX( " +
+                                                    Contrato.Imc.ID + ") FROM " +
+                                                    Contrato.Imc.TABLE_NAME + "); ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_ULTIMO_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
+                    idUsuario = idUltimo;
+                else
+                    idUsuario = 1;
+            }
+
+            conexionSeci.Close();
+            return idUsuario;
+        }
+
+        public int ConsultaUltimoLlaves()
+        {
+            int idUltimo = 0;
+            int idUsuario = 0;
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_ULTIMO_USUARIO = "SELECT * FROM " + Contrato.LlavesUsuarioImc.TABLE_NAME +
+                                                    " WHERE " + Contrato.LlavesUsuarioImc.ID + " = (SELECT MAX( " +
+                                                    Contrato.LlavesUsuarioImc.ID + ") FROM " +
+                                                    Contrato.LlavesUsuarioImc.TABLE_NAME + "); ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_ULTIMO_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
+                    idUsuario = idUltimo;
+                else
+                    idUsuario = 1;
+            }
+
+            conexionSeci.Close();
+            return idUsuario;
+        }
+/// <summary>
+/// Regresa el Id del ultimo ingreso en la tabla de de parametros de seci
+/// </summary>
+        public int ConsultaIdUltimoParametrosSeci()
+        {
+            int idUltimo = 0;
+            int idParametro = 0;
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_ULTIMO_PARAMETRO_SECI = "SELECT * FROM " + Contrato.ParametrosSeci.TABLE_NAME +
+                                                    " WHERE " + Contrato.ParametrosSeci.ID + " = (SELECT MAX( " +
+                                                    Contrato.ParametrosSeci.ID + ") FROM " +
+                                                    Contrato.ParametrosSeci.TABLE_NAME + "); ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_ULTIMO_PARAMETRO_SECI;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
+                    idParametro = idUltimo;
+                else
+                    idParametro = 1;
+            }
+            conexionSeci.Close();
+            return idParametro;
+        }
+/// <summary>
+/// Regresa un string que concatena los datos relevantes para describir a un usuario reciente consultado ID
+        public string RegresaUsuarioConsulta(int id)
+        {
+            string usuarioConcatenadoConsulta = string.Empty;
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_USUARIO = "SELECT * FROM " + Contrato.DatosUsuario.TABLE_NAME +
+                                                    " WHERE " + Contrato.DatosUsuario.ID + " = " + id + " ; ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.CODIGO]) + " ";
+                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.NOMBRE]) + " ";
+                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.APELLIDOS]) + " ";
+                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.EDAD]) + " ";
+                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.ESCOLARIDAD]);
+            }
+            conexionSeci.Close();
+
+            return usuarioConcatenadoConsulta;
+        }
+/// <summary>
+/// Regresa todos los datos del usuario consultado
+        public DatosUsuario RegresaDatosUsuarioConsulta(int id)
+        {
+            DatosUsuario usuarioConcatenadoConsulta = new DatosUsuario();
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_USUARIO = "SELECT * FROM " + Contrato.DatosUsuario.TABLE_NAME +
+                                                    " WHERE " + Contrato.DatosUsuario.ID + " = " + id + " ; ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                usuarioConcatenadoConsulta.Codigo = Convert.ToString(reader[Contrato.DatosUsuario.CODIGO]);
+                usuarioConcatenadoConsulta.Nombre = Convert.ToString(reader[Contrato.DatosUsuario.NOMBRE]);
+                usuarioConcatenadoConsulta.Apellidos = Convert.ToString(reader[Contrato.DatosUsuario.APELLIDOS]);
+                usuarioConcatenadoConsulta.Edad = Convert.ToInt32(reader[Contrato.DatosUsuario.EDAD]);
+                usuarioConcatenadoConsulta.Escolaridad = Convert.ToString(reader[Contrato.DatosUsuario.ESCOLARIDAD]);
+                usuarioConcatenadoConsulta.Sexo = Convert.ToString(reader[Contrato.DatosUsuario.SEXO]);
+                usuarioConcatenadoConsulta.NombreTutor = Convert.ToString(reader[Contrato.DatosUsuario.TUTOR]);
+                usuarioConcatenadoConsulta.EdadTutor = Convert.ToInt32(reader[Contrato.DatosUsuario.EDAD_TUTOR]);
+                usuarioConcatenadoConsulta.TelefonoTutor = Convert.ToString(reader[Contrato.DatosUsuario.TELEFONO_TUTOR]);
+                usuarioConcatenadoConsulta.Mail = Convert.ToString(reader[Contrato.DatosUsuario.MAIL]);
+            }
+            conexionSeci.Close();
+
+            return usuarioConcatenadoConsulta;
+        }
+/// <summary>
+/// Regresa los datos almacenados en la tabla IMC consultados con el ID con la forma de objeto Imc
+        public Imc RegresaImcUsuarioConsulta(int id)
+        {
+            Imc ImcConcatenadoConsulta = new Imc();
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_USUARIO = "SELECT * FROM " + Contrato.Imc.TABLE_NAME +
+                                                    " WHERE " + Contrato.Imc.ID + " = " + id + " ; ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                ImcConcatenadoConsulta.Peso = Convert.ToDouble(reader[Contrato.Imc.PESO]);
+                ImcConcatenadoConsulta.Estatura = Convert.ToDouble(reader[Contrato.Imc.ESTATURA]);
+                ImcConcatenadoConsulta.IMC = Convert.ToDouble(reader[Contrato.Imc.IMC]);
+            }
+            conexionSeci.Close();
+
+            return ImcConcatenadoConsulta;
+        }
+/// <summary>
+/// Regresa todos los ID de la tabla de datos de usuario
+        public ArrayList RegresaTodosId()
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+
+            ArrayList idArreglo = new ArrayList();
+
+            string SQL_CONSULT_USUARIO = "SELECT " + Contrato.DatosUsuario.ID + " FROM " +
+                                            Contrato.DatosUsuario.TABLE_NAME + " ; ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                idArreglo.Add(Convert.ToInt32(reader[0]));
+            }
+            conexionSeci.Close();
+
+            return idArreglo;
+        }
+/// <summary>
+/// Regresa las llavesconsultadas en la tabla de llaves IMC y Datos de Usuario
+        public int[] RegresaLlavesUsuarioImc(int id)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            int[] llaves = { 0, 0 };
+            string SQL_CONSULT_LLAVES_USUARIO_IMC = "SELECT * FROM " + Contrato.LlavesUsuarioImc.TABLE_NAME +
+                                                    " WHERE " + Contrato.LlavesUsuarioImc.ID + " = " + id + " ; ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_LLAVES_USUARIO_IMC;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                llaves[0] = Convert.ToInt32(reader[Contrato.LlavesUsuarioImc.LLAVE_USUARIO]);
+                llaves[1] = Convert.ToInt32(reader[Contrato.LlavesUsuarioImc.LLAVE_IMC]);
+            }
+            conexionSeci.Close();
+
+            return llaves;
+        }
+
+/// <summary>
+/// //////METODOS DELETE
+/// 
         public void BorraDatosUsuario(int id)
         {
             //crear la conexion a la base de datos
@@ -707,266 +965,5 @@ namespace SistemaSECI
             return contador;
         }
 
-        public int ConsultaIdUltimoUsuario()
-        {
-            int idUltimo = 0;
-            int idUsuario = 0;
-
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-        //Delete Record
-        string SQL_CONSULT_ULTIMO_USUARIO = "SELECT * FROM " + Contrato.DatosUsuario.TABLE_NAME + 
-                                                " WHERE " + Contrato.DatosUsuario.ID + " = (SELECT MAX( " + 
-                                                Contrato.DatosUsuario.ID + ") FROM " + 
-                                                Contrato.DatosUsuario.TABLE_NAME + "); ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_ULTIMO_USUARIO;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
-                    idUsuario = idUltimo;
-                else
-                    idUsuario = 1;
-            }
-
-            conexionSeci.Close();
-            return idUsuario;
-        }
-
-        public int ConsultaIdUltimoImc()
-        {
-            int idUltimo = 0;
-            int idUsuario = 0;
-
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Delete Record
-            string SQL_CONSULT_ULTIMO_USUARIO = "SELECT * FROM " + Contrato.Imc.TABLE_NAME +
-                                                    " WHERE " + Contrato.Imc.ID + " = (SELECT MAX( " +
-                                                    Contrato.Imc.ID + ") FROM " +
-                                                    Contrato.Imc.TABLE_NAME + "); ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_ULTIMO_USUARIO;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
-                    idUsuario = idUltimo;
-                else
-                    idUsuario = 1;
-            }
-
-            conexionSeci.Close();
-            return idUsuario;
-        }
-
-        public int ConsultaUltimoLlaves()
-        {
-            int idUltimo = 0;
-            int idUsuario = 0;
-
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Delete Record
-            string SQL_CONSULT_ULTIMO_USUARIO = "SELECT * FROM " + Contrato.LlavesUsuarioImc.TABLE_NAME +
-                                                    " WHERE " + Contrato.LlavesUsuarioImc.ID + " = (SELECT MAX( " +
-                                                    Contrato.LlavesUsuarioImc.ID + ") FROM " +
-                                                    Contrato.LlavesUsuarioImc.TABLE_NAME + "); ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_ULTIMO_USUARIO;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
-                    idUsuario = idUltimo;
-                else
-                    idUsuario = 1;
-            }
-
-            conexionSeci.Close();
-            return idUsuario;
-        }
-
-        public int ConsultaIdUltimoParametrosSeci()
-        {
-            int idUltimo = 0;
-            int idParametro = 0;
-
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Delete Record
-            string SQL_CONSULT_ULTIMO_PARAMETRO_SECI = "SELECT * FROM " + Contrato.ParametrosSeci.TABLE_NAME +
-                                                    " WHERE " + Contrato.ParametrosSeci.ID + " = (SELECT MAX( " +
-                                                    Contrato.ParametrosSeci.ID + ") FROM " +
-                                                    Contrato.ParametrosSeci.TABLE_NAME + "); ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_ULTIMO_PARAMETRO_SECI;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
-                    idParametro = idUltimo;
-                else
-                    idParametro = 1;
-            }
-            conexionSeci.Close();
-            return idParametro;
-        }
-
-        public string RegresaUsuarioConsulta(int id)
-        {
-            string usuarioConcatenadoConsulta = string.Empty;
-
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Delete Record
-            string SQL_CONSULT_USUARIO = "SELECT * FROM " + Contrato.DatosUsuario.TABLE_NAME +
-                                                    " WHERE " + Contrato.DatosUsuario.ID + " = " + id + " ; ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_USUARIO;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.CODIGO]) + " ";
-                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.NOMBRE]) + " ";
-                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.APELLIDOS]) + " ";
-                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.EDAD])+ " ";
-                usuarioConcatenadoConsulta += Convert.ToString(reader[Contrato.DatosUsuario.ESCOLARIDAD]);
-            }
-            conexionSeci.Close();
-
-            return usuarioConcatenadoConsulta; 
-        }
-
-        public DatosUsuario RegresaDatosUsuarioConsulta(int id)
-        {
-            DatosUsuario usuarioConcatenadoConsulta = new DatosUsuario();
-
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Delete Record
-            string SQL_CONSULT_USUARIO = "SELECT * FROM " + Contrato.DatosUsuario.TABLE_NAME +
-                                                    " WHERE " + Contrato.DatosUsuario.ID + " = " + id + " ; ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_USUARIO;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                usuarioConcatenadoConsulta.Codigo = Convert.ToString(reader[Contrato.DatosUsuario.CODIGO]);
-                usuarioConcatenadoConsulta.Nombre = Convert.ToString(reader[Contrato.DatosUsuario.NOMBRE]);
-                usuarioConcatenadoConsulta.Apellidos = Convert.ToString(reader[Contrato.DatosUsuario.APELLIDOS]);
-                usuarioConcatenadoConsulta.Edad = Convert.ToInt32(reader[Contrato.DatosUsuario.EDAD]);
-                usuarioConcatenadoConsulta.Escolaridad = Convert.ToString(reader[Contrato.DatosUsuario.ESCOLARIDAD]);
-                usuarioConcatenadoConsulta.Sexo = Convert.ToString(reader[Contrato.DatosUsuario.SEXO]);
-                usuarioConcatenadoConsulta.NombreTutor = Convert.ToString(reader[Contrato.DatosUsuario.TUTOR]);
-                usuarioConcatenadoConsulta.EdadTutor = Convert.ToInt32(reader[Contrato.DatosUsuario.EDAD_TUTOR]);
-                usuarioConcatenadoConsulta.TelefonoTutor = Convert.ToString(reader[Contrato.DatosUsuario.TELEFONO_TUTOR]);
-                usuarioConcatenadoConsulta.Mail = Convert.ToString(reader[Contrato.DatosUsuario.MAIL]);
-            }
-            conexionSeci.Close();
-
-            return usuarioConcatenadoConsulta;
-        }
-
-        public Imc RegresaImcUsuarioConsulta(int id)
-        {
-            Imc ImcConcatenadoConsulta = new Imc();
-
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Delete Record
-            string SQL_CONSULT_USUARIO = "SELECT * FROM " + Contrato.Imc.TABLE_NAME +
-                                                    " WHERE " + Contrato.Imc.ID + " = " + id + " ; ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_USUARIO;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                ImcConcatenadoConsulta.Peso = Convert.ToDouble(reader[Contrato.Imc.PESO]);
-                ImcConcatenadoConsulta.Estatura = Convert.ToDouble(reader[Contrato.Imc.ESTATURA]);
-                ImcConcatenadoConsulta.IMC = Convert.ToDouble(reader[Contrato.Imc.IMC]);
-            }
-            conexionSeci.Close();
-
-            return ImcConcatenadoConsulta;
-        }
-
-        public ArrayList RegresaTodosId()
-        {
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-
-            ArrayList idArreglo = new ArrayList();
-
-            string SQL_CONSULT_USUARIO = "SELECT " + Contrato.DatosUsuario.ID + " FROM " + 
-                                            Contrato.DatosUsuario.TABLE_NAME + " ; ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_USUARIO;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                idArreglo.Add(Convert.ToInt32(reader[0]));
-            }
-            conexionSeci.Close();
-
-            return idArreglo;
-        }
-
-        public int[] RegresaLlavesUsuarioImc(int id)
-        {
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            int[] llaves = { 0, 0};
-            string SQL_CONSULT_LLAVES_USUARIO_IMC = "SELECT * FROM " + Contrato.LlavesUsuarioImc.TABLE_NAME +
-                                                    " WHERE " + Contrato.LlavesUsuarioImc.ID + " = " + id + " ; ";
-            //execute SQL query
-            command.CommandText = SQL_CONSULT_LLAVES_USUARIO_IMC;
-
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                llaves[0] = Convert.ToInt32(reader[Contrato.LlavesUsuarioImc.LLAVE_USUARIO]);
-                llaves[1] = Convert.ToInt32(reader[Contrato.LlavesUsuarioImc.LLAVE_IMC]);
-            }
-            conexionSeci.Close();
-
-            return llaves;
-        }
     }
 }

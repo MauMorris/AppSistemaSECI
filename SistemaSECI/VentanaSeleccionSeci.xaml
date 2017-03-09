@@ -7,13 +7,30 @@
         mc:Ignorable="d"
         Background="#F5F5F5"        
         Title="Seleccion Seci" 
-        Height="281.471" 
-        Width="358.76">
-    <Grid Margin="0,0,2,0">
+        ResizeMode="NoResize"
+        Icon="logoUNAM.jpg"
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing"
+        Height="284.471"
+        Width="393.76">
+    <Grid Margin="0,0,4,-5">
+        <Button 
+            x:Name="regresarBoton_VModificar"
+            Content="REGRESAR" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            TextElement.Foreground="White"
+            Background="#607D8B"
+            Width="80"
+            Height="45"
+            Margin="10,29,0,0" 
+            ClickMode="Press" 
+            Click="regresarBoton_VModificar_Click" 
+            />
         <Button 
             x:Name="lineaBaseBoton_VSeleccionSeci"
             Content="LINEA BASE"
-            Margin="127,29,0,0" 
+            Margin="148,32,0,0" 
             VerticalAlignment="Top" 
         	Background="#FFC107" 
             TextElement.Foreground="White"
@@ -26,7 +43,7 @@
         <Button 
             x:Name="evaluacionBoton_VSeleccionSeci"
             Content="EVALUACION"
-            Margin="127,105,0,0" 
+            Margin="148,108,0,0" 
             VerticalAlignment="Top" 
         	Background="#2196F3"
             TextElement.Foreground="White"
@@ -38,8 +55,8 @@
             />
         <Button 
             x:Name="tratamientoBoton_VSeleccionSeci"
-            Content="TRATAMIENTO"
-            Margin="127,181,0,0" 
+            Content="REPLICA"
+            Margin="148,184,0,0" 
             VerticalAlignment="Top" 
         	Background="#4CAF50" 
             TextElement.Foreground="White"

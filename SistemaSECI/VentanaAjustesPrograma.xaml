@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Title="Ajustes de Programa" 
-        Height="620" 
+        Height="578" 
         Width="600"
         Background="#F5F5F5"
         Icon="logoUNAM.jpg"
@@ -112,17 +112,17 @@
             Margin="0,468,0,0" 
             Height="33" 
             Click="botonCreditos_VAjustesPrograma_Click"/>
-        <Button 
+        <Button
             x:Name="botonSalir_VAjustesPrograma" 
-            Content="SALIR" 
-            HorizontalAlignment="Left" 
-            VerticalAlignment="Top" 
-            Width="176" 
-            Grid.ColumnSpan="4" 
-        	Background="#2196F3"
+            Content="REGRESAR" 
+        	HorizontalAlignment="Left" 
+        	Margin="40,44,0,0" 
+        	VerticalAlignment="Top" 
             TextElement.Foreground="White"
-            Margin="212,516,0,0"
-            Height="42"
-            Click="botonSalir_VAjustesPrograma_Click"/>
+            Background="#607D8B"
+        	Width="80" 
+        	Height="45"
+            Click="botonSalir_VAjustesPrograma_Click"
+            TabIndex="2"/>
     </Grid>
 </Window>

@@ -26,6 +26,7 @@ namespace SistemaSECI
         TablasDBHelper nuevoUsuario;
 
         int idLlaves = 0;
+        string apoyoCerrar = "CerrarVentana";
 
 //        Excel.Application e = default(Excel.Application);
 
@@ -332,18 +333,20 @@ namespace SistemaSECI
                                             MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     if (salida.Equals(MessageBoxResult.OK))
                     {
+                        apoyoCerrar = "Cerrar";
                         VentanaHome v = new VentanaHome(idLlaves);
                         v.Show();
                         this.Close();
                     }
                 }
                 else
-                    MessageBox.Show("Necesitas completar la informacion de la sesion", "Error de ingreso de informacion",
+                    MessageBox.Show("Necesitas completar la información de la sesión", "Error de ingreso de información",
                                                 MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void regresarBoton_VDieta_Click(object sender, RoutedEventArgs e)
         {
+            apoyoCerrar = "Regresar";
             VentanaHome v = new VentanaHome(idLlaves);
             v.Show();
             this.Close();
@@ -354,7 +357,7 @@ namespace SistemaSECI
             OpenFileDialog v = new OpenFileDialog();
             v.Multiselect = false;
             v.Filter = "AVI (*.avi)|*.avi| MPG (*.mpg)|*.mpg| Windows Media Video (*.wmv)|*.wmv| 3gp (*.3gp)|*.3gp| Quick Time (*.mov)|*.mov| Flash (*.flv)|*.flvv| MPEG-4 (*.mp4)|*.mp4| Todos los Archivos (*.*)|*.*";
-            v.Title = "Seleccion de videos";
+            v.Title = "Selección de videos";
             v.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (v.ShowDialog().Equals(true))
                 System.Diagnostics.Process.Start(v.FileName);
@@ -366,21 +369,37 @@ namespace SistemaSECI
             OpenFileDialog v = new OpenFileDialog();
             v.Multiselect = false;
             v.Filter = "Presentaciones de Power Point (*.ppt, *.pptx)|*.ppt;*.pptx| PDF files (*.pdf)|*.pdf| Documentos de Word (*.doc, *.docx)|*.doc;*.docx| Archivos de Excel (*.xls, *.xlsx)|*.xls;*.xlsx| Todos los Archivos (*.*)|*.*";
-            v.Title = "Seleccion para el paciente";
+            v.Title = "Selección para el paciente";
             v.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (v.ShowDialog().Equals(true))
                 System.Diagnostics.Process.Start(v.FileName);
         }
 
-        /// Ejecuta cuando cierras la ventana
+        /// Ejecuta tareas iniciales
         /// <param name="sender">object sending the event</param>
         /// <param name="e">event arguments</param>
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            VentanaHome v = new VentanaHome(idLlaves);
-            v.Show();
+            switch (apoyoCerrar)
+            {
+                case "Cerrar":
+                    e.Cancel = false;
+                    break;
+                case "Regresar":
+                    e.Cancel = false;
+                    break;
+                case "CerrarVentana":
+                    VentanaHome v = new VentanaHome(idLlaves);
+                    v.Show();
+                    e.Cancel = false;
+                    break;
+                default:
+                    VentanaHome f = new VentanaHome(idLlaves);
+                    f.Show();
+                    e.Cancel = false;
+                    break;
+            }
         }
-
 
         private bool TodoBien(int i)
         {
@@ -389,8 +408,8 @@ namespace SistemaSECI
                 semana[i].Merienda == String.Empty | semana[i].Cena == String.Empty |
                 semana[i].Rubrica == 0 | semana[i].Comentarios == String.Empty)
             {
-                MessageBox.Show("Necesitas llenar uno o mas parámetros", "Error de ingreso de informacion",
-                                                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Necesitas llenar uno o más parámetros en los días de la semana", 
+                            "Error de ingreso de información", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             else
@@ -408,7 +427,6 @@ namespace SistemaSECI
                 nuevoUsuario.InsertarDietaDiaria(semana[i].Dia, semana[i].Desayuno, semana[i].Almuerzo, semana[i].Comida,
                                                     semana[i].Merienda, semana[i].Cena, semana[i].Rubrica, semana[i].Comentarios);
             }
-            //quiero que me regrese el Id del usuario para tenerlo presente en lo que sigue de las pruebas
         }
     }
 }

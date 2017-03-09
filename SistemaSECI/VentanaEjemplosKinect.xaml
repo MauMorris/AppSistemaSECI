@@ -10,6 +10,7 @@
         Background="#F5F5F5"
         Width="900"
         Icon="logoUNAM.jpg"
+        Closing="Window_Closing"
         WindowState="Maximized"
         ResizeMode="CanMinimize">
     <Grid>

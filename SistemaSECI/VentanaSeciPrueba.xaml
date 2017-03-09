@@ -10,6 +10,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Title="SECI" 
+        Closing="Window_Closing"
         Height="404" 
         Width="540">
     <Grid Margin="0,0,0,1">
@@ -40,6 +41,16 @@
         	TabIndex="1"
             Click="regresarBoton_VLogros_Click" 
             />
+        <Label
+            x:Name="tipoSesionLabel_VSeciPrueba" 
+            Content="sesion"
+            HorizontalContentAlignment="Center"
+            TextElement.FontWeight="Bold"
+            TextElement.FontSize="14"
+            HorizontalAlignment="Left" 
+            Margin="217,1,0,0" 
+            VerticalAlignment="Top" 
+            Width="104"/>
         <Label
         	x:Name="reforzadorTipoLabel_VSeciPrueba"
         	Content="Tipo"

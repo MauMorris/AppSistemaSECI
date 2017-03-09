@@ -11,6 +11,7 @@
         Background="GhostWhite"
         WindowState="Maximized"
         ResizeMode="CanMinimize"
+        Closing="Window_Closing"
         Icon="logoUNAM.jpg">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,240 +27,300 @@
             <ColumnDefinition Width="104*"/>
             <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
-        <Image 
-            x:Name="image11_VImagenes" 
-            HorizontalAlignment="Left" 
-            Height="100"
+        <Button
+            x:Name="b11_VImagenes"
             Margin="1,62,0,0" 
+            Height="100"
             VerticalAlignment="Top" 
             Width="104" 
-            Source="c_1.jpg"
-            Stretch="Fill"
-            Grid.Column="1"
-            />
-        <Image 
-        	x:Name="image12_VImagenes" 
-        	HorizontalAlignment="Left" 
+            HorizontalAlignment="Left" 
+            Click="b11_comida"
+            Grid.Column="1">
+            <Image 
+                x:Name="image11_VImagenes" 
+                Source="c_1.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+        	x:Name="b12_VImagenes"
+            HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
         	Width="104" 
-            Source="c_2.jpg"
-            Stretch="Fill" 
             Grid.Column="3" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image13_VImagenes"
+            Click="b12_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image12_VImagenes" 
+                Source="c_2.jpg"
+                Stretch="UniformToFill"/>
+        </Button>
+        <Button
+            x:Name="b13_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100"
         	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
         	Width="104"
-            Source="c_3.jpg"
-            Stretch="Fill" 
             Grid.Column="5" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image14_VImagenes"
-        	HorizontalAlignment="Left" 
+            Click="b13_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image13_VImagenes"
+                Source="c_3.jpg"
+                Stretch="UniformToFill"/>
+        </Button>
+        <Button
+        	x:Name="b14_VImagenes"
+            HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
         	Width="104" 
-            Source="c_4.jpg"
-            Stretch="Fill"
             Grid.Column="7" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image15_VImagenes"
-        	HorizontalAlignment="Left" 
+            Click="b14_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image14_VImagenes"
+                Source="c_4.jpg"
+                Stretch="UniformToFill"/>
+        </Button>
+        <Button
+        	x:Name="b15_VImagenes"
+            HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,62,0,0" 
         	VerticalAlignment="Top" 
         	Width="104" 
-            Source="c_5.jpg"
-            Stretch="Fill" 
-            Grid.Column="9"
-            />
-        <Image 
-        	x:Name="image21_VImagenes" 
+            Click="b15_comida"
+            Grid.Column="9">
+            <Image
+            	x:Name="image15_VImagenes"
+                Source="c_5.jpg"
+                Stretch="UniformToFill"/>
+        </Button>
+        <Button
+            x:Name="b21_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
         	Width="104" 
-            Source="c_6.jpg"
-            Stretch="Fill" 
-            Grid.Column="1"
-            />
-        <Image 
-        	x:Name="image22_VImagenes" 
+            Click="b21_comida"
+            Grid.Column="1">
+            <Image 
+        	    x:Name="image21_VImagenes" 
+                Stretch="Fill"
+                Source="c_6.jpg"/>
+        </Button>
+        <Button
+            x:Name="b22_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
         	Width="104" 
-            Source="c_7.jpg"
-            Stretch="Fill" 
             Grid.Column="3" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image23_VImagenes"
+            Click="b22_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image22_VImagenes" 
+                Source="c_7.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b23_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100"
         	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
-        	Width="104" 
-            Source="c_8.jpg"
-            Stretch="Fill" 
+        	Width="104"
             Grid.Column="5" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image24_VImagenes"
+            Click="b23_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image23_VImagenes"
+                Source="c_8.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b24_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
         	Width="104" 
-            Source="c_9.jpg"
-            Stretch="Fill" 
             Grid.Column="7" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image25_VImagenes"
-        	HorizontalAlignment="Left" 
+            Click="b24_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image24_VImagenes"
+                Source="c_9.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+        	x:Name="b25_VImagenes"
+            HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,194,0,0" 
         	VerticalAlignment="Top" 
         	Width="104" 
-            Source="c_10.jpg"
-            Stretch="Fill" 
-            Grid.Column="9"
-            />
-        <Image 
-        	x:Name="image31_VImagenes" 
+            Click="b25_comida"
+            Grid.Column="9">
+            <Image 
+            	x:Name="image25_VImagenes"
+                Source="c_10.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b31_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
         	Width="104" 
-            Source="c_11.jpg"
-            Stretch="Fill" 
-            Grid.Column="1"
-            />
-        <Image 
-        	x:Name="image32_VImagenes" 
-        	HorizontalAlignment="Left" 
-        	Height="100" 
-        	Margin="1,330,0,0" 
-        	VerticalAlignment="Top" 
-        	Width="104" 
-            Source="c_12.jpg" 
-            Stretch="Fill" 
-            Grid.Column="3" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image33_VImagenes"
-        	HorizontalAlignment="Left" 
-        	Height="100"
-        	Margin="1,330,0,0" 
-        	VerticalAlignment="Top" 
-        	Width="104" 
-            Source="c_13.jpg"
-            Stretch="Fill" 
-            Grid.Column="5" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image34_VImagenes"
+            Click="b31_comida"
+            Grid.Column="1">
+            <Image 
+            	x:Name="image31_VImagenes" 
+                Source="c_11.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b32_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
         	Width="104"
-            Source="c_14.jpg"
-            Stretch="Fill" 
-            Grid.Column="7" 
-            Grid.ColumnSpan="2"
-            />
-        <Image
-        	x:Name="image35_VImagenes"
+            Grid.Column="3" 
+            Click="b32_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image32_VImagenes" 
+                Source="c_12.jpg" 
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b33_VImagenes"
+        	HorizontalAlignment="Left" 
+        	Height="100"
+        	Margin="1,330,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="104" 
+            Grid.Column="5" 
+            Click="b33_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image33_VImagenes"
+                Source="c_13.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b34_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,330,0,0" 
         	VerticalAlignment="Top" 
         	Width="104"
-            Source="c_15.jpg"
-            Stretch="Fill" 
-            Grid.Column="9"
-            />
-        <Image 
-        	x:Name="image41_VImagenes" 
+            Grid.Column="7" 
+            Click="b34_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image34_VImagenes"
+                Source="c_14.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b35_VImagenes"
+        	HorizontalAlignment="Left" 
+        	Height="100" 
+        	Margin="1,330,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="104"
+            Click="b35_comida"
+            Grid.Column="9">
+            <Image
+            	x:Name="image35_VImagenes"
+                Source="c_15.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b41_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100"
         	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
         	Width="104"
-            Source="c_16.jpg"
-            Stretch="Fill" 
-            Grid.Column="1"
-            />
-        <Image 
-        	x:Name="image42_VImagenes" 
+            Click="b41_comida"
+            Grid.Column="1">
+            <Image
+            	x:Name="image41_VImagenes" 
+                Source="c_16.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b42_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100"
         	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
         	Width="104"
-            Source="c_17.jpg"
-            Stretch="Fill"
             Grid.Column="3"
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image43_VImagenes"
+            Click="b42_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image42_VImagenes" 
+                Source="c_17.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b43_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100" 
         	Margin="1,467,0,0"
         	VerticalAlignment="Top" 
         	Width="104"
-            Source="c_18.jpg"
-            Stretch="Fill" 
             Grid.Column="5" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image44_VImagenes"
+            Click="b43_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image43_VImagenes"
+                Source="c_18.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b44_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100"
         	Margin="1,467,0,0" 
         	VerticalAlignment="Top" 
         	Width="104"
-            Source="c_19.jpg"
-            Stretch="Fill" 
             Grid.Column="7" 
-            Grid.ColumnSpan="2"
-            />
-        <Image 
-        	x:Name="image45_VImagenes"
+            Click="b44_comida"
+            Grid.ColumnSpan="2">
+            <Image 
+            	x:Name="image44_VImagenes"
+                Source="c_19.jpg"
+                Stretch="Fill"/>
+        </Button>
+        <Button
+            x:Name="b45_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100"
         	Margin="1,467,0,0" 
-        	VerticalAlignment="Top" 
-            Source="c_20.jpg"
             Width="104"
-            Stretch="Fill" 
-            Grid.Column="9"
-            />
+        	VerticalAlignment="Top" 
+            Click="b45_comida"
+            Grid.Column="9">
+            <Image 
+        	    x:Name="image45_VImagenes"
+                Source="c_20.jpg"
+                Stretch="Fill"/>
+        </Button>
         <Button 
-            x:Name="button" 
+            x:Name="bSiguiente_VImagenes" 
             Content="SIGUIENTE"
             Background="White"
             HorizontalAlignment="Left"
@@ -267,7 +328,7 @@
             VerticalAlignment="Top"
             Width="135"
             Height="50" 
-            Click="button_Click" 
+            Click="bSiguiente_VImagenes_Click"
             Grid.Column="8" 
             Grid.ColumnSpan="2"/>
     </Grid>

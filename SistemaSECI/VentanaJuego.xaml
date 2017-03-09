@@ -11,6 +11,7 @@
         Background="#F5F5F5"
         ResizeMode="CanMinimize"
         WindowState="Maximized"
+        Closing="Window_Closing"
         Icon="logoUNAM.jpg">
     <Grid 
         RenderTransformOrigin="0.504,0.486" 

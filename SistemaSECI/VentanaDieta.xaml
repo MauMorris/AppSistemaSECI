@@ -11,6 +11,7 @@
         Background="#F5F5F5"        
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
+        Closing="Window_Closing"
         Height="600"
         Width="800">
     <Grid>

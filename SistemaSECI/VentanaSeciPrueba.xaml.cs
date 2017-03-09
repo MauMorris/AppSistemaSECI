@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 
 namespace SistemaSECI
 {
@@ -11,35 +12,75 @@ namespace SistemaSECI
         Seci nSeci;
         int idLlavesUsuarioImc = 0;
         int idParametrosSeci = 0;
+        string apoyoCerrar = "CerrarVentana";
+
         public VentanaSeciPrueba(int idParametros, int idLlaves)
         {
             InitializeComponent();
+
             idLlavesUsuarioImc = idLlaves;
             idParametrosSeci = idParametros;
+
             nSeci = new Seci();
-            QueryParametros();
+
+            nuevoU = new TablasDBHelper();
+            nSeci = nuevoU.RegresaParametrosSesion(idParametrosSeci);
+
             ActualizaTL(nSeci);
         }
 
         private void regresarBoton_VLogros_Click(object sender, RoutedEventArgs e)
         {
-            VentanaSeci v = new VentanaSeci(idLlavesUsuarioImc);
+            apoyoCerrar = "Regresar";
+            VentanaSeci v = new VentanaSeci(idLlavesUsuarioImc, nSeci.Sesion);
             v.Show();
             this.Close();
         }
 
         private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
-            VentanaImagenesSaludables v = new VentanaImagenesSaludables();
-            v.Show();
-            this.Close();
+            apoyoCerrar = "Siguiente";
+
+            if(nSeci.Sesion == Contrato.ParametrosSeci.LINEA_BASE)
+            {
+                VentanaImagenesSaludables v = new VentanaImagenesSaludables(idParametrosSeci, idLlavesUsuarioImc);
+                v.Show();
+                this.Close();
+            }
+            else
+            {
+                VentanaHome v = new VentanaHome(idLlavesUsuarioImc);
+                v.Show();
+                this.Close();
+            }
         }
 
-        private void QueryParametros()
+        /// Ejecuta tareas iniciales
+        /// <param name="sender">object sending the event</param>
+        /// <param name="e">event arguments</param>
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            nuevoU = new TablasDBHelper();
-            nSeci = nuevoU.RegresaParametrosSesion(idParametrosSeci);
+            switch (apoyoCerrar)
+            {
+                case "Regresar":
+                    e.Cancel = false;
+                    break;
+                case "Siguiente":
+                    e.Cancel = false;
+                    break;
+                case "CerrarVentana":
+                    VentanaHome v = new VentanaHome(idLlavesUsuarioImc);
+                    v.Show();
+                    e.Cancel = false;
+                    break;
+                default:
+                    VentanaHome f = new VentanaHome(idLlavesUsuarioImc);
+                    f.Show();
+                    e.Cancel = false;
+                    break;
+            }
         }
+
         private void ActualizaTL(Seci parametrosActual)
         {
             reforzadorTipoLabel_VSeciPrueba.Content = parametrosActual.ReforzadorTipo;
@@ -50,6 +91,7 @@ namespace SistemaSECI
             esfuerzoBajoLabel_VSeciPrueba.Content = parametrosActual.EsfuerzoBajo;
             reforzamientoAltoLabel_VSeciPrueba.Content = parametrosActual.ReforzamientoAlto;
             reforzamientoBajoLabel_VSeciPrueba.Content = parametrosActual.ReforzamientoBajo;
+            tipoSesionLabel_VSeciPrueba.Content = parametrosActual.Sesion;
         }
     }
 }
