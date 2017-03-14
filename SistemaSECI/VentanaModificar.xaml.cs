@@ -19,27 +19,48 @@ namespace SistemaSECI
 
         DatosUsuario paciente = new DatosUsuario();
         TablasDBHelper nuevoU;
+
         ExpresionesReg match = new ExpresionesReg();
+
+        string accion = string.Empty;
+        int idPaciente = 0;
+        int[] llaves;
 
         public VentanaModificar(int idUsuario)
         {
+            nuevoU = new TablasDBHelper();
+            idPaciente = idUsuario;
+            llaves = nuevoU.RegresaLlavesUsuarioImc(idPaciente);
+
+            paciente = nuevoU.RegresaDatosUsuarioConsulta(llaves[0]);
+
             InitializeComponent();
-            InicializaComboBox();
+
+            InicializaTB();
+            InicializaCB();
+
             nombreTB_VModificar.Focus();
+        }
+
+        private void regresarBoton_VModificar_Click(object sender, RoutedEventArgs e)
+        {
+            accion = "Cerrar";
+            this.Close();
         }
 
         private void okBoton_VModificar_Click(object sender, RoutedEventArgs e)
         {
+            
             PasoParametros();
-            if (EverythingOK())
+
+            if (TodoBien())
             {
-                QueryParametros();
+                nuevoU = new TablasDBHelper();
+
+                nuevoU.UpdateDatosUsuario(llaves[0], paciente.Codigo, paciente.Nombre, paciente.Apellidos, paciente.Edad, paciente.Escolaridad,
+                                            paciente.Sexo, paciente.NombreTutor, paciente.EdadTutor, paciente.TelefonoTutor, paciente.Mail);
                 this.Close();
             }
-        }
-        private void regresarBoton_VModificar_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private void ValidarNumero(object sender, TextCompositionEventArgs e)
@@ -118,10 +139,13 @@ namespace SistemaSECI
             {
                 paciente.Nombre = nombreTB_VModificar.Text;
                 paciente.Apellidos = apellidosTB_VModificar.Text;
+
                 paciente.Escolaridad = escolaridadCB_VModificar.Text;
                 paciente.Sexo = sexoCB_VModificar.Text;
                 paciente.NombreTutor = tutorTB_VModificar.Text;
+
                 paciente.TelefonoTutor = telefonoTB_VModificar.Text;
+                paciente.Mail = mailTB_VModificar.Text;
 
                 if (Int32.TryParse(edadTB_VModificar.Text, out apoyo))
                     paciente.Edad = apoyo;
@@ -141,7 +165,7 @@ namespace SistemaSECI
             }
         }
 
-        private bool EverythingOK()
+        private bool TodoBien()
         {
             if (paciente.Nombre == String.Empty | paciente.Apellidos == String.Empty |
                 paciente.Escolaridad == String.Empty | paciente.Sexo == String.Empty |
@@ -153,32 +177,27 @@ namespace SistemaSECI
             }
             else
             {
-                try
-                {
-//                    paciente.Estatura /= 100;
-//                    paciente.IMC = paciente.Imc_Calculo(paciente.Estatura, paciente.Peso);
-                    return true;
-                }
-                catch (Exception e)
-                {
-                    String errorText = e.Message;
-                    MessageBox.Show("Error de formato \n" + errorText, "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return true;
-                }
+                paciente.codigoUsuario();
+                return true;
             }
         }
 
-        private void QueryParametros()
+        private void InicializaTB()
         {
-            nuevoU = new TablasDBHelper();
-            string codigoUsuario = paciente.Nombre.Substring(0, 1) + paciente.Apellidos.Substring(0, 1) +
-                                    paciente.Edad.ToString().Substring(0, 1);
+            nombreTB_VModificar.Text = paciente.Nombre;
+            apellidosTB_VModificar.Text = paciente.Apellidos;
+            edadTB_VModificar.Text = paciente.Edad.ToString();
 
-            nuevoU.UpdateDatosUsuario(2, codigoUsuario, paciente.Nombre, paciente.Apellidos, paciente.Edad, paciente.Escolaridad,
-                                        paciente.Sexo, paciente.NombreTutor, paciente.EdadTutor, paciente.TelefonoTutor, paciente.Mail);
+            tutorTB_VModificar.Text = paciente.NombreTutor;
+            edadTutorTB_VModificar.Text = paciente.EdadTutor.ToString();
+            telefonoTB_VModificar.Text = paciente.TelefonoTutor;
+            mailTB_VModificar.Text = paciente.Mail;
+
+            escolaridadCB_VModificar.SelectedItem = paciente.Escolaridad;
+            sexoCB_VModificar.SelectedItem = paciente.Sexo;
         }
 
-        private void InicializaComboBox()
+        private void InicializaCB()
         {
             escolaridadCB_VModificar.Items.Add(escP);
             escolaridadCB_VModificar.Items.Add(escS);

@@ -39,7 +39,7 @@ namespace SistemaSECI
         {
             int tiempoMax = (int) e.Argument;
             nuevaBD = new TablasDBHelper();
-//////            nuevaBD.BorrarTodo(); proposito de desarrollo
+//PROPOSITOS DE DESARROLLO            nuevaBD.BorrarTodo();
 
             for (int i = 0; i < tiempoMax; i++)
             {

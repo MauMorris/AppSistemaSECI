@@ -13,7 +13,6 @@ namespace SistemaSECI
     public partial class VentanaUsuarioReciente : Window
     {
         TablasDBHelper nuevaBD;
-        ArrayList Pacientes = new ArrayList();
         DatosUsuario usuario = new DatosUsuario();
 
         bool usuarioEncontrado = false;
@@ -23,7 +22,7 @@ namespace SistemaSECI
         int apoyoId = 0;
         string senderClave = string.Empty;
 
-        ArrayList consultaDeIds;
+        List<int> consultaDeIds;
         Dictionary <string, int> DatosId = new Dictionary <string, int>();
         public VentanaUsuarioReciente()
         {

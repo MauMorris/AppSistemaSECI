@@ -30,7 +30,7 @@
             Height="126" 
             Margin="0,231,0,0" 
             VerticalAlignment="Top" 
-            Width="85" 
+            Width="104" 
             SelectionChanged="lBox_VDieta_SelectionChanged" 
             Grid.Column="1">
             <ListBoxItem 

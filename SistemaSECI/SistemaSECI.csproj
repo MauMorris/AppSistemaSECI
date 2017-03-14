@@ -91,6 +91,7 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.104.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -118,6 +119,7 @@
     <Compile Include="Imc.cs" />
     <Compile Include="KinectBodyTest.cs" />
     <Compile Include="Contrato.cs" />
+    <Compile Include="Pares.cs" />
     <Compile Include="Seci.cs" />
     <Compile Include="TablasDBHelper.cs" />
     <Compile Include="VentanaAjustesPrograma.xaml.cs">
@@ -129,8 +131,14 @@
     <Compile Include="VentanaBodyBasics.xaml.cs">
       <DependentUpon>VentanaBodyBasics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VentanaComparacion.xaml.cs">
+      <DependentUpon>VentanaComparacion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaDieta.xaml.cs">
       <DependentUpon>VentanaDieta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaDimensiones.xaml.cs">
+      <DependentUpon>VentanaDimensiones.xaml</DependentUpon>
     </Compile>
     <Compile Include="VentanaEjemplosKinect.xaml.cs">
       <DependentUpon>VentanaEjemplosKinect.xaml</DependentUpon>
@@ -152,6 +160,9 @@
     </Compile>
     <Compile Include="VentanaModificar.xaml.cs">
       <DependentUpon>VentanaModificar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaOperacion.xaml.cs">
+      <DependentUpon>VentanaOperacion.xaml</DependentUpon>
     </Compile>
     <Compile Include="VentanaSeleccionSeci.xaml.cs">
       <DependentUpon>VentanaSeleccionSeci.xaml</DependentUpon>
@@ -199,7 +210,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="VentanaComparacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VentanaDieta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaDimensiones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,6 +247,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VentanaModificar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaOperacion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -387,6 +410,24 @@
     <Resource Include="Escudo-UNAM-1024x1151.png" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="MSHTML">
       <Guid>{3050F1C5-98B5-11CF-BB82-00AA00BDCE0B}</Guid>
       <VersionMajor>4</VersionMajor>

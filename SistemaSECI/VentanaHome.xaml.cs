@@ -124,6 +124,17 @@ namespace SistemaSECI
             VentanaModificar v = new VentanaModificar(idLlaves);
             v.Owner = this;
             v.ShowDialog();
+///problemas en esta funcion para actualizar en pantalla los datos
+            var nuevaInfo = MessageBox.Show("Guardado", "Cambio de Información", MessageBoxButton.OK);
+            if (nuevaInfo.Equals(MessageBoxButton.OK))
+            {
+                llaves = paciente.RegresaLlavesUsuarioImc(idLlaves);
+
+                pacienteActual = paciente.RegresaDatosUsuarioConsulta(llaves[0]);
+                ImcActual = paciente.RegresaImcUsuarioConsulta(llaves[1]);
+
+                ActualizaTL(pacienteActual, ImcActual);                
+            }
         }
 
         private void botonDocumentos_VHome_Click(object sender, RoutedEventArgs e)
@@ -139,7 +150,7 @@ namespace SistemaSECI
 
         private void botonBorrar_VHome_Click(object sender, RoutedEventArgs e)
         {
-            var borrar = MessageBox.Show("¡Borrarás de forma permanente a este usuario!","Borrar usuario",MessageBoxButton.OKCancel,MessageBoxImage.Warning);
+            var borrar = MessageBox.Show("¡Borrarás de forma permanente a este usuario!", "Borrar usuario", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (borrar.Equals(MessageBoxResult.OK))
             {
                 paciente.BorraDatosUsuario(llaves[0]);

@@ -1,0 +1,53 @@
+﻿<Window x:Class="SistemaSECI.VentanaComparacion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaSECI"
+        mc:Ignorable="d"
+        Title="Comparacion"
+        Closing="Window_Closing"
+        Height="700"
+        Width="1024"
+        Background="#F5F5F5"
+        WindowState="Maximized"
+        Icon="logoUNAM.jpg"
+        ResizeMode="CanMinimize"
+        SnapsToDevicePixels="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120*"/>
+            <ColumnDefinition Width="430*"/>
+            <ColumnDefinition Width="430*"/>
+        </Grid.ColumnDefinitions>
+        <Button
+            x:Name="b1_VComparacion"
+            Margin="0,180,0,0" 
+            Height="310"
+            VerticalAlignment="Top" 
+            Width="310" 
+            HorizontalAlignment="Left" 
+            Click="b1_comida"
+            Grid.Column="1">
+            <Image 
+                x:Name="image1_VComparacion" 
+                Source="c_1.jpg"
+                Stretch="Fill"/>
+        </Button>
+
+        <Button
+            x:Name="b2_VComparacion"
+            Margin="0,180,0,0" 
+            Height="310"
+            VerticalAlignment="Top" 
+            Width="310"
+            HorizontalAlignment="Left" 
+            Click="b2_comida"
+            Grid.Column="2">
+            <Image
+                x:Name="image2_VComparacion" 
+                Source="c_1.jpg"
+                Stretch="Fill"/>
+        </Button>
+    </Grid>
+</Window>

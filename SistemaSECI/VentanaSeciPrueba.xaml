@@ -11,18 +11,18 @@
         WindowStartupLocation="CenterScreen"
         Title="SECI" 
         Closing="Window_Closing"
-        Height="404" 
+        Height="430" 
         Width="540">
     <Grid Margin="0,0,0,1">
         <Button 
             x:Name="okBoton_VSeciPrueba"
             Content="OK"
-            Margin="295,305,0,0" 
+            Margin="293,325,0,0" 
         	VerticalAlignment="Top" 
         	Background="#2196F3"
             TextElement.Foreground="White"
-        	Width="184" 
-        	Height="45"
+        	Width="186" 
+        	Height="50"
             HorizontalAlignment="Left" 
         	TabIndex="0"
             Click="okBoton_VSeci_Click" 
@@ -33,7 +33,7 @@
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top"
         	Width="186" 
-        	Margin="50,302,0,0"
+        	Margin="50,325,0,0"
             Background="#607D8B"
             TextElement.Foreground="White"
         	ClickMode="Press" 
@@ -243,5 +243,24 @@
         	Margin="283,238,0,0" 
         	VerticalAlignment="Top" 
         	Width="62"/>
+        <Label 
+        	x:Name="seriesL_VSeci"
+        	Content="Series"
+        	HorizontalContentAlignment="Right"
+            TextElement.FontWeight="Bold"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="203,283,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="62"/>
+        <Label 
+        	x:Name="seriesLabel_VSeci"
+        	Content="1"
+        	HorizontalContentAlignment="Right"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="270,283,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="23"/>
     </Grid>
 </Window>

@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SistemaSECI
 {
@@ -26,6 +27,8 @@ namespace SistemaSECI
 
         Seci paciente = new Seci();
         TablasDBHelper nuevoU;
+
+        ExpresionesReg match = new ExpresionesReg();
 
         public VentanaSeci(int LlavesId, string tipoSesion)
         {
@@ -64,6 +67,23 @@ namespace SistemaSECI
             }
         }
 
+        private void ValidarNumero(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !match.Numero(e.Text);
+        }
+
+        private void PegarNumero(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!match.Numero(text))
+                    e.CancelCommand();
+            }
+            else
+                e.CancelCommand();
+        }
+
         private void okBoton_VSeci_Click(object sender, RoutedEventArgs e)
         {
             nuevoU = new TablasDBHelper();
@@ -71,7 +91,7 @@ namespace SistemaSECI
             PasoParametros();
             if (EverythingOK())
             {
-                nuevoU.InsertarParametrosSesion(paciente.ReforzadorTipo, paciente.ReforzadorClase, 5, paciente.InmediatezI,
+                nuevoU.InsertarParametrosSesion(paciente.ReforzadorTipo, paciente.ReforzadorClase, paciente.Series, paciente.InmediatezI,
                                             paciente.InmediatezD, paciente.EsfuerzoAlto, paciente.EsfuerzoBajo,
                                             paciente.ReforzamientoAlto, paciente.ReforzamientoBajo, tipoDeSesion);
 
@@ -205,6 +225,11 @@ namespace SistemaSECI
                     paciente.ReforzamientoBajo = apoyo;
                 else
                     paciente.ReforzamientoBajo = 0;
+
+                if (Int32.TryParse(seriesTB_VSeci.Text, out apoyo))
+                    paciente.Series = apoyo;
+                else
+                    paciente.Series = 0;
             }
             catch (Exception e)
             {
@@ -218,7 +243,7 @@ namespace SistemaSECI
             if (paciente.ReforzadorTipo == String.Empty | paciente.ReforzadorClase == String.Empty |
                 paciente.InmediatezI == String.Empty | paciente.InmediatezD == String.Empty |
                 paciente.EsfuerzoAlto == 0 | paciente.EsfuerzoBajo == 0 |
-                paciente.ReforzamientoAlto == 0 | paciente.ReforzamientoBajo == 0)
+                paciente.ReforzamientoAlto == 0 | paciente.ReforzamientoBajo == 0 | paciente.ReforzamientoBajo == 0)
             {
                 MessageBox.Show("Necesitas llenar uno o mas parámetros", "Error de ingreso de informacion", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;

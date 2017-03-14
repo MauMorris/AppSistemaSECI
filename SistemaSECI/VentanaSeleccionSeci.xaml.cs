@@ -8,6 +8,8 @@ namespace SistemaSECI
     /// </summary>
     public partial class VentanaSeleccionSeci : Window
     {
+        TablasDBHelper nuevoUsuario;
+
         int idLlavesUsuarioImc = 0;
         string tipoDeSesion = string.Empty;
         string apoyoCerrar = "Home";
@@ -62,6 +64,7 @@ namespace SistemaSECI
 
         private void evaluacionBoton_VSeleccionSeci_Click(object sender, RoutedEventArgs e)
         {
+//            if
             tipoDeSesion = Contrato.ParametrosSeci.EVALUACION;
             apoyoCerrar = Contrato.ParametrosSeci.EVALUACION;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 
@@ -24,11 +25,6 @@ namespace SistemaSECI
             command.CommandText = Create.SQL_CREATE_DATOS_USUARIO_TABLE;    //Crear la tabla para los datos del usuario
             command.ExecuteNonQuery();                                      //execute SQL query
             //-----------------------------------------//---------------------------------------------------//
-            //creacion de la tabla de alimentacion
-            //-----------------------------------------//---------------------------------------------------//
-            command.CommandText = Create.SQL_CREATE_DIETA_DIARIA_TABLE;            //Crear la tabla de alimentacion
-            command.ExecuteNonQuery();                                      //execute SQL query
-            //-----------------------------------------//---------------------------------------------------//
             //creacion de la tabla de IMC
             //-----------------------------------------//---------------------------------------------------//
             command.CommandText = Create.SQL_CREATE_IMC_TABLE;              //Crear la tabla de actualizacion del IMC
@@ -39,10 +35,45 @@ namespace SistemaSECI
             command.CommandText = Create.SQL_CREATE_LLAVES_USUARIO_IMC_TABLE;//Crear la tabla de usuario IMC
             command.ExecuteNonQuery();                                      //execute SQL query
             //-----------------------------------------//---------------------------------------------------//
+            //creacion de la tabla de alimentacion
+            //-----------------------------------------//---------------------------------------------------//
+            command.CommandText = Create.SQL_CREATE_DIETA_DIARIA_TABLE;            //Crear la tabla de alimentacion
+            command.ExecuteNonQuery();                                      //execute SQL query
+            //-----------------------------------------//---------------------------------------------------//
             //creacion de las tablas de sesion de alimentacion
             //-----------------------------------------//---------------------------------------------------//
-            command.CommandText = Create.SQL_CREATE_SESION_ALIMENTACION_TABLE;     //Crear la tabla de relacion entre alimentacion / usuario
+            command.CommandText = Create.SQL_CREATE_SESION_ALIMENTACION_TABLE;//Crear la tabla de relacion alimentacion / usuario
             command.ExecuteNonQuery();                                      //execute SQL query
+            //-----------------------------------------//---------------------------------------------------//
+            //creacion de PARAMETROS DE SESION SECI
+            //-----------------------------------------//---------------------------------------------------//
+           command.CommandText = Create.SQL_CREATE_PARAMETROS_SESION_SECI_TABLE;    //Crear la tabla para los parametros de la sesion de SECI
+            command.ExecuteNonQuery();                                              //execute SQL query
+            //-----------------------------------------//---------------------------------------------------//
+            //creacion de imagenes de calidad alta/baja
+            //-----------------------------------------//---------------------------------------------------//
+            command.CommandText = Create.SQL_CREATE_IMAGENES_CALIDAD_ALTA_BAJA_SECI_TABLE;//crea la tabla de las imagenes de seci
+            command.ExecuteNonQuery();                                              //execute SQL query
+            //-----------------------------------------//---------------------------------------------------//
+            //creacion de sesion muestreo
+            //-----------------------------------------//---------------------------------------------------//
+            command.CommandText = Create.SQL_CREATE_SESION_MUESTREO_SECI_TABLE;     //crea la tabla de relacion de muestreo de seci
+            command.ExecuteNonQuery();                                              //execute SQL query
+            //-----------------------------------------//---------------------------------------------------//
+            //creacion resultados muestreo linea base seci
+            //-----------------------------------------//---------------------------------------------------//
+            command.CommandText = Create.SQL_CREATE_RESULTADOS_MUESTREO_LINEA_BASE_SECI_TABLE;//crea la tabla resultados muestreo de seci
+            command.ExecuteNonQuery();                                              //execute SQL query
+            //-----------------------------------------//---------------------------------------------------//
+            //creacion de PARAMETROS DE SESION SECI
+            //-----------------------------------------//---------------------------------------------------//
+            command.CommandText = Create.SQL_CREATE_PRUEBA_SECI_TABLE;              //crea la tabla de pruebas de seci
+            command.ExecuteNonQuery();                                              //execute SQL query
+            //-----------------------------------------//---------------------------------------------------//
+            //creacion de PARAMETROS DE SESION SECI
+            //-----------------------------------------//---------------------------------------------------//
+            command.CommandText = Create.SQL_CREATE_SESION_SECI_TABLE;              //crea la tabla de relacion de sesion de seci
+            command.ExecuteNonQuery();                                          //execute SQL query
             //-----------------------------------------//---------------------------------------------------//
             //creacion de las 3(TRES) tablas de kinect
             //-----------------------------------------//---------------------------------------------------//
@@ -51,23 +82,6 @@ namespace SistemaSECI
             command.CommandText = Create.SQL_CREATE_LOGROS_SESION_JUEGO_TABLE;     //Crear la tabla de logros de sesion del juego
             command.ExecuteNonQuery();                                      //execute SQL query
             command.CommandText = Create.SQL_CREATE_SESION_KINECT_TABLE;           //Crea la tabla de relacion entre kinect
-            command.ExecuteNonQuery();                                      //execute SQL query
-            //-----------------------------------------//---------------------------------------------------//
-            //creacion de las 7(SIETE) tablas de SECI
-            //-----------------------------------------//---------------------------------------------------//
-           command.CommandText = Create.SQL_CREATE_PARAMETROS_SESION_SECI_TABLE;   //Crear la tabla para los parametros de la sesion de SECI
-            command.ExecuteNonQuery();                                      //execute SQL query
-            command.CommandText = Create.SQL_CREATE_IMAGENES_CALIDAD_ALTA_BAJA_SECI_TABLE;//crea la tabla de las imagenes de seci
-            command.ExecuteNonQuery();                                      //execute SQL query
-            command.CommandText = Create.SQL_CREATE_TIPO_REFORZADOR_SECI_TABLE;    //crea la tabla del reforzador (comidas) etc.
-            command.ExecuteNonQuery();                                      //execute SQL query
-            command.CommandText = Create.SQL_CREATE_IMAGEN_SELECCIONADA_SECI_TABLE;//crea la tabla de las imagenes seleccionadas de seci
-            command.ExecuteNonQuery();                                      //execute SQL query
-            command.CommandText = Create.SQL_CREATE_SESION_MUESTREO_SECI_TABLE;    //crea la tabla de relacion de muestreo de seci
-            command.ExecuteNonQuery();                                      //execute SQL query
-            command.CommandText = Create.SQL_CREATE_PRUEBA_SECI_TABLE;             //crea la tabla de pruebas de seci
-            command.ExecuteNonQuery();                                      //execute SQL query
-            command.CommandText = Create.SQL_CREATE_SESION_SECI_TABLE;             //crea la tabla de relacion de sesion de seci
             command.ExecuteNonQuery();                                      //execute SQL query
 
             conexionSeci.Close();
@@ -114,7 +128,7 @@ namespace SistemaSECI
             conexionSeci.Close();
         }
         //-----------------------------------------//---------------------------------------------------//
-        //insert para el IMC en Kinect
+        //insert para el IMC 3 STRINGS
         //-----------------------------------------//---------------------------------------------------//
         public void InsertarImc(double estatura, double peso, double imc)
         {
@@ -138,7 +152,7 @@ namespace SistemaSECI
             conexionSeci.Close();
         }
         //-----------------------------------------//---------------------------------------------------//
-        //insert llaves usuario IMC
+        //insert llaves usuario IMC 2 STRINGS
         //-----------------------------------------//---------------------------------------------------//
         public void InsertarLlavesUsuarioImc(int usuario, int imc)
         {
@@ -195,9 +209,9 @@ namespace SistemaSECI
             conexionSeci.Close();
         }
         //-----------------------------------------//---------------------------------------------------//
-        //insert para tabla de llaves (Sesion Alimentacion)
+        //insert para tabla de llaves (Sesion Alimentacion) 3 STRINGS
         //-----------------------------------------//---------------------------------------------------//
-        public void InsertarSesionAlimentacion(int sesion, int dietaDiariaId, int datosUsuarioId, int imcId)
+        public void InsertarSesionAlimentacion(int sesion, int dietaDiariaId, int llavesUsuarioImcId)
         {
             //crear la conexion a la base de datos
             conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
@@ -208,92 +222,18 @@ namespace SistemaSECI
                                         Contrato.SesionAlimentacion.ID + ", " +
                                         Contrato.SesionAlimentacion.SESION + ", " + 
                                         Contrato.SesionAlimentacion.DIETA_DIARIA_ID + ", " +
-                                        Contrato.SesionAlimentacion.DATOS_USUARIO_ID +
+                                        Contrato.SesionAlimentacion.LLAVES_USUARIO_IMC_ID +
                                         " ) VALUES (NULL, " +
                                         sesion + ", " + 
                                         dietaDiariaId + ", " +
-                                        datosUsuarioId + ", " + 
-                                        imcId + ")";
+                                        llavesUsuarioImcId + ")";
             //execute SQL query
             command.CommandText = SQL_INSERT_SESION_ALIMENTACION;
             command.ExecuteNonQuery();
             conexionSeci.Close();
         }
         //-----------------------------------------//---------------------------------------------------//
-        //insert para logros de la sesion de juego en kinect
-        //-----------------------------------------//---------------------------------------------------//
-        public void InsertarLogrosSesionJuego(string tiempoJuego, int monedasRecolectadas, int nivel, 
-                                        int movimientosJuegoId)
-        {
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //table Update
-            string SQL_INSERT_LOGROS_SESION_JUEGO = "INSERT INTO " + Contrato.LogrosSesionJuego.TABLE_NAME + "( " +
-                                        Contrato.LogrosSesionJuego.ID + ", " +
-                                        Contrato.LogrosSesionJuego.TIEMPO_JUEGO + ", " +
-                                        Contrato.LogrosSesionJuego.MONEDAS_RECOLECTADAS + ", " + 
-                                        Contrato.LogrosSesionJuego.NIVEL + ", " +
-                                        Contrato.LogrosSesionJuego.MOVIMIENTOS_JUEGO_ID + 
-                                        " ) VALUES (NULL, " +
-                                        tiempoJuego + ", " +
-                                        monedasRecolectadas + ", " + 
-                                        nivel + ", " +
-                                        movimientosJuegoId + ")";
-            //execute SQL query
-            command.CommandText = SQL_INSERT_LOGROS_SESION_JUEGO;
-            command.ExecuteNonQuery();
-            conexionSeci.Close();
-        }
-        //-----------------------------------------//---------------------------------------------------//
-        //insert para la descripcion de los movimientos del juego en Kinect
-        //-----------------------------------------//---------------------------------------------------//
-        public void InsertarMovimientosJuego(string movimiento, string descripcion, string dificultad)
-        {
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //table Update
-            string SQL_INSERT_MOVIMIENTOS_JUEGO = "INSERT INTO " + Contrato.MovimientosJuego.TABLE_NAME + "( " +
-                                        Contrato.MovimientosJuego.ID + ", " +
-                                        Contrato.MovimientosJuego.MOVIMIENTO + ", " +
-                                        Contrato.MovimientosJuego.DESCRIPCION + ", " +
-                                        Contrato.MovimientosJuego.DIFICULTAD +
-                                        " ) VALUES (NULL, '" +
-                                        movimiento + "', '" + descripcion + "', '" +
-                                        dificultad + "')";
-            //execute SQL query
-            command.CommandText = SQL_INSERT_MOVIMIENTOS_JUEGO;
-            command.ExecuteNonQuery();
-            conexionSeci.Close();
-        }
-        //-----------------------------------------//---------------------------------------------------//
-        //insert para la tabla de llaves de kinect (Sesion Kinect)
-        //-----------------------------------------//---------------------------------------------------//
-        public void InsertarSesionKinect(int sesion, int logrosSesionJuegoId, int datosUsuarioId)
-        {
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Insert data
-            string SQL_INSERT_SESION_KINECT = "INSERT INTO " + Contrato.SesionKinect.TABLE_NAME + "( " +
-                                            Contrato.SesionKinect.ID + ", " +
-                                            Contrato.SesionKinect.SESION + ", " + 
-                                            Contrato.SesionKinect.LOGROS_SESION_JUEGO_ID + ", " +
-                                            Contrato.SesionKinect.DATOS_USUARIO_ID +
-                                            " ) VALUES (NULL, " +
-                                                sesion + ", '" + logrosSesionJuegoId + "', " + 
-                                                datosUsuarioId + ")";
-            //execute SQL query
-            command.CommandText = SQL_INSERT_SESION_KINECT;
-            command.ExecuteNonQuery();
-            conexionSeci.Close();
-        }
-        //-----------------------------------------//---------------------------------------------------//
-        //insert parametros de sesion en SECI
+        //insert parametros de sesion en SECI 10 STRINGS
         //-----------------------------------------//---------------------------------------------------//
         public void InsertarParametrosSesion(string reforzadorTipo, string reforzadorClase, int numeroSeries,
                                     string inmeInmediato, string inmeDemorado, int esfuerzoAlto, int esfuerzoBajo,
@@ -350,7 +290,7 @@ namespace SistemaSECI
                                         Contrato.ImagenesCalidadAltaBajaSeci.NOMBRE + ", " + 
                                         Contrato.ImagenesCalidadAltaBajaSeci.URI + ", " +
                                         Contrato.ImagenesCalidadAltaBajaSeci.CALIDAD + ", " + 
-                                        Contrato.ImagenesCalidadAltaBajaSeci.TIPO_REFORZADOR_ID +
+                                        Contrato.ImagenesCalidadAltaBajaSeci.TIPO_REFORZADOR +
                                         " ) VALUES (NULL, '" +
                                             nombre + "', '" + 
                                             uri + "', '" +
@@ -362,55 +302,9 @@ namespace SistemaSECI
             conexionSeci.Close();
         }
         //-----------------------------------------//---------------------------------------------------//
-        //insert de tipo de reforzador describiendo el tipo de imagenes en el muestreo de SECI
-        //-----------------------------------------//---------------------------------------------------//
-        public void InsertarTipoReforzadorSeci(string reforzador, string descripcion)
-        {
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
-            conexionSeci.Open();
-
-            command = conexionSeci.CreateCommand();
-            //Inserting data
-            string SQL_INSERT_TIPO_REFORZADOR_SECI = "INSERT INTO " + Contrato.TipoReforzadorSeci.TABLE_NAME + "( " +
-                                        Contrato.TipoReforzadorSeci.ID + ", " +
-                                        Contrato.TipoReforzadorSeci.REFORZADOR + ", " + 
-                                        Contrato.TipoReforzadorSeci.DESCRIPCION +
-                                        " ) VALUES (NULL, '" +
-                                            reforzador + "', '" + 
-                                            descripcion + "')";
-            //execute SQL query
-            command.CommandText = SQL_INSERT_TIPO_REFORZADOR_SECI;
-            command.ExecuteNonQuery();
-            conexionSeci.Close();
-        }
-        //-----------------------------------------//---------------------------------------------------//
-        //insert de la imagen seleccionada en el muestreo de SECI
-        //-----------------------------------------//---------------------------------------------------//
-        public void InsertarImagenSeleccionada(int imagenSeleccionadaId, int numeroElecciones)
-        {
-            //crear la conexion a la base de datos
-            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
-            conexionSeci.Open();
-            command = conexionSeci.CreateCommand();
-            //Insert data
-            string SQL_INSERT_IMAGEN_SELECCIONADA = "INSERT INTO " + Contrato.ImagenSeleccionadaSeci.TABLE_NAME + "( " +
-                                            Contrato.ImagenSeleccionadaSeci.ID + ", " +
-                                            Contrato.ImagenSeleccionadaSeci.IMAGEN_SELECCIONADA_ID + ", " + 
-                                            Contrato.ImagenSeleccionadaSeci.NUMERO_ELECCIONES +
-                                            " ) VALUES (NULL, " +
-                                                imagenSeleccionadaId + ", " + 
-                                                numeroElecciones + ")";
-            //execute SQL query
-            command.CommandText = SQL_INSERT_IMAGEN_SELECCIONADA;
-            command.ExecuteNonQuery();
-            conexionSeci.Close();
-        }
-        //-----------------------------------------//---------------------------------------------------//
         //insert de ls 45 elecciones en la sesion de muestreo de SECI
         //-----------------------------------------//---------------------------------------------------//
-        public void InsertarSesionMuestreo(string i1, string i2, string resultado, string tiempo, 
-                                            int sesion, int parametrosSesionId, int datosUsuarioId)
+        public void InsertarSesionMuestreo(string i1, string i2, string resultado, string tiempo)
         {
             //crear la conexion a la base de datos
             conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
@@ -422,28 +316,58 @@ namespace SistemaSECI
                                         Contrato.SesionMuestreoSeci.ID + ", " +
                                         Contrato.SesionMuestreoSeci.IMAGEN_1 + ", " + 
                                         Contrato.SesionMuestreoSeci.IMAGEN_2 + ", " +
-                                        Contrato.SesionMuestreoSeci.RESULTADO_ID + ", " + 
-                                        Contrato.SesionMuestreoSeci.TIEMPO_ELECCION + ", " +
-                                        Contrato.SesionMuestreoSeci.SESION + ", " + 
-                                        Contrato.SesionMuestreoSeci.PARAMETROS_SECI_ID + ", " +
-                                        Contrato.SesionMuestreoSeci.DATOS_USUARIO_ID +
+                                        Contrato.SesionMuestreoSeci.RESULTADO + ", " + 
+                                        Contrato.SesionMuestreoSeci.TIEMPO_ELECCION +
                                         " ) VALUES (NULL, '" +
                                             i1 + "', '" + 
                                             i2 + "', '" +
                                             resultado + "', '" + 
-                                            tiempo + "', " +
-                                            sesion + ", " + 
-                                            parametrosSesionId + ", " +
-                                            datosUsuarioId + ")";
+                                            tiempo + "' )";
             //execute SQL query
             command.CommandText = SQL_INSERT_SESION_MUESTREO;
             command.ExecuteNonQuery();
             conexionSeci.Close();
         }
-/*
-        public void InsertarResultadosSerie(int pruebas, int calidad_alta, int calidad_baja, int inmediatez_inmediato,
-                                            int inmediatez_demorado, int esfuerzo_alto, int esfuerzo_bajo, int prog_ref_alto,
-                                            int prog_ref_bajo, int muestreo_calidad_id, int parametros_sesion_id, int datos_usuario_id)
+        //-----------------------------------------//---------------------------------------------------//
+        //insert de los resultados del muestreo de imagenes en linea base
+        //-----------------------------------------//---------------------------------------------------//
+        public void InsertarResultadosMuestreoLineaBase(string m_c1, string m_c2, string m_c3, 
+                                string m_b1, string m_b2, string m_b3, int idDatosUsuario)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
+            conexionSeci.Open();
+
+            command = conexionSeci.CreateCommand();
+            //Inserting data
+            string SQL_INSERT_SESION_MUESTREO = "INSERT INTO " + Contrato.ResultadosMuestreoLineaBase.TABLE_NAME + "( " +
+                                        Contrato.ResultadosMuestreoLineaBase.ID + ", " +
+                                        Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_ALTA_1 + ", " +
+                                        Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_ALTA_2 + ", " +
+                                        Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_ALTA_3 + ", " +
+                                        Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_BAJA_1 + ", " +
+                                        Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_BAJA_2 + ", " +
+                                        Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_BAJA_3 + ", " +
+                                        Contrato.ResultadosMuestreoLineaBase.DATOS_USUARIO_ID +
+                                        " ) VALUES (NULL, '" +
+                                            m_c1 + "', '" +
+                                            m_c2 + "', '" +
+                                            m_c3 + "', '" +
+                                            m_b1 + "', '" +
+                                            m_b2 + "', '" +
+                                            m_b3 + "', " +
+                                            idDatosUsuario + " )";
+            //execute SQL query
+            command.CommandText = SQL_INSERT_SESION_MUESTREO;
+            command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
+        //-----------------------------------------//---------------------------------------------------//
+        //insert de los datos de la prueba X de la serie X
+        //-----------------------------------------//---------------------------------------------------//
+        public void InsertarPruebaSerieSeci(string calidad_a, string inmediatez_a, int esfuerzo_a, int prog_ref_a,
+                                            string calidad_b, string inmediatez_b, int esfuerzo_b, int prog_ref_b,
+                                            string tiempo, string eleccion, string respuesta_problema)
         {
 
         //crear la conexion a la base de datos
@@ -451,35 +375,139 @@ namespace SistemaSECI
             conexionSeci.Open();
             command = conexionSeci.CreateCommand();
             //Insert data
-            string SQL_INSERT_RESULTADOS_SERIE_SECI = "INSERT INTO " + ContratoSeci.ResultadosSerieSeci.TABLE_NAME + "( " +
-                                            ContratoSeci.ResultadosSerieSeci.ID + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.PRUEBAS + ", " + 
-                                            ContratoSeci.ResultadosSerieSeci.CALIDAD_ALTA + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.CALIDAD_BAJA + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.INMEDIATEZ_INMEDIATO + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.INMEDIATEZ_DEMORADO + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.ESFUERZO_ALTO + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.ESFUERZO_BAJO + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.PROGRAMA_REFORZAMIENTO_ALTO + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.PROGRAMA_REFORZAMIENTO_BAJO + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.MUESTREO_CALIDAD_SECI_ID + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.PARAMETROS_SESION_SECI_ID + ", " +
-                                            ContratoSeci.ResultadosSerieSeci.DATOS_USUARIO_ID +
-                                            " ) VALUES (NULL, " +
-                                                pruebas + ", " + calidad_alta + ", " +
-                                                calidad_baja +", " + inmediatez_inmediato +", " +
-                                                inmediatez_demorado +", " + esfuerzo_alto +", " +
-                                                esfuerzo_bajo +", " + prog_ref_alto +", " +
-                                                prog_ref_bajo +", " + muestreo_calidad_id +", " +
-                                                parametros_sesion_id +", " + datos_usuario_id + ")";
+            string SQL_INSERT_RESULTADOS_SERIE_SECI = "INSERT INTO " + Contrato.PruebaSeci.TABLE_NAME + "( " +
+                                            Contrato.PruebaSeci.ID + ", " +
+                                            Contrato.PruebaSeci.CALIDAD_A + ", " +
+                                            Contrato.PruebaSeci.INMEDIATEZ_A + ", " +
+                                            Contrato.PruebaSeci.ESFUERZO_A + ", " +
+                                            Contrato.PruebaSeci.PROGRAMA_REFORZAMIENTO_A + ", " +
+                                            Contrato.PruebaSeci.CALIDAD_B + ", " +
+                                            Contrato.PruebaSeci.INMEDIATEZ_B + ", " +
+                                            Contrato.PruebaSeci.ESFUERZO_B + ", " +
+                                            Contrato.PruebaSeci.PROGRAMA_REFORZAMIENTO_B + ", " +
+                                            Contrato.PruebaSeci.TIEMPO_ELECCION + ", " +
+                                            Contrato.PruebaSeci.RESPUESTA + ", " +
+                                            Contrato.PruebaSeci.RESPONDIO_PROBLEMA +
+                                            " ) VALUES (NULL, '" +
+                                                calidad_a + "', '" + 
+                                                inmediatez_a + "', " +
+                                                esfuerzo_a +", " + 
+                                                prog_ref_a +", '" +
+                                                calidad_b + "', '" +
+                                                inmediatez_b + "', " +
+                                                esfuerzo_b + ", " +
+                                                prog_ref_b + ", '" +
+                                                tiempo +"', '" +
+                                                eleccion +"', '" + 
+                                                respuesta_problema + "' )";
             //execute SQL query
             command.CommandText = SQL_INSERT_RESULTADOS_SERIE_SECI;
             command.ExecuteNonQuery();
             conexionSeci.Close();
         }
-*/
-/// /////////////////////////////METODOS UPDATE
-/// 
+        //-----------------------------------------//---------------------------------------------------//
+        //insert para tabla de llaves (Sesion Seci) 5 STRINGS
+        //-----------------------------------------//---------------------------------------------------//
+        public void InsertarSesionSeci(int numSerie, int numPrueba, int pruebaSeciId, int resultadoMuestreoId, int datosUsuarioId)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
+            conexionSeci.Open();
+
+            command = conexionSeci.CreateCommand();
+            //Inserting data
+            string SQL_INSERT_SESION_ALIMENTACION = "INSERT INTO " + Contrato.SesionSeci.TABLE_NAME + "( " +
+                                        Contrato.SesionSeci.ID + ", " +
+                                        Contrato.SesionSeci.NUMERO_SERIE + ", " +
+                                        Contrato.SesionSeci.PRUEBA_SECI_ID + ", " +
+                                        Contrato.SesionSeci.RESULTADO_MUESTREO_LINEA_BASE_SECI_ID + ", " +
+                                        Contrato.SesionSeci.DATOS_USUARIO_ID +
+                                        " ) VALUES (NULL, " +
+                                        numSerie + ", " +
+                                        numPrueba + ", " +
+                                        pruebaSeciId + ", " +
+                                        resultadoMuestreoId + " )";
+            //execute SQL query
+            command.CommandText = SQL_INSERT_SESION_ALIMENTACION;
+            command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
+        //-----------------------------------------//---------------------------------------------------//
+        //insert para logros de la sesion de juego en kinect
+        //-----------------------------------------//---------------------------------------------------//
+        public void InsertarLogrosSesionJuego(string tiempoJuego, int monedasRecolectadas, int nivel,
+                                        int movimientosJuegoId)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //table Update
+            string SQL_INSERT_LOGROS_SESION_JUEGO = "INSERT INTO " + Contrato.LogrosSesionJuego.TABLE_NAME + "( " +
+                                        Contrato.LogrosSesionJuego.ID + ", " +
+                                        Contrato.LogrosSesionJuego.TIEMPO_JUEGO + ", " +
+                                        Contrato.LogrosSesionJuego.MONEDAS_RECOLECTADAS + ", " +
+                                        Contrato.LogrosSesionJuego.NIVEL + ", " +
+                                        Contrato.LogrosSesionJuego.MOVIMIENTOS_JUEGO_ID +
+                                        " ) VALUES (NULL, " +
+                                        tiempoJuego + ", " +
+                                        monedasRecolectadas + ", " +
+                                        nivel + ", " +
+                                        movimientosJuegoId + ")";
+            //execute SQL query
+            command.CommandText = SQL_INSERT_LOGROS_SESION_JUEGO;
+            command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
+        //-----------------------------------------//---------------------------------------------------//
+        //insert para la descripcion de los movimientos del juego en Kinect
+        //-----------------------------------------//---------------------------------------------------//
+        public void InsertarMovimientosJuego(string movimiento, string descripcion, string dificultad)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //table Update
+            string SQL_INSERT_MOVIMIENTOS_JUEGO = "INSERT INTO " + Contrato.MovimientosJuego.TABLE_NAME + "( " +
+                                        Contrato.MovimientosJuego.ID + ", " +
+                                        Contrato.MovimientosJuego.MOVIMIENTO + ", " +
+                                        Contrato.MovimientosJuego.DESCRIPCION + ", " +
+                                        Contrato.MovimientosJuego.DIFICULTAD +
+                                        " ) VALUES (NULL, '" +
+                                        movimiento + "', '" + descripcion + "', '" +
+                                        dificultad + "')";
+            //execute SQL query
+            command.CommandText = SQL_INSERT_MOVIMIENTOS_JUEGO;
+            command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
+        //-----------------------------------------//---------------------------------------------------//
+        //insert para la tabla de llaves de kinect (Sesion Kinect)
+        //-----------------------------------------//---------------------------------------------------//
+        public void InsertarSesionKinect(int sesion, int logrosSesionJuegoId, int datosUsuarioId)
+        {
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source = " + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Insert data
+            string SQL_INSERT_SESION_KINECT = "INSERT INTO " + Contrato.SesionKinect.TABLE_NAME + "( " +
+                                            Contrato.SesionKinect.ID + ", " +
+                                            Contrato.SesionKinect.SESION + ", " +
+                                            Contrato.SesionKinect.LOGROS_SESION_JUEGO_ID + ", " +
+                                            Contrato.SesionKinect.DATOS_USUARIO_ID +
+                                            " ) VALUES (NULL, " +
+                                                sesion + ", '" + logrosSesionJuegoId + "', " +
+                                                datosUsuarioId + ")";
+            //execute SQL query
+            command.CommandText = SQL_INSERT_SESION_KINECT;
+            command.ExecuteNonQuery();
+            conexionSeci.Close();
+        }
+
+        /// /////////////////////////////METODOS UPDATE
+        /// 
         public void UpdateDatosUsuario(int id, string codigoUsuario, string nombre, string apellidos, int edad,
                                     string escolaridad, string sexo, string tutor, int edadTutor, 
                                     string telefonoTutor, string mail)
@@ -561,6 +589,7 @@ namespace SistemaSECI
                 parametrosConsulta.EsfuerzoBajo = Convert.ToInt32(reader[Contrato.ParametrosSeci.ESFUERZO_BAJO]);
                 parametrosConsulta.ReforzamientoAlto = Convert.ToInt32(reader[Contrato.ParametrosSeci.PROGRAMA_REF_ALTO]);
                 parametrosConsulta.ReforzamientoBajo = Convert.ToInt32(reader[Contrato.ParametrosSeci.PROGRAMA_REF_BAJO]);
+                parametrosConsulta.Series = Convert.ToInt32(reader[Contrato.ParametrosSeci.NUMERO_SERIES]);
             }
             conexionSeci.Close();
 
@@ -786,14 +815,14 @@ namespace SistemaSECI
         }
 /// <summary>
 /// Regresa todos los ID de la tabla de datos de usuario
-        public ArrayList RegresaTodosId()
+        public List<int> RegresaTodosId()
         {
             //crear la conexion a la base de datos
             conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
             conexionSeci.Open();
             command = conexionSeci.CreateCommand();
 
-            ArrayList idArreglo = new ArrayList();
+            List<int> idArreglo = new List<int>();
 
             string SQL_CONSULT_USUARIO = "SELECT " + Contrato.DatosUsuario.ID + " FROM " +
                                             Contrato.DatosUsuario.TABLE_NAME + " ; ";
@@ -855,7 +884,7 @@ namespace SistemaSECI
             command.ExecuteNonQuery();
             conexionSeci.Close();
         }
-
+        //BORRAR TODAS LAS TABLAS PARA REINICIAR EL ALMACENAMIENTO DE DATOS DEL SISTEMA
         public void BorrarTodo()
         {
             //crear la conexion a la base de datos
@@ -867,6 +896,8 @@ namespace SistemaSECI
                                                     Contrato.DatosUsuario.TABLE_NAME;
             string SQL_DELETE_IMC = "DROP TABLE IF EXISTS " +
                                                     Contrato.Imc.TABLE_NAME;
+            string SQL_DELETE_LLAVES_USUARIO_IMC = "DROP TABLE IF EXISTS " +
+                                                    Contrato.LlavesUsuarioImc.TABLE_NAME;
             string SQL_DELETE_DIETA_DIARIA = "DROP TABLE IF EXISTS " +
                                                     Contrato.DietaDiaria.TABLE_NAME;
             string SQL_DELETE_SESION_ALIMENTACION = "DROP TABLE IF EXISTS " +
@@ -881,12 +912,10 @@ namespace SistemaSECI
                                                     Contrato.ParametrosSeci.TABLE_NAME;
             string SQL_DELETE_IMAGENES_CALIDAD = "DROP TABLE IF EXISTS " +
                                                     Contrato.ImagenesCalidadAltaBajaSeci.TABLE_NAME;
-            string SQL_DELETE_TIPO_REFORZADOR = "DROP TABLE IF EXISTS " +
-                                                    Contrato.TipoReforzadorSeci.TABLE_NAME;
-            string SQL_DELETE_IMAGEN_SELECCIONADA = "DROP TABLE IF EXISTS " +
-                                                    Contrato.ImagenSeleccionadaSeci.TABLE_NAME;
             string SQL_DELETE_SESION_MUESTREO = "DROP TABLE IF EXISTS " +
                                                     Contrato.SesionMuestreoSeci.TABLE_NAME;
+            string SQL_DELETE_RESULTADOS_MUESTREO_LINEA_BASE = "DROP TABLE IF EXISTS " +
+                                                    Contrato.ResultadosMuestreoLineaBase.TABLE_NAME;
             string SQL_DELETE_PRUEBA_SECI = "DROP TABLE IF EXISTS " +
                                                     Contrato.PruebaSeci.TABLE_NAME;
             string SQL_DELETE_SESION_SECI = "DROP TABLE IF EXISTS " +
@@ -919,13 +948,10 @@ namespace SistemaSECI
             command.CommandText = SQL_DELETE_IMAGENES_CALIDAD;
             command.ExecuteNonQuery();
             //execute SQL query
-            command.CommandText = SQL_DELETE_TIPO_REFORZADOR;
-            command.ExecuteNonQuery();
-            //execute SQL query
-            command.CommandText = SQL_DELETE_IMAGEN_SELECCIONADA;
-            command.ExecuteNonQuery();
-            //execute SQL query
             command.CommandText = SQL_DELETE_SESION_MUESTREO;
+            command.ExecuteNonQuery();
+            //execute SQL query
+            command.CommandText = SQL_DELETE_RESULTADOS_MUESTREO_LINEA_BASE;
             command.ExecuteNonQuery();
             //execute SQL query
             command.CommandText = SQL_DELETE_PRUEBA_SECI;

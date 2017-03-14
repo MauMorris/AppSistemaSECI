@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -13,18 +14,26 @@ namespace SistemaSECI
     {
         int idLlaves = 0;
         int idParametros = 0;
+        List<string> botonesAlta;
+
         string apoyoCerrar = "CerrarVentana";
 
         int elegidas = 0;
         bool[] botones;
         int numBotones = 20;
 
-        public VentanaImagenes(int idPparametrosSeci, int idLlavesUI)
+
+        public VentanaImagenes(int idParametrosSeci, int idLlavesUI, List<string> seleccionAnterior)
         {
             botones = new bool[numBotones];
 
+            idParametros = idParametrosSeci;
+            idLlaves = idLlavesUI;
+            botonesAlta = seleccionAnterior;
+
             for (int i = 0; i < numBotones; i++)
                 botones[i] = false;
+
             InitializeComponent();
         }
 
@@ -33,7 +42,7 @@ namespace SistemaSECI
             if (elegidas == 5)
             {
                 apoyoCerrar = "Siguiente";
-                VentanaHome v = new VentanaHome(idLlaves);
+                VentanaComparacion v = new VentanaComparacion(idParametros, idLlaves, botonesAlta);
                 v.Show();
                 this.Close();
             }
@@ -73,6 +82,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_1.jpg");
                     botones[0] = true;
                 }
             }
@@ -87,6 +98,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_2.jpg");
                     botones[1] = true;
                 }
             }
@@ -101,6 +114,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_3.jpg");
                     botones[2] = true;
                 }
             }
@@ -115,6 +130,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_4.jpg");
                     botones[3] = true;
                 }
             }
@@ -129,6 +146,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_5.jpg");
                     botones[4] = true;
                 }
             }
@@ -143,6 +162,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_6.jpg");
                     botones[5] = true;
                 }
             }
@@ -157,6 +178,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_7.jpg");
                     botones[6] = true;
                 }
             }
@@ -171,6 +194,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_8.jpg");
                     botones[7] = true;
                 }
             }
@@ -185,6 +210,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_9.jpg");
                     botones[8] = true;
                 }
             }
@@ -199,6 +226,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_10.jpg");
                     botones[9] = true;
                 }
             }
@@ -213,6 +242,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_11.jpg");
                     botones[10] = true;
                 }
             }
@@ -227,6 +258,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_12.jpg");
                     botones[11] = true;
                 }
             }
@@ -241,6 +274,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_13.jpg");
                     botones[12] = true;
                 }
             }
@@ -255,6 +290,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_14.jpg");
                     botones[13] = true;
                 }
             }
@@ -269,6 +306,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_15.jpg");
                     botones[14] = true;
                 }
             }
@@ -283,6 +322,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_16.jpg");
                     botones[15] = true;
                 }
             }
@@ -297,6 +338,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_17.jpg");
                     botones[16] = true;
                 }
             }
@@ -311,6 +354,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_18.jpg");
                     botones[17] = true;
                 }
             }
@@ -325,6 +370,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_19.jpg");
                     botones[18] = true;
                 }
             }
@@ -339,6 +386,8 @@ namespace SistemaSECI
                     elegidas++;
                     Button b1 = (Button)sender;
                     CreaSombra(b1);
+
+                    botonesAlta.Add("c_20.jpg");
                     botones[19] = true;
                 }
             }

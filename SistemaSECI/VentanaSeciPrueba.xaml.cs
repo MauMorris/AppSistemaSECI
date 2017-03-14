@@ -41,17 +41,19 @@ namespace SistemaSECI
         {
             apoyoCerrar = "Siguiente";
 
-            if(nSeci.Sesion == Contrato.ParametrosSeci.LINEA_BASE)
+            switch (nSeci.Sesion)
             {
-                VentanaImagenesSaludables v = new VentanaImagenesSaludables(idParametrosSeci, idLlavesUsuarioImc);
-                v.Show();
-                this.Close();
-            }
-            else
-            {
-                VentanaHome v = new VentanaHome(idLlavesUsuarioImc);
-                v.Show();
-                this.Close();
+                case "linea_base":
+                    VentanaImagenesSaludables v = new VentanaImagenesSaludables(idParametrosSeci, idLlavesUsuarioImc);
+                    v.Show();
+                    this.Close();
+                    break;
+                case "evaluacion":
+                    break;
+                case "replica":
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -92,6 +94,7 @@ namespace SistemaSECI
             reforzamientoAltoLabel_VSeciPrueba.Content = parametrosActual.ReforzamientoAlto;
             reforzamientoBajoLabel_VSeciPrueba.Content = parametrosActual.ReforzamientoBajo;
             tipoSesionLabel_VSeciPrueba.Content = parametrosActual.Sesion;
+            seriesLabel_VSeci.Content = parametrosActual.Series;
         }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SistemaSECI"
         mc:Ignorable="d"
         Title="SECI" 
-        Height="404" 
+        Height="430" 
         Width="540"
         Background="#F5F5F5"        
         Icon="logoUNAM.jpg"
@@ -215,18 +215,40 @@
         	Margin="283,238,0,0" 
         	VerticalAlignment="Top" 
         	Width="62"/>
+        <Label 
+        	x:Name="seriesL_VSeci"
+        	Content="Series"
+        	HorizontalContentAlignment="Right"
+        	TextElement.FontSize="14"
+        	HorizontalAlignment="Left" 
+        	Margin="203,283,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="62"/>
+        <TextBox 
+            x:Name="seriesTB_VSeci" 
+            HorizontalAlignment="Left" 
+            Height="23" 
+            Margin="283,287,0,0" 
+            TextWrapping="Wrap" 
+            Text="1"
+            MaxLength="1"
+           	DataObject.Pasting="PegarNumero"
+        	PreviewTextInput="ValidarNumero"
+            VerticalAlignment="Top" 
+            TabIndex="8"
+            Width="30"/>
         <Button 
         	x:Name="okBoton_VSeci"
         	Content="OK"
         	HorizontalAlignment="Left" 
         	VerticalAlignment="Top" 
         	Width="186" 
-        	Margin="293,302,0,0"
+        	Margin="293,325,0,0"
         	Background="#2196F3"
             TextElement.Foreground="White"
         	ClickMode="Press" 
         	Height="50" 
-        	TabIndex="8" 
+        	TabIndex="9" 
             Click="okBoton_VSeci_Click" 
             />
         <Button 
@@ -235,12 +257,12 @@
             HorizontalAlignment="Left" 
             VerticalAlignment="Top"
             Width="186" 
-            Margin="50,302,0,0"
+            Margin="50,325,0,0"
             Background="#607D8B"
             TextElement.Foreground="White"
             ClickMode="Press" 
             Height="50" 
-            TabIndex="1"
+            TabIndex="10"
             Click="regresarBoton_VLogros_Click" 
             />
     </Grid>

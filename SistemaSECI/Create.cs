@@ -26,20 +26,6 @@ namespace SistemaSECI
                                 Contrato.DatosUsuario.TELEFONO_TUTOR + " VARCHAR(50), " +
                                 Contrato.DatosUsuario.MAIL + " VARCHAR(100) ) ";
         //-----------------------------------------//---------------------------------------------------//
-        //strings del modulo de alimentacion 10 STRINGS
-        //-----------------------------------------//---------------------------------------------------//
-        public static readonly string SQL_CREATE_DIETA_DIARIA_TABLE = "CREATE TABLE IF NOT EXISTS " +
-                                Contrato.DietaDiaria.TABLE_NAME + " ( " +
-                                Contrato.DietaDiaria.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                Contrato.DietaDiaria.DIA_SEMANA + " VARCHAR(20), " +
-                                Contrato.DietaDiaria.DESAYUNO + " VARCHAR(100), " +
-                                Contrato.DietaDiaria.ALMUERZO + " VARCHAR(100), " +
-                                Contrato.DietaDiaria.COMIDA + " VARCHAR(100), " +
-                                Contrato.DietaDiaria.MERIENDA + " VARCHAR(100), " +
-                                Contrato.DietaDiaria.CENA + " VARCHAR(100), " +
-                                Contrato.DietaDiaria.RUBRICA + " INTEGER NOT NULL, " +
-                                Contrato.DietaDiaria.COMENTARIOS + " VARCHAR(200)) ";
-        //-----------------------------------------//---------------------------------------------------//
         //strings del modulo de calculo de IMC 5 STRINGS
         //-----------------------------------------//---------------------------------------------------//
         public static readonly string SQL_CREATE_IMC_TABLE = "CREATE TABLE IF NOT EXISTS " +
@@ -49,7 +35,7 @@ namespace SistemaSECI
                                 Contrato.Imc.PESO + " DOUBLE, " +
                                 Contrato.Imc.IMC + " DOUBLE) ";
         //-----------------------------------------//---------------------------------------------------//
-        //strings de la tabla de llaves para usuario imc 3 STRINGS
+        //strings de la tabla de llaves para usuario imc 4 STRINGS
         //-----------------------------------------//---------------------------------------------------//
         public static readonly string SQL_CREATE_LLAVES_USUARIO_IMC_TABLE = "CREATE TABLE IF NOT EXISTS " +
                                 Contrato.LlavesUsuarioImc.TABLE_NAME + " ( " +
@@ -62,28 +48,128 @@ namespace SistemaSECI
 
                                 "FOREIGN KEY( " + Contrato.LlavesUsuarioImc.LLAVE_IMC + " ) " +
                                 "REFERENCES " + Contrato.Imc.TABLE_NAME + " ( " +
-                                                Contrato.Imc.ID + " )) ";
+                                                Contrato.Imc.ID + " ) ) ";
         //-----------------------------------------//---------------------------------------------------//
-        //strings de la tabla de llaves para el modulo de alimentacion 6 STRINGS
+        //strings del modulo de alimentacion 10 STRINGS
+        //-----------------------------------------//---------------------------------------------------//
+        public static readonly string SQL_CREATE_DIETA_DIARIA_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                                Contrato.DietaDiaria.TABLE_NAME + " ( " +
+                                Contrato.DietaDiaria.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                Contrato.DietaDiaria.DIA_SEMANA + " VARCHAR(20), " +
+                                Contrato.DietaDiaria.DESAYUNO + " VARCHAR(100), " +
+                                Contrato.DietaDiaria.ALMUERZO + " VARCHAR(100), " +
+                                Contrato.DietaDiaria.COMIDA + " VARCHAR(100), " +
+                                Contrato.DietaDiaria.MERIENDA + " VARCHAR(100), " +
+                                Contrato.DietaDiaria.CENA + " VARCHAR(100), " +
+                                Contrato.DietaDiaria.RUBRICA + " INTEGER NOT NULL, " +
+                                Contrato.DietaDiaria.COMENTARIOS + " VARCHAR(200) ) ";
+        //-----------------------------------------//---------------------------------------------------//
+        //strings de la tabla de llaves para el modulo de alimentacion 5 STRINGS
         //-----------------------------------------//---------------------------------------------------//
         public static readonly string SQL_CREATE_SESION_ALIMENTACION_TABLE = "CREATE TABLE IF NOT EXISTS " +
                                 Contrato.SesionAlimentacion.TABLE_NAME + " ( " +
                                 Contrato.SesionAlimentacion.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                 Contrato.SesionAlimentacion.SESION + "INTEGER NOT NULL, " +
                                 Contrato.SesionAlimentacion.DIETA_DIARIA_ID + " INTEGER NOT NULL, " +
-                                Contrato.SesionAlimentacion.DATOS_USUARIO_ID + " INTEGER NOT NULL, " +
-                                Contrato.SesionAlimentacion.IMC_ID + " INTEGER NOT NULL, " +
-                                "FOREIGN KEY( " + Contrato.SesionAlimentacion.DATOS_USUARIO_ID + " ) " +
-                                "REFERENCES " + Contrato.DatosUsuario.TABLE_NAME + " ( " +
-                                                Contrato.DatosUsuario.ID + " ), " +
-
-                                "FOREIGN KEY( " + Contrato.SesionAlimentacion.IMC_ID + " ) " +
-                                "REFERENCES " + Contrato.Imc.TABLE_NAME + " ( " +
-                                                Contrato.Imc.ID + " ), " +
+                                Contrato.SesionAlimentacion.LLAVES_USUARIO_IMC_ID + " INTEGER NOT NULL, " +
+                                "FOREIGN KEY( " + Contrato.SesionAlimentacion.LLAVES_USUARIO_IMC_ID + " ) " +
+                                "REFERENCES " + Contrato.LlavesUsuarioImc.TABLE_NAME + " ( " +
+                                                Contrato.LlavesUsuarioImc.ID + " ), " +
 
                                 "FOREIGN KEY( " + Contrato.SesionAlimentacion.DIETA_DIARIA_ID + " ) " +
                                 "REFERENCES " + Contrato.DietaDiaria.TABLE_NAME + " ( " +
-                                                Contrato.DietaDiaria.ID + " )) ";
+                                                Contrato.DietaDiaria.ID + " ) ) ";
+        //-----------------------------------------//---------------------------------------------------//
+        //strings de las 5(CINCO) tablas para el modulo de seci 12 STRINGS
+        //-----------------------------------------//---------------------------------------------------//
+        public static readonly string SQL_CREATE_PARAMETROS_SESION_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                                Contrato.ParametrosSeci.TABLE_NAME + " ( " +
+                                Contrato.ParametrosSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                Contrato.ParametrosSeci.REFORZADOR_TIPO + " VARCHAR(50), " +
+                                Contrato.ParametrosSeci.REFORZADOR_CLASE + " VARCHAR(50), " +
+                                Contrato.ParametrosSeci.INMEDIATEZ_INMEDIATO + " VARCHAR(50), " +
+                                Contrato.ParametrosSeci.INMEDIATEZ_DEMORADO + " VARCHAR(50), " +
+                                Contrato.ParametrosSeci.ESFUERZO_ALTO + " INTEGER NOT NULL, " +
+                                Contrato.ParametrosSeci.ESFUERZO_BAJO + " INTEGER NOT NULL, " +
+                                Contrato.ParametrosSeci.PROGRAMA_REF_ALTO + " INTEGER NOT NULL, " +
+                                Contrato.ParametrosSeci.PROGRAMA_REF_BAJO + " INTEGER NOT NULL, " +
+                                Contrato.ParametrosSeci.NUMERO_SERIES + " INTEGER NOT NULL, " +
+                                Contrato.ParametrosSeci.TIPO_SESION + " VARCHAR(50) ) ";
+        //-----------------------------------------//---------------------------------------------------//
+        //strings de las 5(CINCO) tablas para el modulo de seci 6 STRINGS
+        //-----------------------------------------//---------------------------------------------------//
+        public static readonly string SQL_CREATE_IMAGENES_CALIDAD_ALTA_BAJA_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                                Contrato.ImagenesCalidadAltaBajaSeci.TABLE_NAME + " ( " +
+                                Contrato.ImagenesCalidadAltaBajaSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                Contrato.ImagenesCalidadAltaBajaSeci.NOMBRE + " VARCHAR(50), " +
+                                Contrato.ImagenesCalidadAltaBajaSeci.URI + " TEXT, " +
+                                Contrato.ImagenesCalidadAltaBajaSeci.CALIDAD + " VARCHAR(50), " +
+                                Contrato.ImagenesCalidadAltaBajaSeci.TIPO_REFORZADOR + " VARCHAR(50) ) ";
+        //-----------------------------------------//---------------------------------------------------//
+        //strings de las 5(CINCO) tablas para el modulo de seci 6 STRINGS
+        //-----------------------------------------//---------------------------------------------------//
+        public static readonly string SQL_CREATE_SESION_MUESTREO_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                                Contrato.SesionMuestreoSeci.TABLE_NAME + " ( " +
+                                Contrato.SesionMuestreoSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                Contrato.SesionMuestreoSeci.IMAGEN_1 + " VARCHAR(50), " +
+                                Contrato.SesionMuestreoSeci.IMAGEN_2 + " VARCHAR(50), " +
+                                Contrato.SesionMuestreoSeci.RESULTADO + " VARCHAR(50), " +
+                                Contrato.SesionMuestreoSeci.TIEMPO_ELECCION + " DATETIME) ";
+        //-----------------------------------------//---------------------------------------------------//
+        //strings para resultados de muestreo en linea base 9 STRINGS
+        //-----------------------------------------//---------------------------------------------------//
+        public static readonly string SQL_CREATE_RESULTADOS_MUESTREO_LINEA_BASE_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                                Contrato.ResultadosMuestreoLineaBase.TABLE_NAME + " ( " +
+                                Contrato.ResultadosMuestreoLineaBase.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_ALTA_1 + " VARCHAR(50), " +
+                                Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_ALTA_2 + " VARCHAR(50), " +
+                                Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_ALTA_3 + " VARCHAR(50), " +
+                                Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_BAJA_1 + " VARCHAR(50), " +
+                                Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_BAJA_2 + " VARCHAR(50), " +
+                                Contrato.ResultadosMuestreoLineaBase.MUESTREO_CALIDAD_BAJA_3 + " VARCHAR(50), " +
+                                Contrato.ResultadosMuestreoLineaBase.DATOS_USUARIO_ID + " INTEGER NOT NULL, " +
+                                "FOREIGN KEY( " + Contrato.ResultadosMuestreoLineaBase.DATOS_USUARIO_ID + " ) " +
+                                "REFERENCES " + Contrato.DatosUsuario.TABLE_NAME + " ( " +
+                                                Contrato.DatosUsuario.ID + " ) ) ";
+        //-----------------------------------------//---------------------------------------------------//
+        //strings de las 5(CINCO) tablas para el modulo de seci 13 STRINGS
+        //-----------------------------------------//---------------------------------------------------//
+        public static readonly string SQL_CREATE_PRUEBA_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                                Contrato.PruebaSeci.TABLE_NAME + "( " +
+                                Contrato.PruebaSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                Contrato.PruebaSeci.CALIDAD_A + " VARCHAR(50), " +
+                                Contrato.PruebaSeci.INMEDIATEZ_A + " VARCHAR(50), " +
+                                Contrato.PruebaSeci.ESFUERZO_A + " INTEGER NOT NULL, " +
+                                Contrato.PruebaSeci.PROGRAMA_REFORZAMIENTO_A + " INTEGER NOT NULL, " +
+                                Contrato.PruebaSeci.CALIDAD_B + " VARCHAR(50), " +
+                                Contrato.PruebaSeci.INMEDIATEZ_B + " VARCHAR(50), " +
+                                Contrato.PruebaSeci.ESFUERZO_B + " INTEGER NOT NULL, " +
+                                Contrato.PruebaSeci.PROGRAMA_REFORZAMIENTO_B + " INTEGER NOT NULL, " +
+                                Contrato.PruebaSeci.TIEMPO_ELECCION + " DATETIME, " +
+                                Contrato.PruebaSeci.RESPUESTA + " VARCHAR(50), " + 
+                                Contrato.PruebaSeci.RESPONDIO_PROBLEMA + " VARCHAR(50) ) ";
+        //-----------------------------------------//---------------------------------------------------//
+        //strings de las 5(CINCO) tablas para el modulo de seci 8 STRINGS
+        //-----------------------------------------//---------------------------------------------------//
+        public static readonly string SQL_CREATE_SESION_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                                Contrato.SesionSeci.TABLE_NAME + " ( " +
+                                Contrato.SesionSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                Contrato.SesionSeci.NUMERO_SERIE + " INTEGER NOT NULL, " +
+                                Contrato.SesionSeci.NUMERO_PRUEBA + " INTEGER NOT NULL, " +
+                                Contrato.SesionSeci.PRUEBA_SECI_ID + " INTEGER NOT NULL, " +
+                                Contrato.SesionSeci.RESULTADO_MUESTREO_LINEA_BASE_SECI_ID + " INTEGER NOT NULL, " +
+                                Contrato.SesionSeci.DATOS_USUARIO_ID + " INTEGER NOT NULL, " +
+                                "FOREIGN KEY( " + Contrato.SesionSeci.PRUEBA_SECI_ID + " ) " +
+                                " REFERENCES " + Contrato.PruebaSeci.TABLE_NAME + "  ( " +
+                                                Contrato.PruebaSeci.ID + " ), " +
+
+                                "FOREIGN KEY( " + Contrato.SesionSeci.RESULTADO_MUESTREO_LINEA_BASE_SECI_ID + " ) " +
+                                " REFERENCES " + Contrato.ResultadosMuestreoLineaBase.TABLE_NAME + " ( " +
+                                                Contrato.ResultadosMuestreoLineaBase.ID + " ), " +
+
+                                "FOREIGN KEY( " + Contrato.SesionSeci.DATOS_USUARIO_ID + " ) " +
+                                " REFERENCES " + Contrato.DatosUsuario.TABLE_NAME + " ( " +
+                                                Contrato.DatosUsuario.ID + " ) ) ";
         //-----------------------------------------//---------------------------------------------------//
         //strings de la sesion de juego y resultados finales de kinect 6 STRINGS
         //-----------------------------------------//---------------------------------------------------//
@@ -96,7 +182,7 @@ namespace SistemaSECI
                                 Contrato.LogrosSesionJuego.MOVIMIENTOS_JUEGO_ID + " INTEGER NOT NULL, " +
                                 "FOREIGN KEY( " + Contrato.LogrosSesionJuego.MOVIMIENTOS_JUEGO_ID + " ) " +
                                 " REFERENCES " + Contrato.MovimientosJuego.TABLE_NAME + " ( " +
-                                                Contrato.MovimientosJuego.ID + " )) ";
+                                                Contrato.MovimientosJuego.ID + " ) ) ";
         //-----------------------------------------//---------------------------------------------------//
         //strings de las movimientos permitidos en el juego de kinect 5 STRINGS
         //-----------------------------------------//---------------------------------------------------//
@@ -121,102 +207,6 @@ namespace SistemaSECI
 
                                 "FOREIGN KEY( " + Contrato.SesionKinect.DATOS_USUARIO_ID + " ) " +
                                 " REFERENCES " + Contrato.DatosUsuario.TABLE_NAME + " ( " +
-                                                Contrato.DatosUsuario.ID + " )) ";
-        //-----------------------------------------//---------------------------------------------------//
-        //strings de las 7(SIETE) tablas para el modulo de seci
-        //-----------------------------------------//---------------------------------------------------//
-        public static readonly string SQL_CREATE_PARAMETROS_SESION_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
-                                Contrato.ParametrosSeci.TABLE_NAME + " ( " +
-                                Contrato.ParametrosSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                Contrato.ParametrosSeci.REFORZADOR_TIPO + " VARCHAR(50), " +
-                                Contrato.ParametrosSeci.REFORZADOR_CLASE + " VARCHAR(50), " +
-                                Contrato.ParametrosSeci.INMEDIATEZ_INMEDIATO + " VARCHAR(50), " +
-                                Contrato.ParametrosSeci.INMEDIATEZ_DEMORADO + " VARCHAR(50), " +
-                                Contrato.ParametrosSeci.ESFUERZO_ALTO + " INTEGER NOT NULL, " +
-                                Contrato.ParametrosSeci.ESFUERZO_BAJO + " INTEGER NOT NULL, " +
-                                Contrato.ParametrosSeci.PROGRAMA_REF_ALTO + " INTEGER NOT NULL, " +
-                                Contrato.ParametrosSeci.PROGRAMA_REF_BAJO + " INTEGER NOT NULL, " +
-                                Contrato.ParametrosSeci.NUMERO_SERIES + " INTEGER NOT NULL, " +
-                                Contrato.ParametrosSeci.TIPO_SESION + " VARCHAR(50)) ";
-
-        public static readonly string SQL_CREATE_IMAGENES_CALIDAD_ALTA_BAJA_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
-                                Contrato.ImagenesCalidadAltaBajaSeci.TABLE_NAME + " ( " +
-                                Contrato.ImagenesCalidadAltaBajaSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                Contrato.ImagenesCalidadAltaBajaSeci.NOMBRE + " VARCHAR(50), " +
-                                Contrato.ImagenesCalidadAltaBajaSeci.URI + " TEXT, " +
-                                Contrato.ImagenesCalidadAltaBajaSeci.CALIDAD + " VARCHAR(50), " +
-                                Contrato.ImagenesCalidadAltaBajaSeci.TIPO_REFORZADOR_ID + " INTEGER NOT NULL, " +
-                                "FOREIGN KEY( " + Contrato.ImagenesCalidadAltaBajaSeci.TIPO_REFORZADOR_ID + " ) " +
-                                " REFERENCES " + Contrato.TipoReforzadorSeci.TABLE_NAME + " ( " +
-                                                Contrato.TipoReforzadorSeci.ID + " )) ";
-
-        public static readonly string SQL_CREATE_TIPO_REFORZADOR_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
-                                Contrato.TipoReforzadorSeci.TABLE_NAME + " ( " +
-                                Contrato.TipoReforzadorSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                Contrato.TipoReforzadorSeci.REFORZADOR + " VARCHAR(50), " +
-                                Contrato.TipoReforzadorSeci.DESCRIPCION + " TEXT ) ";
-
-        public static readonly string SQL_CREATE_IMAGEN_SELECCIONADA_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
-                                Contrato.ImagenSeleccionadaSeci.TABLE_NAME + " ( " +
-                                Contrato.ImagenSeleccionadaSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                Contrato.ImagenSeleccionadaSeci.IMAGEN_SELECCIONADA_ID + " INTEGER NOT NULL, " +
-                                Contrato.ImagenSeleccionadaSeci.NUMERO_ELECCIONES + " INTEGER NOT NULL, " +
-                               "FOREIGN KEY( " + Contrato.ImagenSeleccionadaSeci.IMAGEN_SELECCIONADA_ID + " ) " +
-                                " REFERENCES " + Contrato.ImagenesCalidadAltaBajaSeci.TABLE_NAME + "(" +
-                                                Contrato.ImagenesCalidadAltaBajaSeci.ID + " )) ";
-
-        public static readonly string SQL_CREATE_SESION_MUESTREO_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
-                                Contrato.SesionMuestreoSeci.TABLE_NAME + " ( " +
-                                Contrato.SesionMuestreoSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                Contrato.SesionMuestreoSeci.IMAGEN_1 + " VARCHAR(50), " +
-                                Contrato.SesionMuestreoSeci.IMAGEN_2 + " VARCHAR(50), " +
-                                Contrato.SesionMuestreoSeci.RESULTADO_ID + " VARCHAR(50), " +
-                                Contrato.SesionMuestreoSeci.TIEMPO_ELECCION + " DATETIME, " +
-                                Contrato.SesionMuestreoSeci.SESION + " INTEGER NOT NULL, " +
-                                Contrato.SesionMuestreoSeci.PARAMETROS_SECI_ID + " INTEGER NOT NULL, " +
-                                Contrato.SesionMuestreoSeci.DATOS_USUARIO_ID + " INTEGER NOT NULL, " +
-                                "FOREIGN KEY( " + Contrato.SesionMuestreoSeci.PARAMETROS_SECI_ID + " ) " +
-                                " REFERENCES " + Contrato.ParametrosSeci.TABLE_NAME + " ( " +
-                                                Contrato.ParametrosSeci.ID + " ), " +
-
-                                "FOREIGN KEY( " + Contrato.SesionMuestreoSeci.DATOS_USUARIO_ID + " ) " +
-                                " REFERENCES " + Contrato.DatosUsuario.TABLE_NAME + " ( " +
-                                                Contrato.DatosUsuario.ID + " )) ";
-
-        public static readonly string SQL_CREATE_PRUEBA_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
-                                Contrato.PruebaSeci.TABLE_NAME + "(" +
-                                Contrato.PruebaSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                Contrato.PruebaSeci.CALIDAD_A + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.INMEDIATEZ_A + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.ESFUERZO_A + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.PROGRAMA_REFORZAMIENTO_A + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.CALIDAD_B + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.INMEDIATEZ_B + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.ESFUERZO_B + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.PROGRAMA_REFORZAMIENTO_B + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.TIEMPO_ELECCION + " DATETIME, " +
-                                Contrato.PruebaSeci.RESPUESTA + " INTEGER NOT NULL) ";
-
-        public static readonly string SQL_CREATE_SESION_SECI_TABLE = "CREATE TABLE IF NOT EXISTS " +
-                                Contrato.SesionSeci.TABLE_NAME + " ( " +
-                                Contrato.SesionSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                Contrato.SesionSeci.SESION + " INTEGER NOT NULL, " +
-                                Contrato.SesionSeci.SERIE + " INTEGER NOT NULL, " +
-                                Contrato.SesionSeci.PRUEBA + " INTEGER NOT NULL, " +
-                                Contrato.SesionSeci.PRUEBA_SECI_ID + " INTEGER NOT NULL, " +
-                                Contrato.SesionSeci.PARAMETROS_SECI_ID + " INTEGER NOT NULL, " +
-                                Contrato.SesionSeci.DATOS_USUARIO_ID + " INTEGER NOT NULL, " +
-                                "FOREIGN KEY( " + Contrato.SesionSeci.PRUEBA_SECI_ID + " ) " +
-                                " REFERENCES " + Contrato.PruebaSeci.TABLE_NAME + "  ( " +
-                                                Contrato.PruebaSeci.ID + " ), " +
-
-                                "FOREIGN KEY( " + Contrato.SesionSeci.PARAMETROS_SECI_ID + ")" +
-                                " REFERENCES " + Contrato.ParametrosSeci.TABLE_NAME + " ( " +
-                                                Contrato.ParametrosSeci.ID + " ), " +
-
-                                "FOREIGN KEY( " + Contrato.SesionSeci.DATOS_USUARIO_ID + " ) " +
-                                " REFERENCES " + Contrato.DatosUsuario.TABLE_NAME + " ( " +
-                                                Contrato.DatosUsuario.ID + " )) ";
-
+                                                Contrato.DatosUsuario.ID + " ) ) ";
     }
 }

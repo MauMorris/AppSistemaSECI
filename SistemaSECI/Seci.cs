@@ -143,5 +143,19 @@ namespace SistemaSECI
             }
         }
 
+        private int series;
+        public int Series
+        {
+            get { return series; }
+            set
+            {
+                if (this.series != value)
+                {
+                    this.series = value;
+                    // notificacion debida al cambio de texto de status 
+                    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ReforzamientoBajoText"));
+                }
+            }
+        }
     }
 }
