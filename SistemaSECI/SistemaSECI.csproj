@@ -112,6 +112,7 @@
     </ApplicationDefinition>
     <Compile Include="BanderaAlimentacion.cs" />
     <Compile Include="Create.cs" />
+    <Compile Include="DatosMuestreo.cs" />
     <Compile Include="DietaDiaria.cs" />
     <Compile Include="DatosUsuario.cs" />
     <Compile Include="DiaSemana.cs" />

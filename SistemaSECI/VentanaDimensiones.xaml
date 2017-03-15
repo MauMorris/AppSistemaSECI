@@ -15,13 +15,20 @@
         ResizeMode="CanMinimize"
         SnapsToDevicePixels="True">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="268*"/>
+            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="274*"/>
+            <ColumnDefinition Width="117*"/>
+        </Grid.ColumnDefinitions>
         <Button
             x:Name="b11_VImagenes"
-            Margin="703,356,0,0" 
+            Margin="76,356,0,0" 
             Height="100"
             VerticalAlignment="Top" 
             Width="104" 
-            HorizontalAlignment="Left">
+            HorizontalAlignment="Left" Grid.Column="3">
             <Image 
                 x:Name="image11_VImagenes" 
                 Source="c_1.jpg"
@@ -31,9 +38,9 @@
         	x:Name="b12_VImagenes"
             HorizontalAlignment="Left" 
         	Height="100" 
-        	Margin="629,492,0,0" 
+        	Margin="2,492,0,0" 
         	VerticalAlignment="Top" 
-        	Width="104">
+        	Width="104" Grid.Column="3">
             <Image
             	x:Name="image12_VImagenes" 
                 Source="c_2.jpg"
@@ -43,9 +50,9 @@
             x:Name="b3_VImagenes"
         	HorizontalAlignment="Left" 
         	Height="100"
-        	Margin="795,490,0,0" 
+        	Margin="168,490,0,0" 
         	VerticalAlignment="Top" 
-        	Width="104">
+        	Width="104" Grid.Column="3">
             <Image 
             	x:Name="image13_VImagenes"
                 Source="c_3.jpg"
@@ -53,11 +60,11 @@
         </Button>
         <Button
             x:Name="b11_VImagenes_Copy"
-            Margin="201,356,0,0" 
+            Margin="74,356,0,0" 
             Height="100"
             VerticalAlignment="Top" 
             Width="104" 
-            HorizontalAlignment="Left">
+            HorizontalAlignment="Left" Grid.Column="1">
             <Image 
                 x:Name="image11_VImagenes1" 
                 Source="c_1.jpg"
@@ -67,9 +74,9 @@
             x:Name="b12_VImagenes_Copy"
             HorizontalAlignment="Left" 
             Height="100" 
-            Margin="127,492,0,0" 
+            Margin="0,492,0,0" 
             VerticalAlignment="Top" 
-            Width="104">
+            Width="104" Grid.Column="1">
             <Image
                 x:Name="image12_VImagenes1" 
                 Source="c_2.jpg"
@@ -79,9 +86,9 @@
             x:Name="b13_VImagenes_Copy"
             HorizontalAlignment="Left" 
             Height="100"
-            Margin="293,490,0,0" 
+            Margin="166,490,0,0" 
             VerticalAlignment="Top" 
-            Width="104">
+            Width="104" Grid.Column="1" Grid.ColumnSpan="2">
             <Image 
                 x:Name="image13_VImagenes1"
                 Source="c_3.jpg"
@@ -90,7 +97,7 @@
         <Label 
             x:Name="textBlock_Copy3" 
             HorizontalAlignment="Left" 
-            Margin="313,34,0,0" 
+            Margin="186,34,0,0" 
             Content="5"
             VerticalAlignment="Top" 
             HorizontalContentAlignment="Center"
@@ -99,12 +106,12 @@
             TextElement.FontWeight="Bold"
         	TextElement.FontSize="24"
             Height="60" 
-            Width="92"/>
+            Width="92" Grid.Column="1" Grid.ColumnSpan="2"/>
         <Label 
             x:Name="textBlock_Copy4" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Margin="455,34,0,0" 
+            Margin="60,34,0,0" 
             Content="32"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
@@ -112,11 +119,11 @@
             TextElement.FontWeight="Bold"
         	TextElement.FontSize="24"
             Height="60" 
-            Width="92"/>
+            Width="92" Grid.Column="2"/>
         <Label
             x:Name="textBlock_Copy5" 
             HorizontalAlignment="Left" 
-            Margin="601,34,0,0" 
+            Margin="206,34,0,0" 
             Content="60"
             VerticalAlignment="Top" 
             
@@ -127,11 +134,11 @@
             TextElement.FontWeight="Bold"
         	TextElement.FontSize="24"
             Height="60" 
-            Width="92"/>
+            Width="92" Grid.Column="2" Grid.ColumnSpan="2"/>
         <Label
             x:Name="textBlock_Copy2" 
             HorizontalAlignment="Left" 
-            Margin="167,124,0,0" 
+            Margin="40,124,0,0" 
             Content="500 + 345" 
             VerticalAlignment="Top" 
             HorizontalContentAlignment="Center"
@@ -140,11 +147,11 @@
             TextElement.FontWeight="Bold"
         	TextElement.FontSize="24"
             Height="60" 
-            Width="198"/>
+            Width="198" Grid.Column="1"/>
         <TextBlock 
             x:Name="textBlock_Copy" 
             HorizontalAlignment="Left" 
-            Margin="167,244,0,0" 
+            Margin="40,244,0,0" 
             TextWrapping="Wrap" 
             Text="5 min" 
             VerticalAlignment="Top" 
@@ -152,11 +159,11 @@
             TextElement.FontWeight="Bold"
         	TextElement.FontSize="24"
             Height="60" 
-            Width="198"/>
+            Width="198" Grid.Column="1"/>
         <Label 
             x:Name="textBlock_Copy1" 
             HorizontalAlignment="Left" 
-            Margin="659,124,0,0" 
+            Margin="32,124,0,0" 
             Content="600 + 345" 
             VerticalAlignment="Top" 
             HorizontalContentAlignment="Center"
@@ -165,11 +172,11 @@
             TextElement.FontWeight="Bold"
         	TextElement.FontSize="24"
             Height="60" 
-            Width="198"/>
+            Width="198" Grid.Column="3"/>
         <TextBlock 
             x:Name="textBlock" 
             HorizontalAlignment="Left" 
-            Margin="659,244,0,0" 
+            Margin="32,244,0,0" 
             TextWrapping="Wrap" 
             Text="inmediato" 
             VerticalAlignment="Top" 
@@ -177,6 +184,6 @@
             TextElement.FontWeight="Bold"
         	TextElement.FontSize="24"
             Height="60" 
-            Width="198"/>
+            Width="198" Grid.Column="3"/>
     </Grid>
 </Window>

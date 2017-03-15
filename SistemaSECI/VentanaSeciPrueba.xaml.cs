@@ -49,8 +49,20 @@ namespace SistemaSECI
                     this.Close();
                     break;
                 case "evaluacion":
+                    var seleccion = MessageBox.Show("Necesitas hacer tu sesion de linea base", "Evaluacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (seleccion.Equals(MessageBoxResult.OK))
+                    {
+                        apoyoCerrar = "CerrarVentana";
+                        this.Close();
+                    }
                     break;
                 case "replica":
+                    var sele = MessageBox.Show("Necesitas hacer tu sesion de linea base", "Replica", MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (sele.Equals(MessageBoxResult.OK))
+                    {
+                        apoyoCerrar = "CerrarVentana";
+                        this.Close();
+                    }
                     break;
                 default:
                     break;

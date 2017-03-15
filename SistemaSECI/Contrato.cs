@@ -100,7 +100,7 @@ namespace SistemaSECI
             public static readonly string IMAGEN_1 = "i1_imagen_seleccionada";              //VARCHAR(50)
             public static readonly string IMAGEN_2 = "i2_imagen_seleccionada";              //VARCHAR(50)
             public static readonly string RESULTADO = "resultado_imagen_seleccionada";      //VARCHAR(50)
-            public static readonly string TIEMPO_ELECCION = "tiempo_de_eleccion";           //DATETIME
+            public static readonly string TIEMPO_ELECCION = "tiempo_de_eleccion";           //VARCHAR(50)
         }
 
         public sealed class ResultadosMuestreoLineaBase // STRINGS 9(NUEVE)
@@ -131,7 +131,7 @@ namespace SistemaSECI
             public static readonly string INMEDIATEZ_B = "inmediatez_b";                    //VARCHAR(50)
             public static readonly string ESFUERZO_B = "esfuerzo_b";                        //INTEGER NN
             public static readonly string PROGRAMA_REFORZAMIENTO_B = "programa_ref_b";      //INTEGER NN
-            public static readonly string TIEMPO_ELECCION = "tiempo_para_elegir";           //DATETIME
+            public static readonly string TIEMPO_ELECCION = "tiempo_para_elegir";           //VARCHAR(50)
             public static readonly string RESPUESTA = "opcion_elegida_a_vs_b";              //VARCHAR(50)
             public static readonly string RESPONDIO_PROBLEMA = "respondio_el_problema";    //VARCHAR(50)
         }

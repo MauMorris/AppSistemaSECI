@@ -102,7 +102,7 @@ namespace SistemaSECI
                                 Contrato.ImagenesCalidadAltaBajaSeci.TABLE_NAME + " ( " +
                                 Contrato.ImagenesCalidadAltaBajaSeci.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                 Contrato.ImagenesCalidadAltaBajaSeci.NOMBRE + " VARCHAR(50), " +
-                                Contrato.ImagenesCalidadAltaBajaSeci.URI + " TEXT, " +
+                                Contrato.ImagenesCalidadAltaBajaSeci.URI + " VARCHAR(50), " +
                                 Contrato.ImagenesCalidadAltaBajaSeci.CALIDAD + " VARCHAR(50), " +
                                 Contrato.ImagenesCalidadAltaBajaSeci.TIPO_REFORZADOR + " VARCHAR(50) ) ";
         //-----------------------------------------//---------------------------------------------------//
@@ -114,7 +114,7 @@ namespace SistemaSECI
                                 Contrato.SesionMuestreoSeci.IMAGEN_1 + " VARCHAR(50), " +
                                 Contrato.SesionMuestreoSeci.IMAGEN_2 + " VARCHAR(50), " +
                                 Contrato.SesionMuestreoSeci.RESULTADO + " VARCHAR(50), " +
-                                Contrato.SesionMuestreoSeci.TIEMPO_ELECCION + " DATETIME) ";
+                                Contrato.SesionMuestreoSeci.TIEMPO_ELECCION + " VARCHAR(50) ) ";
         //-----------------------------------------//---------------------------------------------------//
         //strings para resultados de muestreo en linea base 9 STRINGS
         //-----------------------------------------//---------------------------------------------------//
@@ -145,7 +145,7 @@ namespace SistemaSECI
                                 Contrato.PruebaSeci.INMEDIATEZ_B + " VARCHAR(50), " +
                                 Contrato.PruebaSeci.ESFUERZO_B + " INTEGER NOT NULL, " +
                                 Contrato.PruebaSeci.PROGRAMA_REFORZAMIENTO_B + " INTEGER NOT NULL, " +
-                                Contrato.PruebaSeci.TIEMPO_ELECCION + " DATETIME, " +
+                                Contrato.PruebaSeci.TIEMPO_ELECCION + " VARCHAR(50), " +
                                 Contrato.PruebaSeci.RESPUESTA + " VARCHAR(50), " + 
                                 Contrato.PruebaSeci.RESPONDIO_PROBLEMA + " VARCHAR(50) ) ";
         //-----------------------------------------//---------------------------------------------------//

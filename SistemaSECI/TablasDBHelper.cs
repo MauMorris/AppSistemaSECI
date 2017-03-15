@@ -657,7 +657,40 @@ namespace SistemaSECI
             conexionSeci.Close();
             return idUsuario;
         }
+/// <summary>
+/// consulta el ultimo id de la tabla de resultado comparacion y lo regresa
+        public int ConsultaIdUltimoMuestreo()
+        {
+            int idUltimo = 0;
+            int idMuestreo = 0;
 
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_ULTIMO_USUARIO = "SELECT * FROM " + Contrato.SesionMuestreoSeci.TABLE_NAME +
+                                                    " WHERE " + Contrato.SesionMuestreoSeci.ID + " = (SELECT MAX( " +
+                                                    Contrato.SesionMuestreoSeci.ID + ") FROM " +
+                                                    Contrato.SesionMuestreoSeci.TABLE_NAME + "); ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_ULTIMO_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (Int32.TryParse(Convert.ToString(reader[0]), out idUltimo))
+                    idMuestreo = idUltimo;
+                else
+                    idMuestreo = 1;
+            }
+
+            conexionSeci.Close();
+            return idMuestreo;
+        }
+/// <summary>
+/// Consulta el ultimo id de la tabla de llaves y lo regresa
         public int ConsultaUltimoLlaves()
         {
             int idUltimo = 0;
@@ -864,10 +897,69 @@ namespace SistemaSECI
 
             return llaves;
         }
-
 /// <summary>
-/// //////METODOS DELETE
-/// 
+/// Regresa el nombre de la imagen a partir de su URI
+        public string RegresaNombreImagen(string uri)
+        {
+            string nombreImagen = string.Empty;
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_CONSULT_USUARIO = "SELECT " + Contrato.ImagenesCalidadAltaBajaSeci.NOMBRE + " FROM " +
+                                            Contrato.ImagenesCalidadAltaBajaSeci.TABLE_NAME + " WHERE " +
+                                            Contrato.ImagenesCalidadAltaBajaSeci.URI + " = '" + uri + "' ; ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                nombreImagen = Convert.ToString(reader[0]);
+            }
+            conexionSeci.Close();
+
+            return nombreImagen;
+        }
+        /// <summary>
+        /// Regresa todos los datos del usuario consultado
+        public List<DatosMuestreo> RegresaDatosSesionMuestreo(int id)
+        {
+            List<DatosMuestreo> resultadosMuestreo = new List<DatosMuestreo>();
+            DatosMuestreo dMuestreo = new DatosMuestreo();
+
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Consulta datos
+            string SQL_CONSULT_DATOS_MUESTREO = "SELECT * FROM " + Contrato.SesionMuestreoSeci.TABLE_NAME +
+                                                    " WHERE " + Contrato.SesionMuestreoSeci.ID + " > " + id + " ; ";
+            //execute SQL query
+            command.CommandText = SQL_CONSULT_DATOS_MUESTREO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                dMuestreo.Imagen1 = Convert.ToString(reader[Contrato.SesionMuestreoSeci.IMAGEN_1]);
+                dMuestreo.Imagen2 = Convert.ToString(reader[Contrato.SesionMuestreoSeci.IMAGEN_2]);
+                dMuestreo.Resultado = Convert.ToString(reader[Contrato.SesionMuestreoSeci.RESULTADO]);
+                dMuestreo.Tiempo = Convert.ToString(reader[Contrato.SesionMuestreoSeci.TIEMPO_ELECCION]);
+
+                resultadosMuestreo.Add(new DatosMuestreo(dMuestreo.Imagen1, dMuestreo.Imagen2, dMuestreo.Resultado, dMuestreo.Tiempo));
+            }
+
+            conexionSeci.Close();
+            return resultadosMuestreo;
+
+        }
+        /// <summary>
+        /// //////METODOS DELETE
+        /// 
         public void BorraDatosUsuario(int id)
         {
             //crear la conexion a la base de datos
@@ -974,6 +1066,36 @@ namespace SistemaSECI
             //Delete Record
             string SQL_COUNT_DATOS_USUARIO = "SELECT COUNT( * ) FROM " + 
                                                 Contrato.DatosUsuario.TABLE_NAME + " ; ";
+            //execute SQL query
+            command.CommandText = SQL_COUNT_DATOS_USUARIO;
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (Int32.TryParse(Convert.ToString(reader[0]), out contadorApoyo))
+                    contador = contadorApoyo;
+                else
+                    contador = 0;
+            }
+
+            conexionSeci.Close();
+            return contador;
+        }
+
+        public int ContarUriSesionMuestreo(int inicio, string uri)
+        {
+            int contador = 0;
+            int contadorApoyo = 0;
+            //crear la conexion a la base de datos
+            conexionSeci = new SQLiteConnection("Data Source=" + DATABASE_NAME);
+            conexionSeci.Open();
+            command = conexionSeci.CreateCommand();
+            //Delete Record
+            string SQL_COUNT_DATOS_USUARIO = "SELECT COUNT( * ) FROM " +
+                                                Contrato.SesionMuestreoSeci.TABLE_NAME + " WHERE " + 
+                                                Contrato.SesionMuestreoSeci.ID + " > " + inicio + " AND " + 
+                                                Contrato.SesionMuestreoSeci.RESULTADO + " = '" + uri + "'; ";
             //execute SQL query
             command.CommandText = SQL_COUNT_DATOS_USUARIO;
 
