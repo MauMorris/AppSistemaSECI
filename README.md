@@ -12,7 +12,7 @@ Se debe tener un Kinect conectado con el cable adaptador para PC para poder util
 *Funcionamiento de la aplicacion*.
 
 ## Contribuciones
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://gist.github.com/MauMorris/de3d23cd7c14804fbcae4db0f9afe650) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 Esta aplicación esta basada en la investigacion de control conductual e impulsivo en niños del Dr. Ariel Vite Sierra 
